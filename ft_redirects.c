@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_redirects.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: descamil <descamil@student.42.fr>          +#+  +:+       +#+        */
+/*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 15:31:41 by descamil          #+#    #+#             */
-/*   Updated: 2024/07/12 09:54:53 by descamil         ###   ########.fr       */
+/*   Updated: 2024/07/23 15:02:22 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,16 +19,20 @@ void	ft_red_error(t_mini *mini, char *input)
 		if (mini->flags->redirect->red_error < 3)
 		{
 			if (mini->flags->redirect->red_error == 1)
-				mini->flags->redirect->error = ft_substr(input, mini->flags->locate_red, 1);
+				mini->flags->redirect->error
+					= ft_substr(input, mini->flags->locate_red, 1);
 			else if ((mini->flags->redirect->red_error == 2))
-				mini->flags->redirect->error = ft_substr(input, 1 + mini->flags->locate_red, 1);
+				mini->flags->redirect->error
+					= ft_substr(input, 1 + mini->flags->locate_red, 1);
 		}
 		else if (mini->flags->redirect->red_error > 2)
 		{
 			if (mini->flags->redirect->red_error == 3)
-				mini->flags->redirect->error = ft_substr(input, mini->flags->locate_red, 2);
+				mini->flags->redirect->error
+					= ft_substr(input, mini->flags->locate_red, 2);
 			else if ((mini->flags->redirect->red_error == 4))
-				mini->flags->redirect->error = ft_substr(input, 1 + mini->flags->locate_red, 2);
+				mini->flags->redirect->error
+					= ft_substr(input, 1 + mini->flags->locate_red, 2);
 		}
 		printf("mini: parse error near `%s'\n", mini->flags->redirect->error);
 		free(mini->flags->redirect->error);
@@ -108,7 +112,7 @@ void	ft_four_plus(t_mini *mini, char *input)
 
 int	ft_red_count(t_mini *mini)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	i += mini->flags->redirect->do_le;

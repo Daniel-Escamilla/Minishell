@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_check_pipes.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: descamil <descamil@student.42.fr>          +#+  +:+       +#+        */
+/*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/01 18:22:30 by smarin-a          #+#    #+#             */
-/*   Updated: 2024/07/11 09:39:13 by descamil         ###   ########.fr       */
+/*   Updated: 2024/07/23 15:01:11 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,9 +72,11 @@ int	ft_count_pipes(char *input)
 			character = ft_pipe_error(input, i + 1);
 			amount++;
 		}
-		if ((character == -1 || (input[i] == '|' && (input[i + 1] == '|' || input[i + 1] == '\0' || ft_nothing(input, i + 1) == 1 || ft_nothing_r(input, i + 1) == 1)) || input[0] == '|'))
+		if (character == -1 || (input[i] == '|' && (input[i + 1] == '|'
+					|| input[i + 1] == '\0' || ft_nothing(input, i + 1) == 1
+					|| ft_nothing_r(input, i + 1) == 1)) || input[0] == '|')
 		{
-			ft_put_error("mini", NULL, "syntax error near unexpected token `|'");
+			printf("mini: syntax error near unexpected token `|'\n");
 			g_exit_status = 258;
 			return (-1);
 		}

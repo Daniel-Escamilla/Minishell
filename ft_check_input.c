@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_check_input.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: descamil <descamil@student.42.fr>          +#+  +:+       +#+        */
+/*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/01 17:52:46 by smarin-a          #+#    #+#             */
-/*   Updated: 2024/07/12 09:52:08 by descamil         ###   ########.fr       */
+/*   Updated: 2024/07/23 14:57:14 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ char	**ft_check_input(t_mini *mini, char *input)
 {
 	char	**lines;
 
+	lines = NULL;
 	mini->flags->locate_red = ft_count_redirect(mini, input);
 	if (mini->flags->locate_red == -1)
 		return (NULL);
@@ -27,7 +28,7 @@ char	**ft_check_input(t_mini *mini, char *input)
 		return (NULL);
 	if (mini->flags->pipe > 0)
 	{
-		lines = ft_split_pipe(input, '|'); // ls -a > as | wc -l | cat > asd < infile | cat >out -e | << EOF >> FILE
+		lines = ft_split_pipe(input, '|');
 		if (*(lines) == NULL)
 			return (NULL);
 	}

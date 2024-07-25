@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/05 13:18:57 by smarin-a          #+#    #+#             */
-/*   Updated: 2024/07/21 12:37:51 by user             ###   ########.fr       */
+/*   Updated: 2024/07/24 10:46:08 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,7 +95,6 @@ extern int	g_exit_status;
 
 typedef struct s_files
 {
-	char		**exp;
 	char		**f_order;
 	char		**order;
 	int			error;
@@ -135,13 +134,25 @@ typedef struct s_env
 	char		**env;
 }				t_env;
 
+typedef struct s_type
+{
+	int			infile;
+	int			outfile;
+	int			here_doc;
+	int			append;
+	char		*in;
+	char		*out;
+}				t_type;
+
 typedef struct s_cmd
 {
 	struct s_cmd	*next;
 	char			*cmd;
 	char			**args;
 	t_files			*files;
+	t_type			*type;
 	int				args_amount;
+	int				error;
 }					t_cmd;
 
 typedef struct s_mini
@@ -194,7 +205,7 @@ char	**ft_split_pipe(const char *s, char c);
 // char	*ft_remove_wrong_var(char *str, int *wrong_value, int wrong);
 
 // ft_split_red.c
-char	**ft_split_red(const char *s);
+char	**ft_split_red(const char *s, int i);
 
 // ft_expander.c
 char	*ft_expander(char **env, char *str);

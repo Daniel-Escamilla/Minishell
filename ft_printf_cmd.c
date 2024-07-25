@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf_cmd.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: descamil <descamil@student.42.fr>          +#+  +:+       +#+        */
+/*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/29 15:23:41 by descamil          #+#    #+#             */
-/*   Updated: 2024/07/12 09:57:09 by descamil         ###   ########.fr       */
+/*   Updated: 2024/07/25 12:12:14 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,9 +45,28 @@ void print_cmd(t_cmd *cmd) {
                 for (int i = 0; current->files->order[i] != NULL; i++)
                     printf(B_GR_0 "   - Order[%d]: {%s}\n" RESET, i, current->files->order[i]);
             }
-            printf(B_GR_0 "    Error: %d\n" RESET, current->files->error);
+            printf(B_GR_0 "\n   - Error: %d\n" RESET, current->files->error);
         } else {
             printf(B_RD_0 "  Files: (null)\n" RESET);
+        }
+
+        // Print t_type structure
+        if (current->type) {
+            printf(B_PR_0 "  Type:\n" RESET);
+            printf(B_GR_0 "   - Infile: %d\n" RESET, current->type->infile);
+            printf(B_GR_0 "   - Outfile: %d\n" RESET, current->type->outfile);
+            printf(B_GR_0 "   - Here_doc: %d\n" RESET, current->type->here_doc);
+            printf(B_GR_0 "   - Append: %d\n" RESET, current->type->append);
+            if (current->type->in)
+                printf(B_GR_0 "   - In: %s\n" RESET, current->type->in);
+            else
+                printf(B_RD_0 "     In: (null)\n" RESET);
+            if (current->type->out)
+                printf(B_GR_0 "   - Out: %s\n" RESET, current->type->out);
+            else
+                printf(B_RD_0 "     Out: (null)\n" RESET);
+        } else {
+            printf(B_RD_0 "  Type: (null)\n" RESET);
         }
 
         current = current->next;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split_red.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: descamil <descamil@student.42.fr>          +#+  +:+       +#+        */
+/*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/02 09:48:18 by descamil          #+#    #+#             */
-/*   Updated: 2024/07/12 09:48:16 by descamil         ###   ########.fr       */
+/*   Updated: 2024/07/23 14:56:47 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,8 @@ char	*extract_token(const char *input, int *i)
 	while (*i < len && ft_isspace(input[*i]))
 		(*i)++;
 	token_start = *i;
-	while (*i < len && !ft_isspace(input[*i]) && !is_redirection(input[*i], input[*i + 1]))
+	while (*i < len && !ft_isspace(input[*i])
+		&& !is_redirection(input[*i], input[*i + 1]))
 		(*i)++;
 	token_len = *i - token_start + 1;
 	token = (char *)ft_calloc((token_len + 1), sizeof(char));
@@ -49,34 +50,33 @@ char	*extract_token(const char *input, int *i)
 	return (token);
 }
 
-char *extract_redirection(const char *input, int *i)
+char	*extract_redirection(const char *input, int *i)
 {
-    char	*redirection;
-    int		redir_len;
+	char	*redirection;
+	int		redir_len;
 
-    redir_len = is_redirection(input[*i], input[*i + 1]);
-    redirection = (char *)ft_calloc(redir_len + 1, sizeof(char));
-
-    if (redir_len == 2)
-    {
-        redirection[0] = input[(*i)++];
-        redirection[1] = input[(*i)++];
-    }
-    else if (redir_len == 1)
-        redirection[0] = input[(*i)++];
-    return redirection;
+	redir_len = is_redirection(input[*i], input[*i + 1]);
+	redirection = (char *)ft_calloc(redir_len + 1, sizeof(char));
+	if (redirection == NULL)
+		return (NULL);
+	if (redir_len == 2)
+	{
+		redirection[0] = input[(*i)++];
+		redirection[1] = input[(*i)++];
+	}
+	else if (redir_len == 1)
+		redirection[0] = input[(*i)++];
+	return (redirection);
 }
 
-char **ft_split_red(const char *input)
+char	**ft_split_red(const char *input, int i)
 {
 	char	*redirection;
 	char	**tokens;
 	char	*token;
 	int		token_count;
 	int		len;
-	int		i;
 
-	i = 0;
 	token_count = 0;
 	len = ft_strlen(input);
 	tokens = (char **)ft_calloc(sizeof(char *), (ft_strlen(input) * 2 + 1));
@@ -97,26 +97,3 @@ char **ft_split_red(const char *input)
 	}
 	return (tokens);
 }
-
-// int main()
-// {
-// 	const char *input;
-// 	char **tokens;
-// 	int i;
-
-// 	input = "ls -l>oufile <<infile";
-// 	tokens = custom_split(input);
-
-// 	if (tokens)
-// 	{
-// 		for (i = 0; tokens[i] != NULL; i++)
-// 		{
-// 			printf("SPLIT[%d] --> %s\n", i, tokens[i]);
-// 			free(tokens[i]);
-// 		}
-
-// 		free(tokens);
-// 	}
-
-// 	return 0;
-// }

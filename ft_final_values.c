@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_final_values.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: descamil <descamil@student.42.fr>          +#+  +:+       +#+        */
+/*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/05 17:24:29 by descamil          #+#    #+#             */
-/*   Updated: 2024/07/22 12:20:07 by descamil         ###   ########.fr       */
+/*   Updated: 2024/07/23 15:16:06 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ int	ft_strlen_dup(char *argv)
 {
 	int	i;
 	int	space;
-	
+
 	i = 0;
 	space = 0;
 	if (argv)
@@ -43,7 +43,7 @@ int	ft_type(char *argv)
 	if (ft_strnstr(argv, ">>", 2) && (int)ft_strlen_dup(argv) == 2)
 		return (4);
 	return (0);
-}	
+}
 
 int	ft_check_dups(t_cmd *cmd)
 {
@@ -54,12 +54,33 @@ int	ft_check_dups(t_cmd *cmd)
 	{
 		if (ft_type(cmd->args[i]) != 0 && ft_type(cmd->args[i + 1]) != 0)
 		{
-			printf("mini: syntax error near unexpected token `%s'\n", cmd->args[i + 1]);
+			printf("mini: syntax error near unexpected token `%s'\n",
+				cmd->args[i + 1]);
 			return (-1);
 		}
 		i++;
 	}
 	return (0);
+}
+
+void	ft_type_file(t_cmd *cmd, int type)
+{
+	if (!cmd->type)
+	{
+		cmd->type = ft_calloc(sizeof(t_type), 1);
+		cmd->type->infile = 0;
+		cmd->type->outfile = 0;
+		cmd->type->here_doc = 0;
+		cmd->type->append = 0;
+	}
+	if (type == 1)
+		cmd->type->infile += 1;
+	else if (type == 2)
+		cmd->type->outfile += 1;
+	else if (type == 3)
+		cmd->type->here_doc += 1;
+	else if (type == 4)
+		cmd->type->append += 1;
 }
 
 char	**ft_order(t_cmd *cmd, t_mini *mini)
@@ -84,6 +105,7 @@ char	**ft_order(t_cmd *cmd, t_mini *mini)
 		{
 			if (ft_type(cmd->args[i]) != 0)
 				order[j++] = ft_itoa(ft_type(cmd->args[i]));
+			ft_type_file(cmd, ft_type(cmd->args[i]));
 		}
 	}
 	return (order);
@@ -93,7 +115,8 @@ int	ft_mem_files(t_mini *mini, t_cmd *cmd)
 {
 	if (mini->flags->redirect && mini->flags->redirect->number > 0)
 	{
-		cmd->files->f_order = (char **)ft_calloc(sizeof(char *), mini->flags->redirect->number + 1); // FILES
+		cmd->files->f_order = (char **)ft_calloc(sizeof(char *),
+				mini->flags->redirect->number + 1);
 		if (cmd->files->f_order == NULL)
 			return (-1);
 	}
@@ -126,18 +149,19 @@ void	ft_files(t_cmd *cmd, t_mini *mini, t_files *files)
 {
 	if (mini->flags->redirect && mini->flags->redirect->number > 0)
 		files->order = ft_order(cmd, mini);
-	if (files->error == -1)
+	if (mini->cmd->files->error == -1)
 		return ;
 	if (cmd->args)
 	{
 		if (ft_mem_files(mini, cmd) == -1)
 		{
-			files->error = -1;
-			return ; // MALLOC ERROR;
+			mini->cmd->files->error = -1;
+			return ;
+			// MALLOC ERROR
 		}
 		if (ft_pos_files(cmd, 0) == -1)
 		{
-			files->error = -1;
+			mini->cmd->files->error = -1;
 			return ;
 		}
 	}

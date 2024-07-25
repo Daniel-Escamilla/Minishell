@@ -3,19 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   ft_commands.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: descamil <descamil@student.42.fr>          +#+  +:+       +#+        */
+/*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/02 14:31:25 by smarin-a          #+#    #+#             */
-/*   Updated: 2024/07/11 18:40:14 by descamil         ###   ########.fr       */
+/*   Updated: 2024/07/23 14:55:01 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int ft_count_args(char *input)
+int	ft_count_args(char *input)
 {
-	int i;
-	int size;
+	int	i;
+	int	size;
 
 	i = 0;
 	size = 0;
@@ -46,7 +46,8 @@ char	*ft_get_command(char *input)
 	while (input[i] == 32 || (input[i] == 9 && input[i] <= 13))
 		i++;
 	init = i;
-	while (input[i] && input[i] != 32 && !(input[i] >= 9 && input[i] <= 13) && !ft_is_not_mayor_n_minor_char(input[i]))
+	while (input[i] && input[i] != 32 && !(input[i] >= 9
+			&& input[i] <= 13) && !ft_is_not_mayor_n_minor_char(input[i]))
 	{
 		if (input[i] == 34 || input[i] == 39)
 			i = ft_locate_next_quote(i + 1, input, input[i]);
@@ -63,9 +64,11 @@ char	*ft_get_command(char *input)
 
 int	is_red(char *argv)
 {
-	int j = 0;
-	int red = 0;
-	
+	int	j;
+	int	red;
+
+	j = 0;
+	red = 0;
 	while (argv[j] != '\0')
 	{
 		if (argv[j] == '\'' || argv[j] == '\"')
@@ -85,7 +88,7 @@ void	ft_free_fcheck_args(char **args1, char **args2)
 	ft_strstr_free(args2);
 }
 
-char	**ft_new_args(char **args, int pos, int	i, int j)
+char	**ft_new_args(char **args, int pos, int i, int j)
 {
 	char	**args1;
 	char	**args2;
@@ -97,8 +100,7 @@ char	**ft_new_args(char **args, int pos, int	i, int j)
 	while (i != pos)
 		args1[j++] = ft_strdup(args[i++]);
 	if (i == pos)
-		args2 = ft_split_red(args[pos]);
-	// ft_strstr_printf(args2);
+		args2 = ft_split_red(args[pos], 0);
 	if (args1 != NULL)
 		tmp = ft_strstr_join(args1, args2);
 	else
@@ -119,7 +121,7 @@ t_cmd	*ft_add_command(char *input, int i)
 {
 	t_cmd	*new_cmd;
 	char	**args;
-	
+
 	new_cmd = ft_calloc(sizeof(t_cmd), 1);
 	if (!new_cmd)
 		ft_exit_error(NULL, "Calloc error", 9);
@@ -131,7 +133,7 @@ t_cmd	*ft_add_command(char *input, int i)
 	{
 		if (is_red(new_cmd->args[i]) != 0)
 		{
-			args = ft_new_args(new_cmd->args, i, 0 ,0);
+			args = ft_new_args(new_cmd->args, i, 0, 0);
 			if (ft_strstr_len(args) - ft_strstr_len(new_cmd->args) != 0)
 				i = ft_strstr_len(args) - ft_strstr_len(new_cmd->args) - 1;
 			if (new_cmd->args)

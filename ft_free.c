@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 16:27:49 by user              #+#    #+#             */
-/*   Updated: 2024/07/21 11:16:37 by user             ###   ########.fr       */
+/*   Updated: 2024/07/25 11:31:44 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,14 @@ void	free_t_cmd(t_cmd **cmd)
 			if (current->files->order)
 				ft_strstr_free(current->files->order);
 			free(current->files);
+		}
+		if (current->type)
+		{
+			if (current->type->in)
+				free(current->type->in);
+			if (current->type->out)
+				free(current->type->out);
+			free(current->type);
 		}
 		free(current->cmd);
 		free(current);
