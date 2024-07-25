@@ -274,14 +274,16 @@ void	ft_select_files(t_cmd *cmd, t_mini *mini)
 	printf("%d\n", mini->flags->pipe);
 }
 
-int	ft_strtok(t_mini *mini, t_cmd **cmd, char *input)
+int	ft_minus_one(t_mini *mini)
 {
-	char	**lines;
-
-	lines = ft_check_input(mini, input);
 	if (mini->flags->pipe == -1 || mini->flags->quote == -1
 		|| mini->flags->locate_red == -1)
-		return (0);
+		return (-1);
+	return (0);
+}
+
+int	ft_do_commands(t_mini *mini, t_cmd **cmd, char **lines, char *input)
+{
 	ft_do_expander(mini, *cmd);
 	if (mini->flags->pipe == 0)
 	{
@@ -292,13 +294,24 @@ int	ft_strtok(t_mini *mini, t_cmd **cmd, char *input)
 		process_lines(cmd, mini, lines, 0);
 	ft_strstr_free(lines);
 	if (mini->cmd->files->error == -1)
-		return (0);
-	ft_do_expander(mini, *cmd);
+		return (-1);
 	ft_remove_files(*cmd, mini);
 	if (mini->cmd->files->error == -1)
-		return (0);
+		return (-1);
 	ft_select_files(*cmd, mini);
+	return (0);
+}
+
+int	ft_strtok(t_mini *mini, t_cmd **cmd, char *input)
+{
+	char	**lines;
+
+	lines = ft_check_input(mini, input);
+	if (ft_minus_one(mini) == -1)
+		return (0);
+	if (ft_do_commands(mini, cmd, lines, input) == -1)
+		return (0);
+	
 	print_cmd(*cmd);
-	// ft_select_files(*cmd, mini);
 	return (1);
 }
