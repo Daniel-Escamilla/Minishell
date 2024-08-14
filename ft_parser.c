@@ -78,6 +78,8 @@ char	**ft_create_path(char **env)
 		if (ft_strnstr(env[i], "PATH=", 5))
 			path = ft_split(env[i] + 5, ':');
 	}
+	// if (path == NULL)
+	// 	path = 
 	return (path);
 }
 
@@ -183,51 +185,65 @@ char	*ft_route_cmd(t_mini *mini, t_cmd *current, char *tmp)
 	return (cmd);
 }
 
-void	ft_remove_files(t_cmd *cmd, t_mini *mini)
+int	ft_sizes(t_cmd *current)
 {
-	t_cmd	*current;
 	char	**tmp;
 	int		size;
 	int		i;
-	int		j;
+
+	i = -1;
+	size = 0;
+	tmp = ft_strstr_dup(current->args);
+	while (tmp[++i])
+	{
+		if (ft_type(tmp[i]) != 0)
+			i++;
+		else
+			size++;
+	}
+	ft_strstr_free(tmp);
+	return (size);
+}
+
+void	ft_select_cmd(t_cmd *current, t_mini *mini, int j)
+{
+	char	**tmp;
+	int		i;
+
+	i = -1;
+	tmp = ft_strstr_dup(current->args);
+	ft_strstr_free(current->args);
+	while (tmp[++i])
+	{
+		current->error = 0;
+		if (ft_type(tmp[i]) != 0)
+			i++;
+		else
+		{
+			if (j == 0)
+			{
+				current->cmd = ft_route_cmd(mini, current, tmp[i]);
+				if (current->cmd == NULL && current->error != -2)
+					mini->cmd->files->error = -1;
+			}
+			if (current->error != -2)
+				current->args[j++] = ft_strdup(tmp[i]);
+		}
+	}
+	ft_strstr_free(tmp);
+}
+
+void	ft_remove_files(t_cmd *cmd, t_mini *mini)
+{
+	t_cmd	*current;
+	int		size;
 
 	current = cmd;
 	while (current != NULL)
 	{
-		i = -1;
-		j = 0;
-		size = 0;
-		tmp = ft_strstr_dup(current->args);
-		ft_strstr_free(current->args);
-		while (tmp[++i])
-		{
-			if (ft_type(tmp[i]) != 0)
-				i++;
-			else
-				size++;
-		}
+		size = ft_sizes(current);
 		current->args = (char **)ft_calloc(sizeof(char *), size + 1);
-		i = -1;
-		j = 0;
-		while (tmp[++i])
-		{
-			current->error = 0;
-			if (ft_type(tmp[i]) != 0)
-				i++;
-			else
-			{
-				if (j == 0)
-				{
-					current->cmd = ft_route_cmd(mini, current, tmp[i]);
-					if (current->cmd == NULL && current->error != -2)
-						mini->cmd->files->error = -1;
-				}
-				if (current->error != -2)
-					current->args[j++] = ft_strdup(tmp[i]);
-			}
-		}
-		ft_strstr_free(tmp);
-		tmp = NULL;
+		ft_select_cmd(current, mini, 0);
 		current = current->next;
 	}
 }
@@ -242,18 +258,17 @@ void	ft_process_file(char *str, int *count, int *check, char **dest)
 		(*count)--;
 }
 
-void	ft_select_files(t_cmd *cmd, t_mini *mini)
+void	ft_select_files(t_cmd *cmd, int i)
 {
 	t_cmd	*current;
 	t_type	*type;
-	int		i;
 
 	current = cmd;
 	type = current->type;
 	while (current != NULL)
 	{
-		i = 0;
-		while (current->files->f_order && current->files->f_order[i] != NULL)
+		i = -1;
+		while (current->files->f_order && current->files->f_order[++i] != NULL)
 		{
 			if (ft_strnstr("1", current->files->order[i], 1) != NULL)
 				ft_process_file(current->files->f_order[i],
@@ -267,11 +282,9 @@ void	ft_select_files(t_cmd *cmd, t_mini *mini)
 			if (ft_strnstr("4", current->files->order[i], 1) != NULL)
 				ft_process_file(current->files->f_order[i],
 					&type->append, &type->outfile, &type->out);
-			i++;
 		}
 		current = current->next;
 	}
-	printf("%d\n", mini->flags->pipe);
 }
 
 int	ft_minus_one(t_mini *mini)
@@ -298,7 +311,7 @@ int	ft_do_commands(t_mini *mini, t_cmd **cmd, char **lines, char *input)
 	ft_remove_files(*cmd, mini);
 	if (mini->cmd->files->error == -1)
 		return (-1);
-	ft_select_files(*cmd, mini);
+	ft_select_files(*cmd, 0);
 	return (0);
 }
 
@@ -311,7 +324,6 @@ int	ft_strtok(t_mini *mini, t_cmd **cmd, char *input)
 		return (0);
 	if (ft_do_commands(mini, cmd, lines, input) == -1)
 		return (0);
-	
 	print_cmd(*cmd);
 	return (1);
 }
