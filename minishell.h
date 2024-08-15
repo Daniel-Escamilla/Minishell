@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/05 13:18:57 by smarin-a          #+#    #+#             */
-/*   Updated: 2024/07/24 10:46:08 by user             ###   ########.fr       */
+/*   Updated: 2024/08/15 14:31:13 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -144,6 +144,20 @@ typedef struct s_type
 	char		*out;
 }				t_type;
 
+typedef struct s_names
+{
+	pid_t	*proc; 					// Array de numeros de los procesos 
+
+	int		fd; 					// Numero del fd del archivo abierto
+	int		index; 					// iterador de la lista de pid_t, para el waitpid
+	int		fd_tmp; 				// fd temporal para la modificacion del dup2
+	int		fd_infile; 				// fd del infile
+	int		fd_outfile; 			// fd del outfile
+
+	int		fd_pipe[2]; 			// fd temporal para escritura y lectura
+
+}			t_names;
+
 typedef struct s_cmd
 {
 	struct s_cmd	*next;
@@ -151,6 +165,7 @@ typedef struct s_cmd
 	char			**args;
 	t_files			*files;
 	t_type			*type;
+	t_names			*names;
 	int				args_amount;
 	int				error;
 }					t_cmd;
@@ -168,7 +183,7 @@ typedef struct s_mini
 // ft_utils.c
 void	ft_mini_header(void);
 int		ft_strstr_len(char **str);
-void	ft_strstr_printf(char **str);
+void	ft_strstr_printf(char **str, int color);
 int		ft_strnstrstr(char **str, char *locate);
 char	**ft_strstr_join(char **str, char **str1);
 
@@ -222,7 +237,7 @@ char	*ft_expander(char **env, char *str);
 // char	*ft_strjoin_custom(char *str1, char *str2, size_t i, size_t c);
 
 // ft_printf_cmd.c
-void	print_cmd(t_cmd *cmd);
+void	print_cmd(t_cmd *cmd, t_mini *mini);
 
 // ft_check_input.c
 char	**ft_check_input(t_mini *mini, char *input);

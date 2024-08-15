@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/05 17:24:29 by descamil          #+#    #+#             */
-/*   Updated: 2024/07/23 15:16:06 by user             ###   ########.fr       */
+/*   Updated: 2024/08/14 19:50:27 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -128,7 +128,6 @@ int	ft_pos_files(t_cmd *cmd, int i)
 	int	files;
 
 	files = 0;
-	ft_strstr_printf(cmd->args);
 	while (cmd->args[i])
 	{
 		if (ft_type(cmd->args[i]) > 0)

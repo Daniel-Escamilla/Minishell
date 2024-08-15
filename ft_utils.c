@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/14 11:24:41 by smarin-a          #+#    #+#             */
-/*   Updated: 2024/07/25 11:28:02 by user             ###   ########.fr       */
+/*   Updated: 2024/08/15 13:29:36 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,15 +103,23 @@ void	ft_strstr_free(char **str)
 	}
 }
 
-void	ft_strstr_printf(char **str)
+void	ft_strstr_printf(char **str, int color)
 {
 	int	i;
 
 	i = -1;
 	if (str)
 	{
-		while (str[++i])
-			printf(B_GR_0"str[%d] --> %s\n"RESET, i, str[i]);
+		if (color == 1)
+		{
+			while (str[++i])
+				printf(B_GR_0"str[%d] --> %s\n"RESET, i, str[i]);
+		}
+		if (color == 2)
+		{
+			while (str[++i])
+				printf(B_RD_0"str[%d] --> %s\n"RESET, i, str[i]);
+		}
 	}
 }
 
