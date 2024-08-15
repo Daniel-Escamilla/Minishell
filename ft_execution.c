@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/21 11:25:25 by user              #+#    #+#             */
-/*   Updated: 2024/08/15 14:31:18 by user             ###   ########.fr       */
+/*   Updated: 2024/08/15 14:35:45 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,7 @@ void	ft_comm(t_cmd *cmd, t_mini *mini)
 	cmd->names->index++;
 	close(cmd->names->fd_pipe[1]);
 }
+
 
 int	ft_wait_bonus(t_cmd *cmd)
 {
