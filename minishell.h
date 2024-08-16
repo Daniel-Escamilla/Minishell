@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/05 13:18:57 by smarin-a          #+#    #+#             */
-/*   Updated: 2024/08/15 14:31:13 by user             ###   ########.fr       */
+/*   Updated: 2024/08/16 10:57:59 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -173,6 +173,8 @@ typedef struct s_cmd
 typedef struct s_mini
 {
 	int			shell_level;
+	int			fd_tmp;
+	int			num_comm;
 	char		*input;
 	t_env		*env;
 	t_cmd		*cmd;
