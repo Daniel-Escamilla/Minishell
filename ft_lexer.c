@@ -6,17 +6,11 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/14 15:50:54 by smarin-a          #+#    #+#             */
-/*   Updated: 2024/08/15 13:29:27 by user             ###   ########.fr       */
+/*   Updated: 2024/08/17 18:15:35 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
-
-void	ft_error(char *str, int i)
-{
-	perror(str);
-	exit(i);
-}
 
 int	ft_history(void)
 {
@@ -100,10 +94,8 @@ int	ft_find_exit(char *input)
 void	ft_recive_input(t_mini *mini)
 {
 	char	*input;
-	int		fd;
-
-	fd = 0;
-	fd = ft_history();
+	
+	mini->fd_history = ft_history();
 	while (1)
 	{
 		input = readline("🐚"B_GR_0" MINI(S)HELL"RESET" 🔥 -> ");
@@ -115,10 +107,10 @@ void	ft_recive_input(t_mini *mini)
 		{
 			mini->input = ft_strdup(input);
 			add_history(input);
-			if (fd != -1)
+			if (mini->fd_history != -1)
 			{
-				write(fd, input, ft_strlen(input));
-				write(fd, "\n", 1);
+				write(mini->fd_history, input, ft_strlen(input));
+				write(mini->fd_history, "\n", 1);
 			}
 			// TODO: HECHO HASTA AQUI y funcional COn señales incluidas
 			// ? HASTA AQUI FUNCIONA TODO (CREO)
@@ -145,5 +137,5 @@ void	ft_recive_input(t_mini *mini)
 
 		free_t_cmd(&(mini->cmd));
 	}
-	close(fd);
+	close(mini->fd_history);
 }

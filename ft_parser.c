@@ -156,6 +156,7 @@ void	process_lines(t_cmd **cmd, t_mini *mini, char **lines, int i)
 	while (lines && lines[i] != NULL)
 	{
 		cmd_cmd = ft_add_command(lines[i++], -1);
+		
 		if (*cmd == NULL)
 			*cmd = cmd_cmd;
 		else
@@ -318,7 +319,7 @@ int	ft_minus_one(t_mini *mini)
 	return (0);
 }
 
-int	ft_do_commands(t_mini *mini, t_cmd **cmd, char **lines, char *input)
+int	ft_do_expand(t_mini *mini, t_cmd **cmd, char **lines, char *input)
 {
 	if (mini->flags->pipe == 0)
 	{
@@ -338,15 +339,62 @@ int	ft_do_commands(t_mini *mini, t_cmd **cmd, char **lines, char *input)
 	return (0);
 }
 
+int	ft_wait_bonus(t_cmd *cmd)
+{
+	int	state;
+	int i;
+
+	i = 0;
+	while (cmd->names->proc[i] && i + 1 < cmd->names->index)
+		waitpid(cmd->names->proc[i++], NULL, 0);
+	waitpid(cmd->names->proc[i], &state, 0);
+	return (state);
+}
+
+void	ft_start_val(t_cmd *cmd, t_mini *mini)
+{
+	cmd->names->fd = 0;
+	cmd->names->index = 0;
+	mini->num_comm = mini->flags->pipe + 1;
+	cmd->names->proc = ft_calloc(sizeof(int), mini->num_comm + 1);
+}
+
+int	ft_do_comm(t_cmd *cmd, t_mini *mini)
+{
+
+	if (cmd == NULL)
+	{
+        printf(B_RD_0 "No command structure.\n" RESET);
+        return (0);
+    }
+    t_cmd *current = cmd;
+
+	while (current != NULL)
+	{
+		// printf("Aqui\n");
+		ft_start_val(current, mini);
+		ft_comm(current, mini);
+		mini->num_comm--;
+		current = current->next;
+	}
+	ft_wait_bonus(cmd);
+	return (1);
+}
+
 int	ft_strtok(t_mini *mini, t_cmd **cmd, char *input)
 {
 	char	**lines;
+	int		comm;
 
+	comm = 0;
 	lines = ft_check_input(mini, input);
 	if (ft_minus_one(mini) == -1)
 		return (0);
-	if (ft_do_commands(mini, cmd, lines, input) == -1)
+	if (ft_do_expand(mini, cmd, lines, input) == -1)
 		return (0);
-	print_cmd(*cmd, mini);
+	comm = ft_do_comm(*cmd, mini);
+	if (comm != 1)
+		return (0);
+	// print_cmd(*cmd, mini);
 	return (1);
 }

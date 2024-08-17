@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/05 13:18:57 by smarin-a          #+#    #+#             */
-/*   Updated: 2024/08/16 10:57:59 by user             ###   ########.fr       */
+/*   Updated: 2024/08/17 18:14:52 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,22 +72,24 @@
 # include "get_next_line.h"
 
 # include "libft/libft.h"
+
+# include <math.h>
+# include <fcntl.h>
 # include <stdio.h>
 # include <unistd.h>
 # include <stdlib.h>
 # include <dirent.h>
-# include <fcntl.h>
-# include <sys/types.h>
+# include <dirent.h>
 # include <signal.h>
 # include <limits.h>
 # include <termios.h>
-# include <dirent.h>
 # include <sys/stat.h>
+# include <sys/wait.h>
 # include <sys/ioctl.h>
+# include <sys/types.h>
 # include <sys/param.h>
 # include <readline/readline.h>
 # include <readline/history.h>
-# include <math.h>
 # define R 0
 # define W 1
 
@@ -166,21 +168,27 @@ typedef struct s_cmd
 	t_files			*files;
 	t_type			*type;
 	t_names			*names;
-	int				args_amount;
+	int				args_amount; 
 	int				error;
+	int				exit;
 }					t_cmd;
 
 typedef struct s_mini
 {
-	int			shell_level;
 	int			fd_tmp;
 	int			num_comm;
+	int			fd_history;
+	int			shell_level;
 	char		*input;
 	t_env		*env;
 	t_cmd		*cmd;
 	t_flags		*flags;
 	t_token		*token;
 }				t_mini;
+
+// ft_execution.c
+void	ft_comm(t_cmd *cmd, t_mini *mini);
+void	ft_error(char *str, int i);
 
 // ft_utils.c
 void	ft_mini_header(void);
