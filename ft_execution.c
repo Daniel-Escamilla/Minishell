@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/21 11:25:25 by user              #+#    #+#             */
-/*   Updated: 2024/08/17 18:31:32 by user             ###   ########.fr       */
+/*   Updated: 2024/08/18 18:34:59 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,6 +97,9 @@ int	ft_choose_infile(t_cmd *cmd, t_mini *mini)
 
 int	ft_choose_outfile(t_cmd *cmd, t_mini *mini)
 {
+	ft_putstr_fd(B_YE_0"Numero de comandos restantes --> ", 2);
+	ft_putnbr_fd(mini->num_comm, 2);
+	write(2, "\n\n"RESET, 2);
 	if (cmd->type && cmd->type->out && (cmd->type->outfile == 1 || cmd->type->append == 1))
 		return (ft_pick_outfile(cmd, mini));
 	else if (mini->num_comm == 1)
@@ -106,50 +109,59 @@ int	ft_choose_outfile(t_cmd *cmd, t_mini *mini)
 // Restar [num_comm] para iterar los comandos.
 void	ft_comm(t_cmd *cmd, t_mini *mini)
 {
+	cmd->names->fd_infile = ft_choose_infile(cmd, mini);
+
+	if (cmd->names->fd_infile == -1)
+		ft_error("Error open infile", 1);
+
+	cmd->names->fd_outfile = ft_choose_outfile(cmd, mini);
+
+	if (cmd->names->fd_outfile == -1)
+	{
+		if (mini->fd_tmp)
+			close(mini->fd_tmp);
+		ft_error("Error open outfile", 1);
+	}
+
 	if (pipe(cmd->names->fd_pipe) == -1)
 		ft_error("Pipe Error", 1);
+
+
+
 	cmd->names->proc[cmd->names->index] = fork();
 	if (cmd->names->proc[cmd->names->index] == -1)
 		ft_error("Failed in Fork()", 1);
 	if (cmd->names->proc[cmd->names->index] == 0)
 	{
-
-		
-		ft_putstr_fd("Cierra fd_pipe[0] --> ", 2);
-		ft_putnbr_fd(cmd->names->fd_pipe[0], 2);
-		write(2, "\n", 1);
 		close(cmd->names->fd_pipe[0]);
 
-
-
-		cmd->names->fd_infile = ft_choose_infile(cmd, mini);
-
+		write(2, "\n\n"RESET, 2);
+		ft_putstr_fd(B_YE_0"Fd_pipe[0] --> ", 2);
+		ft_putnbr_fd(cmd->names->fd_pipe[0], 2);
+		write(2, "\n\n"RESET, 2);
+		ft_putstr_fd("Fd_pipe[1] --> ", 2);
+		ft_putnbr_fd(cmd->names->fd_pipe[1], 2);
+		write(2, "\n\n"RESET, 2);
+		ft_putstr_fd(B_BL_0"Cierra fd_pipe[0] Hijo --> ", 2);
+		ft_putnbr_fd(cmd->names->fd_pipe[0], 2);
+		write(2, "\n\n"RESET, 2);
+		ft_putstr_fd(B_PR_0"Utiliza este fd de infile--> ", 2);
 		ft_putnbr_fd(cmd->names->fd_infile, 2);
-		write(2, "\n", 1);
-		if (cmd->names->fd_infile == -1)
-			ft_error("Error open infile", 1);
+		write(2, "\n\n"RESET, 2);
+		ft_putstr_fd("Utiliza este fd de outfile--> ", 2);
+		ft_putnbr_fd(cmd->names->fd_outfile, 2);
+		write(2, "\n\n"RESET, 2);
+		ft_putstr_fd(B_GR_0"Fd temporal --> ", 2);
+		ft_putnbr_fd(mini->fd_tmp, 2);
+		write(2, "\n\n"RESET, 2);
+		ft_putstr_fd(B_OR_0"Para este comando --> ", 2);
+		ft_putstr_fd(cmd->cmd, 2);
+		write(2, "\n\n"RESET, 2);
 
-			
-
-			
-		cmd->names->fd_outfile = ft_choose_outfile(cmd, mini);
-
-		if (cmd->names->fd_outfile == -1)
-		{
-			if (mini->fd_tmp)
-				close(mini->fd_tmp);
-			ft_error("Error open outfile", 1);
-		}
-		ft_putstr_fd("Aquí\n", 2);
-
-
-
-		
 		dup2(cmd->names->fd_infile, STDIN_FILENO);
-		
 		dup2(cmd->names->fd_outfile, STDOUT_FILENO);
 
-		
+
 		// ft_putnbr_fd(dup2(cmd->names->fd_infile, STDIN_FILENO), 2);
 		// write(2, "\n", 1);
 		// ft_putnbr_fd(dup2(cmd->names->fd_outfile, STDOUT_FILENO), 2);
@@ -159,13 +171,48 @@ void	ft_comm(t_cmd *cmd, t_mini *mini)
 		if (cmd->names->fd_outfile != 1)
 			close(cmd->names->fd_outfile);
 		execve(cmd->cmd, cmd->args, mini->env->env);
+		
+
+		// close(cmd->names->fd_pipe[0]);
+
+		// cmd->names->fd_infile = ft_choose_infile(cmd, mini);
+		// if (cmd->names->fd_infile == -1)
+		// 	ft_error("Error open infile", 1);
+
+		// cmd->names->fd_outfile = ft_choose_outfile(cmd, mini);
+		// if (cmd->names->fd_outfile == -1)
+		// 	ft_error("Error open outfile", 1);
+
+		// // Configuración correcta de los descriptores de archivo
+		// if (cmd->names->fd_infile != STDIN_FILENO)
+		// {
+		// 	dup2(cmd->names->fd_infile, STDIN_FILENO);
+		// 	close(cmd->names->fd_infile);
+		// }
+		// if (cmd->names->fd_outfile != STDOUT_FILENO)
+		// {
+		// 	dup2(cmd->names->fd_outfile, STDOUT_FILENO);
+		// 	close(cmd->names->fd_outfile);
+		// }
+
+		// // Ejecutar el comando
+		// execve(cmd->cmd, cmd->args, mini->env->env);
+		// ft_error("Execve error", 1);
 	}
-	
+	close(cmd->names->fd_pipe[1]);
 	if (mini->num_comm != 1)
 		mini->fd_tmp = cmd->names->fd_pipe[0];
 	else
+	{
+		ft_putstr_fd(B_BL_0"Cierra fd_pipe[0] Padre --> ", 2);
+		ft_putnbr_fd(cmd->names->fd_pipe[0], 2);
+		write(2, "\n\n"RESET, 2);
 		close(cmd->names->fd_pipe[0]);
+	}
+	wait(cmd->names->fd_pipe);
+	ft_putstr_fd(B_RD_2"Cierra fd_pipe[1] Padre --> ", 2);
+	ft_putnbr_fd(cmd->names->fd_pipe[1], 2);
+	write(2, "\n\n"RESET, 2);
 	cmd->names->index++;
-	close(cmd->names->fd_pipe[1]);
 }
 

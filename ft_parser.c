@@ -355,6 +355,8 @@ void	ft_start_val(t_cmd *cmd, t_mini *mini)
 {
 	cmd->names->fd = 0;
 	cmd->names->index = 0;
+	cmd->names->fd_infile = 0;
+	cmd->names->fd_outfile = 1;
 	mini->num_comm = mini->flags->pipe + 1;
 	cmd->names->proc = ft_calloc(sizeof(int), mini->num_comm + 1);
 }
@@ -372,9 +374,14 @@ int	ft_do_comm(t_cmd *cmd, t_mini *mini)
 	while (current != NULL)
 	{
 		// printf("Aqui\n");
+
 		ft_start_val(current, mini);
 		ft_comm(current, mini);
 		mini->num_comm--;
+		ft_putstr_fd("Ciclo\n", 2);
+		ft_putstr_fd(B_OR_2"Numero de comandos --> ", 2);
+		ft_putnbr_fd(mini->num_comm, 2);
+		write(2, "\n\n"RESET, 2);
 		current = current->next;
 	}
 	ft_wait_bonus(cmd);

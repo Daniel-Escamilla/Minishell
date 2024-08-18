@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/14 15:50:54 by smarin-a          #+#    #+#             */
-/*   Updated: 2024/08/17 18:15:35 by user             ###   ########.fr       */
+/*   Updated: 2024/08/18 18:02:27 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,7 +121,7 @@ void	ft_recive_input(t_mini *mini)
 			// ! AYUDA:
 			if (ft_strtok(mini, &(mini->cmd), input) && mini->flags->quote != 0)
 			{
-				printf("Llega al final! 🚀\n");
+				printf("\n\nLlega al final! 🚀\n\n");
 			}
 			free(mini->input);
 		}
