@@ -37,6 +37,7 @@ SRCS =	ft_main.c \
 		ft_split_red.c \
 		ft_redirects.c \
 		ft_save_path.c \
+		ft_execution.c \
 		ft_commands-2.c \
 		ft_commands-3.c \
 		ft_printf_cmd.c \

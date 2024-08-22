@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/15 12:21:54 by smarin-a          #+#    #+#             */
-/*   Updated: 2024/07/23 14:52:23 by user             ###   ########.fr       */
+/*   Updated: 2024/08/17 18:12:41 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,5 +57,6 @@ t_mini	*ft_initialize(char **env)
 	}
 	mini->token->input = NULL;
 	mini->token->tokens = NULL;
+	mini->fd_tmp = 0;
 	return (mini);
 }

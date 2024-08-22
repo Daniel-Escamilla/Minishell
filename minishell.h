@@ -6,7 +6,7 @@
 /*   By: descamil <descamil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/05 13:18:57 by smarin-a          #+#    #+#             */
-/*   Updated: 2024/08/13 11:04:53 by descamil         ###   ########.fr       */
+/*   Updated: 2024/08/22 09:17:29 by descamil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,22 +72,24 @@
 # include "get_next_line.h"
 
 # include "libft/libft.h"
+
+# include <math.h>
+# include <fcntl.h>
 # include <stdio.h>
 # include <unistd.h>
 # include <stdlib.h>
 # include <dirent.h>
-# include <fcntl.h>
-# include <sys/types.h>
+# include <dirent.h>
 # include <signal.h>
 # include <limits.h>
 # include <termios.h>
-# include <dirent.h>
 # include <sys/stat.h>
+# include <sys/wait.h>
 # include <sys/ioctl.h>
+# include <sys/types.h>
 # include <sys/param.h>
 # include <readline/readline.h>
 # include <readline/history.h>
-# include <math.h>
 # define R 0
 # define W 1
 
@@ -144,6 +146,20 @@ typedef struct s_type
 	char		*out;
 }				t_type;
 
+typedef struct s_names
+{
+	pid_t	*proc; 					// Array de numeros de los procesos 
+
+	int		fd; 					// Numero del fd del archivo abierto
+	int		index; 					// iterador de la lista de pid_t, para el waitpid
+	int		fd_tmp; 				// fd temporal para la modificacion del dup2
+	int		fd_infile; 				// fd del infile
+	int		fd_outfile; 			// fd del outfile
+
+	int		fd_pipe[2]; 			// fd temporal para escritura y lectura
+
+}			t_names;
+
 typedef struct s_cmd
 {
 	struct s_cmd	*next;
@@ -151,12 +167,17 @@ typedef struct s_cmd
 	char			**args;
 	t_files			*files;
 	t_type			*type;
-	int				args_amount;
+	t_names			*names;
+	int				args_amount; 
 	int				error;
+	int				exit;
 }					t_cmd;
 
 typedef struct s_mini
 {
+	int			fd_tmp;
+	int			num_comm;
+	int			fd_history;
 	int			shell_level;
 	char		*input;
 	t_env		*env;
@@ -165,10 +186,17 @@ typedef struct s_mini
 	t_token		*token;
 }				t_mini;
 
+
+
+
+// ft_execution.c
+void	ft_comm(t_cmd *cmd, t_mini *mini);
+void	ft_error(char *str, int i);
+
 // ft_utils.c
 void	ft_mini_header(void);
 int		ft_strstr_len(char **str);
-void	ft_strstr_printf(char **str);
+void	ft_strstr_printf(char **str, int color);
 int		ft_strnstrstr(char **str, char *locate);
 char	**ft_strstr_join(char **str, char **str1);
 
@@ -225,7 +253,7 @@ char	*ft_expander(char **env, char *str);
 // char	*ft_strjoin_custom(char *str1, char *str2, size_t i, size_t c);
 
 // ft_printf_cmd.c
-void	print_cmd(t_cmd *cmd);
+void	print_cmd(t_cmd *cmd, t_mini *mini);
 
 // ft_check_input.c
 char	**ft_check_input(t_mini *mini, char *input);

@@ -6,13 +6,13 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/29 15:23:41 by descamil          #+#    #+#             */
-/*   Updated: 2024/07/25 12:12:14 by user             ###   ########.fr       */
+/*   Updated: 2024/08/16 16:44:42 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-void print_cmd(t_cmd *cmd) {
+void print_cmd(t_cmd *cmd, t_mini *mini) {
     if (cmd == NULL) {
         printf(B_RD_0 "No command structure.\n" RESET);
         return;
@@ -68,6 +68,11 @@ void print_cmd(t_cmd *cmd) {
         } else {
             printf(B_RD_0 "  Type: (null)\n" RESET);
         }
+
+        printf("DL --> %d\n", mini->flags->redirect->do_le);
+        printf("SL --> %d\n", mini->flags->redirect->si_le);
+        printf("DR --> %d\n", mini->flags->redirect->do_ri);
+        printf("SR --> %d\n", mini->flags->redirect->si_ri);
 
         current = current->next;
         cmd_index++;
