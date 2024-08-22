@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: descamil <descamil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/05 13:18:57 by smarin-a          #+#    #+#             */
-/*   Updated: 2024/08/18 18:18:47 by user             ###   ########.fr       */
+/*   Updated: 2024/08/22 09:07:56 by descamil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -185,6 +185,9 @@ typedef struct s_mini
 	t_flags		*flags;
 	t_token		*token;
 }				t_mini;
+
+
+
 
 // ft_execution.c
 void	ft_comm(t_cmd *cmd, t_mini *mini);
