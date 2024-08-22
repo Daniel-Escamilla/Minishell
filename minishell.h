@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: descamil <descamil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/05 13:18:57 by smarin-a          #+#    #+#             */
-/*   Updated: 2024/07/24 10:46:08 by user             ###   ########.fr       */
+/*   Updated: 2024/08/13 11:04:53 by descamil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -192,6 +192,9 @@ int		ft_strtok(t_mini *mini, t_cmd **cmd, char *input);
 
 // ft_split_pipe.c
 char	**ft_split_pipe(const char *s, char c);
+
+// ft_save_path.c
+char	**ft_save_path(char	**env);
 
 // // ft_expander.c
 // int		ft_var(char *input);

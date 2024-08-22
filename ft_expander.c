@@ -6,7 +6,7 @@
 /*   By: descamil <descamil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/09 13:20:46 by descamil          #+#    #+#             */
-/*   Updated: 2024/07/22 12:19:06 by descamil         ###   ########.fr       */
+/*   Updated: 2024/08/13 12:45:04 by descamil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -252,7 +252,7 @@ char	*ft_expander(char **env, char *str)
 // 	// char	*str = "    \'$?\'  \'$USER\'  ";
 // 	char	*result;
 
-// 	str = ft_strdup("\'$USER\"$USER\'$USER\'$USER\"$USER$USER\'\'$U\'\'\'$U\"\"\"$U\"");
+// 	str = ft_strdup("'''$USER\"$USER'$USER'$USER\"$USER$USER''$U'''\"\"\"\"");
 // 	printf(B_CY_0"\nCADENA INICIAL -->\t[%s]\n"RESET, str);
 // 	if (argc != 1)
 // 		printf(B_RD_2"ERROR --> [%s]\n"RESET, argv[1]);

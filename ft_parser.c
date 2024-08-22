@@ -36,16 +36,13 @@ char	**ft_str_expander(t_mini *mini, char **args)
 		free(tmp[i]);
 	}
 	free(tmp);
-	ft_strstr_printf(result);
 	return (result);
 }
 
 void	ft_do_expander(t_mini *mini, t_cmd *cmd)
 {
 	t_cmd	*now;
-	int		i;
 
-	i = 0;
 	now = cmd;
 	while (now != NULL)
 	{
@@ -54,7 +51,6 @@ void	ft_do_expander(t_mini *mini, t_cmd *cmd)
 		if (now->files->f_order)
 			now->files->f_order = ft_str_expander(mini, now->files->f_order);
 		now = now->next;
-		i++;
 	}
 }
 
@@ -96,6 +92,8 @@ char	*ft_validate_comm(char *cmd, char **path)
 	if (access(cmd, X_OK) != 0 && ft_strrchr(cmd, '/'))
 		return (NULL); // Error 127
 	command = ft_strjoin("/", cmd);
+	if (path == NULL)
+		return (NULL);
 	while (path[j] != NULL)
 	{
 		test = ft_strjoin(path[j++], command);
@@ -163,13 +161,15 @@ char	*ft_route_cmd(t_mini *mini, t_cmd *current, char *tmp)
 	char	**path;
 	char	*cmd;
 
-	path = ft_create_path(mini->env->env); // Poner el PATH en la estructura y en el caso de que no exista, cogerlo del ejecutable env
+	path = ft_create_path(mini->env->env);
 	if (tmp[0] == '\0')
 	{
 		ft_strstr_free(path);
 		current->error = -2;
 		return (NULL);
 	}
+	if (path == NULL)
+		path = ft_save_path(mini->env->env);
 	cmd = ft_validate_comm(tmp, path);
 	if (cmd == NULL)
 	{
@@ -242,7 +242,7 @@ void	ft_process_file(char *str, int *count, int *check, char **dest)
 		(*count)--;
 }
 
-void	ft_select_files(t_cmd *cmd, t_mini *mini)
+void	ft_select_files(t_cmd *cmd)
 {
 	t_cmd	*current;
 	t_type	*type;
@@ -271,7 +271,6 @@ void	ft_select_files(t_cmd *cmd, t_mini *mini)
 		}
 		current = current->next;
 	}
-	printf("%d\n", mini->flags->pipe);
 }
 
 int	ft_minus_one(t_mini *mini)
@@ -284,7 +283,6 @@ int	ft_minus_one(t_mini *mini)
 
 int	ft_do_commands(t_mini *mini, t_cmd **cmd, char **lines, char *input)
 {
-	ft_do_expander(mini, *cmd);
 	if (mini->flags->pipe == 0)
 	{
 		*(cmd) = ft_add_command(input, -1);
@@ -292,13 +290,14 @@ int	ft_do_commands(t_mini *mini, t_cmd **cmd, char **lines, char *input)
 	}
 	else
 		process_lines(cmd, mini, lines, 0);
+	ft_do_expander(mini, *cmd);
 	ft_strstr_free(lines);
 	if (mini->cmd->files->error == -1)
 		return (-1);
 	ft_remove_files(*cmd, mini);
 	if (mini->cmd->files->error == -1)
 		return (-1);
-	ft_select_files(*cmd, mini);
+	ft_select_files(*cmd);
 	return (0);
 }
 
@@ -311,7 +310,7 @@ int	ft_strtok(t_mini *mini, t_cmd **cmd, char *input)
 		return (0);
 	if (ft_do_commands(mini, cmd, lines, input) == -1)
 		return (0);
-	
 	print_cmd(*cmd);
+	
 	return (1);
 }
