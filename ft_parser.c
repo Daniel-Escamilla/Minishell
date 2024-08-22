@@ -39,31 +39,33 @@ char	**ft_str_expander(t_mini *mini, char **args)
 void	ft_do_expander(t_mini *mini, t_cmd *cmd)
 {
 	char	**tmp;
+	t_cmd	*current;
 	int		i;
 
 	i = 0;
-	while (cmd != NULL)
+	current = cmd;
+	while (current != NULL)
 	{
-		if (cmd->args)
+		if (current->args)
 		{
-			tmp = ft_strstr_dup(cmd->args);
-			ft_strstr_free(cmd->args);
-			cmd->args = NULL;
-			cmd->args = ft_str_expander(mini, tmp);
+			tmp = ft_strstr_dup(current->args);
+			ft_strstr_free(current->args);
+			current->args = NULL;
+			current->args = ft_str_expander(mini, tmp);
 			// ft_strstr_free(tmp);
 			// tmp = NULL;
 		}
-		if (cmd->files->f_order)
+		if (current->files->f_order)
 		{
 			tmp = NULL;
-			tmp = ft_strstr_dup(cmd->files->f_order);
-			ft_strstr_free(cmd->files->f_order);
-			cmd->files->f_order = NULL;
-			cmd->files->f_order = ft_str_expander(mini, tmp);
+			tmp = ft_strstr_dup(current->files->f_order);
+			ft_strstr_free(current->files->f_order);
+			current->files->f_order = NULL;
+			current->files->f_order = ft_str_expander(mini, tmp);
 			// ft_strstr_free(tmp);
 			// tmp = NULL;
 		}
-		cmd = cmd->next;
+		current = current->next;
 		i++;
 	}
 }
@@ -390,17 +392,17 @@ int	ft_do_comm(t_cmd *cmd, t_mini *mini)
 int	ft_strtok(t_mini *mini, t_cmd **cmd, char *input)
 {
 	char	**lines;
-	int		comm;
+	// int		comm;
 
-	comm = 0;
+	// comm = 0;
 	lines = ft_check_input(mini, input);
 	if (ft_minus_one(mini) == -1)
 		return (0);
 	if (ft_do_expand(mini, cmd, lines, input) == -1)
 		return (0);
-	comm = ft_do_comm(*cmd, mini);
-	if (comm != 1)
-		return (0);
-	// print_cmd(*cmd, mini);
+	print_cmd(*cmd);
+	// comm = ft_do_comm(*cmd, mini);
+	// if (comm != 1)
+	// 	return (0);
 	return (1);
 }

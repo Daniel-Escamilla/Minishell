@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf_cmd.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: descamil <descamil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/29 15:23:41 by descamil          #+#    #+#             */
-/*   Updated: 2024/08/16 16:44:42 by user             ###   ########.fr       */
+/*   Updated: 2024/08/22 14:10:14 by descamil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-void print_cmd(t_cmd *cmd, t_mini *mini) {
+void print_cmd(t_cmd *cmd) {
     if (cmd == NULL) {
         printf(B_RD_0 "No command structure.\n" RESET);
         return;
@@ -68,12 +68,6 @@ void print_cmd(t_cmd *cmd, t_mini *mini) {
         } else {
             printf(B_RD_0 "  Type: (null)\n" RESET);
         }
-
-        printf("DL --> %d\n", mini->flags->redirect->do_le);
-        printf("SL --> %d\n", mini->flags->redirect->si_le);
-        printf("DR --> %d\n", mini->flags->redirect->do_ri);
-        printf("SR --> %d\n", mini->flags->redirect->si_ri);
-
         current = current->next;
         cmd_index++;
     }

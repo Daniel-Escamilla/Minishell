@@ -6,7 +6,7 @@
 /*   By: descamil <descamil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/05 13:18:57 by smarin-a          #+#    #+#             */
-/*   Updated: 2024/08/22 09:17:29 by descamil         ###   ########.fr       */
+/*   Updated: 2024/08/22 14:10:26 by descamil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -253,7 +253,7 @@ char	*ft_expander(char **env, char *str);
 // char	*ft_strjoin_custom(char *str1, char *str2, size_t i, size_t c);
 
 // ft_printf_cmd.c
-void	print_cmd(t_cmd *cmd, t_mini *mini);
+void	print_cmd(t_cmd *cmd);
 
 // ft_check_input.c
 char	**ft_check_input(t_mini *mini, char *input);

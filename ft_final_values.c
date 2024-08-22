@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_final_values.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: descamil <descamil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/05 17:24:29 by descamil          #+#    #+#             */
-/*   Updated: 2024/08/14 19:50:27 by user             ###   ########.fr       */
+/*   Updated: 2024/08/22 14:20:08 by descamil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,12 +111,24 @@ char	**ft_order(t_cmd *cmd, t_mini *mini)
 	return (order);
 }
 
+int	ft_num_files(t_cmd *cmd)
+{
+	int	i;
+
+	i = 0;
+	while (ft_type(cmd->args[i]) > 0)
+		i++;
+	return (i);
+}
+
 int	ft_mem_files(t_mini *mini, t_cmd *cmd)
 {
+	int	num_f;
+
 	if (mini->flags->redirect && mini->flags->redirect->number > 0)
 	{
-		cmd->files->f_order = (char **)ft_calloc(sizeof(char *),
-				mini->flags->redirect->number + 1);
+		num_f = ft_num_files(cmd);
+		cmd->files->f_order = (char **)ft_calloc(sizeof(char *), num_f);
 		if (cmd->files->f_order == NULL)
 			return (-1);
 	}
