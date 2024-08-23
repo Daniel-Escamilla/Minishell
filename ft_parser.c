@@ -294,10 +294,10 @@ void	ft_select_files(t_cmd *cmd, int i)
 	t_type	*type;
 
 	current = cmd;
-	type = current->type;
 	while (current != NULL)
 	{
 		i = -1;
+		type = current->type;
 		while (current->files->f_order && current->files->f_order[++i] != NULL)
 		{
 			if (ft_strnstr("1", current->files->order[i], 1) != NULL)
@@ -392,17 +392,16 @@ int	ft_do_comm(t_cmd *cmd, t_mini *mini)
 int	ft_strtok(t_mini *mini, t_cmd **cmd, char *input)
 {
 	char	**lines;
-	// int		comm;
+	int		comm;
 
-	// comm = 0;
 	lines = ft_check_input(mini, input);
 	if (ft_minus_one(mini) == -1)
 		return (0);
 	if (ft_do_expand(mini, cmd, lines, input) == -1)
 		return (0);
-	print_cmd(*cmd);
-	// comm = ft_do_comm(*cmd, mini);
-	// if (comm != 1)
-	// 	return (0);
+	// print_cmd(*cmd);
+	comm = ft_do_comm(*cmd, mini);
+	if (comm != 1)
+		return (0);
 	return (1);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_commands.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: descamil <descamil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/02 14:31:25 by smarin-a          #+#    #+#             */
-/*   Updated: 2024/08/17 17:28:09 by user             ###   ########.fr       */
+/*   Updated: 2024/08/23 09:41:38 by descamil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,7 +96,7 @@ char	**ft_new_args(char **args, int pos, int i, int j)
 
 	args1 = NULL;
 	if (pos != 0)
-		args1 = ft_calloc(sizeof(char *), pos + 1);
+		args1 = (char **)ft_calloc(sizeof(char *), pos + 1);
 	while (i != pos)
 		args1[j++] = ft_strdup(args[i++]);
 	if (i == pos)
@@ -108,7 +108,7 @@ char	**ft_new_args(char **args, int pos, int i, int j)
 	ft_free_fcheck_args(args1, args2);
 	args1 = NULL;
 	if (ft_strstr_len(args) - pos != 1)
-		args1 = ft_calloc(sizeof(char *), ft_strstr_len(args) - pos);
+		args1 = (char **)ft_calloc(sizeof(char *), ft_strstr_len(args) - pos);
 	j = 0;
 	while (ft_strstr_len(args) - pos > 1 && args[++i])
 		args1[j++] = ft_strdup(args[i]);

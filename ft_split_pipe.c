@@ -6,7 +6,7 @@
 /*   By: descamil <descamil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/09 17:04:59 by descamil          #+#    #+#             */
-/*   Updated: 2024/07/12 10:20:50 by descamil         ###   ########.fr       */
+/*   Updated: 2024/08/23 09:47:15 by descamil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,14 +44,13 @@ char	*ft_strlcpy_pipe(char *s, char c, int *new_start, int size)
 
 	j = 0;
 	start = *new_start;
-	ptr = (char *)malloc(size + 1);
+	ptr = (char *)ft_calloc(size + 1, sizeof(char));
 	if (ptr == NULL)
 		return (NULL);
 	while (s[start] == c && s[start] != '\0')
 		start++;
 	while (s[start] != '\0' && j < size)
 		ptr[j++] = s[start++];
-	ptr[j] = '\0';
 	*new_start = start;
 	// printf(B_YE_0"PTR --> %s\n"RESET, ptr);
 	return (ptr);

@@ -6,7 +6,7 @@
 /*   By: descamil <descamil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/05 17:24:29 by descamil          #+#    #+#             */
-/*   Updated: 2024/08/22 14:20:08 by descamil         ###   ########.fr       */
+/*   Updated: 2024/08/23 11:52:36 by descamil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,7 +91,7 @@ char	**ft_order(t_cmd *cmd, t_mini *mini)
 
 	i = -1;
 	j = 0;
-	order = ft_calloc(sizeof(char *), mini->flags->redirect->number + 1);
+	order = (char **)ft_calloc(sizeof(char *), mini->flags->redirect->number + 1);
 	if (order == NULL)
 		return (NULL);
 	if (ft_check_dups(cmd) == -1)
@@ -114,11 +114,16 @@ char	**ft_order(t_cmd *cmd, t_mini *mini)
 int	ft_num_files(t_cmd *cmd)
 {
 	int	i;
+	int	j;
 
 	i = 0;
-	while (ft_type(cmd->args[i]) > 0)
-		i++;
-	return (i);
+	j = 0;
+	while (cmd->args[i] != NULL)
+	{
+		while (ft_type(cmd->args[i++]) > 0)
+			j++;
+	}
+	return (j);
 }
 
 int	ft_mem_files(t_mini *mini, t_cmd *cmd)
@@ -128,7 +133,7 @@ int	ft_mem_files(t_mini *mini, t_cmd *cmd)
 	if (mini->flags->redirect && mini->flags->redirect->number > 0)
 	{
 		num_f = ft_num_files(cmd);
-		cmd->files->f_order = (char **)ft_calloc(sizeof(char *), num_f);
+		cmd->files->f_order = (char **)ft_calloc(sizeof(char *), num_f + 1);
 		if (cmd->files->f_order == NULL)
 			return (-1);
 	}
@@ -142,16 +147,12 @@ int	ft_pos_files(t_cmd *cmd, int i)
 	files = 0;
 	while (cmd->args[i])
 	{
-		if (ft_type(cmd->args[i]) > 0)
+		if (ft_type(cmd->args[i++]) > 0)
 		{
-			if (cmd->args[i + 1] == NULL)
-			{
-				printf("mini: syntax error near unexpected token `newline'\n");
-				return (-1);
-			}
-			cmd->files->f_order[files++] = ft_strdup(cmd->args[i + 1]);
+			if (cmd->args[i] == NULL)
+				ft_error("mini: syntax error near unexpected token `newline'\n", 2);
+			cmd->files->f_order[files++] = ft_strdup(cmd->args[i]);
 		}
-		i++;
 	}
 	return (0);
 }
