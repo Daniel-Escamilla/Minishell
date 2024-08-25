@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_execution.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: descamil <descamil@student.42.fr>          +#+  +:+       +#+        */
+/*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/21 11:25:25 by user              #+#    #+#             */
-/*   Updated: 2024/08/23 12:49:59 by descamil         ###   ########.fr       */
+/*   Updated: 2024/08/25 11:27:27 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,25 +54,6 @@ int	ft_pick_infile(t_cmd *cmd)
 				return (-1);
 			}
 			if (ft_more(cmd, i, 1) == 1)
-				return (fd);
-			close(fd);
-			i++;
-		}
-	}
-	i = 0;
-	if (cmd->type->here_doc == 1 && cmd->files->order[i] != NULL)
-	{
-		while (ft_atoi(cmd->files->order[i]) == 3)
-		{
-			fd = open(cmd->files->f_order[i], O_RDONLY);
-			if (fd == -1)
-			{
-				join = ft_strjoin("mini: ", cmd->files->f_order[i]);	
-				perror(join);
-				free(join);
-				return (-1);
-			}
-			if (ft_more(cmd, i, 3) == 1)
 				return (fd);
 			close(fd);
 			i++;
@@ -174,10 +155,6 @@ void ft_close_fd(t_mini *mini, t_cmd *cmd, int who)
 		else
 			close(cmd->names->fd_pipe[0]);
 	}
-	if (cmd->names->fd_infile != 0)
-		close(cmd->names->fd_infile);
-	if (cmd->names->fd_outfile != 1)
-		close(cmd->names->fd_outfile);
 }
 
 void	ft_open_fd(t_cmd *cmd, t_mini *mini)
@@ -217,6 +194,7 @@ void	ft_comm(t_cmd *cmd, t_mini *mini)
 		}
 		ft_close_fd(mini, cmd, 'P');
 	}
+	wait(cmd->names->fd_pipe);
 	cmd->names->index++;
 }
 

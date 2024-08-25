@@ -134,6 +134,7 @@ char	**ft_strstr_dup(char **str)
 	int		i;
 
 	i = 0;
+	dup = NULL;
 	if (str == NULL)
 		return (NULL);
 	dup = (char **)ft_calloc(sizeof(char *), ft_strstr_len(str) + 1);
@@ -225,12 +226,13 @@ int	ft_sizes(t_cmd *current)
 
 void	ft_select_cmd(t_cmd *current, t_mini *mini, int j)
 {
+	int		i;
+	int		size;
 	char	**tmp;
 	char	**tmp2;
-	int		i;
-	int		size = 0;
 
 	i = -1;
+	size = 0;
 	tmp = ft_strstr_dup(current->args);
 	while (tmp[++i])
 	{
@@ -255,7 +257,7 @@ void	ft_select_cmd(t_cmd *current, t_mini *mini, int j)
 				if (current->cmd == NULL && current->error != -2)
 					mini->cmd->files->error = -1;
 			}
-			if (current->error != -2)
+			if (current->error != -2 && j < ft_strstr_len(current->args))
 				tmp2[j++] = ft_strdup(tmp[i]);
 		}
 	}
