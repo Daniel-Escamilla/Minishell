@@ -37,3 +37,11 @@
 	· env
 
 	· exit
+
+	· Salida para $?
+
+	· Modificar pwd de env
+
+	· Modificar SHLVL de env
+
+	· 

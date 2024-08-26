@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_initialize.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: descamil <descamil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/15 12:21:54 by smarin-a          #+#    #+#             */
-/*   Updated: 2024/08/17 18:12:41 by user             ###   ########.fr       */
+/*   Updated: 2024/08/26 13:00:28 by descamil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,8 @@ t_mini	*ft_initialize(char **env)
 		return (NULL);
 	}
 	mini->env->path = NULL;
+	if (mini->env->env)
+		ft_strstr_free(mini->env->env);
 	mini->env->env = ft_strstr_dup(env);
 	mini->flags = ft_calloc(sizeof(t_flags), 1);
 	if (mini->flags == NULL)

@@ -195,6 +195,7 @@ char	*ft_route_cmd(t_mini *mini, t_cmd *current, char *tmp)
 	if (cmd == NULL)
 	{
 		printf("Ese comando no existe, prueba otro\n");
+		mini->error = -2;
 		ft_strstr_free(path);
 		return (NULL); // Error 127 Crear outfiles antes de salir e imprimir
 					   // "printf("mini: command not found");
@@ -240,10 +241,7 @@ void	ft_select_cmd(t_cmd *current, t_mini *mini, int j)
 			size++;
 	}
 	i = -1;
-	if (size > 0)
-		tmp2 = ft_calloc(sizeof(char *), size + 1);
-	else
-		tmp2 = ft_calloc(sizeof(char *), ft_strstr_len(current->args) + 1);
+	tmp2 = ft_calloc(sizeof(char *), ft_strstr_len(current->args) + 1 - (size * 2));
 	while (tmp[++i])
 	{
 		current->error = 0;
@@ -347,25 +345,24 @@ int	ft_do_expand(t_mini *mini, t_cmd **cmd, char **lines, char *input)
 	return (0);
 }
 
-int	ft_wait_bonus(t_cmd *cmd)
+int	ft_wait_bonus(t_mini *mini)
 {
 	int	state;
 	int i;
 
 	i = 0;
-	while (cmd->names->proc[i] && i + 1 < cmd->names->index)
-		waitpid(cmd->names->proc[i++], NULL, 0);
-	waitpid(cmd->names->proc[i], &state, 0);
+	while (mini->proc[i] && i + 1 < mini->index)
+		waitpid(mini->proc[i++], NULL, 0);
+	waitpid(mini->proc[i], &state, 0);
 	return (state);
 }
 
-void	ft_start_val(t_cmd *cmd, t_mini *mini)
+void	ft_start_val(t_cmd *cmd)
 {
 	cmd->names->fd = 0;
-	cmd->names->index = 0;
 	cmd->names->fd_infile = 0;
 	cmd->names->fd_outfile = 1;
-	cmd->names->proc = ft_calloc(sizeof(int), mini->num_comm + 1);
+	
 }
 
 int	ft_do_comm(t_cmd *cmd, t_mini *mini)
@@ -378,16 +375,18 @@ int	ft_do_comm(t_cmd *cmd, t_mini *mini)
     }
     t_cmd *current = cmd;
 
+	mini->index = 0;
 	mini->fd_tmp = 0;
 	mini->num_comm = mini->flags->pipe + 1;
+	mini->proc = ft_calloc(sizeof(pid_t), mini->num_comm + 1);
 	while (current != NULL)
 	{
-		ft_start_val(current, mini);
+		ft_start_val(current);
 		ft_comm(current, mini);
 		mini->num_comm--;
 		current = current->next;
 	}
-	ft_wait_bonus(cmd);
+	ft_wait_bonus(mini);
 	return (1);
 }
 

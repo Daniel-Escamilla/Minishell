@@ -6,7 +6,7 @@
 /*   By: descamil <descamil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/14 11:24:41 by smarin-a          #+#    #+#             */
-/*   Updated: 2024/08/23 11:08:28 by descamil         ###   ########.fr       */
+/*   Updated: 2024/08/26 13:06:01 by descamil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,23 +102,15 @@ void	ft_strstr_free(char **str)
 	}
 }
 
-void	ft_strstr_printf(char **str, int color)
+void	ft_strstr_printf(char **str)
 {
 	int	i;
 
 	i = -1;
 	if (str)
 	{
-		if (color == 1)
-		{
-			while (str[++i])
-				printf(B_GR_0"str[%d] --> %s\n"RESET, i, str[i]);
-		}
-		if (color == 2)
-		{
-			while (str[++i])
-				printf(B_RD_0"str[%d] --> %s\n"RESET, i, str[i]);
-		}
+		while (str[++i])
+			printf("%s\n", str[i]);
 	}
 }
 

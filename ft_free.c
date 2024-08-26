@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_free.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: descamil <descamil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 16:27:49 by user              #+#    #+#             */
-/*   Updated: 2024/08/17 17:55:31 by user             ###   ########.fr       */
+/*   Updated: 2024/08/26 10:04:31 by descamil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,11 +57,7 @@ void	free_t_cmd(t_cmd **cmd)
 			free(current->type);
 		}
 		if (current->names)
-		{
-			if (current->names->proc)
-				free(current->names->proc);
 			free(current->names);
-		}
 		free(current->cmd);
 		free(current);
 		current = next;
@@ -71,6 +67,9 @@ void	free_t_cmd(t_cmd **cmd)
 
 void free_t_mini(t_mini *mini)
 {
+	// int	i;
+
+	// i = 0;
 	if (mini == NULL)
 		return;
 	if (mini->env != NULL) 
@@ -85,6 +84,8 @@ void free_t_mini(t_mini *mini)
 	}
 	if (mini->flags)
 		free(mini->flags);
+	// if (mini->proc)
+	// 	free(mini->proc);
 	if (mini->token != NULL)
 	{
 		if (mini->token->input != NULL)

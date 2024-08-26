@@ -6,7 +6,7 @@
 /*   By: descamil <descamil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/05 13:18:57 by smarin-a          #+#    #+#             */
-/*   Updated: 2024/08/22 14:10:26 by descamil         ###   ########.fr       */
+/*   Updated: 2024/08/26 13:06:08 by descamil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -148,15 +148,11 @@ typedef struct s_type
 
 typedef struct s_names
 {
-	pid_t	*proc; 					// Array de numeros de los procesos 
-
 	int		fd; 					// Numero del fd del archivo abierto
-	int		index; 					// iterador de la lista de pid_t, para el waitpid
 	int		fd_tmp; 				// fd temporal para la modificacion del dup2
 	int		fd_infile; 				// fd del infile
 	int		fd_outfile; 			// fd del outfile
 
-	int		fd_pipe[2]; 			// fd temporal para escritura y lectura
 
 }			t_names;
 
@@ -175,10 +171,15 @@ typedef struct s_cmd
 
 typedef struct s_mini
 {
+	pid_t		*proc;
+	
+	int			fd_pipe[2]; 			// fd temporal para escritura y lectura
+	int			index;
 	int			fd_tmp;
 	int			num_comm;
 	int			fd_history;
 	int			shell_level;
+	int			error;
 	char		*input;
 	t_env		*env;
 	t_cmd		*cmd;
@@ -196,7 +197,7 @@ void	ft_error(char *str, int i);
 // ft_utils.c
 void	ft_mini_header(void);
 int		ft_strstr_len(char **str);
-void	ft_strstr_printf(char **str, int color);
+void	ft_strstr_printf(char **str);
 int		ft_strnstrstr(char **str, char *locate);
 char	**ft_strstr_join(char **str, char **str1);
 

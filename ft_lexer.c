@@ -6,7 +6,7 @@
 /*   By: descamil <descamil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/14 15:50:54 by smarin-a          #+#    #+#             */
-/*   Updated: 2024/08/23 09:27:34 by descamil         ###   ########.fr       */
+/*   Updated: 2024/08/26 12:25:53 by descamil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,6 +91,20 @@ int	ft_find_exit(char *input)
 	return (0);
 }
 
+void	ft_free_per_comm(t_mini *mini, char *input)
+{
+	if (mini->flags->redirect && input != NULL)
+	{
+		mini->flags->locate_red = 0;
+		free(mini->flags->redirect);
+		mini->flags->redirect = NULL;  //Utilzar funcion nueva
+	}
+	if (mini->proc && mini->error != -2 && input[0] != '\0')
+		free(mini->proc);
+	if (input)
+		free(input);
+}
+
 void	ft_recive_input(t_mini *mini)
 {
 	char	*input;
@@ -125,16 +139,7 @@ void	ft_recive_input(t_mini *mini)
 			}
 			free(mini->input);
 		}
-		if (mini->flags->redirect && input != NULL)
-		{
-			mini->flags->locate_red = 0;
-			free(mini->flags->redirect);
-			mini->flags->redirect = NULL;  //Utilzar funcion nueva
-		}
-		if (input)
-			free(input);
-		// print_cmd(mini->cmd);
-
+		ft_free_per_comm(mini, input);
 		free_t_cmd(&(mini->cmd));
 	}
 	close(mini->fd_history);

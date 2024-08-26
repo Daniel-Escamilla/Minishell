@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_execution.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: descamil <descamil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/21 11:25:25 by user              #+#    #+#             */
-/*   Updated: 2024/08/25 11:27:27 by user             ###   ########.fr       */
+/*   Updated: 2024/08/26 13:06:18 by descamil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ int	ft_more(t_cmd *cmd, int i, int type)
 	return (0);
 }
 
-int	ft_pick_infile(t_cmd *cmd)
+int	ft_pick_infile(t_cmd *cmd/*, t_mini *mini*/)
 {
 	int	i;
 	int	fd;
@@ -51,6 +51,7 @@ int	ft_pick_infile(t_cmd *cmd)
 				join = ft_strjoin("mini: ", cmd->files->f_order[i]);	
 				perror(join);
 				free(join);
+				// mini->error = -2;
 				return (-1);
 			}
 			if (ft_more(cmd, i, 1) == 1)
@@ -63,7 +64,7 @@ int	ft_pick_infile(t_cmd *cmd)
 }
 
 
-int	ft_pick_outfile(t_cmd *cmd)
+int	ft_pick_outfile(t_cmd *cmd, t_mini *mini)
 {
 	int	i;
 	int	fd;
@@ -81,6 +82,8 @@ int	ft_pick_outfile(t_cmd *cmd)
 				join = ft_strjoin("mini: ", cmd->files->f_order[i]);	
 				perror(join);
 				free(join);
+				mini->error = -2;
+				return (-1);
 			}
 			if (ft_more(cmd, i, 2) == 1 && ft_more(cmd, i, 4) == 0)
 				return (fd);
@@ -94,6 +97,8 @@ int	ft_pick_outfile(t_cmd *cmd)
 				join = ft_strjoin("mini: ", cmd->files->f_order[i]);	
 				perror(join);
 				free(join);
+				mini->error = -2;
+				return (-1);
 			}
 			if (ft_more(cmd, i, 4) == 1 && ft_more(cmd, i, 2) == 0)
 				return (fd);
@@ -126,7 +131,7 @@ int	ft_pick_outfile(t_cmd *cmd)
 int	ft_choose_infile(t_cmd *cmd, t_mini *mini)
 {
 	if (cmd->type && cmd->type->in && (cmd->type->infile == 1 || cmd->type->here_doc == 1))
-		return (ft_pick_infile(cmd));
+		return (ft_pick_infile(cmd/*, mini*/));
 	else if (mini->fd_tmp != -1)
 		return (mini->fd_tmp);
 	return (STDIN_FILENO);
@@ -135,34 +140,35 @@ int	ft_choose_infile(t_cmd *cmd, t_mini *mini)
 int	ft_choose_outfile(t_cmd *cmd, t_mini *mini)
 {
 	if (cmd->type && cmd->type->out && (cmd->type->outfile == 1 || cmd->type->append == 1))
-		return (ft_pick_outfile(cmd));
+		return (ft_pick_outfile(cmd, mini));
 	else if (mini->num_comm == 1)
 		return (STDOUT_FILENO);
-	return (cmd->names->fd_pipe[1]);
+	return (mini->fd_pipe[1]);
 }
 
-void ft_close_fd(t_mini *mini, t_cmd *cmd, int who)
+void ft_close_fd(t_mini *mini, int who)
 {
 	if (who == 'H')
-		close(cmd->names->fd_pipe[0]);
+		close(mini->fd_pipe[0]);
 	else if (who == 'P')
 	{
-		close(cmd->names->fd_pipe[1]);
+		close(mini->fd_pipe[1]);
 		if (mini->fd_tmp != 0)
 			close(mini->fd_tmp);
 		if (mini->num_comm != 1)
-			mini->fd_tmp = cmd->names->fd_pipe[0];
+			mini->fd_tmp = mini->fd_pipe[0];
 		else
-			close(cmd->names->fd_pipe[0]);
+			close(mini->fd_pipe[0]);
 	}
 }
 
 void	ft_open_fd(t_cmd *cmd, t_mini *mini)
 {
+	close(mini->fd_pipe[1]);
 	cmd->names->fd_infile = ft_choose_infile(cmd, mini);
+	cmd->names->fd_outfile = ft_choose_outfile(cmd, mini);
 	if (cmd->names->fd_infile == -1)
 		return ;
-	cmd->names->fd_outfile = ft_choose_outfile(cmd, mini);
 	if (cmd->names->fd_outfile == -1)
 	{
 		if (mini->fd_tmp)
@@ -175,26 +181,39 @@ void	ft_comm(t_cmd *cmd, t_mini *mini)
 {
 	if (mini->num_comm != 0)
 	{
-		if (pipe(cmd->names->fd_pipe) == -1)
+		if (pipe(mini->fd_pipe) == -1)
 			perror("Pipe Error");
 	}
 	ft_open_fd(cmd, mini);
 	if (cmd->names->fd_infile != -1 && cmd->names->fd_outfile != -1)
 	{
-		cmd->names->proc[cmd->names->index] = fork();
-		if (cmd->names->proc[cmd->names->index] == -1)
+		mini->proc[mini->index] = fork();
+		if (mini->proc[mini->index] == -1)
 			perror("Failed in Fork()");
-		if (cmd->names->proc[cmd->names->index] == 0)
+		if (mini->proc[mini->index] == 0)
 		{
 			dup2(cmd->names->fd_infile, STDIN_FILENO);
 			dup2(cmd->names->fd_outfile, STDOUT_FILENO);
-			ft_close_fd(mini, cmd, 'H');
-			execve(cmd->cmd, cmd->args, mini->env->env);
-			perror("Execve Error");
+			ft_close_fd(mini, 'H');
+			ft_putstr_fd(cmd->cmd, 2);
+			write(2, "\n", 1);
+			if (ft_strnstr(cmd->cmd, "/usr/bin/env", ft_strlen("/usr/bin/env")) != NULL)
+				ft_strstr_printf(mini->env->env);
+			else
+			{
+				execve(cmd->cmd, cmd->args, mini->env->env);
+				perror("Execve Error");
+			}
 		}
-		ft_close_fd(mini, cmd, 'P');
+		ft_close_fd(mini, 'P');
 	}
-	wait(cmd->names->fd_pipe);
-	cmd->names->index++;
+	else
+	{
+		close(mini->fd_pipe[0]);
+		close(mini->fd_pipe[1]);
+		if (mini->fd_tmp != 0)
+			close(mini->fd_tmp);
+	}
+	wait(mini->fd_pipe);
+	mini->index++;
 }
-
