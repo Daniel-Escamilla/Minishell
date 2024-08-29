@@ -345,24 +345,25 @@ int	ft_do_expand(t_mini *mini, t_cmd **cmd, char **lines, char *input)
 	return (0);
 }
 
-int	ft_wait_bonus(t_mini *mini)
-{
-	int	state;
-	int i;
-
-	i = 0;
-	while (mini->proc[i] && i + 1 < mini->index)
-		waitpid(mini->proc[i++], NULL, 0);
-	waitpid(mini->proc[i], &state, 0);
-	return (state);
-}
-
 void	ft_start_val(t_cmd *cmd)
 {
 	cmd->names->fd = 0;
 	cmd->names->fd_infile = 0;
 	cmd->names->fd_outfile = 1;
 	
+}
+
+int	ft_wait_bonus(t_mini *mini)
+{
+	int	state;
+	int i;
+
+	i = 0;
+	state = 0;
+	while (mini->proc[i + 1])
+		waitpid(mini->proc[i++], NULL, 0);
+	waitpid(mini->proc[i], &state, 0);
+	return (state);
 }
 
 int	ft_do_comm(t_cmd *cmd, t_mini *mini)
@@ -386,6 +387,9 @@ int	ft_do_comm(t_cmd *cmd, t_mini *mini)
 		mini->num_comm--;
 		current = current->next;
 	}
+
+	if (mini->join)
+		printf("%s\n", mini->join[0]);
 	ft_wait_bonus(mini);
 	return (1);
 }

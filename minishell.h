@@ -6,7 +6,7 @@
 /*   By: descamil <descamil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/05 13:18:57 by smarin-a          #+#    #+#             */
-/*   Updated: 2024/08/26 13:06:08 by descamil         ###   ########.fr       */
+/*   Updated: 2024/08/29 14:22:36 by descamil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -148,11 +148,12 @@ typedef struct s_type
 
 typedef struct s_names
 {
-	int		fd; 					// Numero del fd del archivo abierto
-	int		fd_tmp; 				// fd temporal para la modificacion del dup2
-	int		fd_infile; 				// fd del infile
+	char	*join;
 	int		fd_outfile; 			// fd del outfile
-
+	int		fd_infile; 				// fd del infile
+	int		fd_tmp; 				// fd temporal para la modificacion del dup2
+	int		h_d;
+	int		fd; 					// Numero del fd del archivo abierto
 
 }			t_names;
 
@@ -181,6 +182,7 @@ typedef struct s_mini
 	int			shell_level;
 	int			error;
 	char		*input;
+	char		**join;
 	t_env		*env;
 	t_cmd		*cmd;
 	t_flags		*flags;

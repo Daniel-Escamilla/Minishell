@@ -6,7 +6,7 @@
 /*   By: descamil <descamil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/14 15:50:54 by smarin-a          #+#    #+#             */
-/*   Updated: 2024/08/26 12:25:53 by descamil         ###   ########.fr       */
+/*   Updated: 2024/08/29 11:59:28 by descamil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -126,17 +126,8 @@ void	ft_recive_input(t_mini *mini)
 				write(mini->fd_history, input, ft_strlen(input));
 				write(mini->fd_history, "\n", 1);
 			}
-			// TODO: HECHO HASTA AQUI y funcional COn señales incluidas
-			// ? HASTA AQUI FUNCIONA TODO (CREO)
-			// ! Nucleo del parseo
-			// El parseo no funciona
-			// este proyecto es una mierda
-			// No se que mas hacer
-			// ! AYUDA:
-			if (ft_strtok(mini, &(mini->cmd), input) && mini->flags->quote != 0)
-			{
+			if (ft_strtok(mini, &(mini->cmd), input))
 				printf("\nLlega al final! 🚀\n\n");
-			}
 			free(mini->input);
 		}
 		ft_free_per_comm(mini, input);
