@@ -408,5 +408,6 @@ int	ft_strtok(t_mini *mini, t_cmd **cmd, char *input)
 	comm = ft_do_comm(*cmd, mini);
 	if (comm != 1)
 		return (0);
+	ft_strstr_printf(mini->join);
 	return (1);
 }
