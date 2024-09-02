@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_execution.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: descamil <descamil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/21 11:25:25 by user              #+#    #+#             */
-/*   Updated: 2024/09/01 10:20:09 by user             ###   ########.fr       */
+/*   Updated: 2024/09/02 09:47:26 by descamil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -207,8 +207,6 @@ void	ft_create_file(t_cmd *cmd)
 
 	index = 0;
 	number = NULL;
-	// if (cmd->names->join != NULL)
-	// 	free(cmd->names->join);
 	cmd->names->join = ft_strdup(".here_doc");
 	while (access(cmd->names->join, F_OK) != -1)
 	{
@@ -219,27 +217,10 @@ void	ft_create_file(t_cmd *cmd)
 		cmd->names->join = ft_strjoin(".here_doc", number);
 	}
 	free(number);
-	if (cmd->names->join)
-		printf(B_CY_0"File --> [%s]\n"RESET, cmd->names->join);
-}
-
-void	ft_heredoc_signal_handler(int signal)
-{
-	if (signal == SIGINT)
-	{
-		write(1, "\nHeredoc interrupted (Ctrl+C)\n", 30);
-		// Posiblemente puedes manejar la salida del heredoc aquí
-	}
-	else if (signal == SIGQUIT)
-	{
-		// No hacer nada, solo ignorar SIGQUIT durante heredoc
-		write(1, "\nHeredoc: SIGQUIT ignored\n", 26);
-	}
 }
 
 int	ft_here_doc(t_cmd *cmd, int last, int i)
 {
-	struct sigaction sa_old_int, sa_old_quit, sa_new;
 	char	*line;
 	int		fd_tmp;
 	int		fd;
@@ -250,24 +231,13 @@ int	ft_here_doc(t_cmd *cmd, int last, int i)
 	if (fd_tmp == -1)
 		ft_error("Error open", 2);
 	while (1)
-	{
-		sigaction(SIGINT, NULL, &sa_old_int);
-		sigaction(SIGQUIT, NULL, &sa_old_quit);
-		sa_new.sa_handler = &ft_heredoc_signal_handler;
-		sigemptyset(&sa_new.sa_mask);
-		sa_new.sa_flags = 0;
-		sigaction(SIGINT, &sa_new, NULL);
-		sigaction(SIGQUIT, &sa_new, NULL);
-
-		
+	{		
 		line = readline("> ");
 		if (line == NULL)
 			ft_error("Error readline", 2);
-		
 		if (ft_strnstr(line, cmd->files->f_order[i], ft_strlen(line)) && ft_strlen(cmd->files->f_order[i]) == ft_strlen(line))
 		{
 			free(line);
-			printf(B_OR_0"Salida por %s\n"RESET, cmd->files->f_order[i]);
 			break;
 		}
 		if (write(fd_tmp, line, ft_strlen(line)) == -1 || write(fd_tmp, "\n", 1) == -1)
@@ -275,13 +245,9 @@ int	ft_here_doc(t_cmd *cmd, int last, int i)
 		free(line);
 	}
 	close(fd_tmp);
-	sigaction(SIGINT, &sa_old_int, NULL);
-    sigaction(SIGQUIT, &sa_old_quit, NULL);
 	if (last == -2)
 	{
-		printf("OPENING --> %s\n", cmd->names->join);
 		fd = open(cmd->names->join, O_RDONLY);
-		printf("Fd --> %d\n", fd);
 		if (fd == -1)
 			ft_error("Error opening file", 2);
 		return (fd);
