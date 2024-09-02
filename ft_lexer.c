@@ -6,7 +6,7 @@
 /*   By: descamil <descamil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/14 15:50:54 by smarin-a          #+#    #+#             */
-/*   Updated: 2024/08/29 11:59:28 by descamil         ###   ########.fr       */
+/*   Updated: 2024/09/02 15:15:15 by descamil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,11 +93,12 @@ int	ft_find_exit(char *input)
 
 void	ft_free_per_comm(t_mini *mini, char *input)
 {
+	free(mini->input);
 	if (mini->flags->redirect && input != NULL)
 	{
 		mini->flags->locate_red = 0;
 		free(mini->flags->redirect);
-		mini->flags->redirect = NULL;  //Utilzar funcion nueva
+		mini->flags->redirect = NULL;
 	}
 	if (mini->proc && mini->error != -2 && input[0] != '\0')
 		free(mini->proc);
@@ -108,7 +109,7 @@ void	ft_free_per_comm(t_mini *mini, char *input)
 void	ft_recive_input(t_mini *mini)
 {
 	char	*input;
-	
+
 	mini->fd_history = ft_history();
 	while (1)
 	{
@@ -128,7 +129,6 @@ void	ft_recive_input(t_mini *mini)
 			}
 			if (ft_strtok(mini, &(mini->cmd), input))
 				printf("\nLlega al final! 🚀\n\n");
-			free(mini->input);
 		}
 		ft_free_per_comm(mini, input);
 		free_t_cmd(&(mini->cmd));

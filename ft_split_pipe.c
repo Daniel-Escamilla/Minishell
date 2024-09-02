@@ -6,7 +6,7 @@
 /*   By: descamil <descamil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/09 17:04:59 by descamil          #+#    #+#             */
-/*   Updated: 2024/08/23 09:47:15 by descamil         ###   ########.fr       */
+/*   Updated: 2024/09/02 14:53:08 by descamil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int	ft_strlen_pipe(const char *s, int i, char c)
 		i++;
 	while (s[i] != '\0' && s[i] != c)
 	{
-    	j = i;
+		j = i;
 		if (s[i] == '\'' || s[i] == '\"')
 		{
 			i = ft_locate_next_quote(i + 1, (char *)s, s[i]) + 1;
@@ -32,7 +32,6 @@ int	ft_strlen_pipe(const char *s, int i, char c)
 		else
 			ft_plus_one(i++, len++);
 	}
-	// printf(B_BL_1"LEN --> %d\n"RESET, len);
 	return (len);
 }
 
@@ -52,7 +51,6 @@ char	*ft_strlcpy_pipe(char *s, char c, int *new_start, int size)
 	while (s[start] != '\0' && j < size)
 		ptr[j++] = s[start++];
 	*new_start = start;
-	// printf(B_YE_0"PTR --> %s\n"RESET, ptr);
 	return (ptr);
 }
 
@@ -89,6 +87,5 @@ char	**ft_split_pipe(const char *s, char c)
 			return (free_memory_pipe(a, arr));
 		arr[a++] = cpy_mod;
 	}
-	// ft_strstr_printf(arr);
 	return (arr);
 }

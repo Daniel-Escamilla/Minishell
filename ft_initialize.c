@@ -6,7 +6,7 @@
 /*   By: descamil <descamil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/15 12:21:54 by smarin-a          #+#    #+#             */
-/*   Updated: 2024/08/26 13:00:28 by descamil         ###   ########.fr       */
+/*   Updated: 2024/09/02 10:00:13 by descamil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ t_mini	*ft_initialize(char **env)
 	}
 	else
 		return (NULL);
+	mini->here_doc = 0;
 	mini->shell_level = 2;
 	mini->env = ft_calloc(sizeof(t_env), 1);
 	if (mini->env == NULL)

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_free.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: descamil <descamil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 16:27:49 by user              #+#    #+#             */
-/*   Updated: 2024/09/01 09:04:57 by user             ###   ########.fr       */
+/*   Updated: 2024/09/02 15:18:53 by descamil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 void	free_t_env(t_env **env)
 {
-	int i;
-	
+	int	i;
+
 	i = 0;
 	if (env && *env)
 	{
@@ -34,7 +34,7 @@ void	free_t_cmd(t_cmd **cmd)
 {
 	t_cmd	*current;
 	t_cmd	*next;
-	
+
 	current = *cmd;
 	while (current)
 	{
@@ -65,14 +65,11 @@ void	free_t_cmd(t_cmd **cmd)
 	*cmd = NULL;
 }
 
-void free_t_mini(t_mini *mini)
+void	free_t_mini(t_mini *mini)
 {
-	// int	i;
-
-	// i = 0;
 	if (mini == NULL)
-		return;
-	if (mini->env != NULL) 
+		return ;
+	if (mini->env != NULL)
 	{
 		if (mini->env->path != NULL)
 		{
@@ -84,8 +81,6 @@ void free_t_mini(t_mini *mini)
 	}
 	if (mini->flags)
 		free(mini->flags);
-	// if (mini->proc)
-	// 	free(mini->proc);
 	if (mini->token != NULL)
 	{
 		if (mini->token->input != NULL)

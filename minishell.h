@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: descamil <descamil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/05 13:18:57 by smarin-a          #+#    #+#             */
-/*   Updated: 2024/09/01 10:24:34 by user             ###   ########.fr       */
+/*   Updated: 2024/09/02 10:48:38 by descamil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -181,6 +181,7 @@ typedef struct s_mini
 {
 	pid_t		*proc;
 	
+	int			here_doc;
 	int			fd_pipe[2]; 			// fd temporal para escritura y lectura
 	int			index;
 	int			fd_tmp;
@@ -202,7 +203,7 @@ typedef struct s_mini
 // ft_execution.c
 void	ft_comm(t_cmd *cmd, t_mini *mini);
 void	ft_error(char *str, int i);
-int		ft_here_doc(t_cmd *cmd, int last, int i);
+int		ft_here_doc(t_cmd *cmd, t_mini *mini, int last, int i);
 
 // ft_utils.c
 void	ft_mini_header(void);

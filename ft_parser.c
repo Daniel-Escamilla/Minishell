@@ -40,9 +40,7 @@ void	ft_do_expander(t_mini *mini, t_cmd *cmd)
 {
 	char	**tmp;
 	t_cmd	*current;
-	int		i;
 
-	i = 0;
 	current = cmd;
 	while (current != NULL)
 	{
@@ -52,8 +50,6 @@ void	ft_do_expander(t_mini *mini, t_cmd *cmd)
 			ft_strstr_free(current->args);
 			current->args = NULL;
 			current->args = ft_str_expander(mini, tmp);
-			// ft_strstr_free(tmp);
-			// tmp = NULL;
 		}
 		if (current->files->f_order)
 		{
@@ -62,11 +58,8 @@ void	ft_do_expander(t_mini *mini, t_cmd *cmd)
 			ft_strstr_free(current->files->f_order);
 			current->files->f_order = NULL;
 			current->files->f_order = ft_str_expander(mini, tmp);
-			// ft_strstr_free(tmp);
-			// tmp = NULL;
 		}
 		current = current->next;
-		i++;
 	}
 }
 
@@ -90,26 +83,21 @@ char	**ft_create_path(char **env)
 		if (ft_strnstr(env[i], "PATH=", 5))
 			path = ft_split(env[i] + 5, ':');
 	}
-	// if (path == NULL)
-	// 	path = 
-	
 	return (path);
 }
 
-char	*ft_validate_comm(char *cmd, char **path)
+char	*ft_validate_comm(char *cmd, char **path, int j)
 {
 	char	*command;
 	char	*test;
-	int		j;
 
-	j = 0;
 	if (access(cmd, X_OK) == 0 && ft_strrchr(cmd, '/'))
 	{
 		command = ft_strdup(cmd);
 		return (command);
 	}
 	if (access(cmd, X_OK) != 0 && ft_strrchr(cmd, '/'))
-		return (NULL); // Error 127
+		return (NULL);
 	command = ft_strjoin("/", cmd);
 	if (path == NULL)
 		return (NULL);
@@ -124,7 +112,6 @@ char	*ft_validate_comm(char *cmd, char **path)
 		free(test);
 	}
 	free(command);
-	// Error 127
 	return (NULL);
 }
 
@@ -161,7 +148,6 @@ void	process_lines(t_cmd **cmd, t_mini *mini, char **lines, int i)
 	while (lines && lines[i] != NULL)
 	{
 		cmd_cmd = ft_add_command(lines[i++], -1);
-		
 		if (*cmd == NULL)
 			*cmd = cmd_cmd;
 		else
@@ -191,15 +177,13 @@ char	*ft_route_cmd(t_mini *mini, t_cmd *current, char *tmp)
 	}
 	if (path == NULL)
 		path = ft_save_path(mini->env->env);
-	cmd = ft_validate_comm(tmp, path);
+	cmd = ft_validate_comm(tmp, path, 1);
 	if (cmd == NULL)
 	{
 		printf("Ese comando no existe, prueba otro\n");
 		mini->error = -2;
 		ft_strstr_free(path);
-		return (NULL); // Error 127 Crear outfiles antes de salir e imprimir
-					   // "printf("mini: command not found");
-					   // si infiles y outfiles no dan error.
+		return (NULL);
 	}
 	ft_strstr_free(path);
 	return (cmd);
@@ -235,6 +219,8 @@ void	ft_select_cmd(t_cmd *current, t_mini *mini, int j)
 	i = -1;
 	size = 0;
 	tmp = ft_strstr_dup(current->args);
+	if (tmp == NULL)
+		return ;
 	while (tmp[++i])
 	{
 		if (ft_type(tmp[i]) != 0)
@@ -242,6 +228,8 @@ void	ft_select_cmd(t_cmd *current, t_mini *mini, int j)
 	}
 	i = -1;
 	tmp2 = ft_calloc(sizeof(char *), ft_strstr_len(current->args) + 1 - (size * 2));
+	if (tmp2 == NULL)
+		return ;
 	while (tmp[++i])
 	{
 		current->error = 0;
@@ -256,12 +244,18 @@ void	ft_select_cmd(t_cmd *current, t_mini *mini, int j)
 					mini->cmd->files->error = -1;
 			}
 			if (current->error != -2 && j < ft_strstr_len(current->args))
-				tmp2[j++] = ft_strdup(tmp[i]);
+			{
+				tmp2[j] = ft_strdup(tmp[i]);
+				if (tmp2[j++] == NULL)
+					return ;
+			}
 		}
 	}
 	ft_strstr_free(current->args);
 	current->args = NULL;
 	current->args = ft_strstr_dup(tmp2);
+	if (current->args == NULL)
+		return ;
 	ft_strstr_free(tmp2);
 	ft_strstr_free(tmp);
 }
@@ -286,6 +280,8 @@ void	ft_process_file(char *str, int *count, int *check, char **dest)
 		*dest = ft_strdup(str);
 	else if (*count == 1)
 		(*count)--;
+	if (*dest == NULL)
+		return ;
 }
 
 void	ft_select_files(t_cmd *cmd, int i)
@@ -350,13 +346,12 @@ void	ft_start_val(t_cmd *cmd)
 	cmd->names->fd = 0;
 	cmd->names->fd_infile = 0;
 	cmd->names->fd_outfile = 1;
-	
 }
 
 int	ft_wait_bonus(t_mini *mini)
 {
 	int	state;
-	int i;
+	int	i;
 
 	i = 0;
 	state = 0;
@@ -368,14 +363,14 @@ int	ft_wait_bonus(t_mini *mini)
 
 int	ft_do_comm(t_cmd *cmd, t_mini *mini)
 {
+	t_cmd	*current;
 
 	if (cmd == NULL)
 	{
-        printf(B_RD_0 "No command structure.\n" RESET);
-        return (0);
-    }
-    t_cmd *current = cmd;
-
+		printf(B_RD_0 "No command structure.\n" RESET);
+		return (0);
+	}
+	current = cmd;
 	mini->index = 0;
 	mini->fd_tmp = 0;
 	mini->num_comm = mini->flags->pipe + 1;
@@ -387,9 +382,6 @@ int	ft_do_comm(t_cmd *cmd, t_mini *mini)
 		mini->num_comm--;
 		current = current->next;
 	}
-
-	if (mini->join)
-		printf("%s\n", mini->join[0]);
 	ft_wait_bonus(mini);
 	return (1);
 }
@@ -404,10 +396,8 @@ int	ft_strtok(t_mini *mini, t_cmd **cmd, char *input)
 		return (0);
 	if (ft_do_expand(mini, cmd, lines, input) == -1)
 		return (0);
-	// print_cmd(*cmd);
 	comm = ft_do_comm(*cmd, mini);
 	if (comm != 1)
 		return (0);
-	ft_strstr_printf(mini->join);
 	return (1);
 }

@@ -1,15 +1,28 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_save_path.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: descamil <descamil@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/09/02 14:56:04 by descamil          #+#    #+#             */
+/*   Updated: 2024/09/02 14:57:39 by descamil         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "minishell.h"
 
 static char	*ft_father(int *fd, char **args)
 {
 	char	*line;
-	
+
 	ft_strstr_free(args);
 	close(fd[1]);
 	line = get_next_line(fd[0]);
 	while (line != NULL)
 	{
-		if (ft_strnstr(line, "search-binaries-default:", ft_strlen("search-binaries-default:")) != NULL)
+		if (ft_strnstr(line, "search-binaries-default:",
+				ft_strlen("search-binaries-default:")) != NULL)
 		{
 			close(fd[0]);
 			return (line);
@@ -34,10 +47,11 @@ static void	ft_pid_0(int *fd, char *path, char **args, char **env)
 
 static char	*ft_execute(char **env)
 {
-	pid_t	pid;
-	char	*path;
 	char	**args;
+	char	*path;
 	char	*line;
+	int		fd[2];
+	pid_t	pid;
 
 	path = ft_strdup("/usr/bin/systemd-path");
 	args = (char **)ft_calloc(sizeof(char *), 2);
@@ -46,7 +60,6 @@ static char	*ft_execute(char **env)
 	args[0] = ft_strdup("systemd-path");
 	if (access("/usr/bin/systemd-path", X_OK) == -1)
 		return (NULL);
-	int	fd[2];
 	if (pipe(fd) == -1)
 		return (NULL);
 	pid = fork();
@@ -58,15 +71,14 @@ static char	*ft_execute(char **env)
 		line = ft_father(fd, args);
 	free(path);
 	return (line);
-	
 }
 
 char	**ft_save_path(char	**env)
 {
+	char	**path;
 	char	*line;
 	char	*trim;
-	char	**path;
-	
+
 	line = ft_execute(env);
 	trim = ft_strtrim(line, "\n");
 	free(line);

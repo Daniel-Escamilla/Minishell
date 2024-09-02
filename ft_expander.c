@@ -6,7 +6,7 @@
 /*   By: descamil <descamil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/09 13:20:46 by descamil          #+#    #+#             */
-/*   Updated: 2024/08/23 09:41:53 by descamil         ###   ########.fr       */
+/*   Updated: 2024/09/02 15:37:08 by descamil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,16 +17,14 @@ char	*ft_strchr_mod(char *str, int value, int stop)
 	char	quote;
 	int		i;
 
-	i = 0;
-	quote = 0;
-	while (str[i] != '\0')
+	i = -1;
+	while (str[++i] != '\0')
 	{
 		if (str[i] == '\"')
 		{
-			if (quote == 1)
+			quote += 1;
+			if (quote == 2)
 				quote = 0;
-			else
-				quote = 1;
 		}
 		else if (str[i] == '\'' && quote == 0)
 		{
@@ -34,14 +32,8 @@ char	*ft_strchr_mod(char *str, int value, int stop)
 			if (str[i] == '\0')
 				return (NULL);
 		}
-		if (str && str[i] == value)
-		{
-			if (stop == 0)
-				return (str + i);
-			else
-				stop--;
-		}
-		i++;	
+		if (str && str[i] == value && stop-- == 0)
+			return (str + i);
 	}
 	return (NULL);
 }
@@ -49,26 +41,36 @@ char	*ft_strchr_mod(char *str, int value, int stop)
 char	**ft_tript(char *str, int size, int start)
 {
 	char	**div;
-	int		i = -1;
-	int		j = 0;
+	int		i;
+	int		j;
 
+	i = -1;
+	j = 0;
 	if (size == -1)
 		size = 1;
-	div = (char **)ft_calloc(sizeof(char *),  4);
+	div = (char **)ft_calloc(sizeof(char *), 4);
+	if (div == NULL)
+		return (NULL);
 	if (start != 0)
 	{
 		div[0] = ft_calloc(sizeof(char), start + 1);
+		if (div[0] == NULL)
+			return (NULL);
 		while (++i < start)
 			div[0][i] = str[i];
 	}
 	else
 		div[++i] = NULL;
-	div[1] = ft_calloc(sizeof(char),  size + 1);
+	div[1] = ft_calloc(sizeof(char), size + 1);
+	if (div[1] == NULL)
+		return (NULL);
 	while (j < size)
 		div[1][j++] = str[i++];
 	if ((int)ft_strlen(str) > size + start)
 	{
 		div[2] = ft_calloc(sizeof(char), (ft_strlen(str) - start + size + 1));
+		if (div[2] == NULL)
+			return (NULL);
 		j = 0;
 		while (str[i] != '\0')
 			div[2][j++] = str[i++];
@@ -78,12 +80,13 @@ char	**ft_tript(char *str, int size, int start)
 	return (div);
 }
 
-char *ft_change_var(char *div, char **env)
+char	*ft_change_var(char *div, char **env)
 {
-	int		i = -1;
-	char	*str;
 	char	*glob;
-	
+	char	*str;
+	int		i;
+
+	i = -1;
 	if (div && ft_strlen(div) == 1 && ft_strncmp(div, "$", 1) == 0)
 	{
 		str = ft_calloc(sizeof(char), 2);
@@ -94,8 +97,6 @@ char *ft_change_var(char *div, char **env)
 	}
 	if (div && ft_strlen(div) == 2 && ft_strncmp(div, "?=", 2) == 0)
 	{
-		glob = ft_itoa(127);
-		// GESTIONAR LA VRIABLE SUSTITUYENDO 127 POR LA SALIDA DE LA LISTA //
 		str = ft_calloc(sizeof(char), ft_strlen(glob) + 1);
 		if (str == NULL)
 			return (NULL);
@@ -107,8 +108,10 @@ char *ft_change_var(char *div, char **env)
 	{
 		if (ft_strnstr(env[i], div, ft_strlen(div)) != NULL)
 		{
+			if (str)
+				free(str);
 			str = ft_calloc(sizeof(char), ft_strlen(env[i]) - ft_strlen(div) + 1);
-			if (str == NULL)	
+			if (str == NULL)
 				return (NULL);
 			ft_memcpy(str, env[i] + ft_strlen(div), ft_strlen(env[i]) - ft_strlen(div) + 1);
 			if (str != NULL)
@@ -120,8 +123,8 @@ char *ft_change_var(char *div, char **env)
 
 char	*ft_dolar_to_iqual(char *div)
 {
-	int		i;
-	int		j;
+	int	i;
+	int	j;
 
 	i = 0;
 	j = 1;
@@ -136,9 +139,11 @@ char	*ft_dolar_to_iqual(char *div)
 
 char	*ft_join(char **div, char *tmp)
 {
-	char	*ptr = NULL;
-	char	*final = NULL;
-	
+	char	*ptr;
+	char	*final;
+
+	ptr = NULL;
+	final = NULL;
 	if (div[0] == NULL && div[2] == NULL)
 	{
 		final = ft_calloc(sizeof(char), ft_strlen(tmp) + 1);
@@ -166,15 +171,15 @@ char	*ft_join(char **div, char *tmp)
 int	ft_size_var(char *str)
 {
 	int	i;
-	
+
 	i = 1;
 	if (str[i] == '$' || str[i] == '?')
-		return(++i);
+		return (++i);
 	if (str[i] == ' ' || str[i] == '\0')
 		return (-1);
 	while (ft_isalnum(str[i]) == 1)
 		i++;
-	return(i);
+	return (i);
 }
 
 void	ft_ex_free(char **div, char *tmp)
@@ -193,15 +198,20 @@ void	ft_ex_free(char **div, char *tmp)
 
 char	*ft_expander(char **env, char *str)
 {
-	char	**div = NULL;
-	char	*tmp = NULL; 
-	char	*div_tmp = NULL;
+	char	**div;
+	char	*tmp;
+	char	*div_tmp;
 	char	*cpy;
-	int		iter = -1;
-	int		stop = 0;
+	int		iter;
+	int		stop;
 	char	*res;
 	int		value;
 
+	stop = 0;
+	iter = -1;
+	div = NULL;
+	tmp = NULL;
+	div_tmp = NULL;
 	if (str == NULL)
 		return (NULL);
 	cpy = ft_strdup(str);
@@ -240,28 +250,9 @@ char	*ft_expander(char **env, char *str)
 		ft_ex_free(div, tmp);
 		iter++;
 	}
-	if (str && iter != 1 && (int)ft_strlen(str) != 0 && ft_strncmp(str, cpy, ft_strlen(cpy)) != 0)
+	if (str && iter != 1 && (int)ft_strlen(str) != 0
+		&& ft_strncmp(str, cpy, ft_strlen(cpy)) != 0)
 		free(str);
 	free(cpy);
 	return (div_tmp);
 }
-
-// int main(int argc, char **argv, char **env)
-// {
-// 	char	*str; // ['$USER"$USER'descamil'$USER"$USER$USER''$U'''""""] BASH --> $USER"$USERdescamil$USER"$USER$USER$U: command not found
-// 	// char	*str = "    \'$?\'  \'$USER\'  ";
-// 	char	*result;
-
-// 	str = ft_strdup("'''$USER\"$USER'$USER'$USER\"$USER$USER''$U'''\"\"\"\"");
-// 	printf(B_CY_0"\nCADENA INICIAL -->\t[%s]\n"RESET, str);
-// 	if (argc != 1)
-// 		printf(B_RD_2"ERROR --> [%s]\n"RESET, argv[1]);
-// 	result = ft_expander(env, str);
-// 	printf(B_WH_0"\nCADENA RESULTANTE -->\t[%s]\n\n"RESET, result);
-// 	if (result)
-// 		free(result);
-// 	free(str);
-// 	// result = ft_strchr_mod(str, '$', 0);
-// 	// printf("%s\n", result);
-// 	return (0);
-// }

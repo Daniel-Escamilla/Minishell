@@ -6,7 +6,7 @@
 /*   By: descamil <descamil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/21 11:25:25 by user              #+#    #+#             */
-/*   Updated: 2024/09/02 09:47:26 by descamil         ###   ########.fr       */
+/*   Updated: 2024/09/02 15:37:36 by descamil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ int	ft_more(t_cmd *cmd, int i, int type)
 	return (0);
 }
 
-int	ft_pick_infile(t_cmd *cmd/*, t_mini *mini*/)
+int	ft_pick_infile(t_cmd *cmd, t_mini *mini)
 {
 	int		i;
 	int		fd;
@@ -79,8 +79,8 @@ int	ft_pick_infile(t_cmd *cmd/*, t_mini *mini*/)
 		if (ft_atoi(cmd->files->order[i]) == 3)
 		{
 			if (ft_more(cmd, i, 3) == 1)
-				return (ft_here_doc(cmd, -2, i));
-			fd = ft_here_doc(cmd, 0, i);
+				return (ft_here_doc(cmd, mini, -2, i));
+			fd = ft_here_doc(cmd, mini, 0, i);
 		}
 		i++;
 	}
@@ -130,32 +130,13 @@ int	ft_pick_outfile(t_cmd *cmd, t_mini *mini)
 		}
 		i++;
 	}
-	// while (cmd->files->order[++i] != NULL)
-	// {
-	// 	if (cmd->type->outfile == 1 && ft_atoi(cmd->files->order[i]) == 2)
-	// 		fd = open(cmd->files->f_order[i], O_WRONLY | O_CREAT | O_TRUNC, 0644);
-	// 	else if (cmd->type->append == 1 && ft_atoi(cmd->files->order[i]) == 4)
-	// 		fd = open(cmd->files->f_order[i], O_WRONLY | O_CREAT | O_APPEND, 0644);
-	// 	if (fd == -1)
-	// 	{
-	// 		join = ft_strjoin("mini: ", cmd->files->f_order[i]);	
-	// 		perror(join);
-	// 		free(join);
-	// 	}
-	// 	if ((cmd->type->outfile == 1 && ft_more(cmd, i, 2) == 1)
-	// 		&& (cmd->type->append == 1 && ft_more(cmd, i, 4) == 1))
-	// 		return (fd);
-	// 	if (fd != 1)
-	// 		close (fd);
-	// }
-	// return (-1);
 	return (-1);
 }
 
 int	ft_choose_infile(t_cmd *cmd, t_mini *mini)
 {
 	if (cmd->type && cmd->type->in && (cmd->type->infile == 1 || cmd->type->here_doc == 1))
-		return (ft_pick_infile(cmd/*, mini*/));
+		return (ft_pick_infile(cmd, mini));
 	else if (mini->fd_tmp != -1)
 		return (mini->fd_tmp);
 	return (STDIN_FILENO);
@@ -219,7 +200,7 @@ void	ft_create_file(t_cmd *cmd)
 	free(number);
 }
 
-int	ft_here_doc(t_cmd *cmd, int last, int i)
+int	ft_here_doc(t_cmd *cmd, t_mini *mini, int last, int i)
 {
 	char	*line;
 	int		fd_tmp;
@@ -231,8 +212,11 @@ int	ft_here_doc(t_cmd *cmd, int last, int i)
 	if (fd_tmp == -1)
 		ft_error("Error open", 2);
 	while (1)
-	{		
+	{
+		mini->here_doc = 1;
+		line = NULL;
 		line = readline("> ");
+		printf("[%s]\n", line);
 		if (line == NULL)
 			ft_error("Error readline", 2);
 		if (ft_strnstr(line, cmd->files->f_order[i], ft_strlen(line)) && ft_strlen(cmd->files->f_order[i]) == ft_strlen(line))

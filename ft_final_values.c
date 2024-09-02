@@ -6,7 +6,7 @@
 /*   By: descamil <descamil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/05 17:24:29 by descamil          #+#    #+#             */
-/*   Updated: 2024/08/23 11:52:36 by descamil         ###   ########.fr       */
+/*   Updated: 2024/09/02 15:21:16 by descamil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,7 +91,8 @@ char	**ft_order(t_cmd *cmd, t_mini *mini)
 
 	i = -1;
 	j = 0;
-	order = (char **)ft_calloc(sizeof(char *), mini->flags->redirect->number + 1);
+	order = (char **)ft_calloc(sizeof(char *),
+			mini->flags->redirect->number + 1);
 	if (order == NULL)
 		return (NULL);
 	if (ft_check_dups(cmd) == -1)
@@ -150,7 +151,8 @@ int	ft_pos_files(t_cmd *cmd, int i)
 		if (ft_type(cmd->args[i++]) > 0)
 		{
 			if (cmd->args[i] == NULL)
-				ft_error("mini: syntax error near unexpected token `newline'\n", 2);
+				ft_error("mini: syntax error nearunexpected token `newline'\n",
+					2);
 			cmd->files->f_order[files++] = ft_strdup(cmd->args[i]);
 		}
 	}
@@ -169,7 +171,6 @@ void	ft_files(t_cmd *cmd, t_mini *mini, t_files *files)
 		{
 			mini->cmd->files->error = -1;
 			return ;
-			// MALLOC ERROR
 		}
 		if (ft_pos_files(cmd, 0) == -1)
 		{

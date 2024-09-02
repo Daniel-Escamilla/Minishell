@@ -17,7 +17,8 @@
 
 	· Quitar comillas dobles y simples.
 
-	· Utilizar la expansion de variables
+	# · Utilizar la expansion de variables
+
 */
 
 # // Empezar con ejecución
@@ -44,4 +45,4 @@
 
 	· Modificar SHLVL de env
 
-	· 
+	· Utilizar la expansion de vaiables si el EOF != quotes
