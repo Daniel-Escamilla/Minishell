@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_execution.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: descamil <descamil@student.42.fr>          +#+  +:+       +#+        */
+/*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/21 11:25:25 by user              #+#    #+#             */
-/*   Updated: 2024/09/02 09:47:26 by descamil         ###   ########.fr       */
+/*   Updated: 2024/09/03 17:47:33 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -285,8 +285,11 @@ void	ft_comm(t_cmd *cmd, t_mini *mini)
 			dup2(cmd->names->fd_infile, STDIN_FILENO);
 			dup2(cmd->names->fd_outfile, STDOUT_FILENO);
 			ft_close_fd(mini, 'H');
-			if (ft_strnstr(cmd->cmd, "/usr/bin/env", ft_strlen("/usr/bin/env")) != NULL)
-				ft_strstr_printf(mini->env->env);
+			if (cmd->built == 1)
+			{
+				ft_exec_built(mini, cmd);
+				// Gestionar error de ejecucion.
+			}
 			else
 			{
 				execve(cmd->cmd, cmd->args, mini->env->env);

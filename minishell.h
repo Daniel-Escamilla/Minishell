@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/05 13:18:57 by smarin-a          #+#    #+#             */
-/*   Updated: 2024/09/03 17:05:50 by user             ###   ########.fr       */
+/*   Updated: 2024/09/03 18:01:12 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,6 @@
 # include <stdio.h>
 # include <unistd.h>
 # include <stdlib.h>
-# include <dirent.h>
 # include <dirent.h>
 # include <signal.h>
 # include <limits.h>
@@ -168,6 +167,7 @@ typedef struct s_cmd
 	t_names			*names;
 	int				args_amount; 
 	int				error;
+	int				built;
 	int				exit;
 }					t_cmd;
 
@@ -190,8 +190,9 @@ typedef struct s_mini
 	t_token		*token;
 }				t_mini;
 
-
-
+// ft_builting.c
+char	*ft_builtins(t_cmd *cmd, char *comm);
+void	ft_exec_built(t_mini *mini,t_cmd *cmd);
 
 // ft_execution.c
 void	ft_comm(t_cmd *cmd, t_mini *mini);

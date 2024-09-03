@@ -251,7 +251,9 @@ void	ft_select_cmd(t_cmd *current, t_mini *mini, int j)
 		{
 			if (j == 0)
 			{
-				current->cmd = ft_route_cmd(mini, current, tmp[i]);
+				current->cmd = ft_builtins(current, tmp[i]);
+				if (current->cmd == NULL)
+					current->cmd = ft_route_cmd(mini, current, tmp[i]);
 				if (current->cmd == NULL && current->error != -2)
 					mini->cmd->files->error = -1;
 			}
@@ -350,7 +352,6 @@ void	ft_start_val(t_cmd *cmd)
 	cmd->names->fd = 0;
 	cmd->names->fd_infile = 0;
 	cmd->names->fd_outfile = 1;
-	
 }
 
 int	ft_wait_bonus(t_mini *mini)
@@ -387,9 +388,6 @@ int	ft_do_comm(t_cmd *cmd, t_mini *mini)
 		mini->num_comm--;
 		current = current->next;
 	}
-
-	if (mini->join)
-		printf("%s\n", mini->join[0]);
 	ft_wait_bonus(mini);
 	return (1);
 }
@@ -404,7 +402,7 @@ int	ft_strtok(t_mini *mini, t_cmd **cmd, char *input)
 		return (0);
 	if (ft_do_expand(mini, cmd, lines, input) == -1)
 		return (0);
-	// print_cmd(*cmd);
+	print_cmd(*cmd);
 	comm = ft_do_comm(*cmd, mini);
 	if (comm != 1)
 		return (0);

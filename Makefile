@@ -32,6 +32,7 @@ SRCS =	ft_main.c \
 		ft_utils.c \
 		ft_parser.c \
 		ft_signals.c \
+		ft_builtin.c \
 		ft_expander.c \
 		ft_commands.c \
 		ft_split_red.c \
