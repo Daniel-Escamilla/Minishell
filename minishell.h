@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/05 13:18:57 by smarin-a          #+#    #+#             */
-/*   Updated: 2024/09/01 10:24:34 by user             ###   ########.fr       */
+/*   Updated: 2024/09/03 17:05:50 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -151,10 +151,10 @@ typedef struct s_type
 typedef struct s_names
 {
 	char	*join;
-	int		fd_outfile; 			// fd del outfile
-	int		fd_infile; 				// fd del infile
-	int		fd_tmp; 				// fd temporal para la modificacion del dup2
-	int		fd; 					// Numero del fd del archivo abierto
+	int		fd_outfile;
+	int		fd_infile;
+	int		fd_tmp;
+	int		fd;
 
 }			t_names;
 
@@ -171,17 +171,11 @@ typedef struct s_cmd
 	int				exit;
 }					t_cmd;
 
-typedef struct s_sh
-{
-    // ... otros campos ...
-    int in_heredoc;  // Nuevo campo para rastrear si estamos en un heredoc
-} t_sh;
-
 typedef struct s_mini
 {
 	pid_t		*proc;
 	
-	int			fd_pipe[2]; 			// fd temporal para escritura y lectura
+	int			fd_pipe[2];
 	int			index;
 	int			fd_tmp;
 	int			num_comm;
