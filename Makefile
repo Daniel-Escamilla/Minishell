@@ -31,9 +31,11 @@ SRCS =	ft_fds.c \
 		ft_free.c \
 		ft_lexer.c \
 		ft_utils.c \
+		ft_files.c \
 		ft_parser.c \
 		ft_strtok.c \
 		ft_signals.c \
+		ft_builtin.c \
 		ft_expander.c \
 		ft_commands.c \
 		ft_exec_cmd.c \

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   here_doc.c                                         :+:      :+:    :+:   */
+/*   ft_here_doc.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: descamil <descamil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/03 09:32:44 by descamil          #+#    #+#             */
-/*   Updated: 2024/09/03 09:34:30 by descamil         ###   ########.fr       */
+/*   Updated: 2024/09/09 11:20:29 by descamil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,12 +31,12 @@ void	ft_create_file(t_cmd *cmd)
 	free(number);
 }
 
-int	ft_here_doc(t_cmd *cmd, t_mini *mini, int last, int i)
+int	ft_here_doc(t_cmd *cmd, int last, int i)
 {
 	char	*line;
 	int		fd_tmp;
 	int		fd;
-	
+
 	fd = -1;
 	ft_create_file(cmd);
 	fd_tmp = open(cmd->names->join, O_WRONLY | O_CREAT, 0666);
@@ -44,8 +44,6 @@ int	ft_here_doc(t_cmd *cmd, t_mini *mini, int last, int i)
 		ft_error("Error open", 2);
 	while (1)
 	{
-		mini->here_doc = 1;
-		line = NULL;
 		line = readline("> ");
 		if (line == NULL)
 			ft_error("Error readline", 2);
@@ -53,9 +51,10 @@ int	ft_here_doc(t_cmd *cmd, t_mini *mini, int last, int i)
 			&& ft_strlen(cmd->files->f_order[i]) == ft_strlen(line))
 		{
 			free(line);
-			break;
+			break ;
 		}
-		if (write(fd_tmp, line, ft_strlen(line)) == -1 || write(fd_tmp, "\n", 1) == -1)
+		if (write(fd_tmp, line, ft_strlen(line)) == -1
+			|| write(fd_tmp, "\n", 1) == -1)
 			ft_error("Error write", 2);
 		free(line);
 	}
@@ -72,4 +71,3 @@ int	ft_here_doc(t_cmd *cmd, t_mini *mini, int last, int i)
 	free(cmd->names->join);
 	return (fd);
 }
-

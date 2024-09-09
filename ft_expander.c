@@ -6,7 +6,7 @@
 /*   By: descamil <descamil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/09 13:20:46 by descamil          #+#    #+#             */
-/*   Updated: 2024/09/03 11:07:33 by descamil         ###   ########.fr       */
+/*   Updated: 2024/09/09 12:35:11 by descamil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,6 @@ char	**ft_tript(char *str, int size, int start)
 
 char	*ft_change_var(char *div, char **env)
 {
-	// char	*glob;
 	char	*str;
 	int		i;
 
@@ -97,15 +96,15 @@ char	*ft_change_var(char *div, char **env)
 		ft_memset(str, '$', 1);
 		return (str);
 	}
-	// if (div && ft_strlen(div) == 2 && ft_strncmp(div, "?=", 2) == 0)
-	// {
-	// 	str = ft_calloc(sizeof(char), ft_strlen(glob) + 1);
-	// 	if (str == NULL)
-	// 		return (NULL);
-	// 	ft_memcpy(str, glob, ft_strlen(glob) + 1);
-	// 	free(glob);
-	// 	return (str);
-	// }
+	if (div && ft_strlen(div) == 2 && ft_strncmp(div, "?=", 2) == 0)
+	{
+		str = ft_calloc(sizeof(char), ft_strlen() + 1);
+		if (str == NULL)
+			return (NULL);
+		ft_memcpy(str, glob, ft_strlen(glob) + 1);
+		free(glob);
+		return (str);
+	}
 	while (env[++i] != NULL)
 	{
 		if (ft_strnstr(env[i], div, ft_strlen(div)) != NULL)
@@ -226,7 +225,7 @@ char	*expand_div(int *iter, char **str, char **env)
 	if ((ft_strchr_mod(*str, '$', stop) - *str) < 0)
 	{
 		*iter = -2;
-		return(ft_no_more_dolar(div, *str));
+		return (ft_no_more_dolar(div, *str));
 	}
 	if (*iter == -1)
 		*iter = 0;

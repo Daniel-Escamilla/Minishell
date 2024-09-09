@@ -6,7 +6,7 @@
 /*   By: descamil <descamil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 16:27:49 by user              #+#    #+#             */
-/*   Updated: 2024/09/02 15:18:53 by descamil         ###   ########.fr       */
+/*   Updated: 2024/09/09 11:20:08 by descamil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,24 @@ void	free_t_env(t_env **env)
 	free(*env);
 }
 
+void	ft_free_sim(void *ptr, char *str, char *str1)
+{
+	if (str)
+		free(str);
+	if (str1)
+		free(str1);
+	free (ptr);
+}
+
+void	ft_free_dou(void *ptr, char **str, char **str1)
+{
+	if (str)
+		ft_strstr_free(str);
+	if (str1)
+		ft_strstr_free(str1);
+	free (ptr);
+}
+
 void	free_t_cmd(t_cmd **cmd)
 {
 	t_cmd	*current;
@@ -41,21 +59,11 @@ void	free_t_cmd(t_cmd **cmd)
 		next = current->next;
 		ft_strstr_free(current->args);
 		if (current->files)
-		{
-			if (current->files->f_order)
-				ft_strstr_free(current->files->f_order);
-			if (current->files->order)
-				ft_strstr_free(current->files->order);
-			free(current->files);
-		}
+			ft_free_dou(current->files,
+				current->files->f_order, current->files->order);
 		if (current->type)
-		{
-			if (current->type->in)
-				free(current->type->in);
-			if (current->type->out)
-				free(current->type->out);
-			free(current->type);
-		}
+			ft_free_sim(current->type,
+				current->type->in, current->type->out);
 		if (current->names)
 			free(current->names);
 		free(current->cmd);

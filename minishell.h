@@ -6,7 +6,7 @@
 /*   By: descamil <descamil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/05 13:18:57 by smarin-a          #+#    #+#             */
-/*   Updated: 2024/09/03 12:12:49 by descamil         ###   ########.fr       */
+/*   Updated: 2024/09/09 11:25:59 by descamil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,6 @@
 # include <unistd.h>
 # include <stdlib.h>
 # include <dirent.h>
-# include <dirent.h>
 # include <signal.h>
 # include <limits.h>
 # include <termios.h>
@@ -151,10 +150,10 @@ typedef struct s_type
 typedef struct s_names
 {
 	char	*join;
-	int		fd_outfile; 			// fd del outfile
-	int		fd_infile; 				// fd del infile
-	int		fd_tmp; 				// fd temporal para la modificacion del dup2
-	int		fd; 					// Numero del fd del archivo abierto
+	int		fd_outfile;
+	int		fd_infile;
+	int		fd_tmp;
+	int		fd;
 
 }			t_names;
 
@@ -168,6 +167,7 @@ typedef struct s_cmd
 	t_names			*names;
 	int				args_amount; 
 	int				error;
+	int				built;
 	int				exit;
 }					t_cmd;
 
@@ -191,6 +191,15 @@ typedef struct s_mini
 	t_token		*token;
 }				t_mini;
 
+
+// ft_files.c
+int		ft_pos_files(t_cmd *cmd, int i);
+int		ft_mem_files(t_mini *mini, t_cmd *cmd);
+void	ft_files(t_cmd *cmd, t_mini *mini, t_files *files);
+
+// ft_builting.c
+char	*ft_builtins(t_cmd *cmd, char *comm);
+int		ft_exec_built(t_mini *mini,t_cmd *cmd);
 
 // ft_redirects_utils.c
 int		ft_red_count(t_mini *mini);
@@ -224,7 +233,17 @@ void	ft_close_fd(t_mini *mini, int who);
 void	ft_open_fd(t_cmd *cmd, t_mini *mini);
 
 // ft_str_utils.c
+int		ft_strstr_len(char **str);
+void	ft_strstr_free(char **str);
+char	**ft_strstr_dup(char **str);
+int		ft_strnstrstr(char **str, char *locate);
+char	**ft_strstr_join(char **str, char **str1);
+
 // ft_str_utils2.c
+int		ft_strlen_dup(char *argv);
+void	ft_strstr_unlink(t_mini *mini);
+char	**ft_sindub_join(char **str, char *str1);
+
 // here_doc.c
 
 
@@ -235,7 +254,7 @@ void	ft_open_fd(t_cmd *cmd, t_mini *mini);
 // ft_execution.c
 void	ft_comm(t_cmd *cmd, t_mini *mini);
 void	ft_error(char *str, int i);
-int		ft_here_doc(t_cmd *cmd, t_mini *mini, int last, int i);
+int		ft_here_doc(t_cmd *cmd, int last, int i);
 
 // ft_utils.c
 int		ft_history(void);
@@ -247,9 +266,9 @@ char	**ft_strstr_join(char **str, char **str1);
 
 // ft_final_values.c
 int		ft_type(char *argv);
-int		ft_strlen_dup(char *argv);
-void	ft_files(t_cmd *cmd, t_mini *mini, t_files *files);
 char	**ft_strstr_dup(char **str);
+char	**ft_order(t_cmd *cmd, t_mini *mini);
+int		ft_num_files(t_cmd *cmd);
 
 // ft_initialize.c
 t_mini	*ft_initialize(char **env);

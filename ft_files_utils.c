@@ -6,7 +6,7 @@
 /*   By: descamil <descamil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/03 08:59:47 by descamil          #+#    #+#             */
-/*   Updated: 2024/09/03 10:30:14 by descamil         ###   ########.fr       */
+/*   Updated: 2024/09/09 11:43:41 by descamil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ void	ft_remove_files(t_cmd *cmd, t_mini *mini)
 	current = cmd;
 	while (current != NULL)
 	{
-		ft_select_cmd(current, mini, 0);
+		ft_select_cmd(current, mini, -1);
 		current = current->next;
 	}
 }

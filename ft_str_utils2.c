@@ -6,7 +6,7 @@
 /*   By: descamil <descamil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/03 09:30:16 by descamil          #+#    #+#             */
-/*   Updated: 2024/09/03 09:30:56 by descamil         ###   ########.fr       */
+/*   Updated: 2024/09/09 10:59:58 by descamil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,4 +37,22 @@ void	ft_strstr_unlink(t_mini *mini)
 	i = -1;
 	while (mini->join && mini->join[++i])
 		unlink(mini->join[i]);
+}
+
+int	ft_strlen_dup(char *argv)
+{
+	int	i;
+	int	space;
+
+	i = 0;
+	space = 0;
+	if (argv)
+	{
+		while (argv[i] != '\0')
+		{
+			if (argv[i++] == ' ')
+				space++;
+		}
+	}
+	return (i - space);
 }

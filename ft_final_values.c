@@ -6,29 +6,11 @@
 /*   By: descamil <descamil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/05 17:24:29 by descamil          #+#    #+#             */
-/*   Updated: 2024/09/02 15:21:16 by descamil         ###   ########.fr       */
+/*   Updated: 2024/09/09 11:03:00 by descamil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
-
-int	ft_strlen_dup(char *argv)
-{
-	int	i;
-	int	space;
-
-	i = 0;
-	space = 0;
-	if (argv)
-	{
-		while (argv[i] != '\0')
-		{
-			if (argv[i++] == ' ')
-				space++;
-		}
-	}
-	return (i - space);
-}
 
 int	ft_type(char *argv)
 {
@@ -125,57 +107,4 @@ int	ft_num_files(t_cmd *cmd)
 			j++;
 	}
 	return (j);
-}
-
-int	ft_mem_files(t_mini *mini, t_cmd *cmd)
-{
-	int	num_f;
-
-	if (mini->flags->redirect && mini->flags->redirect->number > 0)
-	{
-		num_f = ft_num_files(cmd);
-		cmd->files->f_order = (char **)ft_calloc(sizeof(char *), num_f + 1);
-		if (cmd->files->f_order == NULL)
-			return (-1);
-	}
-	return (0);
-}
-
-int	ft_pos_files(t_cmd *cmd, int i)
-{
-	int	files;
-
-	files = 0;
-	while (cmd->args[i])
-	{
-		if (ft_type(cmd->args[i++]) > 0)
-		{
-			if (cmd->args[i] == NULL)
-				ft_error("mini: syntax error nearunexpected token `newline'\n",
-					2);
-			cmd->files->f_order[files++] = ft_strdup(cmd->args[i]);
-		}
-	}
-	return (0);
-}
-
-void	ft_files(t_cmd *cmd, t_mini *mini, t_files *files)
-{
-	if (mini->flags->redirect && mini->flags->redirect->number > 0)
-		files->order = ft_order(cmd, mini);
-	if (mini->cmd->files->error == -1)
-		return ;
-	if (cmd->args)
-	{
-		if (ft_mem_files(mini, cmd) == -1)
-		{
-			mini->cmd->files->error = -1;
-			return ;
-		}
-		if (ft_pos_files(cmd, 0) == -1)
-		{
-			mini->cmd->files->error = -1;
-			return ;
-		}
-	}
 }

@@ -6,7 +6,7 @@
 /*   By: descamil <descamil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/15 12:21:54 by smarin-a          #+#    #+#             */
-/*   Updated: 2024/09/03 12:10:16 by descamil         ###   ########.fr       */
+/*   Updated: 2024/09/09 11:29:13 by descamil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,5 @@ t_mini	*ft_initialize(char **env)
 	mini->env->path = NULL;
 	mini->token->input = NULL;
 	mini->token->tokens = NULL;
-	mini->fd_tmp = 0;
 	return (mini);
 }

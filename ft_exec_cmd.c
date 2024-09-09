@@ -6,7 +6,7 @@
 /*   By: descamil <descamil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/03 09:29:06 by descamil          #+#    #+#             */
-/*   Updated: 2024/09/03 09:31:46 by descamil         ###   ########.fr       */
+/*   Updated: 2024/09/09 11:55:32 by descamil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,9 @@ void	ft_comm(t_cmd *cmd, t_mini *mini)
 		if (pipe(mini->fd_pipe) == -1)
 			perror("Pipe Error");
 	}
+	
+	if (cmd->cmd == NULL)
+		return ;
 	ft_open_fd(cmd, mini);
 	if (cmd->names->fd_infile != -1 && cmd->names->fd_outfile != -1)
 	{
@@ -85,8 +88,12 @@ void	ft_comm(t_cmd *cmd, t_mini *mini)
 			dup2(cmd->names->fd_infile, STDIN_FILENO);
 			dup2(cmd->names->fd_outfile, STDOUT_FILENO);
 			ft_close_fd(mini, 'H');
-			if (ft_strnstr(cmd->cmd, "/usr/bin/env", ft_strlen("/usr/bin/env")) != NULL)
-				ft_strstr_printf(mini->env->env);
+			if (cmd->built == 1)
+			{
+				ft_exec_built(mini, cmd);
+				ft_putstr_fd("BUILT\n", 2);
+				// Gestionar error de ejecucion.
+			}
 			else
 			{
 				execve(cmd->cmd, cmd->args, mini->env->env);

@@ -6,7 +6,7 @@
 /*   By: descamil <descamil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/14 15:50:54 by smarin-a          #+#    #+#             */
-/*   Updated: 2024/09/03 11:32:51 by descamil         ###   ########.fr       */
+/*   Updated: 2024/09/09 12:30:15 by descamil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,11 @@ int	ft_find_exit(char *input)
 
 void	ft_free_per_comm(t_mini *mini, char *input)
 {
-	free(mini->input);
+	if (mini->input)
+	{
+		free(mini->input);
+		mini->input = NULL;
+	}
 	if (mini->flags->redirect && input != NULL)
 	{
 		mini->flags->locate_red = 0;
@@ -75,7 +79,10 @@ void	ft_free_per_comm(t_mini *mini, char *input)
 		mini->flags->redirect = NULL;
 	}
 	if (mini->proc && mini->error != -2 && input[0] != '\0')
+	{
+		printf("Aquí\n");
 		free(mini->proc);
+	}
 	if (input)
 		free(input);
 }
@@ -94,13 +101,13 @@ void	ft_recive_input(t_mini *mini)
 			(void)input;
 		else
 		{
+			mini->error = 0;
 			mini->input = ft_strdup(input);
 			add_history(input);
 			if (mini->fd_history != -1)
-			{
-				write(mini->fd_history, input, ft_strlen(input));
-				write(mini->fd_history, "\n", 1);
-			}
+				if (write(mini->fd_history, input, ft_strlen(input)) == -1
+					|| write(mini->fd_history, "\n", 1) == -1)
+					return ;
 			if (ft_strtok(mini, &(mini->cmd), input))
 				printf("\nLlega al final! 🚀\n\n");
 		}

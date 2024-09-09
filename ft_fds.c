@@ -6,7 +6,7 @@
 /*   By: descamil <descamil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/03 09:19:54 by descamil          #+#    #+#             */
-/*   Updated: 2024/09/03 09:35:00 by descamil         ###   ########.fr       */
+/*   Updated: 2024/09/09 12:32:23 by descamil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,10 +42,10 @@ int	ft_pick_infile(t_cmd *cmd, t_mini *mini)
 			fd = open(cmd->files->f_order[i], O_RDONLY);
 			if (fd == -1)
 			{
-				join = ft_strjoin("mini: ", cmd->files->f_order[i]);	
+				join = ft_strjoin("mini: ", cmd->files->f_order[i]);
 				perror(join);
 				free(join);
-				// mini->error = -2;
+				mini->error = -2;
 				return (-1);
 			}
 			if (ft_more(cmd, i, 1) == 1)
@@ -55,8 +55,8 @@ int	ft_pick_infile(t_cmd *cmd, t_mini *mini)
 		if (ft_atoi(cmd->files->order[i]) == 3)
 		{
 			if (ft_more(cmd, i, 3) == 1)
-				return (ft_here_doc(cmd, mini, -2, i));
-			fd = ft_here_doc(cmd, mini, 0, i);
+				return (ft_here_doc(cmd, -2, i));
+			fd = ft_here_doc(cmd, 0, i);
 		}
 		i++;
 	}
@@ -75,10 +75,11 @@ int	ft_pick_outfile(t_cmd *cmd, t_mini *mini)
 	{
 		if (ft_atoi(cmd->files->order[i]) == 2)
 		{
-			fd = open(cmd->files->f_order[i], O_WRONLY | O_CREAT | O_TRUNC, 0644);
+			fd = open(cmd->files->f_order[i],
+					O_WRONLY | O_CREAT | O_TRUNC, 0644);
 			if (fd == -1)
 			{
-				join = ft_strjoin("mini: ", cmd->files->f_order[i]);	
+				join = ft_strjoin("mini: ", cmd->files->f_order[i]);
 				perror(join);
 				free(join);
 				mini->error = -2;
@@ -90,10 +91,11 @@ int	ft_pick_outfile(t_cmd *cmd, t_mini *mini)
 		}
 		if (ft_atoi(cmd->files->order[i]) == 4)
 		{
-			fd = open(cmd->files->f_order[i], O_WRONLY | O_CREAT | O_APPEND, 0644);
+			fd = open(cmd->files->f_order[i],
+					O_WRONLY | O_CREAT | O_APPEND, 0644);
 			if (fd == -1)
 			{
-				join = ft_strjoin("mini: ", cmd->files->f_order[i]);	
+				join = ft_strjoin("mini: ", cmd->files->f_order[i]);
 				perror(join);
 				free(join);
 				mini->error = -2;
@@ -107,4 +109,3 @@ int	ft_pick_outfile(t_cmd *cmd, t_mini *mini)
 	}
 	return (-1);
 }
-

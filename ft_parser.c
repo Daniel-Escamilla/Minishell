@@ -71,9 +71,11 @@ void	ft_select_cmd(t_cmd *current, t_mini *mini, int j)
 		current->error = 0;
 		if (ft_type(tmp[i]) != 0)
 			i++;
-		else if (j == 0)
+		else if (j == -1 && j++ > -2)
 		{
-			current->cmd = ft_route_cmd(mini, current, tmp[i]);
+			current->cmd = ft_builtins(current, tmp[i]);
+			if (current->cmd == NULL)
+				current->cmd = ft_route_cmd(mini, current, tmp[i]);
 			if (current->cmd == NULL && current->error != -2)
 				mini->cmd->files->error = -1;
 		}

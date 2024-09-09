@@ -6,7 +6,7 @@
 /*   By: descamil <descamil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/21 11:25:25 by user              #+#    #+#             */
-/*   Updated: 2024/09/02 15:37:36 by descamil         ###   ########.fr       */
+/*   Updated: 2024/09/09 12:38:48 by descamil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,10 +66,10 @@ int	ft_pick_infile(t_cmd *cmd, t_mini *mini)
 			fd = open(cmd->files->f_order[i], O_RDONLY);
 			if (fd == -1)
 			{
-				join = ft_strjoin("mini: ", cmd->files->f_order[i]);	
+				join = ft_strjoin("mini: ", cmd->files->f_order[i]);
 				perror(join);
 				free(join);
-				// mini->error = -2;
+				mini->error = -2;
 				return (-1);
 			}
 			if (ft_more(cmd, i, 1) == 1)
@@ -79,14 +79,13 @@ int	ft_pick_infile(t_cmd *cmd, t_mini *mini)
 		if (ft_atoi(cmd->files->order[i]) == 3)
 		{
 			if (ft_more(cmd, i, 3) == 1)
-				return (ft_here_doc(cmd, mini, -2, i));
-			fd = ft_here_doc(cmd, mini, 0, i);
+				return (ft_here_doc(cmd, -2, i));
+			fd = ft_here_doc(cmd, 0, i);
 		}
 		i++;
 	}
 	return (-1);
 }
-
 
 int	ft_pick_outfile(t_cmd *cmd, t_mini *mini)
 {
@@ -103,7 +102,7 @@ int	ft_pick_outfile(t_cmd *cmd, t_mini *mini)
 			fd = open(cmd->files->f_order[i], O_WRONLY | O_CREAT | O_TRUNC, 0644);
 			if (fd == -1)
 			{
-				join = ft_strjoin("mini: ", cmd->files->f_order[i]);	
+				join = ft_strjoin("mini: ", cmd->files->f_order[i]);
 				perror(join);
 				free(join);
 				mini->error = -2;
@@ -118,7 +117,7 @@ int	ft_pick_outfile(t_cmd *cmd, t_mini *mini)
 			fd = open(cmd->files->f_order[i], O_WRONLY | O_CREAT | O_APPEND, 0644);
 			if (fd == -1)
 			{
-				join = ft_strjoin("mini: ", cmd->files->f_order[i]);	
+				join = ft_strjoin("mini: ", cmd->files->f_order[i]);
 				perror(join);
 				free(join);
 				mini->error = -2;
@@ -200,7 +199,7 @@ void	ft_create_file(t_cmd *cmd)
 	free(number);
 }
 
-int	ft_here_doc(t_cmd *cmd, t_mini *mini, int last, int i)
+int	ft_here_doc(t_cmd *cmd, int last, int i)
 {
 	char	*line;
 	int		fd_tmp;
@@ -212,11 +211,8 @@ int	ft_here_doc(t_cmd *cmd, t_mini *mini, int last, int i)
 	if (fd_tmp == -1)
 		ft_error("Error open", 2);
 	while (1)
-	{
-		mini->here_doc = 1;
-		line = NULL;
+	{		
 		line = readline("> ");
-		printf("[%s]\n", line);
 		if (line == NULL)
 			ft_error("Error readline", 2);
 		if (ft_strnstr(line, cmd->files->f_order[i], ft_strlen(line)) && ft_strlen(cmd->files->f_order[i]) == ft_strlen(line))
@@ -269,8 +265,12 @@ void	ft_comm(t_cmd *cmd, t_mini *mini)
 			dup2(cmd->names->fd_infile, STDIN_FILENO);
 			dup2(cmd->names->fd_outfile, STDOUT_FILENO);
 			ft_close_fd(mini, 'H');
-			if (ft_strnstr(cmd->cmd, "/usr/bin/env", ft_strlen("/usr/bin/env")) != NULL)
-				ft_strstr_printf(mini->env->env);
+			if (cmd->built == 1)
+			{
+				ft_exec_built(mini, cmd);
+				ft_putstr_fd("BUILT\n", 2);
+				// Gestionar error de ejecucion.
+			}
 			else
 			{
 				execve(cmd->cmd, cmd->args, mini->env->env);

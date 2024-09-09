@@ -6,7 +6,7 @@
 /*   By: descamil <descamil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/01 17:52:46 by smarin-a          #+#    #+#             */
-/*   Updated: 2024/09/09 09:44:16 by descamil         ###   ########.fr       */
+/*   Updated: 2024/09/09 11:54:42 by descamil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,6 @@ int	ft_order_all(t_mini *mini, t_cmd **cmd, char **lines, char *input)
 	else
 		process_lines(cmd, mini, lines, 0);
 	ft_do_expander(mini, *cmd);
-	print_cmd(*cmd);
 	ft_strstr_free(lines);
 	if (mini->cmd->files->error == -1)
 		return (-1);
@@ -96,6 +95,7 @@ int	ft_strtok(t_mini *mini, t_cmd **cmd, char *input)
 		return (0);
 	if (ft_order_all(mini, cmd, lines, input) == -1)
 		return (0);
+	print_cmd(*cmd);
 	comm = ft_do_comm(*cmd, mini);
 	if (comm != 1)
 		return (0);
