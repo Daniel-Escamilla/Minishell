@@ -6,37 +6,11 @@
 /*   By: descamil <descamil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/14 15:50:54 by smarin-a          #+#    #+#             */
-/*   Updated: 2024/09/02 15:15:15 by descamil         ###   ########.fr       */
+/*   Updated: 2024/09/03 11:32:51 by descamil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
-
-int	ft_history(void)
-{
-	char	*str;
-	char	*tmp;
-	int		fd;
-
-	if (access(".minishell_history", W_OK) == -1)
-		unlink(".minishell_history");
-	fd = open(".minishell_history", O_RDWR | O_CREAT | O_APPEND, 0644);
-	if (fd == -1)
-		ft_error("Error create file", 1);
-	while (1)
-	{
-		tmp = get_next_line(fd);
-		if (tmp == NULL)
-			break ;
-		str = ft_strtrim(tmp, "\n");
-		add_history(str);
-		free(tmp);
-		free(str);
-	}
-	if (tmp)
-		free(tmp);
-	return (fd);
-}
 
 static int	ft_check_void_input(char *input)
 {

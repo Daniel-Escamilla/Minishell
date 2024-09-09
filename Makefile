@@ -26,32 +26,41 @@ CFLAGS = -g3 -Wall -Wextra -Werror
 #------------------------------------------------------------------------------#
 
 # Archivos fuente (agregar los que se necesiten)
-SRCS =	ft_main.c \
+SRCS =	ft_fds.c \
+		ft_main.c \
 		ft_free.c \
 		ft_lexer.c \
 		ft_utils.c \
 		ft_parser.c \
+		ft_strtok.c \
 		ft_signals.c \
 		ft_expander.c \
 		ft_commands.c \
+		ft_exec_cmd.c \
+		ft_here_doc.c \
+		ft_manage_fd.c \
 		ft_split_red.c \
 		ft_redirects.c \
 		ft_save_path.c \
-		ft_execution.c \
+		ft_str_utils.c \
+		ft_str_utils2.c \
 		ft_commands-2.c \
 		ft_commands-3.c \
 		ft_printf_cmd.c \
 		ft_initialize.c \
 		get_next_line.c \
 		ft_split_pipe.c \
+		ft_do_expander.c \
+		ft_files_utils.c \
 		ft_check_pipes.c \
-		ft_check_input.c \
 		ft_check_redir.c \
+		ft_do_expander.c \
 		ft_check_dollar.c \
 		ft_final_values.c \
 		ft_check_quotes.c \
 		ft_expander_utils.c \
 		ft_check_home_dir.c \
+		ft_redirects_utils.c \
 		ft_check_operators.c \
 		ft_error_management.c \
 		get_next_line_utils.c \

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_redirects.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: descamil <descamil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 15:31:41 by descamil          #+#    #+#             */
-/*   Updated: 2024/07/23 15:02:22 by user             ###   ########.fr       */
+/*   Updated: 2024/09/03 11:18:37 by descamil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,67 +68,29 @@ int	ft_red(char *input)
 	return (j);
 }
 
-void	ft_one(t_mini *mini, char *input)
-{
-	if (input[0] == '<')
-		mini->flags->redirect->si_le += 1;
-	else
-		mini->flags->redirect->si_ri += 1;
-}
-
-void	ft_two(t_mini *mini, char *input)
-{
-	if (input[0] == input[1])
-	{
-		if (input[0] == '<')
-			mini->flags->redirect->do_le += 1;
-		else
-			mini->flags->redirect->do_ri += 1;
-	}
-	else
-		mini->flags->redirect->red_error = 1;
-}
-
-void	ft_three(t_mini *mini, char *input)
-{
-	if (input[0] == input[1])
-		mini->flags->redirect->red_error = 2;
-	else
-		mini->flags->redirect->red_error = 3;
-}
-
-void	ft_four_plus(t_mini *mini, char *input)
-{
-	if (input[0] == input[1])
-	{
-		if (input[2] == input[3])
-			mini->flags->redirect->red_error = 4;
-		else
-			mini->flags->redirect->red_error = 2;
-	}
-	else
-		mini->flags->redirect->red_error = 3;
-}
-
-int	ft_red_count(t_mini *mini)
-{
-	int	i;
-
-	i = 0;
-	i += mini->flags->redirect->do_le;
-	i += mini->flags->redirect->do_ri;
-	i += mini->flags->redirect->si_le;
-	i += mini->flags->redirect->si_ri;
-	return (i);
-}
-
-int	ft_count_redirect(t_mini *mini, char *input)
+int	ft_redirect_size(t_mini *mini, char *input, int *i)
 {
 	int	size;
-	int	i;
 
-	i = 0;
 	size = 0;
+	mini->flags->redirect->red_error = 0;
+	while ((input[*i] == '<' || input[*i] == '>') && *i++ >= size)
+		size++;
+	if (size == 1)
+		ft_one(mini, &input[*i - size]);
+	else if (size == 2)
+		ft_two(mini, &input[*i - size]);
+	else if (size == 3)
+		ft_three(mini, &input[*i - size]);
+	else if (size >= 4)
+		ft_four_plus(mini, &input[*i - size]);
+	return (size);
+}
+
+int	ft_count_redirect(t_mini *mini, char *input, int i)
+{
+	int	size;
+
 	if (ft_red(input) != 0)
 	{
 		ft_start_red(mini);
@@ -138,18 +100,7 @@ int	ft_count_redirect(t_mini *mini, char *input)
 		{
 			if (input[i] == '\'' || input[i] == '\"')
 				i = ft_locate_next_quote(i + 1, input, input[i]);
-			size = 0;
-			mini->flags->redirect->red_error = 0;
-			while ((input[i] == '<' || input[i] == '>') && i++ >= size)
-				size++;
-			if (size == 1)
-				ft_one(mini, &input[i - size]);
-			else if (size == 2)
-				ft_two(mini, &input[i - size]);
-			else if (size == 3)
-				ft_three(mini, &input[i - size]);
-			else if (size >= 4)
-				ft_four_plus(mini, &input[i - size]);
+			size = ft_redirect_size(mini, input, &i);
 			if (input[i] == '\0' || mini->flags->redirect->red_error != 0)
 				break ;
 			i++;

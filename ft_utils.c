@@ -6,7 +6,7 @@
 /*   By: descamil <descamil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/14 11:24:41 by smarin-a          #+#    #+#             */
-/*   Updated: 2024/09/02 14:52:41 by descamil         ###   ########.fr       */
+/*   Updated: 2024/09/03 12:23:56 by descamil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,86 +23,39 @@ void	ft_mini_header(void)
 	printf(B_OR_0"│ │╰╯│ │ │ │  │╭╮ │  │ │  │ ╭─╮ │ │ ─╯╮ │ ╰─╮ │ ╰─╮\n"RESET);
 	printf("               ");
 	printf(B_YE_0"╰─╯  ╰─╯╰╯ ╰╯ ╰╯╰─╯ ╰╯ ╰╯ ╰─╯ ╰─╯ ╰───╯ ╰───╯ ╰───╯\n"RESET);
-	printf("\n                ");
-	printf(B_RD_0"         ╭─────────────────────────────╮            "RESET);
-	printf("\n                ");
-	printf(B_OR_1"         │   By Descamil && Smarin-a   │            "RESET);
-	printf("\n                ");
-	printf(B_YE_0"         ╰─────────────────────────────╯            "RESET);
+	printf("\n\n                ");
+	printf(B_WH_2"         ╭─────────────────────────────╮            "RESET);
+	printf(B_WH_2"\n                         │"RESET);
+	printf(B_WH_0"   By Descamil && Smarin-a   "RESET);
+	printf(B_WH_2"│            \n                "RESET);
+	printf(B_WH_2"         ╰─────────────────────────────╯            "RESET);
 	printf("\n\n\n");
 }
 
-int	ft_strnstrstr(char **str, char *locate)
+int	ft_history(void)
 {
-	int	i;
-	int	total;
+	char	*str;
+	char	*tmp;
+	int		fd;
 
-	i = 0;
-	total = 0;
-	if (str)
+	if (access(".minishell_history", W_OK) == -1)
+		unlink(".minishell_history");
+	fd = open(".minishell_history", O_RDWR | O_CREAT | O_APPEND, 0644);
+	if (fd == -1)
+		ft_error("Error create file", 1);
+	while (1)
 	{
-		while (str[i])
-		{
-			if (ft_strncmp(str[i], locate, ft_strlen(locate)) == 0)
-				total++;
-			i++;
-		}
-	}
-	return (total);
-}
-
-int	ft_strstr_len(char **str)
-{
-	int	i;
-
-	i = 0;
-	if (str == NULL)
-		return (0);
-	while (str[i] != NULL)
-		i++;
-	return (i);
-}
-
-char	**ft_strstr_join(char **str, char **str1)
-{
-	char	**string;
-	int		size;
-	int		i;
-	int		j;
-
-	i = 0;
-	j = 0;
-	if (str == NULL)
-	{
-		string = ft_calloc(sizeof(char *), ft_strstr_len(str1) + 1);
-		while (i != ft_strstr_len(str1) && str[i] != NULL)
-			string[j++] = ft_strdup(str1[i++]);
-		return (string);
-	}
-	size = ft_strstr_len(str) + ft_strstr_len(str1);
-	string = ft_calloc(sizeof(char *), size + 1);
-	if (string == NULL)
-		return (NULL);
-	while (i != ft_strstr_len(str) && str[i] != NULL)
-		string[j++] = ft_strdup(str[i++]);
-	i = 0;
-	while (i != ft_strstr_len(str1) && str1[i] != NULL)
-		string[j++] = ft_strdup(str1[i++]);
-	string[j] = NULL;
-	return (string);
-}
-
-void	ft_strstr_free(char **str)
-{
-	int	i;
-
-	i = 0;
-	if (str)
-	{
-		while (str[i])
-			free(str[i++]);
+		tmp = get_next_line(fd);
+		if (tmp == NULL)
+			break ;
+		str = ft_strtrim(tmp, "\n");
+		add_history(str);
+		free(tmp);
 		free(str);
 	}
+	if (tmp)
+		free(tmp);
+	return (fd);
 }
 
 void	ft_strstr_printf(char **str)
@@ -115,4 +68,10 @@ void	ft_strstr_printf(char **str)
 		while (str[++i])
 			printf("%s\n", str[i]);
 	}
+}
+
+void	ft_error(char *str, int i)
+{
+	perror(str);
+	exit(i);
 }

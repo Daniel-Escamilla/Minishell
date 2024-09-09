@@ -1,38 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_main.c                                          :+:      :+:    :+:   */
+/*   ft_str_utils2.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: descamil <descamil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/13 12:09:37 by smarin-a          #+#    #+#             */
-/*   Updated: 2024/09/03 13:05:41 by descamil         ###   ########.fr       */
+/*   Created: 2024/09/03 09:30:16 by descamil          #+#    #+#             */
+/*   Updated: 2024/09/03 09:30:56 by descamil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-// void	leaks(void)
-// {
-// 	system("leaks -q minishell");
-// }
-// atexit(leaks);
-int	g_exit_status;
-
-int	main(int argc, char **argv, char **env)
+char	**ft_sindub_join(char **str, char *str1)
 {
-	t_mini	*mini;
+	char	**result;
+	int		len;
+	int		i;
 
-	if (argc != 1)
-		ft_many_args_error(argv);
-	mini = ft_initialize(env);
-	g_exit_status = 0;
-	ft_mini_header();
-	ft_signal_management(1);
-	ft_recive_input(mini);
-	printf("\nSALIDA 1\n\n");
-	free_t_cmd(&mini->cmd);
-	free_t_mini(mini);
-	close(mini->fd_history);
-	return (0);
+	i = -1;
+	if (str == NULL)
+		len = 0;
+	else
+		len = ft_strstr_len(str);
+	result = ft_calloc(sizeof(char *), len + 1 + 1);
+	while (++i < len)
+		result[i] = ft_strdup(str[i]);
+	result[i] = ft_strdup(str1);
+	return (result);
+}
+
+void	ft_strstr_unlink(t_mini *mini)
+{
+	int	i;
+
+	i = -1;
+	while (mini->join && mini->join[++i])
+		unlink(mini->join[i]);
 }

@@ -6,7 +6,7 @@
 /*   By: descamil <descamil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/05 13:18:57 by smarin-a          #+#    #+#             */
-/*   Updated: 2024/09/02 10:48:38 by descamil         ###   ########.fr       */
+/*   Updated: 2024/09/03 12:12:49 by descamil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -171,12 +171,6 @@ typedef struct s_cmd
 	int				exit;
 }					t_cmd;
 
-typedef struct s_sh
-{
-    // ... otros campos ...
-    int in_heredoc;  // Nuevo campo para rastrear si estamos en un heredoc
-} t_sh;
-
 typedef struct s_mini
 {
 	pid_t		*proc;
@@ -198,6 +192,44 @@ typedef struct s_mini
 }				t_mini;
 
 
+// ft_redirects_utils.c
+int		ft_red_count(t_mini *mini);
+void	ft_one(t_mini *mini, char *input);
+void	ft_two(t_mini *mini, char *input);
+void	ft_three(t_mini *mini, char *input);
+void	ft_four_plus(t_mini *mini, char *input);
+
+// ft_strtok.c
+int		ft_minus_one(t_mini *mini);
+
+// ft_do_expander.c
+void	ft_do_expander(t_mini *mini, t_cmd *cmd);
+char	**ft_str_expander(t_mini *mini, char **args);
+
+// ft_exec_cmd.c
+char	*ft_route_cmd(t_mini *mini, t_cmd *current, char *tmp);
+
+// ft_fds.c
+int		ft_pick_infile(t_cmd *cmd, t_mini *mini);
+int		ft_pick_outfile(t_cmd *cmd, t_mini *mini);
+
+// ft_files_utils.c
+void	ft_select_files(t_cmd *cmd, int i);
+void	ft_move_files(t_cmd *cmd, t_mini *mini);
+void	ft_remove_files(t_cmd *cmd, t_mini *mini);
+void	process_lines(t_cmd **cmd, t_mini *mini, char **lines, int i);
+
+// ft_manage_fd.c
+void	ft_close_fd(t_mini *mini, int who);
+void	ft_open_fd(t_cmd *cmd, t_mini *mini);
+
+// ft_str_utils.c
+// ft_str_utils2.c
+// here_doc.c
+
+
+
+
 
 
 // ft_execution.c
@@ -206,6 +238,7 @@ void	ft_error(char *str, int i);
 int		ft_here_doc(t_cmd *cmd, t_mini *mini, int last, int i);
 
 // ft_utils.c
+int		ft_history(void);
 void	ft_mini_header(void);
 int		ft_strstr_len(char **str);
 void	ft_strstr_printf(char **str);
@@ -229,7 +262,12 @@ void	ft_signal_handler(int signal);
 void	ft_recive_input(t_mini *mini);
 
 // ft_parser.c
+int		ft_wait_bonus(t_mini *mini);
 int		ft_strtok(t_mini *mini, t_cmd **cmd, char *input);
+char	**ft_create_path(char **env);
+void	ft_start_val(t_cmd *cmd);
+void	ft_select_cmd(t_cmd *current, t_mini *mini, int j);
+
 
 // ft_split_pipe.c
 char	**ft_split_pipe(const char *s, char c);
@@ -272,7 +310,7 @@ void	print_cmd(t_cmd *cmd);
 char	**ft_check_input(t_mini *mini, char *input);
 
 // ft_redirects.c
-int		ft_count_redirect(t_mini *mini, char *input);
+int		ft_count_redirect(t_mini *mini, char *input, int i);
 
 // ft_check_quotes.c
 int		ft_locate_next_quote(int i, char *input, char quote);

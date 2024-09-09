@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_error_management.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: descamil <descamil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/13 17:37:57 by smarin-a          #+#    #+#             */
-/*   Updated: 2024/08/17 18:17:02 by user             ###   ########.fr       */
+/*   Updated: 2024/09/03 12:59:33 by descamil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,8 +42,8 @@ void	ft_many_args_error(char **argv)
 
 void	ft_exit_error(t_mini *mini, char *error_msg, int exit_status)
 {
-	printf("%s\n", error_msg);
 	close (mini->fd_history);
+	printf("%s\n", error_msg);
 	printf("\nSALIDA 2\n\n");
 	// free_t_cmd(&(mini->cmd));
 	free_t_mini(mini);

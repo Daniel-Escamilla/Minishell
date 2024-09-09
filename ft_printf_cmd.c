@@ -6,7 +6,7 @@
 /*   By: descamil <descamil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/29 15:23:41 by descamil          #+#    #+#             */
-/*   Updated: 2024/09/02 15:03:24 by descamil         ###   ########.fr       */
+/*   Updated: 2024/09/03 12:02:44 by descamil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ void	print_cmd(t_cmd *cmd)
 {
 	t_cmd	*current;
 	int		cmd_index;
+	int		i;
 
 	if (cmd == NULL)
 	{
@@ -34,8 +35,10 @@ void	print_cmd(t_cmd *cmd)
 		if (current->args)
 		{
 			printf(B_PR_0 "  Args:\n" RESET);
-			for (int i = 0; current->args[i] != NULL; i++)
-				printf(B_GR_0 "   - Args[%d]: {%s}\n" RESET, i, current->args[i]);
+			i = -1;
+			while (current->args[++i] != NULL)
+				printf(B_GR_0 "   - Args[%d]: {%s}\n" RESET,
+					i, current->args[i]);
 		}
 		else
 			printf(B_RD_0 "    Args: (null)\n" RESET);
@@ -44,15 +47,19 @@ void	print_cmd(t_cmd *cmd)
 			printf(B_PR_0"  Files:\n" RESET);
 			if (current->files->f_order)
 			{
-				for (int i = 0; current->files->f_order[i] != NULL; i++)
-					printf(B_GR_0 "   - Files[%d]: {%s}\n" RESET, i, current->files->f_order[i]);
+				i = -1;
+				while (current->files->f_order[++i] != NULL)
+					printf(B_GR_0 "   - Files[%d]: {%s}\n"RESET,
+						i, current->files->f_order[i]);
 			}
 			else
 				printf(B_RD_0 "    Files: (null)\n" RESET);
 			if (current->files->order)
 			{
-				for (int i = 0; current->files->order[i] != NULL; i++)
-					printf(B_GR_0 "   - Order[%d]: {%s}\n" RESET, i, current->files->order[i]);
+				i = -1;
+				while (current->files->order[++i] != NULL)
+					printf(B_GR_0 "   - Order[%d]: {%s}\n" RESET,
+						i, current->files->order[i]);
 			}
 			printf(B_GR_0 "\n   - Error: %d\n" RESET, current->files->error);
 		}
