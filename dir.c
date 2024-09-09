@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/03 18:00:33 by user              #+#    #+#             */
-/*   Updated: 2024/09/03 18:02:46 by user             ###   ########.fr       */
+/*   Updated: 2024/09/04 10:57:27 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,8 @@ int main(int argc, char *argv[]) {
         printf("Cambio al directorio %s exitoso.\n", ruta);
     } else {
         // Si ocurre un error, se muestra un mensaje con el error
-        fprintf(stderr, "Error al cambiar al directorio %s: %s\n", ruta, strerror(errno));
+        fprintf(stderr, "mini: cd: %s: %s\n", ruta, strerror(errno));
+        // perror("mini: cd: a");
         return EXIT_FAILURE;
     }
 
