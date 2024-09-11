@@ -32,6 +32,7 @@ SRCS =	ft_fds.c \
 		ft_lexer.c \
 		ft_utils.c \
 		ft_files.c \
+		ft_tript.c \
 		ft_parser.c \
 		ft_strtok.c \
 		ft_signals.c \
@@ -46,22 +47,27 @@ SRCS =	ft_fds.c \
 		ft_save_path.c \
 		ft_str_utils.c \
 		ft_str_utils2.c \
+		ft_change_var.c \
 		ft_commands-2.c \
 		ft_commands-3.c \
 		ft_printf_cmd.c \
 		ft_initialize.c \
 		get_next_line.c \
 		ft_split_pipe.c \
+		ft_expand_div.c \
 		ft_do_expander.c \
 		ft_files_utils.c \
 		ft_check_pipes.c \
 		ft_check_redir.c \
 		ft_do_expander.c \
+		ft_check_input.c \
 		ft_check_dollar.c \
 		ft_final_values.c \
 		ft_check_quotes.c \
 		ft_expander_utils.c \
 		ft_check_home_dir.c \
+		ft_expander_utils1.c \
+		ft_expander_utils2.c \
 		ft_redirects_utils.c \
 		ft_check_operators.c \
 		ft_error_management.c \

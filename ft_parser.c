@@ -79,7 +79,7 @@ void	ft_select_cmd(t_cmd *current, t_mini *mini, int j)
 			if (current->cmd == NULL && current->error != -2)
 				mini->cmd->files->error = -1;
 		}
-		else if (current->error != -2 && j < ft_strstr_len(current->args))
+		if (current->error != -2 && j < ft_strstr_len(current->args))
 		{
 			tmp2[j] = ft_strdup(tmp[i]);
 			if (tmp2[j++] == NULL)

@@ -1,36 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_expander.c                                      :+:      :+:    :+:   */
+/*   ft_expander_utils2.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/09 13:20:46 by descamil          #+#    #+#             */
-/*   Updated: 2024/09/11 15:39:05 by user             ###   ########.fr       */
+/*   Created: 2024/09/09 18:15:16 by user              #+#    #+#             */
+/*   Updated: 2024/09/09 18:15:28 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-char	*ft_expander(char **env, char *str)
+void	ft_ex_free(char **div, char *tmp)
 {
-	char	*cpy;
-	char	*div;
-	int		iter;
-
-	iter = -1;
-	if (str == NULL)
-		return (NULL);
-	cpy = ft_strdup(str);
-	while (1)
+	if (div)
 	{
-		div = expand_div(&iter, &str, env);
-		if (iter == -2)
-			break ;
+		free(div[0]);
+		if (div[1])
+			free(div[1]);
+		free(div[2]);
+		free(div);
 	}
-	if (str && iter != 1 && (int)ft_strlen(str) != 0
-		&& ft_strncmp(str, cpy, ft_strlen(cpy)) != 0)
-		free(str);
-	free(cpy);
+	if (tmp && ft_strlen(tmp) != 0)
+		free(tmp);
+}
+
+char	*ft_no_more_dolar(char *div, char *str)
+{
+	if (!div)
+		div = ft_strdup(str);
 	return (div);
+}
+
+char	*ft_free_null(char *str)
+{
+	free(str);
+	return (NULL);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_builtin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: descamil <descamil@student.42.fr>          +#+  +:+       +#+        */
+/*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/03 17:09:02 by user              #+#    #+#             */
-/*   Updated: 2024/09/09 10:54:28 by descamil         ###   ########.fr       */
+/*   Updated: 2024/09/09 16:10:50 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@
 // 	;
 // }
 
-int	ft_exec_built(t_mini *mini, t_cmd *cmd)
+int	ft_exec_built(t_cmd *cmd)
 {
 	int	exit;
 	
@@ -43,8 +43,6 @@ int	ft_exec_built(t_mini *mini, t_cmd *cmd)
 		exit = 6;
 	if (ft_strncmp(cmd->cmd, "export", 6) == 0 && ft_strlen(cmd->cmd) == 6)
 		exit = 7;
-	if (exit == 0)
-		mini->error = -2;
 	return (exit);
 }
 

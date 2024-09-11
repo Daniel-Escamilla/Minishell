@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_exec_cmd.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: descamil <descamil@student.42.fr>          +#+  +:+       +#+        */
+/*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/03 09:29:06 by descamil          #+#    #+#             */
-/*   Updated: 2024/09/09 11:55:32 by descamil         ###   ########.fr       */
+/*   Updated: 2024/09/11 17:24:15 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,6 @@ void	ft_comm(t_cmd *cmd, t_mini *mini)
 		if (pipe(mini->fd_pipe) == -1)
 			perror("Pipe Error");
 	}
-	
 	if (cmd->cmd == NULL)
 		return ;
 	ft_open_fd(cmd, mini);
@@ -90,9 +89,11 @@ void	ft_comm(t_cmd *cmd, t_mini *mini)
 			ft_close_fd(mini, 'H');
 			if (cmd->built == 1)
 			{
-				ft_exec_built(mini, cmd);
+				ft_exec_built(cmd);
 				ft_putstr_fd("BUILT\n", 2);
-				// Gestionar error de ejecucion.
+				close(mini->fd_pipe[1]);
+				close(mini->fd_history);
+				exit(0);
 			}
 			else
 			{
@@ -101,10 +102,6 @@ void	ft_comm(t_cmd *cmd, t_mini *mini)
 			}
 		}
 		ft_close_fd(mini, 'P');
-		if (cmd->names->fd_infile != 0 && cmd->names->fd_infile != mini->fd_pipe[0])
-			close(cmd->names->fd_infile);
-		if (cmd->names->fd_outfile != 1 && cmd->names->fd_outfile != mini->fd_pipe[1])
-			close(cmd->names->fd_outfile);
 		if (cmd->names->join)
 		{
 			unlink(cmd->names->join);

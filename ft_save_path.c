@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_save_path.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: descamil <descamil@student.42.fr>          +#+  +:+       +#+        */
+/*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/02 14:56:04 by descamil          #+#    #+#             */
-/*   Updated: 2024/09/02 14:57:39 by descamil         ###   ########.fr       */
+/*   Updated: 2024/09/11 15:42:19 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-static char	*ft_father(int *fd, char **args)
+char	*ft_father(int *fd, char **args)
 {
 	char	*line;
 
@@ -33,7 +33,7 @@ static char	*ft_father(int *fd, char **args)
 	return (NULL);
 }
 
-static void	ft_pid_0(int *fd, char *path, char **args, char **env)
+void	ft_pid_0(int *fd, char *path, char **args, char **env)
 {
 	close(fd[0]);
 	dup2(fd[1], STDOUT_FILENO);
@@ -45,7 +45,7 @@ static void	ft_pid_0(int *fd, char *path, char **args, char **env)
 	exit(1);
 }
 
-static char	*ft_execute(char **env)
+char	*ft_execute(char **env)
 {
 	char	**args;
 	char	*path;

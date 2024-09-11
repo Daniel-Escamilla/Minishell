@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/01 17:52:46 by smarin-a          #+#    #+#             */
-/*   Updated: 2024/07/23 14:57:14 by user             ###   ########.fr       */
+/*   Updated: 2024/09/11 16:52:25 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ char	**ft_check_input(t_mini *mini, char *input)
 	char	**lines;
 
 	lines = NULL;
-	mini->flags->locate_red = ft_count_redirect(mini, input);
+	mini->flags->locate_red = ft_count_redirect(mini, input, 0);
 	if (mini->flags->locate_red == -1)
 		return (NULL);
 	mini->flags->quote = ft_check_quote(input, 2, 2, mini);

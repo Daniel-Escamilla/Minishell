@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lexer.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: descamil <descamil@student.42.fr>          +#+  +:+       +#+        */
+/*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/14 15:50:54 by smarin-a          #+#    #+#             */
-/*   Updated: 2024/09/09 12:30:15 by descamil         ###   ########.fr       */
+/*   Updated: 2024/09/11 16:48:28 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-static int	ft_check_void_input(char *input)
+int	ft_check_void_input(char *input)
 {
 	int	i;
 	int	j;
@@ -79,10 +79,7 @@ void	ft_free_per_comm(t_mini *mini, char *input)
 		mini->flags->redirect = NULL;
 	}
 	if (mini->proc && mini->error != -2 && input[0] != '\0')
-	{
-		printf("Aquí\n");
 		free(mini->proc);
-	}
 	if (input)
 		free(input);
 }

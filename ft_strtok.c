@@ -3,33 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strtok.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: descamil <descamil@student.42.fr>          +#+  +:+       +#+        */
+/*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/01 17:52:46 by smarin-a          #+#    #+#             */
-/*   Updated: 2024/09/09 11:54:42 by descamil         ###   ########.fr       */
+/*   Updated: 2024/09/11 17:08:04 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
-
-char	**ft_check_input(t_mini *mini, char *input)
-{
-	char	**lines;
-
-	lines = NULL;
-	mini->flags->locate_red = ft_count_redirect(mini, input, 0);
-	mini->flags->quote = ft_check_quote(input, 2, 2, mini);
-	mini->flags->pipe = ft_count_pipes(input);
-	if (ft_minus_one(mini) == -1)
-		return (NULL);
-	if (mini->flags->pipe > 0)
-	{
-		lines = ft_split_pipe(input, '|');
-		if (*(lines) == NULL)
-			return (NULL);
-	}
-	return (lines);
-}
 
 int	ft_minus_one(t_mini *mini)
 {
@@ -95,7 +76,7 @@ int	ft_strtok(t_mini *mini, t_cmd **cmd, char *input)
 		return (0);
 	if (ft_order_all(mini, cmd, lines, input) == -1)
 		return (0);
-	print_cmd(*cmd);
+	// print_cmd(*cmd);
 	comm = ft_do_comm(*cmd, mini);
 	if (comm != 1)
 		return (0);
