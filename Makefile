@@ -55,6 +55,7 @@ SRCS =	ft_fds.c \
 		get_next_line.c \
 		ft_split_pipe.c \
 		ft_expand_div.c \
+		ft_select_cmd.c \
 		ft_do_expander.c \
 		ft_files_utils.c \
 		ft_check_pipes.c \

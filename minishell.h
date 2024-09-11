@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/05 13:18:57 by smarin-a          #+#    #+#             */
-/*   Updated: 2024/09/11 17:20:56 by user             ###   ########.fr       */
+/*   Updated: 2024/09/11 23:15:50 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -160,8 +160,9 @@ typedef struct s_names
 typedef struct s_cmd
 {
 	struct s_cmd	*next;
-	char			*cmd;
+	char			**tmp;
 	char			**args;
+	char			*cmd;
 	t_files			*files;
 	t_type			*type;
 	t_names			*names;
@@ -169,20 +170,21 @@ typedef struct s_cmd
 	int				error;
 	int				built;
 	int				exit;
+	int				size;
 }					t_cmd;
 
 typedef struct s_mini
 {
 	pid_t		*proc;
 	
-	int			here_doc;
-	int			fd_pipe[2];
+	int			error;
 	int			index;
 	int			fd_tmp;
+	int			here_doc;
 	int			num_comm;
+	int			fd_pipe[2];
 	int			fd_history;
 	int			shell_level;
-	int			error;
 	char		*input;
 	char		**join;
 	t_env		*env;
@@ -353,7 +355,6 @@ int		ft_sizes(t_cmd *current);
 void	ft_start_val(t_cmd *cmd);
 int		ft_wait_bonus(t_mini *mini);
 char	**ft_create_path(char **env);
-void	ft_select_cmd(t_cmd *current, t_mini *mini, int j);
 
 // ft_printf_cmd.c
 void	print_cmd(t_cmd *cmd);
@@ -377,6 +378,9 @@ char	*ft_execute(char **env);
 char	**ft_save_path(char **env);
 char	*ft_father(int *fd, char **args);
 void	ft_pid_0(int *fd, char *path, char **args, char **env);
+
+// ft_select_cmd.c
+void	ft_select_cmd(t_cmd *current, t_mini *mini, int j);
 
 // ft_signals.c
 void	ft_signal_management(int i);

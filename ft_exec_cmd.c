@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/03 09:29:06 by descamil          #+#    #+#             */
-/*   Updated: 2024/09/11 17:24:15 by user             ###   ########.fr       */
+/*   Updated: 2024/09/11 23:23:24 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ char	*ft_route_cmd(t_mini *mini, t_cmd *current, char *tmp)
 	if (tmp[0] == '\0')
 	{
 		ft_strstr_free(path);
-		current->error = -2;
+		current->files->error = -2;
 		return (NULL);
 	}
 	if (path == NULL)
@@ -59,7 +59,7 @@ char	*ft_route_cmd(t_mini *mini, t_cmd *current, char *tmp)
 	if (cmd == NULL)
 	{
 		printf("Ese comando no existe, prueba otro\n");
-		mini->error = -2;
+		current->files->error = -3;
 		ft_strstr_free(path);
 		return (NULL);
 	}
@@ -74,10 +74,10 @@ void	ft_comm(t_cmd *cmd, t_mini *mini)
 		if (pipe(mini->fd_pipe) == -1)
 			perror("Pipe Error");
 	}
+	ft_open_fd(cmd, mini);
 	if (cmd->cmd == NULL)
 		return ;
-	ft_open_fd(cmd, mini);
-	if (cmd->names->fd_infile != -1 && cmd->names->fd_outfile != -1)
+	if (cmd->names->fd_infile != -1 && cmd->names->fd_outfile != -1 && cmd->files->error != -3)
 	{
 		mini->proc[mini->index] = fork();
 		if (mini->proc[mini->index] == -1)

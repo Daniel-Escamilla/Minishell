@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/14 15:50:54 by smarin-a          #+#    #+#             */
-/*   Updated: 2024/09/11 16:48:28 by user             ###   ########.fr       */
+/*   Updated: 2024/09/11 22:31:36 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,7 +105,7 @@ void	ft_recive_input(t_mini *mini)
 				if (write(mini->fd_history, input, ft_strlen(input)) == -1
 					|| write(mini->fd_history, "\n", 1) == -1)
 					return ;
-			if (ft_strtok(mini, &(mini->cmd), input))
+			if (ft_strtok(mini, &(mini->cmd), input) == 0)
 				printf("\nLlega al final! 🚀\n\n");
 		}
 		ft_free_per_comm(mini, input);
