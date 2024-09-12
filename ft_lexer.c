@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/14 15:50:54 by smarin-a          #+#    #+#             */
-/*   Updated: 2024/09/11 22:31:36 by user             ###   ########.fr       */
+/*   Updated: 2024/09/12 19:18:36 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,7 +98,6 @@ void	ft_recive_input(t_mini *mini)
 			(void)input;
 		else
 		{
-			mini->error = 0;
 			mini->input = ft_strdup(input);
 			add_history(input);
 			if (mini->fd_history != -1)

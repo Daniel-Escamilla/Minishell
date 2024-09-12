@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/09 18:14:41 by user              #+#    #+#             */
-/*   Updated: 2024/09/09 18:14:55 by user             ###   ########.fr       */
+/*   Updated: 2024/09/12 19:53:07 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,6 @@ char	*ft_join(char **div, char *tmp)
 	char	*ptr;
 	char	*final;
 
-	ptr = NULL;
-	final = NULL;
 	if (div[0] == NULL && div[2] == NULL)
 	{
 		final = ft_calloc(sizeof(char), ft_strlen(tmp) + 1);

@@ -26,8 +26,7 @@ CFLAGS = -g3 -Wall -Wextra -Werror
 #------------------------------------------------------------------------------#
 
 # Archivos fuente (agregar los que se necesiten)
-SRCS =	ft_fds.c \
-		ft_main.c \
+SRCS =	ft_main.c \
 		ft_free.c \
 		ft_lexer.c \
 		ft_utils.c \
@@ -46,6 +45,7 @@ SRCS =	ft_fds.c \
 		ft_redirects.c \
 		ft_save_path.c \
 		ft_str_utils.c \
+		ft_fds_infile.c \
 		ft_str_utils2.c \
 		ft_change_var.c \
 		ft_commands-2.c \
@@ -56,6 +56,7 @@ SRCS =	ft_fds.c \
 		ft_split_pipe.c \
 		ft_expand_div.c \
 		ft_select_cmd.c \
+		ft_fds_outfile.c \
 		ft_do_expander.c \
 		ft_files_utils.c \
 		ft_check_pipes.c \

@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/21 11:25:25 by user              #+#    #+#             */
-/*   Updated: 2024/09/11 17:20:48 by user             ###   ########.fr       */
+/*   Updated: 2024/09/12 20:55:40 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,20 +32,29 @@ int	ft_choose_outfile(t_cmd *cmd, t_mini *mini)
 	return (mini->fd_pipe[1]);
 }
 
-void	ft_close_fd(t_mini *mini, int who)
+void ft_close_fd(t_mini *mini, int who)
 {
-	if (who == 'H')
-		close(mini->fd_pipe[0]);
-	else if (who == 'P')
-	{
-		close(mini->fd_pipe[1]);
-		if (mini->fd_tmp != 0)
-			close(mini->fd_tmp);
-		if (mini->num_comm != 1)
-			mini->fd_tmp = mini->fd_pipe[0];
-		else
-			close(mini->fd_pipe[0]);
-	}
+    if (who == 'H')
+    {
+        if (mini->fd_pipe[0] > 0)
+        {
+            close(mini->fd_pipe[0]);
+            mini->fd_pipe[0] = -1;
+        }
+    }
+    else if (who == 'P')
+    {
+        if (mini->fd_pipe[1] > 0)
+        {
+            close(mini->fd_pipe[1]);
+            mini->fd_pipe[1] = -1;
+        }
+    }
+    if (mini->fd_tmp > 0)
+    {
+        close(mini->fd_tmp);
+        mini->fd_tmp = -1;
+    }
 }
 
 void	ft_open_fd(t_cmd *cmd, t_mini *mini)

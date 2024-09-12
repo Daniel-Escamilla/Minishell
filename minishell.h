@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/05 13:18:57 by smarin-a          #+#    #+#             */
-/*   Updated: 2024/09/11 23:15:50 by user             ###   ########.fr       */
+/*   Updated: 2024/09/12 19:51:00 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -278,7 +278,7 @@ char	*ft_validate_comm(char *cmd, char **path, int j);
 char	*ft_route_cmd(t_mini *mini, t_cmd *current, char *tmp);
 
 // ft_expand_div.c
-char	*expand_div(int *iter, char **str, char **env);
+char	*expand_div(int *iter, char *str, char **env);
 
 // ft_expander.c
 char	*ft_expander(char **env, char *str);
@@ -295,9 +295,11 @@ char	*ft_no_more_dolar(char *div, char *str);
 
 // ft_expander_utils.c
 
-// ft_fds.c
+// ft_fds_infile.c
 int		ft_more(t_cmd *cmd, int i, int type);
 int		ft_pick_infile(t_cmd *cmd, t_mini *mini);
+
+// ft_fds_outfile.c
 int		ft_pick_outfile(t_cmd *cmd, t_mini *mini);
 
 // ft_files.c

@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/01 17:52:46 by smarin-a          #+#    #+#             */
-/*   Updated: 2024/09/11 23:22:58 by user             ###   ########.fr       */
+/*   Updated: 2024/09/11 23:27:01 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,6 @@ int	ft_do_comm(t_cmd *cmd, t_mini *mini)
 	mini->proc = ft_calloc(sizeof(pid_t), mini->num_comm + 1);
 	while (current != NULL)
 	{
-		printf("Aquí\n");
 		ft_start_val(current);
 		ft_comm(current, mini);
 		mini->num_comm--;
@@ -71,6 +70,7 @@ int	ft_strtok(t_mini *mini, t_cmd **cmd, char *input)
 {
 	char	**lines;
 
+	mini->error = 0;
 	lines = ft_check_input(mini, input);
 	if (ft_minus_one(mini) == -1)
 		return (-1);
