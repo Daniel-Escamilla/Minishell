@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/02 14:31:25 by smarin-a          #+#    #+#             */
-/*   Updated: 2024/09/09 17:09:53 by user             ###   ########.fr       */
+/*   Updated: 2024/09/15 21:40:41 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,32 +34,6 @@ int	ft_count_args(char *input)
 		size++;
 	}
 	return (size);
-}
-
-char	*ft_get_command(char *input)
-{
-	int		i;
-	int		init;
-	char	*command;
-
-	i = 0;
-	while (input[i] == 32 || (input[i] == 9 && input[i] <= 13))
-		i++;
-	init = i;
-	while (input[i] && input[i] != 32 && !(input[i] >= 9
-			&& input[i] <= 13) && !ft_is_not_mayor_n_minor_char(input[i]))
-	{
-		if (input[i] == 34 || input[i] == 39)
-			i = ft_locate_next_quote(i + 1, input, input[i]);
-		i++;
-	}
-	if (i && !ft_is_not_mayor_n_minor_char(input[i]))
-	{
-		command = ft_substr(input, init, i);
-		if (command == NULL)
-			ft_exit_error(NULL, "Malloc error", 50);
-	}
-	return (command);
 }
 
 int	is_red(char *argv)
@@ -124,10 +98,10 @@ t_cmd	*ft_add_command(char *input, int i)
 
 	new_cmd = ft_calloc(sizeof(t_cmd), 1);
 	if (!new_cmd)
-		ft_exit_error(NULL, "Calloc error", 9);
+		ft_error("Calloc error", 9);
 	new_cmd->names = ft_calloc(sizeof(t_names), 1);
 	if (!new_cmd->names)
-		ft_exit_error(NULL, "Calloc error", 9);
+		ft_error("Calloc error", 9);
 	new_cmd->args_amount = ft_count_args(input);
 	if (new_cmd->args_amount == 0)
 		return (new_cmd);

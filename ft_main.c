@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_main.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: descamil <descamil@student.42.fr>          +#+  +:+       +#+        */
+/*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/13 12:09:37 by smarin-a          #+#    #+#             */
-/*   Updated: 2024/09/09 09:55:02 by descamil         ###   ########.fr       */
+/*   Updated: 2024/09/15 21:23:07 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,7 @@ int	main(int argc, char **argv, char **env)
 {
 	t_mini	*mini;
 
-	if (argc != 1)
-		ft_many_args_error(argv);
+	ft_many_args_error(argc, argv);
 	mini = ft_initialize(env);
 	g_exit_status = 0;
 	ft_mini_header();

@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/05 13:18:57 by smarin-a          #+#    #+#             */
-/*   Updated: 2024/09/12 19:51:00 by user             ###   ########.fr       */
+/*   Updated: 2024/09/15 21:28:49 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -224,7 +224,7 @@ int		ft_is_not_mayor_n_minor_char(char c);
 int		ft_search_next_char(char *str, char c, int j);
 
 // ft_check_pipes.c
-int		ft_count_pipes(char *input);
+int		ft_count_pipes(char *input, int amount, int character);
 char	**ft_split_pipes(char *input);
 int		ft_check_pipes_arg(char *input);
 int		ft_pipe_error(char *input, int i);
@@ -238,6 +238,12 @@ int		ft_check_quote(char *input, int simp_quote, int doub_quote, t_mini *mini);
 // ft_check_redir.c
 int		ft_redir_type(char *splited_arg);
 int		ft_check_redir_arg(char **splited_pipes_matrix, int i);
+
+// ft_comm_exec.c
+void	ft_comm(t_cmd *cmd, t_mini *mini);
+void	ft_comm_part1(t_cmd *cmd, t_mini *mini);
+void	ft_comm_part2(t_cmd *cmd, t_mini *mini);
+void	ft_comm_part3(t_cmd *cmd, t_mini *mini);
 
 // ft_commands-2.c
 void	ft_plus_one(int value1, int value2);
@@ -268,9 +274,9 @@ void	ft_do_expander(t_mini *mini, t_cmd *cmd);
 char	**ft_str_expander(t_mini *mini, char **args);
 
 // ft_error_management.c
-void	ft_many_args_error(char **argv);
-void	ft_put_error(char *bash, char *file, char *error_msg);
-void	ft_exit_error(t_mini *mini, char *error_msg, int exit_status);
+void	ft_many_args_error(int argc, char **argv);
+// void	ft_put_error(char *bash, char *file, char *error_msg);
+// void	ft_exit_error(t_mini *mini, char *error_msg, int exit_status);
 
 // ft_exec_cmd.c
 void	ft_comm(t_cmd *cmd, t_mini *mini);
@@ -329,7 +335,6 @@ void	ft_free_sim(void *ptr, char *str, char *str1);
 void	ft_free_dou(void *ptr, char **str, char **str1);
 
 // ft_here_doc.c
-void	ft_create_file(t_cmd *cmd);
 int		ft_here_doc(t_cmd *cmd, int last, int i);
 
 // ft_initialize.c

@@ -45,6 +45,7 @@ SRCS =	ft_main.c \
 		ft_redirects.c \
 		ft_save_path.c \
 		ft_str_utils.c \
+		ft_comm_exec.c \
 		ft_fds_infile.c \
 		ft_str_utils2.c \
 		ft_change_var.c \
@@ -60,14 +61,11 @@ SRCS =	ft_main.c \
 		ft_do_expander.c \
 		ft_files_utils.c \
 		ft_check_pipes.c \
-		ft_check_redir.c \
 		ft_do_expander.c \
 		ft_check_input.c \
-		ft_check_dollar.c \
 		ft_final_values.c \
 		ft_check_quotes.c \
 		ft_expander_utils.c \
-		ft_check_home_dir.c \
 		ft_expander_utils1.c \
 		ft_expander_utils2.c \
 		ft_redirects_utils.c \

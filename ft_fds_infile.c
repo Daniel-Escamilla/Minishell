@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/12 19:25:46 by user              #+#    #+#             */
-/*   Updated: 2024/09/12 19:30:54 by user             ###   ########.fr       */
+/*   Updated: 2024/09/15 20:35:34 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ static int	ft_process_infile(t_cmd *cmd, t_mini *mini, int i)
 	fd = ft_open_infile(cmd->files->f_order[i], mini);
 	if (fd == -1)
 		return (-1);
-	if (ft_more(cmd, i, 1) == 1)
+	if (ft_more(cmd, i, 1) == 1 && ft_more(cmd, i, 3) == 0)
 		return (fd);
 	close(fd);
 	return (0);
@@ -69,12 +69,12 @@ int	ft_pick_infile(t_cmd *cmd, t_mini *mini)
 		if (ft_atoi(cmd->files->order[i]) == 1)
 		{
 			fd = ft_process_infile(cmd, mini, i);
-			if (fd != 0)
+			if (fd != 0 && ft_more(cmd, i, 1) == 1 && ft_more(cmd, i, 3) == 0)
 				return (fd);
 		}
 		else if (ft_atoi(cmd->files->order[i]) == 3)
 		{
-			if (ft_more(cmd, i, 3) == 1)
+			if (ft_more(cmd, i, 3) == 1 && ft_more(cmd, i, 1) == 0)
 				return (ft_here_doc(cmd, -2, i));
 			fd = ft_here_doc(cmd, 0, i);
 		}

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split_pipe.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: descamil <descamil@student.42.fr>          +#+  +:+       +#+        */
+/*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/09 17:04:59 by descamil          #+#    #+#             */
-/*   Updated: 2024/09/02 14:53:08 by descamil         ###   ########.fr       */
+/*   Updated: 2024/09/15 21:35:30 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,10 +76,10 @@ char	**ft_split_pipe(const char *s, char c)
 	i = 0;
 	a = 0;
 	len_mod = 0;
-	arr = (char **)ft_calloc((ft_count_pipes((char *)s) + 2), sizeof(char *));
+	arr = (char **)ft_calloc((ft_count_pipes((char *)s, 0, 0) + 2), sizeof(char *));
 	if (arr == NULL)
 		return (NULL);
-	while (a < ft_count_pipes((char *)s) + 1)
+	while (a < (ft_count_pipes((char *)s, 0, 0) + 1))
 	{
 		len_mod = ft_strlen_pipe(s, i, c);
 		cpy_mod = ft_strlcpy_pipe((char *)s, c, &i, len_mod);

@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/14 15:50:54 by smarin-a          #+#    #+#             */
-/*   Updated: 2024/09/12 19:18:36 by user             ###   ########.fr       */
+/*   Updated: 2024/09/15 21:32:13 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,7 +93,10 @@ void	ft_recive_input(t_mini *mini)
 	{
 		input = readline("🐚"B_GR_0" MINI(S)HELL"RESET" 🔥 -> ");
 		if (!input)
-			ft_exit_error(mini, "Exit", g_exit_status);
+		{
+			printf("Exit\n");
+			break ;
+		}
 		if (ft_check_void_input(input) == -1 || input[0] == '\0')
 			(void)input;
 		else

@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/03 09:32:44 by descamil          #+#    #+#             */
-/*   Updated: 2024/09/12 19:03:51 by user             ###   ########.fr       */
+/*   Updated: 2024/09/15 20:34:13 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,10 @@ static int	ft_handle_last_hd(t_cmd *cmd, int last)
 			ft_error("Error opening file", 2);
 	}
 	else
+	{
 		unlink(cmd->names->join);
+		free(cmd->names->join);
+	}
 	return (fd);
 }
 
@@ -82,6 +85,5 @@ int	ft_here_doc(t_cmd *cmd, int last, int i)
 	fd_tmp = ft_write_in_fd(cmd, i);
 	close(fd_tmp);
 	fd = ft_handle_last_hd(cmd, last);
-	free(cmd->names->join);
 	return (fd);
 }
