@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_fds_infile.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: descamil <descamil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/12 19:25:46 by user              #+#    #+#             */
-/*   Updated: 2024/09/15 20:35:34 by user             ###   ########.fr       */
+/*   Updated: 2024/09/16 16:06:42 by descamil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,8 @@ int	ft_more(t_cmd *cmd, int i, int type)
 
 	j = 0;
 	while (cmd->files->order[i] != NULL)
-	{
-		if (ft_atoi(cmd->files->order[i]) == type)
+		if (ft_atoi(cmd->files->order[i++]) == type)
 			j++;
-		i++;
-	}
 	if (j == 1)
 		return (j);
 	return (0);
@@ -37,11 +34,12 @@ static int	ft_open_infile(char *filename, t_mini *mini)
 	if (fd == -1)
 	{
 		join = ft_strjoin("mini: ", filename);
-		perror(join);
+		printf("%s: Permission denied\n", join);
 		free(join);
 		mini->error = -2;
 		return (-1);
 	}
+	mini->error = 0;
 	return (fd);
 }
 

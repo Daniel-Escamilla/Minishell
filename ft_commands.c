@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_commands.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: descamil <descamil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/02 14:31:25 by smarin-a          #+#    #+#             */
-/*   Updated: 2024/09/15 21:40:41 by user             ###   ########.fr       */
+/*   Updated: 2024/09/16 13:03:34 by descamil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,46 +55,9 @@ int	is_red(char *argv)
 	return (0);
 }
 
-void	ft_free_fcheck_args(char **args1, char **args2)
-{
-	if (args1)
-		ft_strstr_free(args1);
-	ft_strstr_free(args2);
-}
-
-char	**ft_new_args(char **args, int pos, int i, int j)
-{
-	char	**args1;
-	char	**args2;
-	char	**tmp;
-
-	args1 = NULL;
-	if (pos != 0)
-		args1 = (char **)ft_calloc(sizeof(char *), pos + 1);
-	while (i != pos)
-		args1[j++] = ft_strdup(args[i++]);
-	if (i == pos)
-		args2 = ft_split_red(args[pos], 0);
-	if (args1 != NULL)
-		tmp = ft_strstr_join(args1, args2);
-	else
-		tmp = ft_strstr_join(args2, NULL);
-	ft_free_fcheck_args(args1, args2);
-	args1 = NULL;
-	if (ft_strstr_len(args) - pos != 1)
-		args1 = (char **)ft_calloc(sizeof(char *), ft_strstr_len(args) - pos);
-	j = 0;
-	while (ft_strstr_len(args) - pos > 1 && args[++i])
-		args1[j++] = ft_strdup(args[i]);
-	args2 = ft_strstr_join(tmp, args1);
-	ft_free_fcheck_args(args1, tmp);
-	return (args2);
-}
-
 t_cmd	*ft_add_command(char *input, int i)
 {
 	t_cmd	*new_cmd;
-	char	**args;
 
 	new_cmd = ft_calloc(sizeof(t_cmd), 1);
 	if (!new_cmd)
@@ -107,18 +70,8 @@ t_cmd	*ft_add_command(char *input, int i)
 		return (new_cmd);
 	ft_get_args(input, new_cmd->args_amount, &new_cmd->args);
 	while (new_cmd->args[++i] != NULL)
-	{
 		if (is_red(new_cmd->args[i]) != 0)
-		{
-			args = ft_new_args(new_cmd->args, i, 0, 0);
-			if (ft_strstr_len(args) - ft_strstr_len(new_cmd->args) != 0)
-				i = ft_strstr_len(args) - ft_strstr_len(new_cmd->args) - 1;
-			if (new_cmd->args)
-				ft_strstr_free(new_cmd->args);
-			new_cmd->args = ft_strstr_join(args, NULL);
-			ft_strstr_free(args);
-		}
-	}
+			ft_new_args(new_cmd, &i);
 	new_cmd->next = NULL;
 	return (new_cmd);
 }

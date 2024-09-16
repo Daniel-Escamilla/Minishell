@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_main.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: descamil <descamil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/13 12:09:37 by smarin-a          #+#    #+#             */
-/*   Updated: 2024/09/15 21:23:07 by user             ###   ########.fr       */
+/*   Updated: 2024/09/16 12:45:09 by descamil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int	main(int argc, char **argv, char **env)
 	ft_recive_input(mini);
 	printf("\nSALIDA 1\n\n");
 	free_t_cmd(&mini->cmd);
-	free_t_mini(mini);
 	close(mini->fd_history);
+	free_t_mini(mini);
 	return (0);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_files.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: descamil <descamil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/09 11:03:10 by descamil          #+#    #+#             */
-/*   Updated: 2024/09/11 17:32:23 by user             ###   ########.fr       */
+/*   Updated: 2024/09/16 16:12:23 by descamil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,8 +57,7 @@ int	ft_pos_files(t_cmd *cmd, int i)
 		if (ft_type(cmd->args[i++]) > 0)
 		{
 			if (cmd->args[i] == NULL)
-				ft_error("mini: syntax error near unexpected token `newline'\n",
-					2);
+				printf("mini: syntax error near unexpected token `newline'\n");
 			cmd->files->f_order[files++] = ft_strdup(cmd->args[i]);
 		}
 	}

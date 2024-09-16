@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_here_doc.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: descamil <descamil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/03 09:32:44 by descamil          #+#    #+#             */
-/*   Updated: 2024/09/15 20:34:13 by user             ###   ########.fr       */
+/*   Updated: 2024/09/16 16:10:31 by descamil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,12 +37,12 @@ static int	ft_write_in_fd(t_cmd *cmd, int i)
 
 	fd_tmp = open(cmd->names->join, O_WRONLY | O_CREAT, 0666);
 	if (fd_tmp == -1)
-		ft_error("Error open", 2);
+		printf("Error open");
 	while (1)
 	{
 		line = readline("> ");
 		if (line == NULL)
-			ft_error("Error readline", 2);
+			printf("Error readline");
 		if (ft_strnstr(line, cmd->files->f_order[i], ft_strlen(line))
 			&& ft_strlen(cmd->files->f_order[i]) == ft_strlen(line))
 		{
@@ -51,7 +51,7 @@ static int	ft_write_in_fd(t_cmd *cmd, int i)
 		}
 		if (write(fd_tmp, line, ft_strlen(line)) == -1
 			|| write(fd_tmp, "\n", 1) == -1)
-			ft_error("Error write", 2);
+			printf("Error write");
 		free(line);
 	}
 	return (fd_tmp);
@@ -66,7 +66,7 @@ static int	ft_handle_last_hd(t_cmd *cmd, int last)
 	{
 		fd = open(cmd->names->join, O_RDONLY);
 		if (fd == -1)
-			ft_error("Error opening file", 2);
+			printf("Error opening file\n");
 	}
 	else
 	{

@@ -40,6 +40,7 @@ SRCS =	ft_main.c \
 		ft_commands.c \
 		ft_exec_cmd.c \
 		ft_here_doc.c \
+		ft_new_args.c \
 		ft_manage_fd.c \
 		ft_split_red.c \
 		ft_redirects.c \

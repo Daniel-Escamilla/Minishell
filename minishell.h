@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: descamil <descamil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/05 13:18:57 by smarin-a          #+#    #+#             */
-/*   Updated: 2024/09/15 21:28:49 by user             ###   ########.fr       */
+/*   Updated: 2024/09/16 15:34:19 by descamil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -218,17 +218,11 @@ char	*ft_replace_value_of_var_bis(char *str, int i, int j);
 char	**ft_check_input(t_mini *mini, char *input);
 
 // ft_check_operators.c
-int		ft_check_special_char(char c);
-char	ft_type_of_operator_char(int n);
 int		ft_is_not_mayor_n_minor_char(char c);
-int		ft_search_next_char(char *str, char c, int j);
 
 // ft_check_pipes.c
 int		ft_count_pipes(char *input, int amount, int character);
-char	**ft_split_pipes(char *input);
-int		ft_check_pipes_arg(char *input);
 int		ft_pipe_error(char *input, int i);
-char	**ft_fill_matrix_pipes(char *input, char **splited_pipes);
 
 // // ft_check_quotes.c
 int		ft_locate_next_quote(int i, char *input, char quote);
@@ -263,11 +257,8 @@ int		ft_process_quotes(char *input, int *i, int *first);
 // ft_commands.c
 int		is_red(char *argv);
 int		ft_count_args(char *input);
-char	*ft_get_command(char *input);
 t_cmd	*ft_last_command(t_cmd **cmd);
 t_cmd	*ft_add_command(char *input, int i);
-void	ft_free_fcheck_args(char **args1, char **args2);
-char	**ft_new_args(char **args, int pos, int i, int j);
 
 // ft_do_expander.c
 void	ft_do_expander(t_mini *mini, t_cmd *cmd);
@@ -307,6 +298,8 @@ int		ft_pick_infile(t_cmd *cmd, t_mini *mini);
 
 // ft_fds_outfile.c
 int		ft_pick_outfile(t_cmd *cmd, t_mini *mini);
+int		ft_handle_trunc(t_cmd *cmd, t_mini *mini, int i);
+int		ft_handle_append(t_cmd *cmd, t_mini *mini, int i);
 
 // ft_files.c
 int		ft_pos_files(t_cmd *cmd, int i);
@@ -356,6 +349,11 @@ void	ft_close_fd(t_mini *mini, int who);
 void	ft_open_fd(t_cmd *cmd, t_mini *mini);
 int		ft_choose_infile(t_cmd *cmd, t_mini *mini);
 int		ft_choose_outfile(t_cmd *cmd, t_mini *mini);
+
+// ft_new_args.c
+void	ft_new_args(t_cmd *current, int *i);
+void	ft_free_fcheck_args(char **args1, char **args2);
+char	**ft_change_args(char **args, int pos, int i, int j);
 
 // ft_parser.c
 int		ft_sizes(t_cmd *current);
