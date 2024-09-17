@@ -6,7 +6,7 @@
 /*   By: descamil <descamil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/16 15:35:49 by user              #+#    #+#             */
-/*   Updated: 2024/08/29 14:41:01 by descamil         ###   ########.fr       */
+/*   Updated: 2024/09/17 15:08:50 by descamil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,15 +97,8 @@ int	*ft_sizes_input(char *input, int argc)
 
 void	ft_free(char **argv, int *size, char ***args)
 {
-	int	i;
-	
-	i = 0;
 	if (argv)
-	{
-		while (i < (int)ft_strlen(*argv))
-			free(argv[i++]);	// Utilizar free_strstr
-		free(argv);
-	}
+		ft_strstr_free(argv);
 	if (size)
 		free(size);
 	*args = NULL;

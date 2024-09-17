@@ -6,7 +6,7 @@
 /*   By: descamil <descamil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/09 18:16:59 by user              #+#    #+#             */
-/*   Updated: 2024/09/16 16:31:12 by descamil         ###   ########.fr       */
+/*   Updated: 2024/09/17 10:18:01 by descamil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ char	*process_dollar(char *str, char **env, int *stop)
 
 	res = ft_strchr_mod(str, '$', *stop);
 	div_tmp = ft_tript(str, ft_size_var(res), res - str);
-	div_tmp[1] = ft_dolar_to_iqual(div_tmp[1]);
+	div_tmp[1] = ft_dolar_to_equal(div_tmp[1]);
 	tmp = ft_change_var(div_tmp[1], env);
 	if (ft_strlen(tmp) == 1 && ft_strncmp(tmp, "$", 1) == 0)
 		(*stop)++;

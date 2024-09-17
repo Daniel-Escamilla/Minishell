@@ -6,21 +6,19 @@
 /*   By: descamil <descamil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/09 18:14:41 by user              #+#    #+#             */
-/*   Updated: 2024/09/16 16:37:23 by descamil         ###   ########.fr       */
+/*   Updated: 2024/09/17 14:08:27 by descamil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-char	*ft_dolar_to_iqual(char *div)
+char	*ft_dolar_to_equal(char *div)
 {
 	int	i;
 	int	j;
 
 	i = 0;
 	j = 1;
-	if (ft_strncmp(div, "$", 1) == 0 && ft_strlen(div) == 1)
-		return (div);
 	while (div[j] != '\0')
 		div[i++] = div[j++];
 	if (div[j] == '\0')

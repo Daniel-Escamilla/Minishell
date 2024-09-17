@@ -66,6 +66,7 @@ SRCS =	ft_main.c \
 		ft_check_input.c \
 		ft_final_values.c \
 		ft_check_quotes.c \
+		ft_strtok_utils.c \
 		ft_expander_utils.c \
 		ft_expander_utils1.c \
 		ft_expander_utils2.c \

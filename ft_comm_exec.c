@@ -6,7 +6,7 @@
 /*   By: descamil <descamil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/15 21:11:38 by user              #+#    #+#             */
-/*   Updated: 2024/09/16 16:17:36 by descamil         ###   ########.fr       */
+/*   Updated: 2024/09/17 16:39:42 by descamil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,16 +20,19 @@ void	ft_comm_part1(t_cmd *cmd, t_mini *mini)
 			perror("Pipe Error");
 	}
 	ft_open_fd(cmd, mini);
-	if (cmd->cmd == NULL && cmd->type != NULL)
+	if (cmd->cmd == NULL && mini->error != -2)
 	{
-		printf("%s: command not found\n", cmd->args[0]);
-		if (cmd->names->fd_infile != 0)
-			close(cmd->names->fd_infile);
-		if (cmd->names->fd_outfile != 0)
-			close(cmd->names->fd_outfile);
+		if (cmd->args[0] && cmd->args[0][0] != '^')
+			printf("%s: command not found\n", cmd->args[0]);
+		if (cmd->type != NULL)
+		{
+			if (cmd->names->fd_infile)
+				close(cmd->names->fd_infile);
+			if (cmd->names->fd_outfile)
+				close(cmd->names->fd_outfile);
+		}
 	}
-	if (cmd->cmd == NULL || (cmd->names->fd_infile < 0
-			|| cmd->names->fd_outfile < 1))
+	if (cmd->cmd == NULL || (cmd->names->fd_infile < 0 || cmd->names->fd_outfile < 1))
 		mini->error = -4;
 	else
 		mini->error = 0;
@@ -84,15 +87,13 @@ void	ft_comm(t_cmd *cmd, t_mini *mini)
 			ft_comm_part2(cmd, mini);
 		ft_comm_part3(cmd, mini);
 	}
-	else
-	{
-		if (mini->fd_tmp != 0)
-			close(mini->fd_tmp);
-		mini->fd_tmp = mini->fd_pipe[0];
-		if (mini->num_comm == 0)
-			close(mini->fd_tmp);
+	if (mini->fd_tmp > 1)
+		close(mini->fd_tmp);
+	mini->fd_tmp = mini->fd_pipe[0];
+	if (mini->num_comm == 1)
+		close(mini->fd_tmp);
+	if (mini->fd_pipe[1] > 2)
 		close(mini->fd_pipe[1]);
-	}
 	if (cmd->names->join)
 	{
 		unlink(cmd->names->join);

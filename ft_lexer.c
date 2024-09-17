@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lexer.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: descamil <descamil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/14 15:50:54 by smarin-a          #+#    #+#             */
-/*   Updated: 2024/09/15 21:32:13 by user             ###   ########.fr       */
+/*   Updated: 2024/09/17 17:08:51 by descamil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,8 +78,11 @@ void	ft_free_per_comm(t_mini *mini, char *input)
 		free(mini->flags->redirect);
 		mini->flags->redirect = NULL;
 	}
-	if (mini->proc && mini->error != -2 && input[0] != '\0')
+	if (mini->proc)
+	{
 		free(mini->proc);
+		mini->proc = NULL;
+	}
 	if (input)
 		free(input);
 }

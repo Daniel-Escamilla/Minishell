@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_str_utils2.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: descamil <descamil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/03 09:30:16 by descamil          #+#    #+#             */
-/*   Updated: 2024/09/09 18:18:17 by user             ###   ########.fr       */
+/*   Updated: 2024/09/17 10:22:59 by descamil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,10 +76,8 @@ int	ft_strlen_dup(char *argv)
 	if (argv)
 	{
 		while (argv[i] != '\0')
-		{
 			if (argv[i++] == ' ')
 				space++;
-		}
 	}
 	return (i - space);
 }

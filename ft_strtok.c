@@ -6,19 +6,11 @@
 /*   By: descamil <descamil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/01 17:52:46 by smarin-a          #+#    #+#             */
-/*   Updated: 2024/09/16 16:17:50 by descamil         ###   ########.fr       */
+/*   Updated: 2024/09/17 16:33:06 by descamil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
-
-int	ft_minus_one(t_mini *mini)
-{
-	if (mini->flags->pipe == -1 || mini->flags->quote == -1
-		|| mini->flags->locate_red == -1)
-		return (-1);
-	return (0);
-}
 
 // ft_rm_quotes(mini, *cmd);
 int	ft_order_all(t_mini *mini, t_cmd **cmd, char **lines, char *input)
@@ -40,14 +32,6 @@ int	ft_order_all(t_mini *mini, t_cmd **cmd, char **lines, char *input)
 	ft_select_files(*cmd, 0);
 	return (0);
 }
-	
-void	ft_start_comm_val(t_mini **mini)
-{
-	(*mini)->index = 0;
-	(*mini)->fd_tmp = 0;
-	(*mini)->num_comm = (*mini)->flags->pipe + 1;
-	(*mini)->proc = ft_calloc(sizeof(pid_t), (*mini)->num_comm + 1);
-}
 
 void	ft_fill_fd(t_mini *mini, t_cmd *cmd)
 {
@@ -62,20 +46,13 @@ void	ft_fill_fd(t_mini *mini, t_cmd *cmd)
 		i = 0;
 		while (cmd->files->order && cmd->files->order[i] != NULL)
 		{
+			cmd->error = 2;
 			if (ft_atoi(cmd->files->order[i]) == 2)
-			{
-				cmd->error = 2;
 				fd = ft_handle_trunc(cmd, mini, i);
-				if (cmd->error == 2)
-					cmd->error = 0;
-			}
 			else if (ft_atoi(cmd->files->order[i]) == 4)
-			{
-				cmd->error = 2;
 				fd = ft_handle_append(cmd, mini, i);
-				if (cmd->error == 2)
-					cmd->error = 0;
-			}
+			if (cmd->error == 2)
+				cmd->error = 0;
 			i++;
 			if (fd != -1)
 				close(fd);

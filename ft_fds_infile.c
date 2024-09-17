@@ -6,7 +6,7 @@
 /*   By: descamil <descamil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/12 19:25:46 by user              #+#    #+#             */
-/*   Updated: 2024/09/16 16:06:42 by descamil         ###   ########.fr       */
+/*   Updated: 2024/09/17 16:09:18 by descamil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,8 @@ static int	ft_open_infile(char *filename, t_mini *mini)
 	if (fd == -1)
 	{
 		join = ft_strjoin("mini: ", filename);
-		printf("%s: Permission denied\n", join);
+		if (mini->error != -2)
+			perror(join);
 		free(join);
 		mini->error = -2;
 		return (-1);
@@ -67,7 +68,7 @@ int	ft_pick_infile(t_cmd *cmd, t_mini *mini)
 		if (ft_atoi(cmd->files->order[i]) == 1)
 		{
 			fd = ft_process_infile(cmd, mini, i);
-			if (fd != 0 && ft_more(cmd, i, 1) == 1 && ft_more(cmd, i, 3) == 0)
+			if (fd >= 0 && ft_more(cmd, i, 1) == 1 && ft_more(cmd, i, 3) == 0)
 				return (fd);
 		}
 		else if (ft_atoi(cmd->files->order[i]) == 3)

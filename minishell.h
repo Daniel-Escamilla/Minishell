@@ -6,7 +6,7 @@
 /*   By: descamil <descamil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/05 13:18:57 by smarin-a          #+#    #+#             */
-/*   Updated: 2024/09/16 15:34:19 by descamil         ###   ########.fr       */
+/*   Updated: 2024/09/17 16:32:33 by descamil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -282,7 +282,7 @@ char	*ft_expander(char **env, char *str);
 
 // ft_expander_utils1.c
 int		ft_size_var(char *str);
-char	*ft_dolar_to_iqual(char *div);
+char	*ft_dolar_to_equal(char *div);
 char	*ft_join(char **div, char *tmp);
 
 // ft_expander_utils2.c
@@ -406,10 +406,13 @@ char	*extract_redirection(const char *input, int *i);
 void	add_token(char **tokens, int *token_count, const char *token);
 
 // ft_strtok.c
-int		ft_minus_one(t_mini *mini);
 int		ft_do_comm(t_cmd *cmd, t_mini *mini);
 int		ft_strtok(t_mini *mini, t_cmd **cmd, char *input);
 int		ft_order_all(t_mini *mini, t_cmd **cmd, char **lines, char *input);
+
+// ft_strtok_utils.c
+int		ft_minus_one(t_mini *mini);
+void	ft_start_comm_val(t_mini **mini);
 
 // ft_str_utils2.c
 int		ft_strlen_dup(char *argv);
