@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: descamil <descamil@student.42.fr>          +#+  +:+       +#+        */
+/*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/21 18:07:18 by sergio            #+#    #+#             */
-/*   Updated: 2024/06/22 13:18:15 by descamil         ###   ########.fr       */
+/*   Updated: 2024/09/20 19:10:59 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@
 
 # define HEXA_LOWER "0123456789abcdef"
 # define HEXA_UPPER "0123456789ABCDEF"
-# define BUFFER_SIZE 4
+# define BUFFER_SIZE 10
 
 // Estructura de lista enlazada simple para las funciones de listas.
 typedef struct s_list

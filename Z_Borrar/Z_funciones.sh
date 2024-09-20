@@ -1,0 +1,1 @@
+for file in *.c; do echo -e "\n$file:"; grep -E '^[a-zA-Z]' "$file" | grep -Ev '^[{}]' | grep -Ev '^/'; done

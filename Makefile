@@ -21,59 +21,126 @@ NAME =	minishell
 # Compilador a utilizar (gcc, clang, etc)
 CC = gcc
 # Flags de compilacion (agregar los que se necesiten)
-CFLAGS = -g3 -Wall -Wextra -Werror
+CFLAGS = -g3 -Wall -Wextra -Werror -I./include
 
 #------------------------------------------------------------------------------#
 
 # Archivos fuente (agregar los que se necesiten)
-SRCS =	ft_main.c \
-		ft_free.c \
-		ft_lexer.c \
-		ft_utils.c \
-		ft_files.c \
-		ft_tript.c \
-		ft_parser.c \
-		ft_strtok.c \
-		ft_signals.c \
-		ft_builtin.c \
-		ft_expander.c \
-		ft_commands.c \
-		ft_exec_cmd.c \
-		ft_here_doc.c \
-		ft_new_args.c \
-		ft_manage_fd.c \
-		ft_split_red.c \
-		ft_redirects.c \
-		ft_save_path.c \
-		ft_str_utils.c \
-		ft_comm_exec.c \
-		ft_fds_infile.c \
-		ft_str_utils2.c \
-		ft_change_var.c \
-		ft_commands-2.c \
-		ft_commands-3.c \
-		ft_printf_cmd.c \
-		ft_initialize.c \
-		get_next_line.c \
-		ft_split_pipe.c \
-		ft_expand_div.c \
-		ft_select_cmd.c \
-		ft_fds_outfile.c \
-		ft_do_expander.c \
-		ft_files_utils.c \
-		ft_check_pipes.c \
-		ft_do_expander.c \
-		ft_check_input.c \
-		ft_final_values.c \
-		ft_check_quotes.c \
-		ft_strtok_utils.c \
-		ft_expander_utils.c \
-		ft_expander_utils1.c \
-		ft_expander_utils2.c \
-		ft_redirects_utils.c \
-		ft_check_operators.c \
-		ft_error_management.c \
-		get_next_line_utils.c \
+# Separar los archivos por las carpetas
+# SRCS =	ft_main.c \
+# 		ft_free.c \
+# 		ft_lexer.c \
+# 		ft_utils.c \
+# 		ft_files.c \
+# 		ft_tript.c \
+# 		ft_parser.c \
+# 		ft_strtok.c \
+# 		ft_signals.c \
+# 		ft_builtin.c \
+# 		ft_expander.c \
+# 		ft_commands.c \
+# 		ft_exec_cmd.c \
+# 		ft_here_doc.c \
+# 		ft_new_args.c \
+# 		ft_manage_fd.c \
+# 		ft_split_red.c \
+# 		ft_redirects.c \
+# 		ft_save_path.c \
+# 		ft_str_utils.c \
+# 		ft_comm_exec.c \
+# 		ft_fds_infile.c \
+# 		ft_str_utils2.c \
+# 		ft_change_var.c \
+# 		ft_printf_cmd.c \
+# 		ft_initialize.c \
+# 		get_next_line.c \
+# 		ft_split_pipe.c \
+# 		ft_expand_div.c \
+# 		ft_select_cmd.c \
+# 		ft_fds_outfile.c \
+# 		ft_do_expander.c \
+# 		ft_files_utils.c \
+# 		ft_check_pipes.c \
+# 		ft_do_expander.c \
+# 		ft_check_input.c \
+# 		ft_final_values.c \
+# 		ft_check_quotes.c \
+# 		ft_get_args_utils.c \
+# 		ft_commands_utils.c \
+# 		ft_expander_utils.c \
+# 		ft_expander_utils1.c \
+# 		ft_expander_utils2.c \
+# 		ft_redirects_utils.c \
+# 		ft_check_operators.c \
+# 		ft_error_management.c \
+# 		get_next_line_utils.c \
+
+MAIN_SRCS = 	src/main/ft_main.c \
+				src/main/ft_initialize.c \
+				src/main/ft_error_management.c \
+
+UTILS_SRCS =	src/utils/ft_free.c \
+				src/utils/ft_utils.c \
+				src/utils/ft_str_utils.c \
+				src/utils/ft_str_utils2.c \
+				src/utils/ft_printf_cmd.c \
+
+PARSER_SRCS =	src/parser/ft_lexer.c \
+				src/parser/ft_parser.c \
+				src/parser/ft_strtok.c \
+				src/parser/ft_split_pipe.c \
+				src/parser/ft_check_input.c \
+				src/parser/ft_check_pipes.c \
+				src/parser/ft_check_quotes.c \
+				src/parser/ft_check_operators.c \
+
+FILES_SRCS =	src/files/ft_files.c \
+				src/files/ft_files_utils.c \
+				src/files/ft_final_values.c \
+
+SIGNALS_SRCS =	src/signals/ft_signals.c \
+
+BUILTINS_SRCS =	src/builtins/ft_builtin.c \
+
+EXPANDER_SRCS =	src/expander/ft_expander.c \
+				src/expander/ft_tript.c \
+				src/expander/ft_change_var.c \
+				src/expander/ft_expand_div.c \
+				src/expander/ft_do_expander.c \
+				src/expander/ft_expander_utils1.c \
+				src/expander/ft_expander_utils2.c \
+
+EXECUTOR_SRCS = src/executor/ft_commands.c \
+				src/executor/ft_exec_cmd.c \
+				src/executor/ft_here_doc.c \
+				src/executor/ft_new_args.c \
+				src/executor/ft_manage_fd.c \
+				src/executor/ft_save_path.c \
+				src/executor/ft_comm_exec.c \
+				src/executor/ft_fds_infile.c \
+				src/executor/ft_select_cmd.c \
+				src/executor/ft_fds_outfile.c \
+				src/executor/ft_commands_utils.c \
+				src/executor/ft_get_args_utils.c \
+
+REDIRECT_SRCS =	src/redirects/ft_split_red.c \
+				src/redirects/ft_redirects.c \
+				src/redirects/ft_redirects_utils.c \
+
+GNL_SRCS = 		get_next_line/get_next_line.c \
+		   		get_next_line/get_next_line_utils.c \
+
+SRCS =			$(GNL_SRCS) \
+				$(MAIN_SRCS) \
+				$(UTILS_SRCS) \
+				$(FILES_SRCS) \
+				$(PARSER_SRCS) \
+				$(SIGNALS_SRCS) \
+				$(BUILTINS_SRCS) \
+				$(EXPANDER_SRCS) \
+				$(EXECUTOR_SRCS) \
+				$(REDIRECT_SRCS) \
+
 #------------------------------------------------------------------------------#
 
 # Archivos objeto (no tocar)
@@ -137,20 +204,42 @@ all: libft $(NAME)
 	@$(eval LAST_MAKE_HAD_COMPILATION := 1)
 
 # La regla $(NAME) compila el ejecutable con los archivos objeto creados
-$(NAME): $(addprefix $(OBJDIR)/, $(OBJS))
+# $(NAME): $(addprefix $(OBJDIR)/, $(OBJS))
+# 	@echo "$(BOLD_GREEN)¡Objetos creados!\n$(RESET)"
+# 	@echo "$(CYAN)Compilando $(NAME)...\n$(RESET)"
+# 	$(CC) $(CFLAGS) -o $@ $^ -lreadline $(LIBFT)
+	
+# # La regla %.o compila los archivos objeto
+# $(OBJDIR)/%.o : %.c | $(OBJDIR)
+# 	$(CC) $(CFLAGS) -c $< -o $@
+# 	@$(eval LAST_MAKE_HAD_COMPILATION := 1)
+
+# # La regla $(OBJDIR) crea el directorio de los archivos objeto
+# $(OBJDIR):
+# 	@echo "$(CYAN)Creando directorio de objetos...\n$(RESET)"
+# 	mkdir $(OBJDIR)
+# 	@echo "$(BOLD_GREEN)¡Directorio de objetos creado!\n$(RESET)"
+# 	@echo "$(CYAN)Creando objetos...\n$(RESET)"
+
+# La regla $(NAME) compila el ejecutable con los archivos objeto creados
+$(NAME): $(LIBFT) $(addprefix $(OBJDIR)/, $(OBJS))
 	@echo "$(BOLD_GREEN)¡Objetos creados!\n$(RESET)"
 	@echo "$(CYAN)Compilando $(NAME)...\n$(RESET)"
-	$(CC) $(CFLAGS) -o $@ $^ -lreadline $(LIBFT)
-	
+	$(CC) $(CFLAGS) -o $@ $(addprefix $(OBJDIR)/, $(OBJS)) -lreadline $(LIBFT)
+
 # La regla %.o compila los archivos objeto
-$(OBJDIR)/%.o : %.c | $(OBJDIR)
+$(OBJDIR)/%.o: %.c | $(OBJDIR)
+	@mkdir -p $(@D)
 	$(CC) $(CFLAGS) -c $< -o $@
 	@$(eval LAST_MAKE_HAD_COMPILATION := 1)
 
 # La regla $(OBJDIR) crea el directorio de los archivos objeto
 $(OBJDIR):
 	@echo "$(CYAN)Creando directorio de objetos...\n$(RESET)"
-	mkdir $(OBJDIR)
+	@mkdir -p $(OBJDIR)/src/main $(OBJDIR)/src/utils $(OBJDIR)/src/parser \
+		$(OBJDIR)/src/files $(OBJDIR)/src/signals $(OBJDIR)/src/builtins \
+		$(OBJDIR)/src/expander $(OBJDIR)/src/executor $(OBJDIR)/src/redirects \
+		$(OBJDIR)/get_next_line
 	@echo "$(BOLD_GREEN)¡Directorio de objetos creado!\n$(RESET)"
 	@echo "$(CYAN)Creando objetos...\n$(RESET)"
 
