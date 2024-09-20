@@ -17,8 +17,7 @@ CFLAGS = -Wall -Wextra -Werror
 #------------------------------------------------------------------------------#
 
 # Archivos fuente (agregar los que se necesiten)
-SRCS =	ft_gnl.c \
-		ft_atoi.c \
+SRCS =	ft_atoi.c \
 		ft_itoa.c \
 		ft_bzero.c \
 		ft_split.c \

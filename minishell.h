@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/05 13:18:57 by smarin-a          #+#    #+#             */
-/*   Updated: 2024/09/21 00:35:10 by user             ###   ########.fr       */
+/*   Updated: 2024/09/21 01:01:25 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,7 @@
 # define B_WH_2 "\033[1;38;5;145m" 	// Blanco oscuro en negrita
 
 // Librerias
+
 # include <math.h>
 # include <fcntl.h>
 # include <stdio.h>
@@ -85,6 +86,7 @@
 # include <sys/param.h>
 # include <readline/readline.h>
 # include <readline/history.h>
+
 # include "struct.h"
 # include "main.h"
 # include "utils.h"
@@ -95,7 +97,9 @@
 # include "executor.h"
 # include "expander.h"
 # include "redirects.h"
+
 # include "libft/libft.h"
+
 # include "get_next_line/get_next_line.h"
 
 # define R 0

@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/21 18:07:18 by sergio            #+#    #+#             */
-/*   Updated: 2024/09/20 19:10:59 by user             ###   ########.fr       */
+/*   Updated: 2024/09/21 01:02:21 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,6 @@
 
 # define HEXA_LOWER "0123456789abcdef"
 # define HEXA_UPPER "0123456789ABCDEF"
-# define BUFFER_SIZE 10
 
 // Estructura de lista enlazada simple para las funciones de listas.
 typedef struct s_list
@@ -125,7 +124,4 @@ void	ft_lstclear(t_list **lst, void (*del)(void*));
 void	ft_lstiter(t_list *lst, void (*f)(void *));
 // ft_lstmap - Itera sobre los nodos aplicando una funcion. Crea una nueva lista
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
-// ft_gnl - Lee una linea de un archivo hasta encontrar un salto de linea o EOF.
-char	*ft_gnl(int fd);
-
 #endif
