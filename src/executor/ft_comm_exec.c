@@ -6,7 +6,7 @@
 /*   By: descamil <descamil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/15 21:11:38 by user              #+#    #+#             */
-/*   Updated: 2024/09/23 11:39:58 by descamil         ###   ########.fr       */
+/*   Updated: 2024/09/23 11:52:23 by descamil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,8 @@ void	ft_comm_part1(t_cmd *cmd, t_mini *mini)
 	ft_open_fd(cmd, mini);
 	if (cmd->cmd == NULL)
 	{
-		if (cmd->args && cmd->args[0])
-			printf("%s: command not found\n", cmd->args[0]);
+		if (cmd->args && cmd->args[0] && ft_nothing(cmd->args[0], 0) == 0)
+			printf("[%s]: command not found\n", cmd->args[0]);
 		if (cmd->type)
 		{
 			if (cmd->names->fd_infile > 0)
