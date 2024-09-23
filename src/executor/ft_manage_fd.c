@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_manage_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: descamil <descamil@student.42.fr>          +#+  +:+       +#+        */
+/*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/21 11:25:25 by user              #+#    #+#             */
-/*   Updated: 2024/09/21 12:27:27 by descamil         ###   ########.fr       */
+/*   Updated: 2024/09/23 23:29:46 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@ int	ft_choose_infile(t_cmd *cmd, t_mini *mini)
 
 int	ft_choose_outfile(t_cmd *cmd, t_mini *mini)
 {
-	mini->fd_tmp = mini->fd_pipe[0];
 	if (cmd->type && cmd->type->out && (cmd->type->outfile == 1
 			|| cmd->type->append == 1))
 		return (ft_pick_outfile(cmd, mini));
@@ -37,29 +36,31 @@ void	ft_close_and_update_fds(t_mini *mini, char who)
 {
 	if (who == 'H')
 	{
-		if (mini->fd_pipe[0] > 0 && mini->fd_pipe[0] != STDIN_FILENO)
-		{
-			close(mini->fd_pipe[0]);
-			mini->fd_pipe[0] = STDIN_FILENO;
-		}
+		close(mini->fd_pipe[0]);
+		close(mini->fd_pipe[1]);
 	}
 	else if (who == 'P')
 	{
-		if (mini->fd_pipe[1] > 0 && mini->fd_pipe[1] != STDOUT_FILENO)
-			safe_close(&mini->fd_pipe[1]);
-		if (mini->fd_pipe[0] > 0 && mini->fd_pipe[0] != STDIN_FILENO
-			&& mini->fd_pipe[0] != mini->fd_tmp)
-			safe_close(&mini->fd_pipe[0]);
-		if (mini->fd_tmp != 0 && mini->fd_tmp != -1)
+		close(mini->fd_pipe[1]); // Cerrar el extremo de escritura del pipe
+
+		// Si es el último comando
+		if (mini->num_comm == 0)
 		{
-			safe_close(&mini->fd_tmp);
-			if (mini->num_comm != 0)
-				mini->fd_tmp = mini->fd_pipe[0];
+			close(mini->fd_pipe[0]);
+			close(mini->fd_tmp);
 		}
-		if (mini->num_comm == 0 && mini->fd_tmp > 0)
-			safe_close(&mini->fd_tmp);
+		else
+		{
+			if (mini->fd_tmp > 2) // Cerrar fd_tmp si tiene un valor previo válido
+			{
+				close(mini->fd_tmp); // Cerrar fd_tmp
+			}
+			mini->fd_tmp = mini->fd_pipe[0]; // Guardar fd_pipe[0] para uso futuro
+		}
 	}
+
 }
+
 
 void	ft_open_fd(t_cmd *cmd, t_mini *mini)
 {
