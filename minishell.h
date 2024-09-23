@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: descamil <descamil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/05 13:18:57 by smarin-a          #+#    #+#             */
-/*   Updated: 2024/09/21 01:01:25 by user             ###   ########.fr       */
+/*   Updated: 2024/09/21 12:28:19 by descamil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,16 +87,16 @@
 # include <readline/readline.h>
 # include <readline/history.h>
 
-# include "struct.h"
-# include "main.h"
-# include "utils.h"
-# include "files.h"
-# include "parser.h"
-# include "signals.h"
-# include "builtins.h"
-# include "executor.h"
-# include "expander.h"
-# include "redirects.h"
+# include "include/struct.h"
+# include "include/main.h"
+# include "include/utils.h"
+# include "include/files.h"
+# include "include/parser.h"
+# include "include/signals.h"
+# include "include/builtins.h"
+# include "include/executor.h"
+# include "include/expander.h"
+# include "include/redirects.h"
 
 # include "libft/libft.h"
 

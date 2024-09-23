@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_exec_cmd.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: descamil <descamil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/03 09:29:06 by descamil          #+#    #+#             */
-/*   Updated: 2024/09/20 21:05:27 by user             ###   ########.fr       */
+/*   Updated: 2024/09/21 12:27:27 by descamil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "executor.h"
+#include "../../include/executor.h"
 
 char	*ft_validate_comm_part1(char *cmd)
 {

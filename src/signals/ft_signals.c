@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_signals.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: descamil <descamil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/14 11:34:11 by smarin-a          #+#    #+#             */
-/*   Updated: 2024/09/20 23:12:50 by user             ###   ########.fr       */
+/*   Updated: 2024/09/21 12:27:27 by descamil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "signals.h"
+#include "../../include/signals.h"
 
 static void	ft_signal_handler(int signal)
 {

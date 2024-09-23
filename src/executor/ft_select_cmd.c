@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_select_cmd.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: descamil <descamil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/11 19:00:37 by user              #+#    #+#             */
-/*   Updated: 2024/09/20 21:05:02 by user             ###   ########.fr       */
+/*   Updated: 2024/09/21 12:27:27 by descamil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "executor.h"
+#include "../../include/executor.h"
 
 static void	ft_initialize_selection(t_cmd *current)
 {

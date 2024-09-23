@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_redirects_utils.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: descamil <descamil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/03 11:11:03 by descamil          #+#    #+#             */
-/*   Updated: 2024/09/20 23:01:05 by user             ###   ########.fr       */
+/*   Updated: 2024/09/21 12:27:27 by descamil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "redirects.h"
+#include "../../include/redirects.h"
 
 void	ft_one(t_mini *mini, char *input)
 {

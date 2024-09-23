@@ -10,7 +10,7 @@
 /*                                                							  */
 /* ************************************************************************** */
 
-#include "parser.h"
+#include "../../include/parser.h"
 
 char	**ft_create_path(char **env)
 {

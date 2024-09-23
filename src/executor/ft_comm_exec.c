@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_comm_exec.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: descamil <descamil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/15 21:11:38 by user              #+#    #+#             */
-/*   Updated: 2024/09/20 23:59:35 by user             ###   ########.fr       */
+/*   Updated: 2024/09/23 11:39:58 by descamil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "executor.h"
+#include "../../include/executor.h"
 
 void	ft_comm_part1(t_cmd *cmd, t_mini *mini)
 {
@@ -26,9 +26,9 @@ void	ft_comm_part1(t_cmd *cmd, t_mini *mini)
 			printf("%s: command not found\n", cmd->args[0]);
 		if (cmd->type)
 		{
-			if (cmd->names->fd_infile != 0)
+			if (cmd->names->fd_infile > 0)
 				close(cmd->names->fd_infile);
-			if (cmd->names->fd_outfile != 0)
+			if (cmd->names->fd_outfile > 1)
 				close(cmd->names->fd_outfile);
 		}
 	}

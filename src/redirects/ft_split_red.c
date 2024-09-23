@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split_red.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: descamil <descamil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/02 09:48:18 by descamil          #+#    #+#             */
-/*   Updated: 2024/09/20 23:08:32 by user             ###   ########.fr       */
+/*   Updated: 2024/09/21 12:27:27 by descamil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "redirects.h"
+#include "../../include/redirects.h"
 
 int	is_redirection(char c, char c1)
 {

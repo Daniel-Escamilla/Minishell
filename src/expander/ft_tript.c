@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_tript.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: descamil <descamil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/09 18:13:06 by user              #+#    #+#             */
-/*   Updated: 2024/09/20 23:57:19 by user             ###   ########.fr       */
+/*   Updated: 2024/09/21 12:27:27 by descamil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "expander.h"
+#include "../../include/expander.h"
 
 static void	ft_free_array(char **arr)
 {

@@ -21,28 +21,31 @@
 
 */
 
-# // Empezar con ejecución
-
-	· x=y --> Crear variable x con el contenido y
+/*
+	# // Empezar con ejecución
 
 	· cd
 
-	· unset
-
-	· echo
-
 	· pwd
-
-	· export
 
 	· env
 
 	· exit
 
-	· Salida para $?
+	· echo
 
-	· Modificar pwd de env
+	· unset
 
-	· Modificar SHLVL de env
+	· export
 
-	· Utilizar la expansion de vaiables si el EOF != quotes
+	· Sumar + 1 al SHLVL
+
+	· Gestionar las salidas
+
+	· Crear variables temporales
+
+	· Seguir con PWD el directorio actual
+
+	· Utilizar la expansion de vaiables en Here_doc
+
+*/

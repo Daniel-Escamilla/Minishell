@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_check_dollar.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: descamil <descamil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/02 16:10:53 by smarin-a          #+#    #+#             */
-/*   Updated: 2024/09/20 21:07:38 by user             ###   ########.fr       */
+/*   Updated: 2024/09/21 12:27:27 by descamil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-// #include "expander.h"
+// #include "../../include/expander.h"
 
 // static char	*ft_remove_dollar_n_digits(char *command, int i, int j)
 // {

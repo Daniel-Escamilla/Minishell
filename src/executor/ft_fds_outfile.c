@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_fds_outfile.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: descamil <descamil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/03 09:19:54 by descamil          #+#    #+#             */
-/*   Updated: 2024/09/20 21:05:14 by user             ###   ########.fr       */
+/*   Updated: 2024/09/21 14:23:11 by descamil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "executor.h"
+#include "../../include/executor.h"
 
 int	ft_handle_trunc(t_cmd *cmd, t_mini *mini, int i)
 {
@@ -23,7 +23,7 @@ int	ft_handle_trunc(t_cmd *cmd, t_mini *mini, int i)
 	if (fd == -1)
 	{
 		join = ft_strjoin("mini: ", cmd->files->f_order[i]);
-		printf("%s: Permission denied\n", join);
+		perror(join);
 		free(join);
 		mini->error = -2;
 		return (-1);
@@ -46,7 +46,7 @@ int	ft_handle_append(t_cmd *cmd, t_mini *mini, int i)
 	if (fd == -1)
 	{
 		join = ft_strjoin("mini: ", cmd->files->f_order[i]);
-		printf("%s: Permission denied\n", join);
+		perror(join);
 		free(join);
 		mini->error = -2;
 		return (-1);

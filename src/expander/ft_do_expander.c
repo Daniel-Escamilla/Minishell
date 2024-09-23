@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_do_expander.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: descamil <descamil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/03 11:25:51 by descamil          #+#    #+#             */
-/*   Updated: 2024/09/20 23:57:26 by user             ###   ########.fr       */
+/*   Updated: 2024/09/21 12:27:27 by descamil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "expander.h"
+#include "../../include/expander.h"
 
 static char	**ft_str_expander(t_mini *mini, char **args)
 {

@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_files_utils.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: descamil <descamil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/03 08:59:47 by descamil          #+#    #+#             */
-/*   Updated: 2024/09/20 22:41:14 by user             ###   ########.fr       */
+/*   Updated: 2024/09/21 12:27:27 by descamil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "files.h"
+#include "../../include/files.h"
 
 void	process_lines(t_cmd **cmd, t_mini *mini, char **lines, int i)
 {

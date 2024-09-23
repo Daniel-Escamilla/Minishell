@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_expander_utils2.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: descamil <descamil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/09 18:15:16 by user              #+#    #+#             */
-/*   Updated: 2024/09/20 23:58:38 by user             ###   ########.fr       */
+/*   Updated: 2024/09/21 12:27:27 by descamil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "expander.h"
+#include "../../include/expander.h"
 
 void	ft_ex_free(char **div, char *tmp)
 {

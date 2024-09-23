@@ -21,7 +21,7 @@ NAME =	minishell
 # Compilador a utilizar (gcc, clang, etc)
 CC = gcc
 # Flags de compilacion (agregar los que se necesiten)
-CFLAGS = -g3 -Wall -Wextra -Werror -I./include
+CFLAGS = -g3 -Wall -Wextra -Werror
 
 #------------------------------------------------------------------------------#
 
