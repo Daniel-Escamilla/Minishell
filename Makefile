@@ -14,7 +14,7 @@
 #------------------------------------------------------------------------------#
 
 # Nombre del ejecutable a crear (sin espacios)
-NAME =	minishell
+NAME = minishell
 
 #------------------------------------------------------------------------------#
 
@@ -25,41 +25,8 @@ CFLAGS = -g3 -Wall -Wextra -Werror
 
 #------------------------------------------------------------------------------#
 
-# Archivos fuente (agregar los que se necesiten)
-MAIN_SRCS = 	src/main/ft_main.c \
-				src/main/ft_initialize.c \
-				src/main/ft_error_management.c \
-
-UTILS_SRCS =	src/utils/ft_free.c \
-				src/utils/ft_utils.c \
-				src/utils/ft_str_utils.c \
-				src/utils/ft_str_utils2.c \
-				src/utils/ft_printf_cmd.c \
-
-PARSER_SRCS =	src/parser/ft_lexer.c \
-				src/parser/ft_parser.c \
-				src/parser/ft_strtok.c \
-				src/parser/ft_split_pipe.c \
-				src/parser/ft_check_input.c \
-				src/parser/ft_check_pipes.c \
-				src/parser/ft_check_quotes.c \
-				src/parser/ft_check_operators.c \
-
-FILES_SRCS =	src/files/ft_files.c \
-				src/files/ft_files_utils.c \
-				src/files/ft_final_values.c \
-
-SIGNALS_SRCS =	src/signals/ft_signals.c \
-
+# Archivos fuente (agregar los que se necesiten, separar por carpetas)
 BUILTINS_SRCS =	src/builtins/ft_builtin.c \
-
-EXPANDER_SRCS =	src/expander/ft_tript.c \
-				src/expander/ft_expander.c \
-				src/expander/ft_change_var.c \
-				src/expander/ft_expand_div.c \
-				src/expander/ft_do_expander.c \
-				src/expander/ft_expander_utils1.c \
-				src/expander/ft_expander_utils2.c \
 
 EXECUTOR_SRCS = src/executor/ft_commands.c \
 				src/executor/ft_exec_cmd.c \
@@ -74,9 +41,42 @@ EXECUTOR_SRCS = src/executor/ft_commands.c \
 				src/executor/ft_commands_utils.c \
 				src/executor/ft_get_args_utils.c \
 
+EXPANDER_SRCS =	src/expander/ft_tript.c \
+				src/expander/ft_expander.c \
+				src/expander/ft_change_var.c \
+				src/expander/ft_expand_div.c \
+				src/expander/ft_do_expander.c \
+				src/expander/ft_expander_utils1.c \
+				src/expander/ft_expander_utils2.c \
+
+FILES_SRCS =	src/files/ft_files.c \
+				src/files/ft_files_utils.c \
+				src/files/ft_final_values.c \
+
+MAIN_SRCS = 	src/main/ft_main.c \
+				src/main/ft_initialize.c \
+				src/main/ft_error_management.c \
+
+PARSER_SRCS =	src/parser/ft_lexer.c \
+				src/parser/ft_parser.c \
+				src/parser/ft_strtok.c \
+				src/parser/ft_split_pipe.c \
+				src/parser/ft_check_input.c \
+				src/parser/ft_check_pipes.c \
+				src/parser/ft_check_quotes.c \
+				src/parser/ft_check_operators.c \
+
 REDIRECT_SRCS =	src/redirects/ft_split_red.c \
 				src/redirects/ft_redirects.c \
 				src/redirects/ft_redirects_utils.c \
+
+SIGNALS_SRCS =	src/signals/ft_signals.c \
+
+UTILS_SRCS =	src/utils/ft_free.c \
+				src/utils/ft_utils.c \
+				src/utils/ft_str_utils.c \
+				src/utils/ft_str_utils2.c \
+				src/utils/ft_printf_cmd.c \
 
 GNL_SRCS = 		get_next_line/get_next_line.c \
 		   		get_next_line/get_next_line_utils.c \
@@ -169,12 +169,10 @@ $(OBJDIR)/%.o: %.c | $(OBJDIR)
 # La regla $(OBJDIR) crea el directorio de los archivos objeto
 $(OBJDIR):
 	@echo "$(CYAN)Creando directorio de objetos...\n$(RESET)"
-	@mkdir -p $(OBJDIR)/src/main $(OBJDIR)/src/utils $(OBJDIR)/src/parser \
-		$(OBJDIR)/src/files $(OBJDIR)/src/signals $(OBJDIR)/src/builtins \
-		$(OBJDIR)/src/expander $(OBJDIR)/src/executor $(OBJDIR)/src/redirects \
-		$(OBJDIR)/get_next_line
+	@mkdir -p $(OBJDIR)/src/* $(OBJDIR)/get_next_line
 	@echo "$(BOLD_GREEN)¡Directorio de objetos creado!\n$(RESET)"
 	@echo "$(CYAN)Creando objetos...\n$(RESET)"
+
 
 # La regla libft compila la libft. Si se usa, descomentar las siguientes
 # dos lineas
@@ -213,20 +211,13 @@ re: fclean all
 
 # La regla init inicializa el proyecto
 init:
-	@echo "$(CYAN)Creando archivo .gitignore...\n$(RESET)"
-	@echo "$(CYAN)Añadiendo .DS_Store, .vscode, .dSYM y .o al archivo .gitignore...\n$(RESET)"
-	@echo "\n"
-	@echo ".vscode" >> .gitignore
-	@echo "*.dSYM" >> .gitignore
-	@echo "*.o" >> .gitignore
-	@read -p "Quieres ver los comandos de los que dispone este Makefile? [y/n]: " answer; \
+	@bash -c 'read -p "Quieres ver los comandos de los que dispone este Makefile? [y/n]: " answer; \
 	if [ "$$answer" = "y" ]; then \
-		make help; \
+		make --no-print-directory help; \
 		read -p "Para continuar, presiona enter..."; \
 	else \
-		echo "Puedes ver los comandos con 'make help' en cualquier momento"; \
-	fi
-	@echo "$(BOLD_GREEN)(┌ಠ_ಠ)\t¡¡¡Proyecto inicializado, ya puedes empezar a completar el Makefile!!! \t(ಠ_ಠ┐)$(RESET)"
+		echo "Puedes ver los comandos con '\''make help'\'' en cualquier momento"; \
+	fi'
 
 # La regla test compila y ejecuta el programa con los argumentos que le pases
 test: re
@@ -268,8 +259,9 @@ norm:
 # La regla help muestra las reglas del make
 help:
 	@echo "\n"
+	@echo ""
 	@echo "$(BOLD_PURPLE)Reglas incluidas en el Makefile:$(RESET)"
-	@echo "\n"
+	@echo ""
 	@echo "  $(CYAN)all$(RESET)	-> Compila el ejecutable"
 	@echo "  $(CYAN)clean$(RESET)	-> Elimina los archivos objeto"
 	@echo "  $(CYAN)fclean$(RESET)-> Elimina los archivos objeto y el ejecutable"
@@ -279,7 +271,7 @@ help:
 	@echo "  $(CYAN)git$(RESET)	-> Agrega, hace commit y hace push"
 	@echo "  $(CYAN)norm$(RESET)	-> Ejecuta Norminette"
 	@echo "  $(CYAN)help$(RESET)	-> Muestra las reglas del make"
-	@echo "\n"
+	@echo ""
 
 # La regla .PHONY indica que no hay un archivo llamado all, clean, fclean, 
 # git, re, norm, help o libft

@@ -6,7 +6,7 @@
 /*   By: descamil <descamil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/09 13:20:46 by descamil          #+#    #+#             */
-/*   Updated: 2024/09/21 12:27:27 by descamil         ###   ########.fr       */
+/*   Updated: 2024/09/23 12:04:31 by descamil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,33 +40,3 @@ char	*ft_expander(char **env, char *str)
 	free(cpy);
 	return (div);
 }
-
-// int main(int argc, char *argv[], char *envp[])
-// {
-//     char *test_strings[] = {
-//         "Hello $USER, welcome to $HOME",
-//         "$PATH",
-//         "No variables here",
-//         "$UNDEFINED_VAR",
-//         "Mixed $USER and plain text",
-//         NULL
-//     };
-
-//     for (int i = 0; test_strings[i] != NULL; i++)
-//     {
-//         printf("Original: %s\n", test_strings[i]);
-//         char *expanded = ft_expander(envp, test_strings[i]);
-//         if (expanded != NULL)
-//         {
-//             printf("Expanded: %s\n", expanded);
-//             free(expanded);
-//         }
-//         else
-//         {
-//             printf("Expansion failed or returned NULL\n");
-//         }
-//         printf("\n");
-//     }
-
-//     return 0;
-// }
