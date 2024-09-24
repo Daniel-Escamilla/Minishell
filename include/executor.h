@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/21 00:31:26 by user              #+#    #+#             */
-/*   Updated: 2024/09/21 00:31:27 by user             ###   ########.fr       */
+/*   Updated: 2024/09/24 10:02:28 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ int		ft_here_doc(t_cmd *cmd, int last, int i);
 void	ft_open_fd(t_cmd *cmd, t_mini *mini);
 int		ft_choose_infile(t_cmd *cmd, t_mini *mini);
 int		ft_choose_outfile(t_cmd *cmd, t_mini *mini);
-void	ft_close_and_update_fds(t_mini *mini, char who);
+void	ft_close_and_update_fds(t_mini *mini, t_cmd *cmd, char who);
 
 // ft_select_cmd.c
 void	ft_select_cmd(t_cmd *current, t_mini *mini, int j);
@@ -92,10 +92,6 @@ void	ft_new_args(t_cmd *current, int *i);
 
 // ft_here_doc.c
 int		ft_here_doc(t_cmd *cmd, int last, int i);
-
-// ft_manage_fd.c
-void	ft_open_fd(t_cmd *cmd, t_mini *mini);
-void	ft_close_and_update_fds(t_mini *mini, char who);
 
 // ft_get_args_utils.c
 int		*ft_sizes_input(char *input, int argc);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strtok.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: descamil <descamil@student.42.fr>          +#+  +:+       +#+        */
+/*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/01 17:52:46 by smarin-a          #+#    #+#             */
-/*   Updated: 2024/09/23 10:44:23 by descamil         ###   ########.fr       */
+/*   Updated: 2024/09/24 13:55:03 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ static int	ft_order_all(t_mini *mini, t_cmd **cmd, char **lines, char *input)
 static void	ft_start_comm_val(t_mini **mini)
 {
 	(*mini)->index = 0;
-	(*mini)->fd_tmp = 0;
+	(*mini)->fd_tmp = -1;
 	(*mini)->num_comm = (*mini)->flags->pipe + 1;
 	(*mini)->proc = ft_calloc(sizeof(pid_t), (*mini)->num_comm + 1);
 }
@@ -61,8 +61,7 @@ static void	ft_fill_fd(t_mini *mini, t_cmd *cmd)
 				fd = ft_handle_append(cmd, mini, i);
 			cmd->error = 0;
 			i++;
-			if (fd != -1)
-				close(fd);
+			safe_close(&fd);
 		}
 		current = current->next;
 	}
@@ -100,6 +99,6 @@ int	ft_strtok(t_mini *mini, t_cmd **cmd, char *input)
 		return (-1);
 	if (ft_do_comm(*cmd, mini) == -1)
 		return (-1);
-	print_cmd(*cmd);
+	// print_cmd(*cmd);
 	return (0);
 }

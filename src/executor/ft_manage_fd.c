@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/21 11:25:25 by user              #+#    #+#             */
-/*   Updated: 2024/09/23 23:29:46 by user             ###   ########.fr       */
+/*   Updated: 2024/09/24 13:54:31 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int	ft_choose_outfile(t_cmd *cmd, t_mini *mini)
 	return (mini->fd_pipe[1]);
 }
 
-void	ft_close_and_update_fds(t_mini *mini, char who)
+void	ft_close_and_update_fds(t_mini *mini, t_cmd *cmd, char who)
 {
 	if (who == 'H')
 	{
@@ -41,26 +41,24 @@ void	ft_close_and_update_fds(t_mini *mini, char who)
 	}
 	else if (who == 'P')
 	{
-		close(mini->fd_pipe[1]); // Cerrar el extremo de escritura del pipe
-
-		// Si es el último comando
-		if (mini->num_comm == 0)
+		close(mini->fd_pipe[1]);
+		if (mini->num_comm == 1)
 		{
 			close(mini->fd_pipe[0]);
-			close(mini->fd_tmp);
+			safe_close(&mini->fd_tmp);
 		}
 		else
 		{
-			if (mini->fd_tmp > 2) // Cerrar fd_tmp si tiene un valor previo válido
-			{
-				close(mini->fd_tmp); // Cerrar fd_tmp
-			}
-			mini->fd_tmp = mini->fd_pipe[0]; // Guardar fd_pipe[0] para uso futuro
+			safe_close(&mini->fd_tmp);
+			mini->fd_tmp = mini->fd_pipe[0];
 		}
+		if (cmd->names->fd_infile != mini->fd_tmp
+			&& mini->fd_tmp != mini->fd_pipe[0])
+			safe_close(&cmd->names->fd_infile);
+		if (cmd->names->fd_outfile != mini->fd_pipe[1])
+			safe_close(&cmd->names->fd_outfile);
 	}
-
 }
-
 
 void	ft_open_fd(t_cmd *cmd, t_mini *mini)
 {

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_expand_div.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: descamil <descamil@student.42.fr>          +#+  +:+       +#+        */
+/*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/09 18:16:59 by user              #+#    #+#             */
-/*   Updated: 2024/09/21 12:27:27 by descamil         ###   ########.fr       */
+/*   Updated: 2024/09/24 15:07:01 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,12 @@ char	*expand_div(int *iter, char *str, char **env)
 
 	stop = 0;
 	div = NULL;
+	result = "";
+	if ((ft_strchr_mod(str, '$', stop) - str) <= 0 && ((*(str + 1) == ' ') || (*(str + 1) == '\0')))
+	{
+		*iter = -2;
+		return (ft_strdup("$"));
+	}
 	if ((ft_strchr_mod(str, '$', stop) - str) < 0)
 		result = handle_no_dollar(iter, div, str);
 	else

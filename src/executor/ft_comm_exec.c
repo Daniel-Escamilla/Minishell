@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_comm_exec.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: descamil <descamil@student.42.fr>          +#+  +:+       +#+        */
+/*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/15 21:11:38 by user              #+#    #+#             */
-/*   Updated: 2024/09/23 11:52:23 by descamil         ###   ########.fr       */
+/*   Updated: 2024/09/24 10:02:42 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ void	ft_comm_part2(t_cmd *cmd, t_mini *mini)
 {
 	dup2(cmd->names->fd_infile, STDIN_FILENO);
 	dup2(cmd->names->fd_outfile, STDOUT_FILENO);
-	ft_close_and_update_fds(mini, 'H');
+	ft_close_and_update_fds(mini, cmd, 'H');
 	if (cmd->built == 1)
 	{
 		ft_exec_built(cmd);
@@ -71,7 +71,7 @@ void	ft_comm(t_cmd *cmd, t_mini *mini)
 		if (mini->proc[mini->index] == 0)
 			ft_comm_part2(cmd, mini);
 	}
-	ft_close_and_update_fds(mini, 'P');
+	ft_close_and_update_fds(mini, cmd, 'P');
 	if (cmd->names->join)
 	{
 		unlink(cmd->names->join);

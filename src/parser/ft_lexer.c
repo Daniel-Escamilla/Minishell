@@ -3,28 +3,28 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lexer.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: descamil <descamil@student.42.fr>          +#+  +:+       +#+        */
+/*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/14 15:50:54 by smarin-a          #+#    #+#             */
-/*   Updated: 2024/09/21 12:27:27 by descamil         ###   ########.fr       */
+/*   Updated: 2024/09/24 13:55:48 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/parser.h"
 
-static int	ft_check_void_input(char *input)
-{
-	int	i;
-	int	j;
+// static int	ft_check_void_input(char *input)
+// {
+// 	int	i;
+// 	int	j;
 
-	i = 0;
-	j = 0;
-	while (input[i] != '\0')
-		j += ft_isspace(input[i++]);
-	if (j == i)
-		return (-1);
-	return (0);
-}
+// 	i = 0;
+// 	j = 0;
+// 	while (input[i] != '\0')
+// 		j += ft_isspace(input[i++]);
+// 	if (j == i)
+// 		return (-1);
+// 	return (0);
+// }
 
 // char	*ft_free_input(t_mini *mini, char *input)
 // {
@@ -62,7 +62,7 @@ static void	ft_free_per_comm(t_mini *mini, char *input)
 		free(mini->flags->redirect);
 		mini->flags->redirect = NULL;
 	}
-	if (mini->proc && mini->error != -2 && input[0] != '\0')
+	if (mini->proc && mini->error != -2 && ft_nothing(input, 0) == 0)
 		free(mini->proc);
 	if (input)
 		free(input);
@@ -75,7 +75,7 @@ static int	ft_handle_input(char *input)
 		printf("Exit\n");
 		return (0);
 	}
-	if (ft_check_void_input(input) == -1 || input[0] == '\0')
+	if (ft_nothing(input, 0) == 1)
 		return (1);
 	return (2);
 }
@@ -98,8 +98,9 @@ void	ft_recive_input(t_mini *mini)
 				if (write(mini->fd_history, input, ft_strlen(input)) == -1
 					|| write(mini->fd_history, "\n", 1) == -1)
 					return ;
-			if (ft_strtok(mini, &(mini->cmd), input) == 0)
-				printf("\nLlega al final! 🚀\n\n");
+			// if (ft_strtok(mini, &(mini->cmd), input) == 0)
+			// 	printf("\nLlega al final! 🚀\n\n");
+			ft_strtok(mini, &(mini->cmd), input);
 		}
 		ft_free_per_comm(mini, input);
 		free_t_cmd(&(mini->cmd));
