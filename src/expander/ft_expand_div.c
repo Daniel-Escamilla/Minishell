@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/09 18:16:59 by user              #+#    #+#             */
-/*   Updated: 2024/09/24 17:40:19 by user             ###   ########.fr       */
+/*   Updated: 2024/09/24 18:48:10 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,11 +71,9 @@ char	*expand_div(int *iter, char *str, char **env)
 	result = "";
 	if ((ft_strchr_mod(str, '$', stop) - str) < 0)
 		result = handle_no_dollar(iter, div, str);
-	else if ((ft_strchr_mod(str, '$', stop) - str) == 0 && ((*(str + 1) == ' ') || (*(str + 1) == '\0')))
-	{
-		*iter = -2;
+	else if ((ft_strchr_mod(str, '$', stop) - str) == 0
+		&& ((*(str + 1) == ' ') || (*(str + 1) == '\0')) && --(*iter) == -2)
 		return (ft_strdup("$"));
-	}
 	else
 	{
 		if (*iter == -1)
