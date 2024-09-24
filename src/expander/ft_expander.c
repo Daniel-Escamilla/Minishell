@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/09 13:20:46 by descamil          #+#    #+#             */
-/*   Updated: 2024/09/24 15:09:48 by user             ###   ########.fr       */
+/*   Updated: 2024/09/24 17:35:48 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,8 @@ char	*ft_expander(char **env, char *str)
 	while (1)
 	{
 		div = expand_div(&iter, tmp, env);
+		if (ft_strchr(div, '$') != NULL && div[ft_strlen(div) -1 ] == '$')
+			iter = -2;
 		if (ft_strncmp(tmp, "$$", 2) == 0 && ft_strlen(tmp) == 2)
 			iter = -2;
 		free(tmp);
