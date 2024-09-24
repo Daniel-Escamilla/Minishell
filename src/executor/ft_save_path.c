@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_save_path.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: descamil <descamil@student.42.fr>          +#+  +:+       +#+        */
+/*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/02 14:56:04 by descamil          #+#    #+#             */
-/*   Updated: 2024/09/21 12:27:27 by descamil         ###   ########.fr       */
+/*   Updated: 2024/09/24 17:53:48 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,6 +81,8 @@ char	**ft_save_path(char	**env)
 
 	line = ft_execute(env);
 	trim = ft_strtrim(line, "\n");
+	if (trim == NULL)
+		return (NULL);
 	free(line);
 	path = ft_split(trim + ft_strlen("search-binaries-default: "), ':');
 	free(trim);
