@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/15 21:11:38 by user              #+#    #+#             */
-/*   Updated: 2024/09/24 10:02:42 by user             ###   ########.fr       */
+/*   Updated: 2024/09/24 16:04:48 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	ft_comm_part1(t_cmd *cmd, t_mini *mini)
 	if (cmd->cmd == NULL)
 	{
 		if (cmd->args && cmd->args[0] && ft_nothing(cmd->args[0], 0) == 0)
-			printf("[%s]: command not found\n", cmd->args[0]);
+			printf("%s: command not found\n", cmd->args[0]);
 		if (cmd->type)
 		{
 			if (cmd->names->fd_infile > 0)
