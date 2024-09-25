@@ -6,7 +6,7 @@
 /*   By: descamil <descamil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/09 11:03:10 by descamil          #+#    #+#             */
-/*   Updated: 2024/09/21 12:27:27 by descamil         ###   ########.fr       */
+/*   Updated: 2024/09/25 18:44:41 by descamil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,12 @@ static int	ft_pos_files(t_cmd *cmd, int i)
 		if (ft_type(cmd->args[i++]) > 0)
 		{
 			if (cmd->args[i] == NULL)
+			{
 				printf("mini: syntax error near unexpected token `newline'\n");
-			cmd->files->f_order[files++] = ft_strdup(cmd->args[i]);
+				return (-1);
+			}
+			else
+				cmd->files->f_order[files++] = ft_strdup(cmd->args[i]);
 		}
 	}
 	return (0);

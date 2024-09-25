@@ -6,7 +6,7 @@
 /*   By: descamil <descamil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/05 17:24:29 by descamil          #+#    #+#             */
-/*   Updated: 2024/09/25 13:10:41 by descamil         ###   ########.fr       */
+/*   Updated: 2024/09/25 18:37:58 by descamil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,8 +103,8 @@ int	ft_num_files(t_cmd *cmd)
 	j = 0;
 	while (cmd->args[i] != NULL)
 	{
-		while (ft_type(cmd->args[i++]) > 0)
-			j++;
+		while (ft_type(cmd->args[i]) > 0)
+			ft_plus_one(i++, j++);
 	}
 	return (j);
 }

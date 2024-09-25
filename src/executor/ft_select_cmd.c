@@ -6,7 +6,7 @@
 /*   By: descamil <descamil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/11 19:00:37 by user              #+#    #+#             */
-/*   Updated: 2024/09/23 11:58:26 by descamil         ###   ########.fr       */
+/*   Updated: 2024/09/25 18:40:58 by descamil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ void	ft_select_cmd(t_cmd *current, t_mini *mini, int j)
 	while (current->args[++i])
 	{
 		current->error = 0;
-		if (ft_type(current->args[i]) != 0)
+		if (ft_type(current->args[i]) != 0 && current->args[i + 1] != NULL)
 			i++;
 		else if (ft_nothing(current->args[i], 0) == 0)
 		{
