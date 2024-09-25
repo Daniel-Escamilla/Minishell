@@ -6,7 +6,7 @@
 /*   By: descamil <descamil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 15:31:41 by descamil          #+#    #+#             */
-/*   Updated: 2024/09/25 15:41:03 by descamil         ###   ########.fr       */
+/*   Updated: 2024/09/25 18:59:10 by descamil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,7 +98,7 @@ int	ft_count_redirect(t_mini *mini, char *input, int i, int size)
 			if (input[i] == '\'' || input[i] == '\"')
 				i = ft_locate_next_quote(i + 1, input, input[i]);
 			size = ft_redirect_size(mini, input, &i);
-			if (input[i++] == '\0' || mini->flags->redirect->red_error != 0)
+			if (mini->flags->redirect->red_error != 0 || input[i++] == '\0')
 				break ;
 		}
 		if (mini->flags->redirect->red_error > 0)
