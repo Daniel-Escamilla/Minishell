@@ -6,7 +6,7 @@
 /*   By: descamil <descamil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/20 22:58:52 by user              #+#    #+#             */
-/*   Updated: 2024/09/25 15:40:04 by descamil         ###   ########.fr       */
+/*   Updated: 2024/09/25 19:10:43 by descamil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ void	ft_recive_input(t_mini *mini);
 
 // ft_quit_quotes.c
 void	ft_rm_quotes(char **str);
+int		ft_has_quotes(char *str, int i);
 
 // ft_parser.c
 int		ft_sizes(t_cmd *current);

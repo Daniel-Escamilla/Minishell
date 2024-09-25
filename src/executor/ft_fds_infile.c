@@ -6,7 +6,7 @@
 /*   By: descamil <descamil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/12 19:25:46 by user              #+#    #+#             */
-/*   Updated: 2024/09/21 14:27:23 by descamil         ###   ########.fr       */
+/*   Updated: 2024/09/25 19:07:10 by descamil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,8 +73,8 @@ int	ft_pick_infile(t_cmd *cmd, t_mini *mini)
 		else if (ft_atoi(cmd->files->order[i]) == 3)
 		{
 			if (ft_more(cmd, i, 3) == 1 && ft_more(cmd, i, 1) == 0)
-				return (ft_here_doc(cmd, -2, i));
-			fd = ft_here_doc(cmd, 0, i);
+				return (ft_here_doc(mini, cmd, -2, i));
+			fd = ft_here_doc(mini, cmd, 0, i);
 		}
 		i++;
 	}

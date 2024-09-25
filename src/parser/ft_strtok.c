@@ -6,7 +6,7 @@
 /*   By: descamil <descamil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/01 17:52:46 by smarin-a          #+#    #+#             */
-/*   Updated: 2024/09/25 15:38:12 by descamil         ###   ########.fr       */
+/*   Updated: 2024/09/25 19:28:49 by descamil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,8 @@ void	ft_do_remove_quotes(t_cmd *cmd)
 		{
 			if (ft_atoi(current->files->order[i]) == 3)
 				i++;
-			ft_rm_quotes(&current->files->f_order[i++]);
+			if (current->files->f_order[i])
+				ft_rm_quotes(&current->files->f_order[i++]);
 		}
 		current = current->next;
 	}

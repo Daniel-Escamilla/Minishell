@@ -6,13 +6,13 @@
 /*   By: descamil <descamil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/25 11:00:03 by descamil          #+#    #+#             */
-/*   Updated: 2024/09/25 13:50:40 by descamil         ###   ########.fr       */
+/*   Updated: 2024/09/25 19:10:31 by descamil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/parser.h"
 
-static int	ft_has_quotes(char *str, int i)
+int	ft_has_quotes(char *str, int i)
 {
 	i--;
 	while (str && str[++i] != '\0')

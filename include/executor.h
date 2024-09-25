@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   executor.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: descamil <descamil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/21 00:31:26 by user              #+#    #+#             */
-/*   Updated: 2024/09/24 10:02:28 by user             ###   ########.fr       */
+/*   Updated: 2024/09/25 19:14:13 by descamil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ int		ft_handle_trunc(t_cmd *cmd, t_mini *mini, int i);
 int		ft_handle_append(t_cmd *cmd, t_mini *mini, int i);
 
 // ft_here_doc.c
-int		ft_here_doc(t_cmd *cmd, int last, int i);
+int		ft_here_doc(t_mini *mini, t_cmd *cmd, int last, int i);
 
 // ft_manage_fd.c
 void	ft_open_fd(t_cmd *cmd, t_mini *mini);
@@ -89,9 +89,6 @@ int		ft_handle_append(t_cmd *cmd, t_mini *mini, int i);
 
 // ft_new_args.c
 void	ft_new_args(t_cmd *current, int *i);
-
-// ft_here_doc.c
-int		ft_here_doc(t_cmd *cmd, int last, int i);
 
 // ft_get_args_utils.c
 int		*ft_sizes_input(char *input, int argc);

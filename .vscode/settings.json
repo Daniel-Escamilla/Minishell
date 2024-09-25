@@ -1,6 +1,7 @@
 {
     "files.associations": {
         "executor.h": "c",
-        "libft.h": "c"
+        "libft.h": "c",
+        "parser.h": "c"
     }
 }
