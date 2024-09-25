@@ -62,6 +62,7 @@ PARSER_SRCS =	src/parser/ft_lexer.c \
 				src/parser/ft_strtok.c \
 				src/parser/ft_split_pipe.c \
 				src/parser/ft_check_input.c \
+				src/parser/ft_quit_quotes.c \
 				src/parser/ft_check_pipes.c \
 				src/parser/ft_check_quotes.c \
 				src/parser/ft_check_operators.c \

@@ -3,51 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lexer.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: descamil <descamil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/14 15:50:54 by smarin-a          #+#    #+#             */
-/*   Updated: 2024/09/24 13:55:48 by user             ###   ########.fr       */
+/*   Updated: 2024/09/25 10:51:48 by descamil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/parser.h"
-
-// static int	ft_check_void_input(char *input)
-// {
-// 	int	i;
-// 	int	j;
-
-// 	i = 0;
-// 	j = 0;
-// 	while (input[i] != '\0')
-// 		j += ft_isspace(input[i++]);
-// 	if (j == i)
-// 		return (-1);
-// 	return (0);
-// }
-
-// char	*ft_free_input(t_mini *mini, char *input)
-// {
-// 	int	j;
-
-// 	j = 0;
-// 	while (input && input[j] == ' ')
-// 		j++;
-// 	if (input[j] != '\0')
-// 	{
-// 		if (mini->cmd)
-// 		{
-// 			if (mini->cmd->args)
-// 			{
-// 				j = 0;
-// 				while (mini->cmd->args[j] && mini->cmd->args[j] != NULL)
-// 					ft_strstr_free(mini->cmd->args);
-// 			}
-// 		}
-// 	}
-// 	free(input);
-// 	return (NULL);
-// }
 
 static void	ft_free_per_comm(t_mini *mini, char *input)
 {

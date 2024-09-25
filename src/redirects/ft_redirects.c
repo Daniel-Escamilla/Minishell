@@ -6,7 +6,7 @@
 /*   By: descamil <descamil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 15:31:41 by descamil          #+#    #+#             */
-/*   Updated: 2024/09/21 12:27:27 by descamil         ###   ########.fr       */
+/*   Updated: 2024/09/25 15:41:03 by descamil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,11 +86,8 @@ static int	ft_redirect_size(t_mini *mini, char *input, int *i)
 	return (size);
 }
 
-int	ft_count_redirect(t_mini *mini, char *input, int i)
+int	ft_count_redirect(t_mini *mini, char *input, int i, int size)
 {
-	int	size;
-
-	size = 0;
 	if (ft_red(input) != 0)
 	{
 		ft_start_red(mini);
@@ -108,6 +105,7 @@ int	ft_count_redirect(t_mini *mini, char *input, int i)
 		{
 			mini->flags->locate_red = (i - size + 1);
 			ft_red_error(mini, input);
+			mini->error = -2;
 			return (-1);
 		}
 		mini->flags->redirect->number = ft_red_count(mini);

@@ -3,16 +3,38 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strtok.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: descamil <descamil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/01 17:52:46 by smarin-a          #+#    #+#             */
-/*   Updated: 2024/09/24 13:55:03 by user             ###   ########.fr       */
+/*   Updated: 2024/09/25 15:38:12 by descamil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/parser.h"
 
-// ft_rm_quotes(mini, *cmd);
+void	ft_do_remove_quotes(t_cmd *cmd)
+{
+	t_cmd	*current;
+	int		i;
+
+	i = 0;
+	current = cmd;
+	while (current != NULL)
+	{
+		while (current->args && current->args[i])
+			ft_rm_quotes(&current->args[i++]);
+		i = 0;
+		while (current->files && current->files->f_order
+			&& current->files->f_order[i])
+		{
+			if (ft_atoi(current->files->order[i]) == 3)
+				i++;
+			ft_rm_quotes(&current->files->f_order[i++]);
+		}
+		current = current->next;
+	}
+}
+
 static int	ft_order_all(t_mini *mini, t_cmd **cmd, char **lines, char *input)
 {
 	if (mini->flags->pipe == 0)
@@ -26,19 +48,13 @@ static int	ft_order_all(t_mini *mini, t_cmd **cmd, char **lines, char *input)
 	ft_strstr_free(lines);
 	if (mini->cmd->files->error == -1)
 		return (-1);
+	ft_do_remove_quotes(*cmd);
 	ft_remove_files(*cmd, mini);
 	if (mini->cmd->files->error == -1)
 		return (-1);
 	ft_select_files(*cmd, 0);
+	print_cmd(*cmd);
 	return (0);
-}
-
-static void	ft_start_comm_val(t_mini **mini)
-{
-	(*mini)->index = 0;
-	(*mini)->fd_tmp = -1;
-	(*mini)->num_comm = (*mini)->flags->pipe + 1;
-	(*mini)->proc = ft_calloc(sizeof(pid_t), (*mini)->num_comm + 1);
 }
 
 static void	ft_fill_fd(t_mini *mini, t_cmd *cmd)
@@ -72,7 +88,10 @@ static int	ft_do_comm(t_cmd *cmd, t_mini *mini)
 	t_cmd	*current;
 
 	current = cmd;
-	ft_start_comm_val(&mini);
+	mini->index = 0;
+	mini->fd_tmp = -1;
+	mini->num_comm = mini->flags->pipe + 1;
+	mini->proc = ft_calloc(sizeof(pid_t), mini->num_comm + 1);
 	ft_fill_fd(mini, cmd);
 	while (current != NULL)
 	{

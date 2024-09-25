@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   redirects.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: descamil <descamil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/20 23:10:06 by user              #+#    #+#             */
-/*   Updated: 2024/09/20 23:52:23 by user             ###   ########.fr       */
+/*   Updated: 2024/09/25 15:40:58 by descamil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 # include "../minishell.h"
 
 // ft_redirects.c
-int		ft_count_redirect(t_mini *mini, char *input, int i);
+int		ft_count_redirect(t_mini *mini, char *input, int i, int size);
 
 // ft_redirects_utils.c
 int		ft_red_count(t_mini *mini);

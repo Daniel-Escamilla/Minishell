@@ -6,7 +6,7 @@
 /*   By: descamil <descamil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/01 17:55:56 by smarin-a          #+#    #+#             */
-/*   Updated: 2024/09/21 12:27:27 by descamil         ###   ########.fr       */
+/*   Updated: 2024/09/25 13:08:22 by descamil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@ int	ft_check_quote(char *input, int simp, int doub, t_mini *mini)
 		if (simp % 2 == 1 || doub % 2 == 1)
 		{
 			mini->flags->quote = 1;
+			mini->error = -2;
 			printf("dquote>\n");
 			return (-1);
 		}

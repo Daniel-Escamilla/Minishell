@@ -6,7 +6,7 @@
 /*   By: descamil <descamil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/09 17:04:59 by descamil          #+#    #+#             */
-/*   Updated: 2024/09/21 12:27:27 by descamil         ###   ########.fr       */
+/*   Updated: 2024/09/25 15:39:48 by descamil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,10 +77,10 @@ char	**ft_split_pipe(const char *s, char c)
 	a = 0;
 	len_mod = 0;
 	arr = (char **)ft_calloc((ft_count_pipes((char *)s,
-					0, 0) + 2), sizeof(char *));
+					0, 0, 0) + 2), sizeof(char *));
 	if (arr == NULL)
 		return (NULL);
-	while (a < (ft_count_pipes((char *)s, 0, 0) + 1))
+	while (a < (ft_count_pipes((char *)s, 0, 0, 0) + 1))
 	{
 		len_mod = ft_strlen_pipe(s, i, c);
 		cpy_mod = ft_strlcpy_pipe((char *)s, c, &i, len_mod);
