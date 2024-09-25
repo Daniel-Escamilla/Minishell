@@ -6,29 +6,11 @@
 /*   By: descamil <descamil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 16:27:49 by user              #+#    #+#             */
-/*   Updated: 2024/09/21 12:27:27 by descamil         ###   ########.fr       */
+/*   Updated: 2024/09/25 18:29:16 by descamil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/utils.h"
-
-// static void	free_t_env(t_env **env)
-// {
-// 	int	i;
-
-// 	i = 0;
-// 	if (env && *env)
-// 	{
-// 		if ((*env)->path)
-// 			free((*env)->path);
-// 		if ((*env)->env)
-// 		{
-// 			while ((*env)->env[i])
-// 				free((*env)->env[i++]);
-// 		}
-// 	}
-// 	free(*env);
-// }
 
 static void	ft_free_sim(void *ptr, char *str, char *str1)
 {
@@ -80,10 +62,7 @@ void	free_t_mini(t_mini *mini)
 	if (mini->env != NULL)
 	{
 		if (mini->env->path != NULL)
-		{
 			free(mini->env->path);
-			mini->env->path = NULL;
-		}
 		if (mini->env->env != NULL)
 			ft_strstr_free(mini->env->env);
 	}
@@ -100,4 +79,7 @@ void	free_t_mini(t_mini *mini)
 	if (mini->env)
 		free(mini->env);
 	free(mini);
+	close(2);
+	close(1);
+	close(0);
 }
