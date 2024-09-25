@@ -6,7 +6,7 @@
 /*   By: descamil <descamil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/01 18:22:30 by smarin-a          #+#    #+#             */
-/*   Updated: 2024/09/25 15:39:57 by descamil         ###   ########.fr       */
+/*   Updated: 2024/09/25 18:23:05 by descamil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,9 +31,11 @@ int	ft_count_pipes(char *input, int amount, int character, int i)
 	while (input[i])
 	{
 		if (input[i] == '\'' || input[i] == '\"')
+		{
 			i = ft_locate_next_quote(i + 1, input, input[i]);
-		if (input[i] != '\0')
-			i++;
+			if (input[i] == '\0')
+				return (amount);
+		}
 		if (input[i] == '|')
 		{
 			character = ft_pipe_error(input, i + 1);
