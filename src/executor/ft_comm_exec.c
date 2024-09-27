@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/15 21:11:38 by user              #+#    #+#             */
-/*   Updated: 2024/09/24 16:04:48 by user             ###   ########.fr       */
+/*   Updated: 2024/09/27 19:24:05 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,9 +27,15 @@ void	ft_comm_part1(t_cmd *cmd, t_mini *mini)
 		if (cmd->type)
 		{
 			if (cmd->names->fd_infile > 0)
+			{
 				close(cmd->names->fd_infile);
+				cmd->names->fd_infile = -1;
+			}
 			if (cmd->names->fd_outfile > 1)
+			{
 				close(cmd->names->fd_outfile);
+				cmd->names->fd_outfile = -1;
+			}
 		}
 	}
 	if (cmd->cmd == NULL || (cmd->names->fd_infile < 0
