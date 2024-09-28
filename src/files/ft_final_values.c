@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_final_values.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: descamil <descamil@student.42.fr>          +#+  +:+       +#+        */
+/*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/05 17:24:29 by descamil          #+#    #+#             */
-/*   Updated: 2024/09/25 19:23:36 by descamil         ###   ########.fr       */
+/*   Updated: 2024/09/27 19:26:32 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,10 +101,12 @@ int	ft_num_files(t_cmd *cmd)
 
 	i = 0;
 	j = 0;
-	while (cmd->args[i] != NULL)
+	while (cmd->args && cmd->args[i] != NULL)
 	{
 		while (ft_type(cmd->args[i]) > 0)
 			ft_plus_one(i++, j++);
+		if (cmd->args[i] == NULL)
+			return (j);
 		i++;
 	}
 	return (j);
