@@ -20,8 +20,11 @@ NAME = minishell
 
 # Compilador a utilizar (gcc, clang, etc)
 CC = gcc
-# Flags de compilacion (agregar los que se necesiten)
+# Flags de compilacion (agregar los que se necesiten) -O2 para pruebas extra
 CFLAGS = -g3 -Wall -Wextra -Werror
+
+# Incluir archivos de dependencia
+-include $(OBJS:.o=.d)
 
 #------------------------------------------------------------------------------#
 
@@ -166,7 +169,7 @@ $(NAME): $(LIBFT) $(addprefix $(OBJDIR)/, $(OBJS))
 # La regla %.o compila los archivos objeto
 $(OBJDIR)/%.o: %.c | $(OBJDIR)
 	@mkdir -p $(@D)
-	$(CC) $(CFLAGS) -c $< -o $@
+	$(CC) $(CFLAGS) -MMD -c $< -o $@
 	@$(eval LAST_MAKE_HAD_COMPILATION := 1)
 
 # La regla $(OBJDIR) crea el directorio de los archivos objeto
@@ -233,6 +236,11 @@ test: re
 		args+=" $$arg"; \
 	done; \
 	./$(NAME)$$args
+
+# Versión
+VERSION = 1.9
+version:
+	@echo "Version: $(VERSION)"
 
 # La regla git agrega, hace commit y hace push
 git: fclean
