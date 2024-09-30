@@ -68,7 +68,7 @@ SRCS =	ft_atoi.c \
 # Archivos objeto (no tocar)
 OBJS = $(SRCS:.c=.o)
 # Directorio de los archivos objeto (no tocar)
-OBJDIR = obj_dir
+OBJDIR = libft_objects
 
 #------------------------------------------------------------------------------#
 
@@ -124,7 +124,7 @@ $(OBJDIR)/%.o : %.c | $(OBJDIR)
 # La regla $(OBJDIR) crea el directorio de los archivos objeto
 $(OBJDIR):
 	@echo "$(CYAN)Creando directorio de objetos de $(NAME)...\n$(RESET)"
-	@mkdir $(OBJDIR)
+	@mkdir -p $(OBJDIR)
 	@echo "$(GREEN)¡Directorio de objetos de $(NAME) creado!\n$(RESET)"
 	@echo "$(CYAN)Creando objetos de $(NAME)...\n$(RESET)"
 

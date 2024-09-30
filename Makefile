@@ -28,6 +28,7 @@ CFLAGS = -g3 -Wall -Wextra -Werror
 # Archivos fuente (agregar los que se necesiten, separar por carpetas)
 BUILTINS_SRCS =	src/builtins/ft_cd.c \
 				src/builtins/ft_builtin.c \
+				src/builtins/ft_change_env.c \
 
 EXECUTOR_SRCS = src/executor/ft_commands.c \
 				src/executor/ft_exec_cmd.c \
@@ -200,6 +201,7 @@ clean: libft_clean
 	@echo "$(RED)Eliminando directorio de objetos...\n$(RESET)"
 	@rm -rf $(OBJDIR)
 	@echo "$(BOLD_RED)¡Directorio de objetos eliminado!\n$(RESET)"
+	@clear
 
 # La regla fclean elimina todos los archivos objeto y el ejecutable. Si se usa
 # la libft, descomentar la linea libft_fclean
@@ -207,6 +209,8 @@ fclean: clean libft_fclean
 	@echo "$(RED)Eliminando ejecutable...\n$(RESET)"
 	@rm -rf $(NAME)
 	@echo "$(BOLD_RED)¡El ejecutable ha sido eliminado!\n$(RESET)"
+	@sleep 1
+	@clear
 
 # La regla re elimina todo y compila nuevamente
 re: fclean all
