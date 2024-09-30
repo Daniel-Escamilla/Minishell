@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_builtin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: descamil <descamil@student.42.fr>          +#+  +:+       +#+        */
+/*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/03 17:09:02 by user              #+#    #+#             */
-/*   Updated: 2024/09/21 12:27:27 by descamil         ###   ########.fr       */
+/*   Updated: 2024/09/30 12:07:32 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int	ft_exec_built(t_cmd *cmd)
 
 	exit = 0;
 	if (ft_strncmp(cmd->cmd, "cd", 2) == 0 && ft_strlen(cmd->cmd) == 2)
-		exit = 1;
+		exit = ft_cd(cmd);
 	if (ft_strncmp(cmd->cmd, "pwd", 3) == 0 && ft_strlen(cmd->cmd) == 3)
 		exit = 2;
 	if (ft_strncmp(cmd->cmd, "env", 3) == 0 && ft_strlen(cmd->cmd) == 3)
@@ -57,15 +57,5 @@ char	*ft_builtins(t_cmd *cmd, char *comm)
 		cmd->built = 1;
 	return (str);
 }
-// void    ft_env(t_mini *mini)
-// {
-// 
-// }
 
-// int	ft_cd(t_mini *mini, t_cmd *cmd)
-// {
-// 	if (chdir(cmd->cmd) == 0)
-// 	;
-// }
 
-// exit = ft_cd(mini, cmd);

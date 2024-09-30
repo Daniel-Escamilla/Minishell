@@ -26,7 +26,8 @@ CFLAGS = -g3 -Wall -Wextra -Werror
 #------------------------------------------------------------------------------#
 
 # Archivos fuente (agregar los que se necesiten, separar por carpetas)
-BUILTINS_SRCS =	src/builtins/ft_builtin.c \
+BUILTINS_SRCS =	src/builtins/ft_cd.c \
+				src/builtins/ft_builtin.c \
 
 EXECUTOR_SRCS = src/executor/ft_commands.c \
 				src/executor/ft_exec_cmd.c \
