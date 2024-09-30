@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/15 21:11:38 by user              #+#    #+#             */
-/*   Updated: 2024/09/30 12:22:32 by user             ###   ########.fr       */
+/*   Updated: 2024/09/30 19:45:57 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ void	ft_comm_part2(t_cmd *cmd, t_mini *mini)
 	ft_close_and_update_fds(mini, cmd, 'H');
 	if (cmd->built == 1)
 	{
-		ft_exec_built(cmd);
+		ft_exec_built(mini, cmd);
 		ft_putstr_fd("BUILT\n", 2);
 		// close(mini->fd_pipe[1]);
 		close(mini->fd_history);

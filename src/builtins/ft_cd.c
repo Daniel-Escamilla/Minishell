@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/30 12:00:46 by user              #+#    #+#             */
-/*   Updated: 2024/09/30 19:15:17 by user             ###   ########.fr       */
+/*   Updated: 2024/09/30 19:45:35 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ int	ft_cd(t_mini *mini, t_cmd *cmd)
 		if (chdir(ruta) == -1)
 			printf("ERROR\n");
 		else
-			ft_change_env(mini->env->env, "PWD", ruta);
+			ft_change_env(&mini->env->env, "PWD", ruta);
 		free(ruta);
 	}
 	else if (size == 2)
