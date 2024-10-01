@@ -6,23 +6,38 @@
 /*   By: descamil <descamil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/03 09:29:06 by descamil          #+#    #+#             */
-/*   Updated: 2024/09/21 12:27:27 by descamil         ###   ########.fr       */
+/*   Updated: 2024/10/01 15:47:24 by descamil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/executor.h"
 
+int ft_is_dir(char *ruta)
+{
+	DIR	*dir;
+
+	dir = opendir(ruta);
+	if (!dir)
+		return (0);
+	closedir(dir);
+	return (1);
+}
+
 char	*ft_validate_comm_part1(char *cmd)
 {
 	char	*command;
 
-	if (access(cmd, X_OK) == 0 && ft_strrchr(cmd, '/'))
+	if (access(cmd, X_OK) == 0 && ft_strrchr(cmd, '/') && ft_is_dir(cmd) == 0)
 	{
 		command = ft_strdup(cmd);
 		return (command);
 	}
-	if (access(cmd, X_OK) != 0 && ft_strrchr(cmd, '/'))
+	if ((access(cmd, X_OK) != 0 && ft_strrchr(cmd, '/')) || ft_is_dir(cmd) == 1)
+	{
+		if (ft_is_dir(cmd) == 1)
+			printf("mini: %s: Is a directory\n", cmd);
 		return (NULL);
+	}
 	command = ft_strjoin("/", cmd);
 	return (command);
 }

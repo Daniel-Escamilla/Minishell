@@ -6,7 +6,7 @@
 /*   By: descamil <descamil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/04 11:05:18 by user              #+#    #+#             */
-/*   Updated: 2024/09/21 12:27:27 by descamil         ###   ########.fr       */
+/*   Updated: 2024/10/01 19:12:34 by descamil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,4 +38,40 @@ void	ft_change_env(char ***env, char *variable, char *content)
 		}
 	}
 	free(join);
+}
+
+char	*ft_get_var(char **env, char *variable)
+{
+	char	*var;
+	char	*tmp;
+	int		i;
+
+	i = -1;
+	tmp = ft_strjoin(variable, "=");
+	var = NULL;
+	while (env[++i])
+	{
+		if (ft_strnstr(env[i], tmp, ft_strlen(tmp)))
+			var = ft_strdup(env[i] + ft_strlen(variable) + 1);
+	}
+	free(tmp);
+	return (var);
+}
+
+void	ft_add_var(char ***env, char *variable, char *content)
+{
+	char	**env_tmp;
+	char	*var;
+	char	*tmp;
+
+	if (content == NULL || variable == NULL)
+		return ;
+	env_tmp = ft_strstr_dup(*env);
+	ft_strstr_free(*env);
+	var = ft_strdup(variable);
+	tmp = ft_strjoin(var, content);
+	free(var);
+	*env = ft_sindub_join(env_tmp, tmp);
+	free(tmp);
+	free(env_tmp);
 }

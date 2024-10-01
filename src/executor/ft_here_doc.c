@@ -6,7 +6,7 @@
 /*   By: descamil <descamil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/03 09:32:44 by descamil          #+#    #+#             */
-/*   Updated: 2024/09/25 19:58:18 by descamil         ###   ########.fr       */
+/*   Updated: 2024/10/01 09:39:12 by descamil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,18 +35,22 @@ static int	ft_write_in_fd(t_mini *mini, t_cmd *cmd, int i)
 	char	*line;
 	int		fd_tmp;
 	int		quotes;
+	int		j;
 
+	j = 1;
 	fd_tmp = open(cmd->names->join, O_WRONLY | O_CREAT, 0666);
 	if (fd_tmp == -1)
 		printf("Error open");
 	quotes = ft_has_quotes(cmd->files->f_order[i], 0);
 	ft_rm_quotes(&cmd->files->f_order[i]);
-	printf("%s\n", cmd->files->f_order[i]);
 	while (1)
 	{
 		line = readline("> ");
 		if (line == NULL)
-			printf("Error readline");
+		{
+			printf("mini: warning: here-document at line %d delimited by end-of-file (wanted `%s')\n", j, cmd->files->f_order[i]);
+			break ;
+		}
 		if (ft_strnstr(line, cmd->files->f_order[i], ft_strlen(line))
 			&& ft_strlen(cmd->files->f_order[i]) == ft_strlen(line))
 		{
@@ -59,6 +63,7 @@ static int	ft_write_in_fd(t_mini *mini, t_cmd *cmd, int i)
 			|| write(fd_tmp, "\n", 1) == -1)
 			printf("Error write");
 		free(line);
+		j++;
 	}
 	return (fd_tmp);
 }

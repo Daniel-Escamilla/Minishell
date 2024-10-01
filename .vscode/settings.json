@@ -2,6 +2,14 @@
     "files.associations": {
         "executor.h": "c",
         "libft.h": "c",
-        "parser.h": "c"
+        "parser.h": "c",
+        "builtins.h": "c",
+        "minishell.h": "c",
+        "stdlib.h": "c",
+        "dirent.h": "c",
+        "limits.h": "c",
+        "wait.h": "c",
+        "main.h": "c",
+        "struct.h": "c"
     }
 }

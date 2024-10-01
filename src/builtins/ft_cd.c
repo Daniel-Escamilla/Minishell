@@ -3,75 +3,99 @@
 /*                                                        :::      ::::::::   */
 /*   ft_cd.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: descamil <descamil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/30 12:00:46 by user              #+#    #+#             */
-/*   Updated: 2024/09/30 19:45:35 by user             ###   ########.fr       */
+/*   Updated: 2024/10/01 19:42:49 by descamil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/builtins.h"
 
-char *ft_change_route(char *arg1, char *arg2, char *dir)
+static void	ft_remove_dots(char **var)
 {
-	char *start_pos;
-	size_t prefix_len;
-	size_t arg1_len;
-	size_t arg2_len;
-	char *result;
+	char	*slash;
 
-	start_pos = ft_strnstr(dir, arg1, ft_strlen(dir));
-	if (!start_pos)
-		return (NULL);
-	arg1_len = ft_strlen(arg1);
-	arg2_len = ft_strlen(arg2);
-	prefix_len = start_pos - dir;
-	result = ft_calloc(1, prefix_len + arg2_len + ft_strlen(start_pos + arg1_len) + 1);
-	if (!result)
-		return (NULL);
-	ft_memcpy(result, dir, prefix_len);
-	ft_memcpy(result + prefix_len, arg2, arg2_len);
-	ft_strlcpy(result + prefix_len + arg2_len, start_pos + arg1_len,
-		ft_strlen(start_pos + arg1_len) + 1);
-	return (result);
+	slash = ft_strrchr(*var, '/');
+	if (!slash)
+		return;
+	if ((ft_strnstr(slash, "..", 3) && ft_strlen(slash) == 3) || (ft_strnstr(slash, ".", 2) && ft_strlen(slash) == 2))
+	{
+		*slash = '\0';
+		slash = ft_strrchr(*var, '/');
+		printf("%s\n", slash);
+		if (ft_strlen(slash) == ft_strlen(*var))
+		{
+			free(*var);
+			*var = ft_strdup("/");
+		}
+		else if (slash)
+			*slash = '\0';
+			
+	}
+}
+
+static char	*ft_prepare_path(t_mini *mini, t_cmd *cmd, char *directorio_actual)
+{
+	char	*rute;
+	char	*tmp;
+
+	rute = NULL;
+	tmp = NULL;
+	if (ft_strncmp(cmd->args[1], "-", 1) == 0 && ft_strlen(cmd->args[1]) == 1)
+	{
+		tmp = ft_get_var(mini->env->env, "OLDPWD");
+		if (tmp == NULL)
+			printf("mini: cd: OLDPWD not set\n");
+		else
+			printf("%s\n", tmp);
+		return (tmp);
+	}
+	if (cmd->args[1][0] != '/')
+	{
+		tmp = ft_strjoin("/", cmd->args[1]);
+		rute = ft_strjoin(directorio_actual, tmp);
+		free(tmp);
+	}
+	else
+		rute = ft_strdup(cmd->args[1]);
+	ft_remove_dots(&rute);
+	printf("RUTE --> %s\n", rute);
+	return (rute);
+}
+
+static void	ft_update_env(t_mini *mini, char *rute)
+{
+	char	*pwd;
+	char	*tmp;
+
+	pwd = ft_get_var(mini->env->env, "PWD");
+	ft_change_env(&mini->env->env, "PWD", rute);
+	tmp = ft_get_var(mini->env->env, "OLDPWD");
+	if (tmp == NULL)
+		ft_add_var(&mini->env->env, "OLDPWD=", pwd);
+	else
+		ft_change_env(&mini->env->env, "OLDPWD", pwd);
+	free(tmp);
+	free(pwd);
 }
 
 int	ft_cd(t_mini *mini, t_cmd *cmd)
 {
 	char	*directorio_actual;
-	char	*ruta;
-	int		size;
-	
+	char	*rute;
+
 	directorio_actual = getcwd(NULL, 0);
-	printf("%s\n", directorio_actual);
-	printf(B_OR_0"");
-	ft_strstr_printf(cmd->args);
-	printf(""RESET);
-	size = ft_strstr_len(cmd->args);
-	if (size >= 4)
-	{
-		free(directorio_actual);
-		printf("cd: too many arguments\n");
+	if (ft_strstr_len(cmd->args) >= 3)
 		return (-1);
-	}
-	else if (size == 3)
-	{
-		ruta = ft_change_route(cmd->args[1], cmd->args[2], directorio_actual);
-		printf("%s\n", ruta);
-		if (chdir(ruta) == -1)
-			printf("ERROR\n");
-		else
-			ft_change_env(&mini->env->env, "PWD", ruta);
-		free(ruta);
-	}
-	else if (size == 2)
-	{
-		
-	}
-	else if (size == 1)
-	{
-		
-	}
+	rute = ft_prepare_path(mini, cmd, directorio_actual);
+	if (rute == NULL)
+		return (-1);
+	if (chdir(rute) == -1)
+		dprintf(2, "mini: cd: %s: No such file or directory\n", cmd->args[1]);
+	else
+		ft_update_env(mini, rute);
 	free(directorio_actual);
+	free(rute);
 	return (1);
 }

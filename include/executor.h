@@ -6,7 +6,7 @@
 /*   By: descamil <descamil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/21 00:31:26 by user              #+#    #+#             */
-/*   Updated: 2024/09/25 19:14:13 by descamil         ###   ########.fr       */
+/*   Updated: 2024/10/01 15:50:10 by descamil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ void	ft_comm_part1(t_cmd *cmd, t_mini *mini);
 void	ft_comm_part2(t_cmd *cmd, t_mini *mini);
 
 // ft_exec_cmd.c
+int		ft_is_dir(char *ruta);
 char	*ft_validate_comm_part1(char *cmd);
 char	*ft_validate_comm(char *cmd, char **path, int j);
 char	*ft_route_cmd(t_mini *mini, t_cmd *current, char *tmp);

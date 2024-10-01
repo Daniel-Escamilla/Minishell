@@ -6,7 +6,7 @@
 /*   By: descamil <descamil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/01 17:52:46 by smarin-a          #+#    #+#             */
-/*   Updated: 2024/09/25 19:28:49 by descamil         ###   ########.fr       */
+/*   Updated: 2024/10/01 16:20:23 by descamil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,7 +92,10 @@ static int	ft_do_comm(t_cmd *cmd, t_mini *mini)
 	mini->index = 0;
 	mini->fd_tmp = -1;
 	mini->num_comm = mini->flags->pipe + 1;
+	// printf("%d\n", mini->num_comm);
 	mini->proc = ft_calloc(sizeof(pid_t), mini->num_comm + 1);
+	if (mini->num_comm == 1)
+		mini->single = 1;
 	ft_fill_fd(mini, cmd);
 	while (current != NULL)
 	{
@@ -103,6 +106,9 @@ static int	ft_do_comm(t_cmd *cmd, t_mini *mini)
 		current = current->next;
 	}
 	ft_wait_bonus(mini);
+	close(mini->fd_pipe[0]);
+	// if (cmd->built == 1)
+	// 	printf("%s\n", get_next_line(mini->fd_pipe[0]));
 	return (0);
 }
 

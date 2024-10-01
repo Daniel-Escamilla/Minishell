@@ -6,7 +6,7 @@
 /*   By: descamil <descamil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/21 00:33:38 by user              #+#    #+#             */
-/*   Updated: 2024/09/21 12:20:50 by descamil         ###   ########.fr       */
+/*   Updated: 2024/10/01 16:18:38 by descamil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,6 +98,7 @@ typedef struct s_mini
 	int			error;
 	int			index;
 	int			fd_tmp;
+	int			single;
 	int			here_doc;
 	int			num_comm;
 	int			fd_pipe[2];
