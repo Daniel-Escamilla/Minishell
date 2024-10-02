@@ -10,6 +10,11 @@
         "limits.h": "c",
         "wait.h": "c",
         "main.h": "c",
-        "struct.h": "c"
+        "struct.h": "c",
+        "utils.h": "c",
+        "include.h": "c",
+        "files.h": "c",
+        "colors.h": "c",
+        "signals.h": "c"
     }
 }
