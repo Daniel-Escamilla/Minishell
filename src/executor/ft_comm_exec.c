@@ -6,7 +6,7 @@
 /*   By: descamil <descamil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/15 21:11:38 by user              #+#    #+#             */
-/*   Updated: 2024/10/01 16:46:13 by descamil         ###   ########.fr       */
+/*   Updated: 2024/10/03 19:39:09 by descamil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,9 @@ void	ft_comm_part2(t_cmd *cmd, t_mini *mini)
 		ft_putstr_fd("BUILT\n", 2);
 		// close(mini->fd_pipe[1]);
 		close(mini->fd_history);
+		close(2);
+		close(1);
+		close(0);
 		exit(0);
 	}
 	else

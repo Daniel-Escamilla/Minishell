@@ -6,7 +6,7 @@
 /*   By: descamil <descamil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/03 09:32:44 by descamil          #+#    #+#             */
-/*   Updated: 2024/10/01 09:39:12 by descamil         ###   ########.fr       */
+/*   Updated: 2024/10/03 20:37:06 by descamil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ static char	*ft_create_filename(void)
 static int	ft_write_in_fd(t_mini *mini, t_cmd *cmd, int i)
 {
 	char	*line;
+	char	*tmp;
 	int		fd_tmp;
 	int		quotes;
 	int		j;
@@ -57,8 +58,14 @@ static int	ft_write_in_fd(t_mini *mini, t_cmd *cmd, int i)
 			free(line);
 			break ;
 		}
+		
 		if (quotes == 0)
-			line = ft_expander(mini->env->env, line);
+		{
+			tmp = ft_strdup(line);
+			free(line);
+			line = ft_expander(mini->env->env, tmp);
+			free(tmp);
+		}
 		if (write(fd_tmp, line, ft_strlen(line)) == -1
 			|| write(fd_tmp, "\n", 1) == -1)
 			printf("Error write");
