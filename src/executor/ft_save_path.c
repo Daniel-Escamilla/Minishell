@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_save_path.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: descamil <descamil@student.42.fr>          +#+  +:+       +#+        */
+/*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/02 14:56:04 by descamil          #+#    #+#             */
-/*   Updated: 2024/10/02 12:45:54 by descamil         ###   ########.fr       */
+/*   Updated: 2024/10/04 11:34:29 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/executor.h"
 
-char	*ft_father(int *fd, char *search)
+static char	*ft_father(int *fd, char *search)
 {
 	char	*line;
 
@@ -31,7 +31,7 @@ char	*ft_father(int *fd, char *search)
 	return (NULL);
 }
 
-void	ft_pid_0(int *fd, char *path, char **file, char **env)
+static void	ft_pid_0(int *fd, char *path, char **file, char **env)
 {
 	close(fd[0]);
 	dup2(fd[1], STDOUT_FILENO);
@@ -81,30 +81,3 @@ char	**ft_save_path(char	**env)
 	free(trim);
 	return (path);
 }
-
-// int main(int argc, char **argv, char **env)
-// {
-//     char **path;
-// 	(void)argc;
-// 	(void)argv;
-
-//     // Llama a ft_save_path y muestra el resultado
-//     path = ft_save_path(env);
-    
-//     // Si se encuentra el path, imprime cada uno de los directorios
-//     if (path != NULL)
-//     {
-//         for (int i = 0; path[i] != NULL; i++)
-//         {
-//             printf("Path %d: %s\n", i, path[i]);
-//             free(path[i]);  // Libera cada cadena
-//         }
-//         free(path);  // Libera el array de punteros
-//     }
-//     else
-//     {
-//         printf("No se pudo obtener el path de systemd-path\n");
-//     }
-
-//     return 0;
-// }

@@ -6,15 +6,18 @@
 /*   By: descamil <descamil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/01 17:52:46 by smarin-a          #+#    #+#             */
-/*   Updated: 2024/10/01 16:20:23 by descamil         ###   ########.fr       */
+/*   Updated: 2024/10/05 00:21:36 by descamil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/parser.h"
 
-void	ft_do_remove_quotes(t_cmd *cmd)
+static void	ft_do_remove_quotes(t_cmd *cmd)
 {
 	t_cmd	*current;
+	int		*quotes;
+	char	*itoa;
+	char	**tmp;
 	int		i;
 
 	i = 0;
@@ -22,15 +25,33 @@ void	ft_do_remove_quotes(t_cmd *cmd)
 	while (current != NULL)
 	{
 		while (current->args && current->args[i])
-			ft_rm_quotes(&current->args[i++]);
+		{
+			quotes = ft_find_quotes(current->args[i], 0);
+			if (quotes[1] != -1 && cmd->quote_args == NULL)
+				cmd->quote_args = ft_sindub_join(NULL, ft_itoa(i));
+			else if (quotes[1] != -1)
+			{
+				itoa = ft_itoa(i);
+				tmp = ft_strstr_dup(cmd->quote_args);
+				ft_strstr_free(cmd->quote_args);
+				cmd->quote_args = ft_sindub_join(tmp, itoa);
+				free(itoa);
+			}
+			ft_rm_quotes(&current->args[i++], quotes);
+			free(quotes);
+		}
 		i = 0;
 		while (current->files && current->files->f_order
 			&& current->files->f_order[i])
 		{
 			if (ft_atoi(current->files->order[i]) == 3)
 				i++;
-			if (current->files->f_order[i])
-				ft_rm_quotes(&current->files->f_order[i++]);
+			else if (current->files->f_order[i])
+			{
+				quotes = ft_find_quotes(current->files->f_order[i], 0);
+				ft_rm_quotes(&current->files->f_order[i++], quotes);
+				free(quotes);
+			}
 		}
 		current = current->next;
 	}
@@ -93,7 +114,7 @@ static int	ft_do_comm(t_cmd *cmd, t_mini *mini)
 	mini->fd_tmp = -1;
 	mini->num_comm = mini->flags->pipe + 1;
 	// printf("%d\n", mini->num_comm);
-	mini->proc = ft_calloc(sizeof(pid_t), mini->num_comm + 1);
+	mini->proc = ft_calloc(sizeof(pid_t), (size_t)mini->num_comm + 1);
 	if (mini->num_comm == 1)
 		mini->single = 1;
 	ft_fill_fd(mini, cmd);
@@ -106,7 +127,7 @@ static int	ft_do_comm(t_cmd *cmd, t_mini *mini)
 		current = current->next;
 	}
 	ft_wait_bonus(mini);
-	close(mini->fd_pipe[0]);
+	// close(mini->fd_pipe[0]);
 	// if (cmd->built == 1)
 	// 	printf("%s\n", get_next_line(mini->fd_pipe[0]));
 	return (0);

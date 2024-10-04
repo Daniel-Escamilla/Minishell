@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_expand_div.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: descamil <descamil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/09 18:16:59 by user              #+#    #+#             */
-/*   Updated: 2024/09/24 18:48:10 by user             ###   ########.fr       */
+/*   Updated: 2024/10/04 23:32:18 by descamil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ static char	*process_dollar(char *str, char **env, int *stop)
 	char	*res;
 
 	res = ft_strchr_mod(str, '$', *stop);
-	div_tmp = ft_tript(str, ft_size_var(res), res - str);
+	div_tmp = ft_tript(str, ft_size_var(res), (int)(res - str));
 	div_tmp[1] = ft_dolar_to_iqual(div_tmp[1]);
 	tmp = ft_change_var(div_tmp[1], env);
 	if (ft_strlen(tmp) == 1 && ft_strncmp(tmp, "$", 1) == 0)

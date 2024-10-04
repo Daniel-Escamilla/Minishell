@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: descamil <descamil@student.42.fr>          +#+  +:+       +#+        */
+/*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/20 22:58:52 by user              #+#    #+#             */
-/*   Updated: 2024/09/25 19:10:43 by descamil         ###   ########.fr       */
+/*   Updated: 2024/10/04 14:18:51 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,9 @@ int		ft_check_quote(char *input, int simp, int doub, t_mini *mini);
 void	ft_recive_input(t_mini *mini);
 
 // ft_quit_quotes.c
-void	ft_rm_quotes(char **str);
 int		ft_has_quotes(char *str, int i);
+int		*ft_find_quotes(char *str, int i);
+void	ft_rm_quotes(char **str, int *quotes);
 
 // ft_parser.c
 int		ft_sizes(t_cmd *current);

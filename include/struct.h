@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   struct.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: descamil <descamil@student.42.fr>          +#+  +:+       +#+        */
+/*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/21 00:33:38 by user              #+#    #+#             */
-/*   Updated: 2024/10/01 16:18:38 by descamil         ###   ########.fr       */
+/*   Updated: 2024/10/04 14:54:11 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,15 +81,16 @@ typedef struct s_cmd
 	struct s_cmd	*next;
 	char			**tmp;
 	char			**args;
+	char			**quote_args;
 	char			*cmd;
-	t_files			*files;
 	t_type			*type;
+	t_files			*files;
 	t_names			*names;
-	int				args_amount;
-	int				error;
-	int				built;
 	int				exit;
 	int				size;
+	int				error;
+	int				built;
+	int				args_amount;
 }					t_cmd;
 
 typedef struct s_mini

@@ -6,7 +6,7 @@
 /*   By: descamil <descamil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/11 19:00:37 by user              #+#    #+#             */
-/*   Updated: 2024/09/25 18:40:58 by descamil         ###   ########.fr       */
+/*   Updated: 2024/10/04 23:49:00 by descamil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,10 +27,10 @@ static void	ft_initialize_selection(t_cmd *current)
 static char	**ft_allocate_tmp(t_cmd *current)
 {
 	char	**tmp;
-	int		arg_len;
+	size_t	arg_len;
 
 	arg_len = ft_strstr_len(current->args);
-	tmp = ft_calloc(sizeof(char *), arg_len - (current->size * 2) + 1);
+	tmp = ft_calloc(sizeof(char *),	arg_len - (size_t)(current->size * 2) + 1);
 	if (tmp == NULL)
 		return (NULL);
 	return (tmp);
@@ -49,7 +49,7 @@ static void	ft_process_argument(t_cmd *cmd, char ***tmp, int *j, int i)
 {
 	int	max_args;
 
-	max_args = ft_strstr_len(cmd->args) - (cmd->size * 2);
+	max_args = (int)ft_strstr_len(cmd->args) - (cmd->size * 2);
 	if (cmd->files->error != -2 && *j < max_args)
 	{
 		(*tmp)[*j] = ft_strdup(cmd->args[i]);

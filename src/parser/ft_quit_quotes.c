@@ -6,7 +6,7 @@
 /*   By: descamil <descamil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/25 11:00:03 by descamil          #+#    #+#             */
-/*   Updated: 2024/09/25 19:10:31 by descamil         ###   ########.fr       */
+/*   Updated: 2024/10/04 23:57:17 by descamil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	ft_has_quotes(char *str, int i)
 	return (0);
 }
 
-static int	*ft_find_quotes(char *str, int i)
+int	*ft_find_quotes(char *str, int i)
 {
 	int	*quotes;
 
@@ -29,8 +29,13 @@ static int	*ft_find_quotes(char *str, int i)
 	while (str[i] != '\0' && str[i] != '\"' && str[i] != '\'')
 		i++;
 	quotes[0] = i;
-	quotes[1] = ft_locate_next_quote(i + 1, str, str[i]);
-	if (str[quotes[1]] == '\0')
+	if (str[i] && str[i + 1])
+	{
+		quotes[1] = ft_locate_next_quote(i + 1, str, str[i]);
+		if (str[quotes[1]] == '\0')
+			quotes[1] = -1;
+	}
+	else
 		quotes[1] = -1;
 	return (quotes);
 }
@@ -59,18 +64,15 @@ static void	ft_remove_quotes(char **str, int *pos)
 	*str = result;
 }
 
-void	ft_rm_quotes(char **str)
+void	ft_rm_quotes(char **str, int *quotes)
 {
 	char	*result;
-	int		*quotes;
 	int		*quotes2;
 
 	if (ft_has_quotes(*str, 0) == 0)
 		return ;
 	result = ft_strdup(*str);
 	free(*str);
-	*str = NULL;
-	quotes = ft_find_quotes(result, 0);
 	ft_remove_quotes(&result, quotes);
 	while (ft_has_quotes(result, quotes[1] - 1) == 1)
 	{
@@ -79,6 +81,5 @@ void	ft_rm_quotes(char **str)
 		free(quotes);
 		quotes = quotes2;
 	}
-	free(quotes);
 	*str = result;
 }

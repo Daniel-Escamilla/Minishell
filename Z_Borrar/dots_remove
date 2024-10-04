@@ -4,21 +4,4 @@ EXPORT {MULIT ARGS}
 ECHO con o sin "-n" sin '\n'
 EXIT {Un argumento[NUMERICO positivo]} {0,...,256} si es [NEG] RULETA -256  = 0 && {-9223372036854775808,...,9223372036854775807}
 
-[descamil@c3r1s5:~/Desktop/minishell$ exit 1 2 3
-exit
-bash: exit: too many arguments
-descamil@c3r1s5:~/Desktop/minishell$ exit 1 2
-exit
-bash: exit: too many arguments
-descamil@c3r1s5:~/Desktop/minishell$ exit 1 2 dasd
-exit
-bash: exit: too many arguments
-descamil@c3r1s5:~/Desktop/minishell$ exit 1  asd dasd
-exit
-bash: exit: too many arguments
-descamil@c3r1s5:~/Desktop/minishell$ exit 1  asd 
-exit
-bash: exit: too many arguments
-descamil@c3r1s5:~/Desktop/minishell$ exit asd 1  asd 
-exit
-bash: exit: asd: numeric argument required]
+EXIT PRUEBAS

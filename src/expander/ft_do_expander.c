@@ -6,7 +6,7 @@
 /*   By: descamil <descamil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/03 11:25:51 by descamil          #+#    #+#             */
-/*   Updated: 2024/09/25 19:54:32 by descamil         ###   ########.fr       */
+/*   Updated: 2024/10/04 23:32:45 by descamil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,10 @@ static char	**ft_str_expander(t_mini *mini, char **args)
 
 	i = -1;
 	result = NULL;
-	size = ft_strstr_len(args);
+	size = (int)ft_strstr_len(args);
 	tmp = ft_strstr_dup(args);
 	ft_strstr_free(args);
-	result = ft_calloc(sizeof(char *), size + 1);
+	result = ft_calloc(sizeof(char *), (size_t)size + 1);
 	if (result == NULL)
 	{
 		ft_strstr_free(tmp);

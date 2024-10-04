@@ -6,7 +6,7 @@
 /*   By: descamil <descamil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/16 15:35:49 by user              #+#    #+#             */
-/*   Updated: 2024/09/21 12:27:27 by descamil         ###   ########.fr       */
+/*   Updated: 2024/10/04 23:33:53 by descamil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ char	*ft_inside_argv(char *input, int *size, int stop)
 	int		pos;
 
 	i = -1;
-	exit = (char *)ft_calloc((size[stop]), sizeof(char));
+	exit = (char *)ft_calloc((size_t)(size[stop]), sizeof(char));
 	if (exit == NULL)
 		return (NULL);
 	pos = ft_position(input, size, stop);
@@ -81,7 +81,7 @@ int	*ft_sizes_input(char *input, int argc)
 	int	i;
 
 	i = -1;
-	sizes = (int *)ft_calloc(argc, sizeof(int));
+	sizes = (int *)ft_calloc((size_t)argc, sizeof(int));
 	if (sizes == NULL)
 		return (0);
 	while (++i < argc - 1)

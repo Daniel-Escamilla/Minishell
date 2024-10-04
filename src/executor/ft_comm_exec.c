@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_comm_exec.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: descamil <descamil@student.42.fr>          +#+  +:+       +#+        */
+/*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/15 21:11:38 by user              #+#    #+#             */
-/*   Updated: 2024/10/03 19:39:09 by descamil         ###   ########.fr       */
+/*   Updated: 2024/10/04 12:21:52 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,8 @@ void	ft_comm_part2(t_cmd *cmd, t_mini *mini)
 	else
 	{
 		execve(cmd->cmd, cmd->args, mini->env->env);
-		perror("Execve Error");
+		perror("execve");
+		exit(1);
 	}
 }
 

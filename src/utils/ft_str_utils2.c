@@ -6,7 +6,7 @@
 /*   By: descamil <descamil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/03 09:30:16 by descamil          #+#    #+#             */
-/*   Updated: 2024/09/21 12:27:27 by descamil         ###   ########.fr       */
+/*   Updated: 2024/10/04 23:28:28 by descamil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,16 +42,16 @@ char	*ft_strchr_mod(char *str, int value, int stop)
 char	**ft_sindub_join(char **str, char *str1)
 {
 	char	**result;
-	int		len;
+	size_t	len;
 	int		i;
 
-	i = -1;
+	i = (int)-1;
 	if (str == NULL)
 		len = 0;
 	else
 		len = ft_strstr_len(str);
 	result = ft_calloc(sizeof(char *), len + 1 + 1);
-	while (++i < len)
+	while (++i < (int)len)
 		result[i] = ft_strdup(str[i]);
 	result[i] = ft_strdup(str1);
 	return (result);
@@ -69,4 +69,11 @@ int	ft_strlen_dup(char *argv)
 			if (argv[i++] == ' ')
 				space++;
 	return (i - space);
+}
+
+void ft_error_in_child(char *prefix, char *arg, char *suffix)
+{
+    write(2, prefix, strlen(prefix));
+    write(2, arg, strlen(arg));
+    write(2, suffix, strlen(suffix));
 }

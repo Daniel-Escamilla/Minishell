@@ -3,19 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: descamil <descamil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/03 14:40:35 by descamil          #+#    #+#             */
-/*   Updated: 2024/09/20 20:29:26 by user             ###   ########.fr       */
+/*   Updated: 2024/10/05 00:04:51 by descamil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-char	*read_l(int fd, char *buffer)
+static char	*read_l(int fd, char *buffer)
 {
 	char	aux[BUFFER_SIZE + 1];
-	int		bytes_read;
+	ssize_t		bytes_read;
 
 	while (1)
 	{
@@ -39,10 +39,10 @@ char	*read_l(int fd, char *buffer)
 	return (NULL);
 }
 
-char	*extraer_linea(char *buffer)
+static char	*extraer_linea(char *buffer)
 {
 	char	*line;
-	int		i;
+	size_t		i;
 
 	line = NULL;
 	i = 0;
@@ -66,7 +66,7 @@ char	*extraer_linea(char *buffer)
 	return (line);
 }
 
-char	*delete_line(char *buffer)
+static char	*delete_line(char *buffer)
 {
 	char	*new;
 	int		i;
@@ -84,7 +84,7 @@ char	*delete_line(char *buffer)
 		return (NULL);
 	}
 	i++;
-	new = ft_calloc_gnl(ft_strlen_gnl(buffer) - i + 1, 1);
+	new = ft_calloc_gnl((size_t)(ft_strlen_gnl(buffer) - i) + 1, 1);
 	if (!new)
 		return (NULL);
 	j = 0;

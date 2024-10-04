@@ -6,7 +6,7 @@
 /*   By: descamil <descamil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/09 17:04:59 by descamil          #+#    #+#             */
-/*   Updated: 2024/09/25 15:39:48 by descamil         ###   ########.fr       */
+/*   Updated: 2024/10/04 23:30:21 by descamil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ static char	*ft_strlcpy_pipe(char *s, char c, int *new_start, int size)
 
 	j = 0;
 	start = *new_start;
-	ptr = (char *)ft_calloc(size + 1, sizeof(char));
+	ptr = (char *)ft_calloc((size_t)size + 1, sizeof(char));
 	if (ptr == NULL)
 		return (NULL);
 	while (s[start] == c && s[start] != '\0')
@@ -76,7 +76,7 @@ char	**ft_split_pipe(const char *s, char c)
 	i = 0;
 	a = 0;
 	len_mod = 0;
-	arr = (char **)ft_calloc((ft_count_pipes((char *)s,
+	arr = (char **)ft_calloc((size_t)(ft_count_pipes((char *)s,
 					0, 0, 0) + 2), sizeof(char *));
 	if (arr == NULL)
 		return (NULL);

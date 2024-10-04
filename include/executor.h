@@ -6,7 +6,7 @@
 /*   By: descamil <descamil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/21 00:31:26 by user              #+#    #+#             */
-/*   Updated: 2024/10/01 15:50:10 by descamil         ###   ########.fr       */
+/*   Updated: 2024/10/05 00:09:14 by descamil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,22 +34,6 @@ void	ft_comm(t_cmd *cmd, t_mini *mini);
 void	ft_comm_part1(t_cmd *cmd, t_mini *mini);
 void	ft_comm_part2(t_cmd *cmd, t_mini *mini);
 
-// ft_exec_cmd.c
-int		ft_is_dir(char *ruta);
-char	*ft_validate_comm_part1(char *cmd);
-char	*ft_validate_comm(char *cmd, char **path, int j);
-char	*ft_route_cmd(t_mini *mini, t_cmd *current, char *tmp);
-char	*ft_validate_comm_part2(char **path, int j, char *command);
-
-// ft_fds_infile.c
-int		ft_more(t_cmd *cmd, int i, int type);
-int		ft_pick_infile(t_cmd *cmd, t_mini *mini);
-
-// ft_fds_outfile.c
-int		ft_pick_outfile(t_cmd *cmd, t_mini *mini);
-int		ft_handle_trunc(t_cmd *cmd, t_mini *mini, int i);
-int		ft_handle_append(t_cmd *cmd, t_mini *mini, int i);
-
 // ft_here_doc.c
 int		ft_here_doc(t_mini *mini, t_cmd *cmd, int last, int i);
 
@@ -62,18 +46,8 @@ void	ft_close_and_update_fds(t_mini *mini, t_cmd *cmd, char who);
 // ft_select_cmd.c
 void	ft_select_cmd(t_cmd *current, t_mini *mini, int j);
 
-// ft_commands.c
-t_cmd	*ft_add_command(char *input, int i);
-
-// ft_commands_utils.c
-int		ft_nothing(char *input, int i);
-int		ft_nothing_r(char *input, int i);
-void	ft_plus_one(int value1, int value2);
-
-// ft_comm_exec.c
-void	ft_comm(t_cmd *cmd, t_mini *mini);
-
 // ft_exec_cmd.c
+int		ft_is_dir(char *ruta);
 char	*ft_validate_comm_part1(char *cmd);
 char	*ft_validate_comm(char *cmd, char **path, int j);
 char	*ft_route_cmd(t_mini *mini, t_cmd *current, char *tmp);
@@ -98,8 +72,6 @@ void	ft_free_args(char **argv, int *size, char ***args);
 
 // ft_save_path.c
 char	**ft_save_path(char	**env);
-
-// ft_select_cmd.c
-void	ft_select_cmd(t_cmd *current, t_mini *mini, int j);
+char	*ft_execute(char **env, char **file, char *path, char *search);
 
 #endif
