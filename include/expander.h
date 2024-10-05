@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   expander.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: descamil <descamil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/20 22:45:25 by user              #+#    #+#             */
-/*   Updated: 2024/09/20 23:52:08 by user             ###   ########.fr       */
+/*   Created: 2024/10/05 12:44:54 by descamil          #+#    #+#             */
+/*   Updated: 2024/10/05 12:44:56 by descamil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,5 +39,6 @@ char	*ft_no_more_dolar(char *div, char *str);
 
 // ft_tript.c
 char	**ft_tript(char *str, int size, int start);
+
 
 #endif

@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: descamil <descamil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/21 00:31:26 by user              #+#    #+#             */
-/*   Updated: 2024/10/05 00:09:14 by descamil         ###   ########.fr       */
+/*   Created: 2024/10/05 12:44:47 by descamil          #+#    #+#             */
+/*   Updated: 2024/10/05 12:44:49 by descamil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,8 @@ char	*ft_inside_argv(char *input, int *size, int stop);
 void	ft_free_args(char **argv, int *size, char ***args);
 
 // ft_save_path.c
-char	**ft_save_path(char	**env);
+char	**ft_save_path(char **env);
 char	*ft_execute(char **env, char **file, char *path, char *search);
+
 
 #endif
