@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_cd.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: descamil <descamil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/30 12:00:46 by user              #+#    #+#             */
-/*   Updated: 2024/10/04 13:09:31 by user             ###   ########.fr       */
+/*   Updated: 2024/10/05 13:57:59 by descamil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,8 @@ static char	*ft_prepare_path(t_mini *mini, t_cmd *cmd)
 			printf("mini: cd: HOME not set\n");
 		return (rute);
 	}
-	else if (ft_strncmp(cmd->args[1], "-", 1) == 0 && ft_strlen(cmd->args[1]) == 1)
+	else if (ft_strncmp(cmd->args[1], "-", 1) == 0
+		&& ft_strlen(cmd->args[1]) == 1)
 	{
 		rute = ft_get_var(mini->env->env, "OLDPWD");
 		if (rute == NULL)
@@ -93,15 +94,9 @@ int	ft_cd(t_mini *mini, t_cmd *cmd)
 		return (-1);
 	if (chdir(rute) == -1)
 		ft_error_in_child("mini: cd: ", cmd->args[1],
-			 ": No such file or directory\n");
+			": No such file or directory\n");
 	else
 		ft_update_env(mini);
 	free(rute);
-	return (0);
-}
-
-int	ft_env(t_mini *mini)
-{
-	ft_strstr_printf(mini->env->env);
 	return (0);
 }
