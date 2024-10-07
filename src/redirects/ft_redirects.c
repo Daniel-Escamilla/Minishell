@@ -6,7 +6,7 @@
 /*   By: descamil <descamil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 15:31:41 by descamil          #+#    #+#             */
-/*   Updated: 2024/09/25 18:59:10 by descamil         ###   ########.fr       */
+/*   Updated: 2024/10/04 23:52:12 by descamil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,19 +20,19 @@ static void	ft_red_error(t_mini *mini, char *input)
 		{
 			if (mini->flags->redirect->red_error == 1)
 				mini->flags->redirect->error
-					= ft_substr(input, mini->flags->locate_red, 1);
+					= ft_substr(input, (unsigned)mini->flags->locate_red, 1);
 			else if ((mini->flags->redirect->red_error == 2))
-				mini->flags->redirect->error
-					= ft_substr(input, 1 + mini->flags->locate_red, 1);
+				mini->flags->redirect->error = ft_substr(input,
+					1 + (unsigned)mini->flags->locate_red, 1);
 		}
 		else if (mini->flags->redirect->red_error > 2)
 		{
 			if (mini->flags->redirect->red_error == 3)
 				mini->flags->redirect->error
-					= ft_substr(input, mini->flags->locate_red, 2);
+					= ft_substr(input, (unsigned)mini->flags->locate_red, 2);
 			else if ((mini->flags->redirect->red_error == 4))
-				mini->flags->redirect->error
-					= ft_substr(input, 1 + mini->flags->locate_red, 2);
+				mini->flags->redirect->error = ft_substr(input,
+					1 + (unsigned)mini->flags->locate_red, 2);
 		}
 		printf("mini: parse error near `%s'\n", mini->flags->redirect->error);
 		free(mini->flags->redirect->error);

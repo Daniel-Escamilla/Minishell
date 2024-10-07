@@ -6,7 +6,7 @@
 /*   By: descamil <descamil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/02 09:48:18 by descamil          #+#    #+#             */
-/*   Updated: 2024/09/21 12:27:27 by descamil         ###   ########.fr       */
+/*   Updated: 2024/10/04 23:50:30 by descamil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ static char	*extract_tok(const char *input, int *i)
 	int		tok_len;
 	char	*tok;
 
-	len = ft_strlen(input);
+	len = (int)ft_strlen(input);
 	while (*i < len && ft_isspace(input[*i]))
 		(*i)++;
 	start = *i;
@@ -44,8 +44,8 @@ static char	*extract_tok(const char *input, int *i)
 		&& !is_redirection(input[*i], input[*i + 1]))
 		(*i)++;
 	tok_len = *i - start + 1;
-	tok = (char *)ft_calloc((tok_len + 1), sizeof(char));
-	ft_strlcpy(tok, input + start, tok_len);
+	tok = (char *)ft_calloc((size_t)(tok_len + 1), sizeof(char));
+	ft_strlcpy(tok, input + start, (size_t)tok_len);
 	tok[tok_len] = '\0';
 	return (tok);
 }
@@ -56,7 +56,7 @@ static char	*extract_redir(const char *input, int *i)
 	int		redir_len;
 
 	redir_len = is_redirection(input[*i], input[*i + 1]);
-	redir = (char *)ft_calloc(redir_len + 1, sizeof(char));
+	redir = (char *)ft_calloc((size_t)redir_len + 1, sizeof(char));
 	if (!redir)
 		return (NULL);
 	if (redir_len == 2)
@@ -78,8 +78,8 @@ char	**ft_split_red(const char *input, int i)
 	int		len;
 
 	tok_count = 0;
-	len = ft_strlen(input);
-	toks = (char **)ft_calloc(sizeof(char *), (len * 2 + 1));
+	len = (int)ft_strlen(input);
+	toks = (char **)ft_calloc(sizeof(char *), (size_t)len * 2 + 1);
 	if (!toks)
 		return (NULL);
 	while (i < len)

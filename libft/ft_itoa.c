@@ -6,7 +6,7 @@
 /*   By: descamil <descamil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 18:00:29 by sergio            #+#    #+#             */
-/*   Updated: 2024/07/12 14:59:52 by descamil         ###   ########.fr       */
+/*   Updated: 2024/10/04 23:32:59 by descamil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ char	*ft_memory(int len, int sign, int n)
 	char	*arr;
 	char	*ptr;
 
-	arr = (char *)ft_calloc(len + 1, 1);
+	arr = (char *)ft_calloc((size_t)len + 1, 1);
 	if (arr == NULL)
 		return (NULL);
 	ptr = arr + len;

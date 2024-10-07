@@ -6,7 +6,7 @@
 /*   By: descamil <descamil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/03 08:56:10 by descamil          #+#    #+#             */
-/*   Updated: 2024/09/21 12:27:27 by descamil         ###   ########.fr       */
+/*   Updated: 2024/10/04 23:25:27 by descamil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 char	**ft_strstr_dup(char **str)
 {
 	char	**dup;
-	int		i;
+	size_t	i;
 
 	i = 0;
 	dup = NULL;
@@ -56,9 +56,9 @@ int	ft_strnstrstr(char **str, char *locate)
 	return (total);
 }
 
-int	ft_strstr_len(char **str)
+size_t	ft_strstr_len(char **str)
 {
-	int	i;
+	size_t	i;
 
 	i = 0;
 	if (str == NULL)
@@ -71,8 +71,8 @@ int	ft_strstr_len(char **str)
 char	**ft_strstr_join(char **str, char **str1)
 {
 	char	**string;
-	int		size;
-	int		i;
+	size_t		size;
+	size_t	i;
 	int		j;
 
 	i = 0;

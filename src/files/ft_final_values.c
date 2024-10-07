@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_final_values.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: descamil <descamil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/05 17:24:29 by descamil          #+#    #+#             */
-/*   Updated: 2024/09/27 19:26:32 by user             ###   ########.fr       */
+/*   Updated: 2024/10/04 23:29:42 by descamil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ char	**ft_order(t_cmd *cmd, t_mini *mini)
 	i = -1;
 	j = 0;
 	order = (char **)ft_calloc(sizeof(char *),
-			mini->flags->redirect->number + 1);
+			(size_t)mini->flags->redirect->number + 1);
 	if (order == NULL)
 		return (NULL);
 	if (ft_check_dups(cmd) == -1)

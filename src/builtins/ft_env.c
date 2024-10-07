@@ -1,21 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   signals.h                                          :+:      :+:    :+:   */
+/*   ft_env.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: descamil <descamil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/05 12:45:38 by descamil          #+#    #+#             */
-/*   Updated: 2024/10/05 12:45:42 by descamil         ###   ########.fr       */
+/*   Created: 2024/10/05 12:49:28 by descamil          #+#    #+#             */
+/*   Updated: 2024/10/05 13:58:04 by descamil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SIGNALS_H
-# define SIGNALS_H
+#include "../../include/builtins.h"
 
-# include "../minishell.h"
-
-// ft_signals.c
-void	ft_signal_management(int i);
-
-#endif
+int	ft_env(t_mini *mini)
+{
+	ft_strstr_printf(mini->env->env);
+	return (0);
+}

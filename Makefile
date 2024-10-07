@@ -21,7 +21,8 @@ NAME = minishell
 # Compilador a utilizar (gcc, clang, etc)
 CC = gcc
 # Flags de compilacion (agregar los que se necesiten) -O2 para pruebas extra
-CFLAGS = -g3 -Wall -Wextra -Werror
+CFLAGS = -g3 -Wall -Wextra -Werror# -Wpedantic -Wshadow -Wformat -Wnull-dereference -Wconversion -Wstrict-overflow -Wsign-conversion -Wimplicit-fallthrough=5 -Wdouble-promotion -Wvla -Wformat-security -Wcast-align=strict -Wredundant-decls -Wlogical-op -Wstrict-prototypes -Wmissing-prototypes -Wmissing-declarations -Winit-self -Wuninitialized -Wbad-function-cast -Wmissing-field-initializers
+
 
 # Incluir archivos de dependencia
 -include $(OBJS:.o=.d)
@@ -30,6 +31,12 @@ CFLAGS = -g3 -Wall -Wextra -Werror
 
 # Archivos fuente (agregar los que se necesiten, separar por carpetas)
 BUILTINS_SRCS =	src/builtins/ft_cd.c \
+				src/builtins/ft_env.c \
+				src/builtins/ft_pwd.c \
+				src/builtins/ft_echo.c \
+				src/builtins/ft_exit.c \
+				src/builtins/ft_unset.c \
+				src/builtins/ft_export.c \
 				src/builtins/ft_builtin.c \
 				src/builtins/ft_change_env.c \
 

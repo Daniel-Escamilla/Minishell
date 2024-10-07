@@ -6,7 +6,7 @@
 /*   By: descamil <descamil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/03 09:32:44 by descamil          #+#    #+#             */
-/*   Updated: 2024/10/07 15:48:27 by descamil         ###   ########.fr       */
+/*   Updated: 2024/10/07 15:53:46 by descamil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ static int	ft_write_in_fd(t_mini *mini, t_cmd *cmd, int i)
 {
 	char	*line;
 	char	*tmp;
+	int		*locate;
 	int		fd_tmp;
 	int		quotes;
 	int		j;
@@ -43,7 +44,9 @@ static int	ft_write_in_fd(t_mini *mini, t_cmd *cmd, int i)
 	if (fd_tmp == -1)
 		printf("Error open");
 	quotes = ft_has_quotes(cmd->files->f_order[i], 0);
-	ft_rm_quotes(&cmd->files->f_order[i]);
+	if (quotes != 0)
+		locate = ft_find_quotes(cmd->files->f_order[i], 0);
+	ft_rm_quotes(&cmd->files->f_order[i], locate);
 	while (1)
 	{
 		line = readline("> ");

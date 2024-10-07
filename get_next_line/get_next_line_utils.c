@@ -6,7 +6,7 @@
 /*   By: descamil <descamil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/14 19:01:13 by descamil          #+#    #+#             */
-/*   Updated: 2024/07/05 15:14:56 by descamil         ###   ########.fr       */
+/*   Updated: 2024/10/04 23:44:34 by descamil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ char	*ft_strjoin_gnl(char const *s1, char const *s2)
 	if (!s1 && !s2)
 		return (NULL);
 	size_total = ft_strlen_gnl((char *)s1) + ft_strlen_gnl((char *)s2);
-	ptr = (char *)ft_calloc_gnl(sizeof(char), size_total + 1);
+	ptr = (char *)ft_calloc_gnl(sizeof(char), (size_t)size_total + 1);
 	if (ptr == NULL)
 		return (NULL);
 	while ((char *)s1 && (char)s1[i] != '\0')

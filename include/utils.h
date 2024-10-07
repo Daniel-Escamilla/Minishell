@@ -1,13 +1,13 @@
 /* ************************************************************************** */
-/*	*/
-/*	:::	  ::::::::   */
-/*   utils.h	:+:	  :+:	:+:   */
-/*	+:+ +:+	 +:+	 */
-/*   By: user <user@student.42.fr>	  +#+  +:+	   +#+	*/
-/*	+#+#+#+#+#+   +#+	   */
-/*   Created: 2024/09/20 23:13:02 by user	  #+#	#+#	 */
-/*   Updated: 2024/09/20 23:25:51 by user	 ###   ########.fr	   */
-/*	*/
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   utils.h                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: descamil <descamil@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/10/05 12:45:56 by descamil          #+#    #+#             */
+/*   Updated: 2024/10/05 12:45:58 by descamil         ###   ########.fr       */
+/*                                                                            */
 /* ************************************************************************** */
 
 #ifndef UTILS_H
@@ -26,9 +26,10 @@ void	print_cmd(t_cmd *cmd);
 int		ft_strlen_dup(char *argv);
 char	**ft_sindub_join(char **str, char *str1);
 char	*ft_strchr_mod(char *str, int value, int stop);
+void	ft_error_in_child(char *prefix, char *arg, char *suffix);
 
 // ft_str_utils.c
-int		ft_strstr_len(char **str);
+size_t	ft_strstr_len(char **str);
 void	ft_strstr_free(char **str);
 char	**ft_strstr_dup(char **str);
 int		ft_strnstrstr(char **str, char *locate);

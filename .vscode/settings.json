@@ -15,6 +15,15 @@
         "include.h": "c",
         "files.h": "c",
         "colors.h": "c",
-        "signals.h": "c"
+        "signals.h": "c",
+        "get_next_line.h": "c",
+        "bit": "cpp",
+        "concepts": "cpp",
+        "cstdio": "cpp",
+        "type_traits": "cpp",
+        "new": "cpp",
+        "typeinfo": "cpp",
+        "expander.h": "c",
+        "redirects.h": "c"
     }
 }

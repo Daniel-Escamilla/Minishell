@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: descamil <descamil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/20 20:05:39 by user              #+#    #+#             */
-/*   Updated: 2024/10/03 19:34:19 by descamil         ###   ########.fr       */
+/*   Created: 2024/10/05 12:44:39 by descamil          #+#    #+#             */
+/*   Updated: 2024/10/06 19:39:35 by descamil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,12 +22,27 @@ char	*ft_builtins(t_cmd *cmd, char *comm);
 // ft_cd.c
 int		ft_cd(t_mini *mini, t_cmd *cmd);
 
-// ft_env.c
-int		ft_env(t_mini *mini);
-
 // ft_change_env.c
 char	*ft_get_var(char **env, char *variable);
 void	ft_add_var(char ***env, char *variable, char *content);
 void	ft_change_env(char ***env, char *variable, char *content);
+
+// ft_echo.c
+
+
+// ft_env.c
+int		ft_env(t_mini *mini);
+
+// ft_exit.c
+
+
+// ft_export.c
+int		ft_export(t_mini *mini, t_cmd *cmd);
+
+// ft_pwd.c
+int		ft_pwd(void);
+
+// ft_unset.c
+
 
 #endif

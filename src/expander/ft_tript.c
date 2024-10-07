@@ -6,7 +6,7 @@
 /*   By: descamil <descamil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/09 18:13:06 by user              #+#    #+#             */
-/*   Updated: 2024/09/21 12:27:27 by descamil         ###   ########.fr       */
+/*   Updated: 2024/10/04 23:31:16 by descamil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ static char	*ft_extract_start(char *str, int start)
 	i = -1;
 	if (start == 0)
 		return (NULL);
-	result = ft_calloc(sizeof(char), start + 1);
+	result = ft_calloc(sizeof(char), (size_t)start + 1);
 	if (result == NULL)
 		return (NULL);
 	while (++i < start)
@@ -46,7 +46,7 @@ static char	*ft_extract_middle(char *str, int size, int start)
 	int		i;
 
 	i = -1;
-	result = ft_calloc(sizeof(char), size + 1);
+	result = ft_calloc(sizeof(char), (size_t)size + 1);
 	if (result == NULL)
 		return (NULL);
 	while (++i < size)
@@ -61,10 +61,10 @@ static char	*ft_extract_end(char *str, int size, int start)
 	int		i;
 
 	i = -1;
-	len = ft_strlen(str) - start - size;
+	len = (int)ft_strlen(str) - start - size;
 	if (len <= 0)
 		return (NULL);
-	result = ft_calloc(sizeof(char), len + 1);
+	result = ft_calloc(sizeof(char), (size_t)len + 1);
 	if (result == NULL)
 		return (NULL);
 	while (++i < len)

@@ -6,7 +6,7 @@
 /*   By: descamil <descamil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/09 11:03:10 by descamil          #+#    #+#             */
-/*   Updated: 2024/09/25 19:20:54 by descamil         ###   ########.fr       */
+/*   Updated: 2024/10/04 23:29:18 by descamil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static int	ft_mem_files(t_mini *mini, t_cmd *cmd)
 	if (mini->flags->redirect && mini->flags->redirect->number > 0)
 	{
 		num_f = ft_num_files(cmd);
-		cmd->files->f_order = (char **)ft_calloc(sizeof(char *), num_f + 1);
+		cmd->files->f_order = (char **)ft_calloc(sizeof(char *), (size_t)num_f + 1);
 		if (cmd->files->f_order == NULL)
 			return (-1);
 	}
