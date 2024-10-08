@@ -91,8 +91,8 @@ UTILS_SRCS =	src/utils/ft_free.c \
 				src/utils/ft_str_utils2.c \
 				src/utils/ft_printf_cmd.c \
 
-GNL_SRCS = 		get_next_line/get_next_line.c \
-		   		get_next_line/get_next_line_utils.c \
+GNL_SRCS = 		src/get_next_line/get_next_line.c \
+		   		src/get_next_line/get_next_line_utils.c \
 
 SRCS =			$(GNL_SRCS) \
 				$(MAIN_SRCS) \
@@ -182,7 +182,7 @@ $(OBJDIR)/%.o: %.c | $(OBJDIR)
 # La regla $(OBJDIR) crea el directorio de los archivos objeto
 $(OBJDIR):
 	@echo "$(CYAN)Creando directorio de objetos...\n$(RESET)"
-	@mkdir -p $(OBJDIR)/src/* $(OBJDIR)/get_next_line
+	@mkdir -p $(OBJDIR)/src/*
 	@echo "$(BOLD_GREEN)¡Directorio de objetos creado!\n$(RESET)"
 	@echo "$(CYAN)Creando objetos...\n$(RESET)"
 

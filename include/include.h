@@ -6,7 +6,7 @@
 /*   By: descamil <descamil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/05 12:45:07 by descamil          #+#    #+#             */
-/*   Updated: 2024/10/05 12:45:08 by descamil         ###   ########.fr       */
+/*   Updated: 2024/10/08 15:20:00 by descamil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@
 
 # include "../libft/libft.h"
 
-# include "../get_next_line/get_next_line.h"
+# include "../src/get_next_line/get_next_line.h"
 
 
 #endif
