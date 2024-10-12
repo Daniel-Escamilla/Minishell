@@ -6,7 +6,7 @@
 /*   By: descamil <descamil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/05 12:53:49 by descamil          #+#    #+#             */
-/*   Updated: 2024/10/06 20:13:22 by descamil         ###   ########.fr       */
+/*   Updated: 2024/10/11 14:53:39 by descamil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,23 +33,48 @@ static int	ft_export_printf(t_mini *mini)
 	return (0);
 }
 
+int	ft_dup_var(t_mini *mini, char *arg)
+{
+	char	*str;
+	int		size;
+	int		i;
+
+	i = -1;
+	str = ft_strchr(arg, '=');
+	size = (int)(str - arg);
+	if (size == 0)
+		return (-1);
+	if (ft_isdigit(arg[0]) == 1)
+		return (-1);
+	while (mini->env->env[++i])
+ 		if (ft_strncmp(mini->env->env[i], arg, size + 1) == 0)
+			return (i);
+	return (-2);
+	
+}
+
 int	ft_export(t_mini *mini, t_cmd *cmd)
 {
 	char	**tmp;
+	int		var;
 	int		i;
 
 	i = 1;
-
 	if (ft_strstr_len(cmd->args) == 1)
 		return (ft_export_printf(mini));
 	else
 	{
 		while (cmd->args[i])
 		{
-			tmp = ft_strstr_dup(mini->env->env);
-			ft_strstr_free(mini->env->env);
-			mini->env->env = ft_sindub_join(tmp, cmd->args[i]);
-			ft_strstr_free(tmp);
+			var = ft_dup_var(mini, cmd->args[i]);
+			if (var != -1)
+			{
+				ft_remove_var(&mini->env->env, var);
+				tmp = ft_strstr_dup(mini->env->env);
+				ft_strstr_free(mini->env->env);
+				mini->env->env = ft_sindub_join(tmp, cmd->args[i]);
+				ft_strstr_free(tmp);
+			}
 			i++;
 		}
 	}

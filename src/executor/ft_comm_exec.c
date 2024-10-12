@@ -6,7 +6,7 @@
 /*   By: descamil <descamil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/15 21:11:38 by user              #+#    #+#             */
-/*   Updated: 2024/10/06 20:20:09 by descamil         ###   ########.fr       */
+/*   Updated: 2024/10/11 12:54:59 by descamil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,8 +79,8 @@ void	ft_comm_part2(t_cmd *cmd, t_mini *mini)
 void	ft_comm(t_cmd *cmd, t_mini *mini)
 {
 	ft_comm_part1(cmd, mini);
-	if (mini->single == 1 && cmd->built == 1 && ((ft_strncmp(cmd->cmd, "cd", 2) == 0 && ft_strlen(cmd->cmd) == 2) || (ft_strncmp(cmd->cmd, "export", 2) == 0 && ft_strlen(cmd->cmd) == 2)))
-		ft_cd(mini, cmd);
+	if (mini->single == 1 && cmd->built == 1)
+		ft_exec_built(mini, cmd);
 	else if (cmd->names->fd_infile != -1 && cmd->names->fd_outfile != -1
 		&& cmd->files->error != -3 && mini->error != -4)
 	{

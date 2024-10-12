@@ -6,7 +6,7 @@
 /*   By: descamil <descamil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/04 11:05:18 by user              #+#    #+#             */
-/*   Updated: 2024/10/03 19:59:18 by descamil         ###   ########.fr       */
+/*   Updated: 2024/10/11 14:21:25 by descamil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,5 +73,28 @@ void	ft_add_var(char ***env, char *variable, char *content)
 	free(var);
 	*env = ft_sindub_join(env_tmp, tmp);
 	free(tmp);
+	ft_strstr_free(env_tmp);
+}
+
+void	ft_remove_var(char ***env, int i)
+{
+	char	**env_tmp;
+	int		size;
+	int		j;
+	int		k;
+
+	k = 0;
+	j = -1;
+	env_tmp = ft_strstr_dup(*env);
+	ft_strstr_free(*env);
+	size = ft_strstr_len(env_tmp);
+	if (i == -2)
+    	*env = ft_calloc(sizeof(char *), size + 1);
+	else
+    	*env = ft_calloc(sizeof(char *), size);
+	while (++j < size)
+		if (j != i)
+			(*env)[k++] = ft_strdup(env_tmp[j]);
+	(*env)[k] = NULL;
 	ft_strstr_free(env_tmp);
 }
