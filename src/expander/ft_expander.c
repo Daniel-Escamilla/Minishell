@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_expander.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: descamil <descamil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/09 13:20:46 by descamil          #+#    #+#             */
-/*   Updated: 2024/09/24 19:50:26 by user             ###   ########.fr       */
+/*   Updated: 2024/10/13 00:12:52 by descamil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,41 +30,46 @@ static int	ft_minus_dolar(char *div)
 	return (0);
 }
 
-static int	expand_loop(char **div, char **tmp, int *iter, char **env)
+static int	expand_loop(char **tmp, int *iter, char **env, int *stop)
 {
-	*div = expand_div(iter, *tmp, env);
-	if (ft_strchr(*div, '$') != NULL && (*div)[ft_strlen(*div) - 1] == '$'
-			&& ft_minus_dolar(*div) == 0)
+	char *new_tmp;
+
+	new_tmp = expand_div(iter, *tmp, env, stop);
+	free(*tmp);
+	*tmp = ft_strdup(new_tmp);
+	free(new_tmp);
+	if (ft_strchr(*tmp, '$') != NULL && (*tmp)[ft_strlen(*tmp) - 1] == '$'
+			&& ft_minus_dolar(*tmp) == 0)
 		*iter = -2;
 	if (ft_strncmp(*tmp, "$$", 2) == 0 && ft_strlen(*tmp) == 2)
 		*iter = -2;
-	free(*tmp);
 	if (*iter == -2)
 		return (1);
-	*tmp = ft_strdup(*div);
-	free(*div);
-	*div = NULL;
 	return (0);
 }
 
 char	*ft_expander(char **env, char *str)
 {
 	char	*cpy;
-	char	*div;
 	char	*tmp;
 	int		iter;
+	int		stop;
 
+	stop = 0;
 	iter = -1;
 	if (str == NULL)
 		return (NULL);
 	cpy = ft_strdup(str);
 	tmp = ft_strdup(str);
 	while (1)
-		if (expand_loop(&div, &tmp, &iter, env))
+	{
+		printf("a\n");
+		if (expand_loop(&tmp, &iter, env, &stop))
 			break ;
+	}
 	if (str && iter != 1 && (int)ft_strlen(str) != 0
 		&& ft_strncmp(str, cpy, ft_strlen(cpy)) != 0)
 		free(str);
 	free(cpy);
-	return (div);
+	return (tmp);
 }
