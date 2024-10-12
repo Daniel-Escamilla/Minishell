@@ -6,7 +6,7 @@
 /*   By: descamil <descamil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/01 17:52:46 by smarin-a          #+#    #+#             */
-/*   Updated: 2024/10/05 13:10:44 by descamil         ###   ########.fr       */
+/*   Updated: 2024/10/12 22:25:10 by descamil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,11 @@ static void	ft_do_remove_quotes(t_cmd *cmd)
 		{
 			quotes = ft_find_quotes(current->args[i], 0);
 			if (quotes[1] != -1 && cmd->quote_args == NULL)
-				cmd->quote_args = ft_sindub_join(NULL, ft_itoa(i));
+			{
+				itoa = ft_itoa(i);
+				cmd->quote_args = ft_sindub_join(NULL, itoa);
+				free(itoa);
+			}
 			else if (quotes[1] != -1)
 			{
 				itoa = ft_itoa(i);

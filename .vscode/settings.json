@@ -24,6 +24,7 @@
         "new": "cpp",
         "typeinfo": "cpp",
         "expander.h": "c",
-        "redirects.h": "c"
+        "redirects.h": "c",
+        "cstdlib": "c"
     }
 }
