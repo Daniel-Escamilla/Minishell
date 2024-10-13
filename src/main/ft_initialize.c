@@ -6,11 +6,36 @@
 /*   By: descamil <descamil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/15 12:21:54 by smarin-a          #+#    #+#             */
-/*   Updated: 2024/09/21 12:27:27 by descamil         ###   ########.fr       */
+/*   Updated: 2024/10/13 19:45:17 by descamil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/main.h"
+
+char	**ft_strstr_dup_mod(char **str)
+{
+	char	**dup;
+	size_t	i;
+
+	i = 0;
+	dup = NULL;
+	if (str == NULL)
+		return (NULL);
+	dup = (char **)ft_calloc(sizeof(char *), (size_t)ft_strstr_len(str) + 1);
+	if (dup == NULL)
+		return (NULL);
+	while (i < (size_t)ft_strstr_len(str))
+	{
+		dup[i] = ft_strdup(str[i]);
+		if (dup[i] == NULL)
+		{
+			ft_strstr_free(dup);
+			return (NULL);
+		}
+		i++;
+	}
+	return (dup);
+}
 
 static t_mini	*ft_free_resources(t_mini *mini, int stage)
 {
@@ -35,7 +60,7 @@ t_mini	*ft_initialize(char **env)
 	mini->env = ft_calloc(sizeof(t_env), 1);
 	if (mini->env == NULL)
 		return (ft_free_resources(mini, 2));
-	mini->env->env = ft_strstr_dup(env);
+	mini->env->env = ft_strstr_dup_mod(env);
 	if (mini->env->env == NULL)
 		return (ft_free_resources(mini, 3));
 	mini->flags = ft_calloc(sizeof(t_flags), 1);
