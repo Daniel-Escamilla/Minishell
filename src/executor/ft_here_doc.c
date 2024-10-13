@@ -6,7 +6,7 @@
 /*   By: descamil <descamil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/03 09:32:44 by descamil          #+#    #+#             */
-/*   Updated: 2024/10/07 15:53:46 by descamil         ###   ########.fr       */
+/*   Updated: 2024/10/13 03:48:42 by descamil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,8 @@ static int	ft_write_in_fd(t_mini *mini, t_cmd *cmd, int i)
 		line = readline("> ");
 		if (line == NULL)
 		{
-			printf("mini: warning: here-document at line %d delimited by end-of-file (wanted `%s')\n", j, cmd->files->f_order[i]);
+			printf("mini: warning: here-document at line %d delimited by"
+				"end-of-file (wanted `%s')\n", j, cmd->files->f_order[i]);
 			break ;
 		}
 		if (ft_strnstr(line, cmd->files->f_order[i], ft_strlen(line))

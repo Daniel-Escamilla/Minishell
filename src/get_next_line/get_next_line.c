@@ -6,7 +6,7 @@
 /*   By: descamil <descamil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/03 14:40:35 by descamil          #+#    #+#             */
-/*   Updated: 2024/10/05 00:04:51 by descamil         ###   ########.fr       */
+/*   Updated: 2024/10/13 03:50:05 by descamil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 static char	*read_l(int fd, char *buffer)
 {
 	char	aux[BUFFER_SIZE + 1];
-	ssize_t		bytes_read;
+	ssize_t	bytes_read;
 
 	while (1)
 	{
@@ -42,7 +42,7 @@ static char	*read_l(int fd, char *buffer)
 static char	*extraer_linea(char *buffer)
 {
 	char	*line;
-	size_t		i;
+	size_t	i;
 
 	line = NULL;
 	i = 0;

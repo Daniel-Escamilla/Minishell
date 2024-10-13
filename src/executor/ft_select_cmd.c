@@ -6,7 +6,7 @@
 /*   By: descamil <descamil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/11 19:00:37 by user              #+#    #+#             */
-/*   Updated: 2024/10/13 03:40:28 by descamil         ###   ########.fr       */
+/*   Updated: 2024/10/13 03:48:04 by descamil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ static char	**ft_allocate_tmp(t_cmd *current)
 
 	arg_len = ft_strstr_len(current->args);
 	tmp = ft_calloc(sizeof(char *),
-		(size_t)(arg_len - (current->size * 2)) + 1);
+			(size_t)(arg_len - (current->size * 2)) + 1);
 	if (tmp == NULL)
 		return (NULL);
 	return (tmp);

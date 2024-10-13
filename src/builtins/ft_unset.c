@@ -6,7 +6,7 @@
 /*   By: descamil <descamil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/05 12:53:58 by descamil          #+#    #+#             */
-/*   Updated: 2024/10/13 00:40:56 by descamil         ###   ########.fr       */
+/*   Updated: 2024/10/13 03:51:34 by descamil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int	ft_unset(t_mini *mini, t_cmd *cmd)
 	char	*tmp;
 	int		var;
 	int		i;
-	
+
 	i = 1;
 	while (cmd->args[i])
 	{

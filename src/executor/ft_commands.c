@@ -6,7 +6,7 @@
 /*   By: descamil <descamil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/02 14:31:25 by smarin-a          #+#    #+#             */
-/*   Updated: 2024/10/04 23:39:14 by descamil         ###   ########.fr       */
+/*   Updated: 2024/10/13 03:49:07 by descamil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,13 +66,13 @@ void	ft_get_args(char *input, int argc, char ***args)
 	if (argv == NULL)
 	{
 		ft_free_args(NULL, NULL, args);
-		return;
+		return ;
 	}
 	size = ft_sizes_input(input, argc + 1);
 	if (size == NULL)
 	{
 		ft_free_args(argv, NULL, args);
-		return;
+		return ;
 	}
 	while (++i < argc)
 	{
@@ -80,7 +80,7 @@ void	ft_get_args(char *input, int argc, char ***args)
 		if (argv[i] == NULL)
 		{
 			ft_free_args(argv, size, args);
-			return;
+			return ;
 		}
 	}
 	free(size);

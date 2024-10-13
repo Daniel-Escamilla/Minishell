@@ -6,7 +6,7 @@
 /*   By: descamil <descamil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/05 12:44:47 by descamil          #+#    #+#             */
-/*   Updated: 2024/10/05 12:44:49 by descamil         ###   ########.fr       */
+/*   Updated: 2024/10/13 03:45:42 by descamil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,5 @@ void	ft_free_args(char **argv, int *size, char ***args);
 // ft_save_path.c
 char	**ft_save_path(char **env);
 char	*ft_execute(char **env, char **file, char *path, char *search);
-
 
 #endif

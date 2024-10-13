@@ -6,7 +6,7 @@
 /*   By: descamil <descamil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/05 12:44:54 by descamil          #+#    #+#             */
-/*   Updated: 2024/10/12 23:33:06 by descamil         ###   ########.fr       */
+/*   Updated: 2024/10/13 03:46:21 by descamil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,5 @@ char	*ft_no_more_dolar(char *div, char *str);
 
 // ft_tript.c
 char	**ft_tript(char *str, int size, int start);
-
 
 #endif

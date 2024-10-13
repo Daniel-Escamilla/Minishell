@@ -6,7 +6,7 @@
 /*   By: descamil <descamil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/09 13:20:46 by descamil          #+#    #+#             */
-/*   Updated: 2024/10/13 00:40:25 by descamil         ###   ########.fr       */
+/*   Updated: 2024/10/13 03:53:05 by descamil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ static int	ft_minus_dolar(char *div)
 
 static int	expand_loop(char **tmp, int *iter, char **env, int *stop)
 {
-	char *new_tmp;
+	char	*new_tmp;
 
 	new_tmp = expand_div(iter, *tmp, env, stop);
 	free(*tmp);

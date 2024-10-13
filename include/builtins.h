@@ -6,7 +6,7 @@
 /*   By: descamil <descamil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/05 12:44:39 by descamil          #+#    #+#             */
-/*   Updated: 2024/10/13 02:20:32 by descamil         ###   ########.fr       */
+/*   Updated: 2024/10/13 03:45:35 by descamil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,6 @@ void	ft_add_var(char ***env, char *variable, char *content);
 void	ft_change_env(char ***env, char *variable, char *content);
 
 // ft_echo.c
-
 
 // ft_env.c
 int		ft_env(t_mini *mini);

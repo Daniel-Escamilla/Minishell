@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_save_path.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: descamil <descamil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/02 14:56:04 by descamil          #+#    #+#             */
-/*   Updated: 2024/10/04 11:34:29 by user             ###   ########.fr       */
+/*   Updated: 2024/10/13 03:55:08 by descamil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,8 @@ char	**ft_save_path(char	**env)
 	char	*trim;
 
 	file = ft_sindub_join(NULL, "systemd-path");
-	line = ft_execute(env, file, "/usr/bin/systemd-path", "search-binaries-default:");
+	line = ft_execute(env, file,
+			"/usr/bin/systemd-path", "search-binaries-default:");
 	ft_strstr_free(file);
 	trim = ft_strtrim(line, "\n");
 	if (trim == NULL)

@@ -6,13 +6,13 @@
 /*   By: descamil <descamil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/03 09:29:06 by descamil          #+#    #+#             */
-/*   Updated: 2024/10/05 00:08:54 by descamil         ###   ########.fr       */
+/*   Updated: 2024/10/13 03:48:10 by descamil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/executor.h"
 
-int ft_is_dir(char *ruta)
+int	ft_is_dir(char *ruta)
 {
 	DIR	*dir;
 
