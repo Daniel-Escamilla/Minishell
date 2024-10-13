@@ -6,7 +6,7 @@
 /*   By: descamil <descamil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/01 17:55:56 by smarin-a          #+#    #+#             */
-/*   Updated: 2024/10/04 23:52:57 by descamil         ###   ########.fr       */
+/*   Updated: 2024/10/13 18:49:23 by descamil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,10 +35,12 @@ static int	ft_check_pairs(char *input, int *i, char quote)
 int	ft_check_quote(char *input, int simp, int doub, t_mini *mini)
 {
 	int	i;
+	int	tmp;
 
 	i = -1;
 	while (input[++i])
 	{
+		tmp = i;
 		if (input[i] == 39)
 			simp += ft_check_pairs(input, &i, input[i]);
 		if (input[i] == 34)
@@ -47,8 +49,7 @@ int	ft_check_quote(char *input, int simp, int doub, t_mini *mini)
 		{
 			mini->flags->quote = 1;
 			mini->error = -2;
-			printf("dquote>\n");
-			return (-1);
+			return ((tmp + 1) * -1);
 		}
 		if (input[i] == '\0')
 			break ;

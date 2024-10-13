@@ -6,7 +6,7 @@
 /*   By: descamil <descamil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/12 19:25:46 by user              #+#    #+#             */
-/*   Updated: 2024/09/25 19:07:10 by descamil         ###   ########.fr       */
+/*   Updated: 2024/10/13 17:24:41 by descamil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ static int	ft_open_infile(char *filename, t_mini *mini)
 	if (fd == -1)
 	{
 		join = ft_strjoin("mini: ", filename);
-		perror(join);
+		ft_perror_exit(join, 1);
 		free(join);
 		mini->error = -2;
 		return (-1);

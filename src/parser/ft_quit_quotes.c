@@ -6,11 +6,23 @@
 /*   By: descamil <descamil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/25 11:00:03 by descamil          #+#    #+#             */
-/*   Updated: 2024/10/04 23:57:17 by descamil         ###   ########.fr       */
+/*   Updated: 2024/10/13 19:22:03 by descamil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/parser.h"
+
+static int	*ft_intdup_mod(int *dup)
+{
+	int	*result;
+
+	result = ft_calloc(sizeof(int), 2);
+	if (result == NULL)
+		return (0);
+	result[0] = dup[0];
+	result[1] = dup[1];
+	return (result);
+}
 
 int	ft_has_quotes(char *str, int i)
 {
@@ -79,7 +91,9 @@ void	ft_rm_quotes(char **str, int *quotes)
 		quotes2 = ft_find_quotes(result, quotes[1] - 1);
 		ft_remove_quotes(&result, quotes2);
 		free(quotes);
-		quotes = quotes2;
+		quotes = ft_intdup_mod(quotes2);
+		free(quotes2);
 	}
+	free(quotes);
 	*str = result;
 }

@@ -6,7 +6,7 @@
 /*   By: descamil <descamil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/02 14:31:25 by smarin-a          #+#    #+#             */
-/*   Updated: 2024/10/13 03:49:07 by descamil         ###   ########.fr       */
+/*   Updated: 2024/10/13 17:30:45 by descamil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,10 +93,10 @@ t_cmd	*ft_add_command(char *input, int i)
 
 	new_cmd = ft_calloc(sizeof(t_cmd), 1);
 	if (!new_cmd)
-		ft_error("Calloc error", 9);
+		ft_perror_exit("Calloc error", 1);
 	new_cmd->names = ft_calloc(sizeof(t_names), 1);
 	if (!new_cmd->names)
-		ft_error("Calloc error", 9);
+		ft_perror_exit("Calloc error", 1);
 	new_cmd->args_amount = ft_count_args(input);
 	if (new_cmd->args_amount == 0)
 		return (new_cmd);

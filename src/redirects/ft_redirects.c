@@ -6,14 +6,15 @@
 /*   By: descamil <descamil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 15:31:41 by descamil          #+#    #+#             */
-/*   Updated: 2024/10/13 03:50:37 by descamil         ###   ########.fr       */
+/*   Updated: 2024/10/13 18:56:59 by descamil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/redirects.h"
 
-static void	ft_red_error(t_mini *mini, char *input)
+void	ft_red_error(t_mini *mini, char *input)
 {
+	mini->flags->locate_red *= -1;
 	if (mini->flags->redirect->red_error != 0)
 	{
 		if (mini->flags->redirect->red_error < 3)
@@ -36,7 +37,6 @@ static void	ft_red_error(t_mini *mini, char *input)
 		}
 		printf("mini: parse error near `%s'\n", mini->flags->redirect->error);
 		free(mini->flags->redirect->error);
-		return ;
 	}
 	return ;
 }
@@ -103,10 +103,8 @@ int	ft_count_redirect(t_mini *mini, char *input, int i, int size)
 		}
 		if (mini->flags->redirect->red_error > 0)
 		{
-			mini->flags->locate_red = (i - size + 1);
-			ft_red_error(mini, input);
 			mini->error = -2;
-			return (-1);
+			return ((i - size + 1)* -1);
 		}
 		mini->flags->redirect->number = ft_red_count(mini);
 	}

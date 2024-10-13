@@ -6,7 +6,7 @@
 /*   By: descamil <descamil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/03 09:19:54 by descamil          #+#    #+#             */
-/*   Updated: 2024/09/21 14:23:11 by descamil         ###   ########.fr       */
+/*   Updated: 2024/10/13 17:25:57 by descamil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int	ft_handle_trunc(t_cmd *cmd, t_mini *mini, int i)
 	if (fd == -1)
 	{
 		join = ft_strjoin("mini: ", cmd->files->f_order[i]);
-		perror(join);
+		ft_perror_exit(join, 1);
 		free(join);
 		mini->error = -2;
 		return (-1);
@@ -46,7 +46,7 @@ int	ft_handle_append(t_cmd *cmd, t_mini *mini, int i)
 	if (fd == -1)
 	{
 		join = ft_strjoin("mini: ", cmd->files->f_order[i]);
-		perror(join);
+		ft_perror_exit(join, 1);
 		free(join);
 		mini->error = -2;
 		return (-1);

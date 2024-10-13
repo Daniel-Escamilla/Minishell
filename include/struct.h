@@ -6,7 +6,7 @@
 /*   By: descamil <descamil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/05 12:45:49 by descamil          #+#    #+#             */
-/*   Updated: 2024/10/05 12:45:51 by descamil         ###   ########.fr       */
+/*   Updated: 2024/10/13 18:22:53 by descamil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,7 +95,6 @@ typedef struct s_cmd
 
 typedef struct s_mini
 {
-	pid_t		*proc;
 	int			error;
 	int			index;
 	int			fd_tmp;
@@ -107,6 +106,8 @@ typedef struct s_mini
 	int			shell_level;
 	char		*input;
 	char		**join;
+	pid_t		*proc;
+	double		qpr_error;
 	t_env		*env;
 	t_cmd		*cmd;
 	t_flags		*flags;

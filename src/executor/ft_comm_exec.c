@@ -6,7 +6,7 @@
 /*   By: descamil <descamil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/15 21:11:38 by user              #+#    #+#             */
-/*   Updated: 2024/10/13 15:54:14 by descamil         ###   ########.fr       */
+/*   Updated: 2024/10/13 18:05:15 by descamil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,7 @@ void	ft_comm(t_cmd *cmd, t_mini *mini)
 	{
 		mini->proc[mini->index] = fork();
 		if (mini->proc[mini->index] == -1)
-			perror("Failed in Fork()");
+			ft_perror_exit("Failed in Fork()", 1);
 		if (mini->proc[mini->index] == 0)
 			ft_comm_part2(cmd, mini);
 	}

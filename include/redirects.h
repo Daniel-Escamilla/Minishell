@@ -6,7 +6,7 @@
 /*   By: descamil <descamil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/05 12:45:32 by descamil          #+#    #+#             */
-/*   Updated: 2024/10/05 12:45:33 by descamil         ###   ########.fr       */
+/*   Updated: 2024/10/13 18:51:55 by descamil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include "../minishell.h"
 
 // ft_redirects.c
+void	ft_red_error(t_mini *mini, char *input);
 int		ft_count_redirect(t_mini *mini, char *input, int i, int size);
 
 // ft_redirects_utils.c

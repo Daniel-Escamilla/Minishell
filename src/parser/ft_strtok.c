@@ -6,7 +6,7 @@
 /*   By: descamil <descamil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/01 17:52:46 by smarin-a          #+#    #+#             */
-/*   Updated: 2024/10/13 14:53:10 by descamil         ###   ########.fr       */
+/*   Updated: 2024/10/13 19:27:36 by descamil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,9 +40,9 @@ static void	ft_do_remove_quotes(t_cmd *cmd)
 				ft_strstr_free(cmd->quote_args);
 				cmd->quote_args = ft_sindub_join(tmp, itoa);
 				free(itoa);
+				ft_strstr_free(tmp);
 			}
 			ft_rm_quotes(&current->args[i++], quotes);
-			free(quotes);
 		}
 		i = 0;
 		while (current->files && current->files->f_order
@@ -138,8 +138,7 @@ int	ft_strtok(t_mini *mini, t_cmd **cmd, char *input)
 
 	mini->error = 0;
 	lines = ft_check_input(mini, input);
-	if (mini->flags->pipe == -1 || mini->flags->quote == -1
-		|| mini->flags->locate_red == -1)
+	if (ft_error_rqp(mini, input) == 1)
 		return (-1);
 	if (ft_order_all(mini, cmd, lines, input) == -1)
 		return (-1);

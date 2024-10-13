@@ -6,7 +6,7 @@
 /*   By: descamil <descamil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/14 15:50:54 by smarin-a          #+#    #+#             */
-/*   Updated: 2024/10/13 03:53:10 by descamil         ###   ########.fr       */
+/*   Updated: 2024/10/13 17:53:58 by descamil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,11 @@ static void	ft_free_per_comm(t_mini *mini, char *input)
 		free(mini->flags->redirect);
 		mini->flags->redirect = NULL;
 	}
-	if (mini->proc && mini->error != -2 && ft_nothing(input, 0) == 0)
+	if (mini->proc && mini->proc != 0 && mini->error != -2 && ft_nothing(input, 0) == 0)
+	{
 		free(mini->proc);
+		mini->proc = 0;
+	}
 	if (input)
 		free(input);
 	mini->single = 0;

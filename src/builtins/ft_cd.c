@@ -6,7 +6,7 @@
 /*   By: descamil <descamil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/30 12:00:46 by user              #+#    #+#             */
-/*   Updated: 2024/10/13 15:32:47 by descamil         ###   ########.fr       */
+/*   Updated: 2024/10/13 17:45:27 by descamil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,6 @@ static char	*ft_save_home(t_mini *mini)
 	free(line);
 	if (trim == NULL)
 		return (NULL);
-	printf("%s\n", trim);
 	return (trim);
 }
 
@@ -38,7 +37,7 @@ static char	*ft_prepare_path(t_mini *mini, t_cmd *cmd)
 	{
 		rute = ft_get_var(mini->env->env, "HOME");
 		if (rute == NULL)
-			printf("mini: cd: HOME not set\n");
+			ft_printf_exit("mini: cd: ", "HOME not set\n", 1);
 		return (rute);
 	}
 	else if (ft_strncmp(cmd->args[1], "-", 1) == 0
@@ -46,7 +45,7 @@ static char	*ft_prepare_path(t_mini *mini, t_cmd *cmd)
 	{
 		rute = ft_get_var(mini->env->env, "OLDPWD");
 		if (rute == NULL)
-			printf("mini: cd: OLDPWD not set\n");
+			ft_printf_exit("mini: cd: ", "OLDPWD not set\n", 1);
 		else
 			printf("%s\n", rute);
 		return (rute);
@@ -93,8 +92,12 @@ int	ft_cd(t_mini *mini, t_cmd *cmd)
 	if (rute == NULL)
 		return (1);
 	if (chdir(rute) == -1)
+	{
+		free(rute);
 		ft_error_in_child("mini: cd: ", cmd->args[1],
 			": No such file or directory\n");
+		return (1);
+	}
 	else
 		ft_update_env(mini);
 	free(rute);
