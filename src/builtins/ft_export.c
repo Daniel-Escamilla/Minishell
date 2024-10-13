@@ -6,7 +6,7 @@
 /*   By: descamil <descamil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/05 12:53:49 by descamil          #+#    #+#             */
-/*   Updated: 2024/10/13 00:41:21 by descamil         ###   ########.fr       */
+/*   Updated: 2024/10/13 03:35:50 by descamil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ int	ft_dup_var(t_mini *mini, char *arg)
 	if (ft_isdigit(arg[0]) == 1)
 		return (-1);
 	while (mini->env->env[++i])
- 		if (ft_strncmp(mini->env->env[i], arg, size + 1) == 0)
+ 		if (ft_strncmp(mini->env->env[i], arg, (size_t)size + 1) == 0)
 			return (i);
 	return (-2);
 }

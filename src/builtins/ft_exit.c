@@ -6,7 +6,7 @@
 /*   By: descamil <descamil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/05 12:53:43 by descamil          #+#    #+#             */
-/*   Updated: 2024/10/13 03:29:43 by descamil         ###   ########.fr       */
+/*   Updated: 2024/10/13 03:43:53 by descamil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ static long long	calculate_result( char *str, int *i, int *error, int sign)
 	return (result);
 }
 
-long long	ft_atoll_mod(char *str, int *error)
+static long long	ft_atoll_mod(char *str, int *error)
 {
 	long long	result;
 	int			sign;
@@ -102,5 +102,5 @@ int	ft_exit(t_mini *mini, t_cmd *cmd)
 		printf("mini: exit: %s: numeric argument required\n", cmd->args[1]);
 		exit(2);
 	}
-	exit(atoll % 256);
+	exit((int)(atoll % 256));
 }

@@ -6,7 +6,7 @@
 /*   By: descamil <descamil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/03 11:25:51 by descamil          #+#    #+#             */
-/*   Updated: 2024/10/04 23:32:45 by descamil         ###   ########.fr       */
+/*   Updated: 2024/10/13 03:40:52 by descamil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,8 @@ void	ft_do_expander(t_mini *mini, t_cmd *cmd)
 			tmp = ft_strstr_dup(current->files->f_order);
 			ft_strstr_free(current->files->f_order);
 			current->files->f_order = NULL;
-			current->files->f_order = ft_calloc(sizeof(char *), ft_strstr_len(tmp) + 1);
+			current->files->f_order = ft_calloc(sizeof(char *),
+				(size_t)ft_strstr_len(tmp) + 1);
 			while (tmp[i] != NULL)
 			{
 				if (atoi(current->files->order[i]) != 3)

@@ -6,7 +6,7 @@
 /*   By: descamil <descamil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/16 13:03:56 by descamil          #+#    #+#             */
-/*   Updated: 2024/10/04 23:47:22 by descamil         ###   ########.fr       */
+/*   Updated: 2024/10/13 03:40:57 by descamil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,9 +39,10 @@ static char	**ft_change_args(char **args, int pos, int i, int j)
 	ft_free_fcheck_args(args1, args2);
 	args1 = NULL;
 	if ((int)ft_strstr_len(args) - pos != 1)
-		args1 = (char **)ft_calloc(sizeof(char *), ft_strstr_len(args) - (size_t)pos);
+		args1 = (char **)ft_calloc(sizeof(char *),
+			(size_t)ft_strstr_len(args) - (size_t)pos);
 	j = 0;
-	while ((int)ft_strstr_len(args) - pos > 1 && args[++i])
+	while (ft_strstr_len(args) - pos > 1 && args[++i])
 		args1[j++] = ft_strdup(args[i]);
 	args2 = ft_strstr_join(tmp, args1);
 	ft_free_fcheck_args(args1, tmp);

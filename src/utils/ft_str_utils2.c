@@ -6,7 +6,7 @@
 /*   By: descamil <descamil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/03 09:30:16 by descamil          #+#    #+#             */
-/*   Updated: 2024/10/04 23:28:28 by descamil         ###   ########.fr       */
+/*   Updated: 2024/10/13 03:38:37 by descamil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,16 +42,15 @@ char	*ft_strchr_mod(char *str, int value, int stop)
 char	**ft_sindub_join(char **str, char *str1)
 {
 	char	**result;
-	size_t	len;
+	int		len;
 	int		i;
 
 	i = (int)-1;
 	if (str == NULL)
 		len = 0;
-	else
-		len = ft_strstr_len(str);
-	result = ft_calloc(sizeof(char *), len + 1 + 1);
-	while (++i < (int)len)
+	len = ft_strstr_len(str);
+	result = ft_calloc(sizeof(char *), (size_t)len + 1 + 1);
+	while (++i < len)
 		result[i] = ft_strdup(str[i]);
 	result[i] = ft_strdup(str1);
 	return (result);

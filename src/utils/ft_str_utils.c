@@ -6,7 +6,7 @@
 /*   By: descamil <descamil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/03 08:56:10 by descamil          #+#    #+#             */
-/*   Updated: 2024/10/04 23:25:27 by descamil         ###   ########.fr       */
+/*   Updated: 2024/10/13 03:37:56 by descamil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,10 @@ char	**ft_strstr_dup(char **str)
 	dup = NULL;
 	if (str == NULL)
 		return (NULL);
-	dup = (char **)ft_calloc(sizeof(char *), ft_strstr_len(str) + 1);
+	dup = (char **)ft_calloc(sizeof(char *), (size_t)ft_strstr_len(str) + 1);
 	if (dup == NULL)
 		return (NULL);
-	while (i < ft_strstr_len(str))
+	while (i < (size_t)ft_strstr_len(str))
 	{
 		dup[i] = ft_strdup(str[i]);
 		if (dup[i] == NULL)
@@ -56,9 +56,9 @@ int	ft_strnstrstr(char **str, char *locate)
 	return (total);
 }
 
-size_t	ft_strstr_len(char **str)
+int	ft_strstr_len(char **str)
 {
-	size_t	i;
+	int	i;
 
 	i = 0;
 	if (str == NULL)
@@ -71,21 +71,21 @@ size_t	ft_strstr_len(char **str)
 char	**ft_strstr_join(char **str, char **str1)
 {
 	char	**string;
-	size_t		size;
-	size_t	i;
+	int		size;
+	int		i;
 	int		j;
 
 	i = 0;
 	j = 0;
 	if (str == NULL)
 	{
-		string = ft_calloc(sizeof(char *), ft_strstr_len(str1) + 1);
+		string = ft_calloc(sizeof(char *), (size_t)ft_strstr_len(str1) + 1);
 		while (i != ft_strstr_len(str1) && str[i] != NULL)
 			string[j++] = ft_strdup(str1[i++]);
 		return (string);
 	}
 	size = ft_strstr_len(str) + ft_strstr_len(str1);
-	string = ft_calloc(sizeof(char *), size + 1);
+	string = ft_calloc(sizeof(char *), (size_t)size + 1);
 	if (string == NULL)
 		return (NULL);
 	while (i != ft_strstr_len(str) && str[i] != NULL)

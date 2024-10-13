@@ -6,7 +6,7 @@
 /*   By: descamil <descamil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/05 12:45:56 by descamil          #+#    #+#             */
-/*   Updated: 2024/10/05 12:45:58 by descamil         ###   ########.fr       */
+/*   Updated: 2024/10/13 03:41:23 by descamil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ char	*ft_strchr_mod(char *str, int value, int stop);
 void	ft_error_in_child(char *prefix, char *arg, char *suffix);
 
 // ft_str_utils.c
-size_t	ft_strstr_len(char **str);
+int		ft_strstr_len(char **str);
 void	ft_strstr_free(char **str);
 char	**ft_strstr_dup(char **str);
 int		ft_strnstrstr(char **str, char *locate);

@@ -6,7 +6,7 @@
 /*   By: descamil <descamil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/11 19:00:37 by user              #+#    #+#             */
-/*   Updated: 2024/10/04 23:49:00 by descamil         ###   ########.fr       */
+/*   Updated: 2024/10/13 03:40:28 by descamil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,10 +27,11 @@ static void	ft_initialize_selection(t_cmd *current)
 static char	**ft_allocate_tmp(t_cmd *current)
 {
 	char	**tmp;
-	size_t	arg_len;
+	int		arg_len;
 
 	arg_len = ft_strstr_len(current->args);
-	tmp = ft_calloc(sizeof(char *),	arg_len - (size_t)(current->size * 2) + 1);
+	tmp = ft_calloc(sizeof(char *),
+		(size_t)(arg_len - (current->size * 2)) + 1);
 	if (tmp == NULL)
 		return (NULL);
 	return (tmp);
