@@ -6,7 +6,7 @@
 /*   By: descamil <descamil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/15 21:11:38 by user              #+#    #+#             */
-/*   Updated: 2024/10/13 18:05:15 by descamil         ###   ########.fr       */
+/*   Updated: 2024/10/13 19:39:35 by descamil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,7 @@ void	ft_comm_part2(t_cmd *cmd, t_mini *mini)
 	ft_close_and_update_fds(mini, cmd, 'H');
 	if (cmd->built == 1)
 	{
+		close(mini->fd_history);
 		status = ft_exec_built(mini, cmd);
 		ft_putstr_fd("BUILT\n", 2);
 		if (cmd->names->fd_infile > 0
@@ -63,7 +64,6 @@ void	ft_comm_part2(t_cmd *cmd, t_mini *mini)
 		if (cmd->names->fd_outfile > 1
 			&& cmd->names->fd_outfile != mini->fd_pipe[1])
 			close (cmd->names->fd_outfile);
-		close(mini->fd_history);
 		if (mini->fd_tmp > 0)
 			close(mini->fd_tmp);
 		exit(status);
