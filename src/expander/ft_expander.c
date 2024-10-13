@@ -6,7 +6,7 @@
 /*   By: descamil <descamil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/09 13:20:46 by descamil          #+#    #+#             */
-/*   Updated: 2024/10/13 00:12:52 by descamil         ###   ########.fr       */
+/*   Updated: 2024/10/13 00:40:25 by descamil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,11 +62,8 @@ char	*ft_expander(char **env, char *str)
 	cpy = ft_strdup(str);
 	tmp = ft_strdup(str);
 	while (1)
-	{
-		printf("a\n");
 		if (expand_loop(&tmp, &iter, env, &stop))
 			break ;
-	}
 	if (str && iter != 1 && (int)ft_strlen(str) != 0
 		&& ft_strncmp(str, cpy, ft_strlen(cpy)) != 0)
 		free(str);
