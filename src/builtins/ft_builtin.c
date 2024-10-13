@@ -6,7 +6,7 @@
 /*   By: descamil <descamil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/03 17:09:02 by user              #+#    #+#             */
-/*   Updated: 2024/10/13 02:20:23 by descamil         ###   ########.fr       */
+/*   Updated: 2024/10/13 15:03:36 by descamil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,13 +24,13 @@ int	ft_exec_built(t_mini *mini, t_cmd *cmd)
 	if (ft_strncmp(cmd->cmd, "env", 3) == 0 && ft_strlen(cmd->cmd) == 3)
 		exit = ft_env(mini);
 	if (ft_strncmp(cmd->cmd, "echo", 4) == 0 && ft_strlen(cmd->cmd) == 4)
-		exit = 4;
+		exit = ft_echo(cmd);
 	if (ft_strncmp(cmd->cmd, "exit", 4) == 0 && ft_strlen(cmd->cmd) == 4)
 		exit = ft_exit(mini, cmd);
 	if (ft_strncmp(cmd->cmd, "unset", 5) == 0 && ft_strlen(cmd->cmd) == 5)
 		exit = ft_unset(mini, cmd);
 	if (ft_strncmp(cmd->cmd, "export", 6) == 0 && ft_strlen(cmd->cmd) == 6)
-		ft_export(mini, cmd);
+		exit = ft_export(mini, cmd);
 	return (exit);
 }
 

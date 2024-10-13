@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_signals.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: descamil <descamil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/14 11:34:11 by smarin-a          #+#    #+#             */
-/*   Updated: 2024/09/30 21:17:16 by user             ###   ########.fr       */
+/*   Updated: 2024/10/13 15:56:33 by descamil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ static void	ft_signal_handler(int signal)
 		printf("\n");
 		rl_on_new_line();
 		rl_redisplay();
-		g_exit_status = 1;
+		g_exit_status = 130;
 	}
 	else if (signal == SIGQUIT)
 	{

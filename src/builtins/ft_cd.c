@@ -6,7 +6,7 @@
 /*   By: descamil <descamil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/30 12:00:46 by user              #+#    #+#             */
-/*   Updated: 2024/10/05 13:57:59 by descamil         ###   ########.fr       */
+/*   Updated: 2024/10/13 15:32:47 by descamil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,11 +87,11 @@ int	ft_cd(t_mini *mini, t_cmd *cmd)
 	if (ft_strstr_len(cmd->args) >= 3)
 	{
 		write(2, "bash: cd: too many arguments\n", 30);
-		return (-1);
+		return (1);
 	}
 	rute = ft_prepare_path(mini, cmd);
 	if (rute == NULL)
-		return (-1);
+		return (1);
 	if (chdir(rute) == -1)
 		ft_error_in_child("mini: cd: ", cmd->args[1],
 			": No such file or directory\n");

@@ -6,7 +6,7 @@
 /*   By: descamil <descamil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/05 12:45:56 by descamil          #+#    #+#             */
-/*   Updated: 2024/10/13 03:41:23 by descamil         ###   ########.fr       */
+/*   Updated: 2024/10/13 15:54:37 by descamil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,5 +41,9 @@ void	safe_close(int *fd);
 void	ft_mini_header(void);
 void	ft_error(char *str, int i);
 void	ft_strstr_printf(char **str);
+
+//ft_utils2.c
+void	ft_perror_exit(char *error, int exit);
+void	ft_printf_exit(char *error, char *arguments,int	exit);
 
 #endif

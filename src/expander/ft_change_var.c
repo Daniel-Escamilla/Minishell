@@ -6,7 +6,7 @@
 /*   By: descamil <descamil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/09 18:14:04 by user              #+#    #+#             */
-/*   Updated: 2024/10/12 23:01:50 by descamil         ###   ########.fr       */
+/*   Updated: 2024/10/13 15:22:45 by descamil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@ char	*ft_change_var(char *div, char **env)
 	str = NULL;
 	if (div && ft_strlen(div) == 1 && ft_strncmp(div, "$", 1) == 0)
 		return (ft_strdup("$"));
+	if (div && ft_strlen(div) == 2 && ft_strncmp(div, "?=", 2) == 0)
+		return (ft_itoa(g_exit_status));
 	while (env[++i] != NULL)
 	{
 		if (ft_strnstr(env[i], div, ft_strlen(div)) != NULL)

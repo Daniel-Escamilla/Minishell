@@ -6,7 +6,7 @@
 /*   By: descamil <descamil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/01 17:52:46 by smarin-a          #+#    #+#             */
-/*   Updated: 2024/10/13 03:56:26 by descamil         ###   ########.fr       */
+/*   Updated: 2024/10/13 14:53:10 by descamil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,6 @@ static int	ft_order_all(t_mini *mini, t_cmd **cmd, char **lines, char *input)
 	if (mini->cmd->files->error == -1)
 		return (-1);
 	ft_select_files(*cmd, 0);
-	print_cmd(*cmd);
 	return (0);
 }
 
