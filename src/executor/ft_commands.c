@@ -6,7 +6,7 @@
 /*   By: descamil <descamil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/02 14:31:25 by smarin-a          #+#    #+#             */
-/*   Updated: 2024/10/13 17:30:45 by descamil         ###   ########.fr       */
+/*   Updated: 2024/10/13 20:06:18 by descamil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,24 +64,21 @@ void	ft_get_args(char *input, int argc, char ***args)
 	i = -1;
 	argv = ft_calloc((size_t)(argc + 2), sizeof(char *));
 	if (argv == NULL)
-	{
 		ft_free_args(NULL, NULL, args);
+	if (argv == NULL)
 		return ;
-	}
 	size = ft_sizes_input(input, argc + 1);
 	if (size == NULL)
-	{
 		ft_free_args(argv, NULL, args);
+	if (size == NULL)
 		return ;
-	}
 	while (++i < argc)
 	{
 		argv[i] = ft_inside_argv(input, size, i);
 		if (argv[i] == NULL)
-		{
 			ft_free_args(argv, size, args);
+		if (argv[i] == NULL)
 			return ;
-		}
 	}
 	free(size);
 	*args = argv;

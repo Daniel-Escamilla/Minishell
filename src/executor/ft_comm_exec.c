@@ -6,11 +6,25 @@
 /*   By: descamil <descamil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/15 21:11:38 by user              #+#    #+#             */
-/*   Updated: 2024/10/13 19:39:35 by descamil         ###   ########.fr       */
+/*   Updated: 2024/10/13 20:03:29 by descamil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/executor.h"
+
+void	ft_protect_close_in_out(t_cmd *cmd)
+{
+	if (cmd->names->fd_infile > 0)
+	{
+		close(cmd->names->fd_infile);
+		cmd->names->fd_infile = -1;
+	}
+	if (cmd->names->fd_outfile > 1)
+	{
+		close(cmd->names->fd_outfile);
+		cmd->names->fd_outfile = -1;
+	}
+}
 
 void	ft_comm_part1(t_cmd *cmd, t_mini *mini)
 {
@@ -26,18 +40,7 @@ void	ft_comm_part1(t_cmd *cmd, t_mini *mini)
 			&& ft_is_dir(cmd->args[0]) == 0)
 			ft_printf_exit(cmd->args[0], ": command not found\n", 127);
 		if (cmd->type)
-		{
-			if (cmd->names->fd_infile > 0)
-			{
-				close(cmd->names->fd_infile);
-				cmd->names->fd_infile = -1;
-			}
-			if (cmd->names->fd_outfile > 1)
-			{
-				close(cmd->names->fd_outfile);
-				cmd->names->fd_outfile = -1;
-			}
-		}
+			ft_protect_close_in_out(cmd);
 	}
 	if (cmd->cmd == NULL || (cmd->names->fd_infile < 0
 			|| cmd->names->fd_outfile < 1))
@@ -71,8 +74,7 @@ void	ft_comm_part2(t_cmd *cmd, t_mini *mini)
 	else
 	{
 		execve(cmd->cmd, cmd->args, mini->env->env);
-		perror("execve");
-		exit(1);
+		ft_perror_exit("execve", 1);
 	}
 }
 

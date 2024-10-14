@@ -6,7 +6,7 @@
 /*   By: descamil <descamil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/05 12:45:56 by descamil          #+#    #+#             */
-/*   Updated: 2024/10/13 17:44:27 by descamil         ###   ########.fr       */
+/*   Updated: 2024/10/13 20:01:03 by descamil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,6 @@ void	ft_strstr_printf(char **str);
 
 //ft_utils2.c
 void	ft_perror_exit(char *error, int exit);
-void	ft_printf_exit(char *error, char *arguments,int	exit);
+void	ft_printf_exit(char *error, char *arguments, int exit);
 
 #endif

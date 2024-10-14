@@ -6,7 +6,7 @@
 /*   By: descamil <descamil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/03 09:32:44 by descamil          #+#    #+#             */
-/*   Updated: 2024/10/13 03:48:42 by descamil         ###   ########.fr       */
+/*   Updated: 2024/10/13 20:00:13 by descamil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,16 +30,14 @@ static char	*ft_create_filename(void)
 	return (filename);
 }
 
-static int	ft_write_in_fd(t_mini *mini, t_cmd *cmd, int i)
+static int	ft_write_in_fd(t_mini *mini, t_cmd *cmd, int i, int j)
 {
 	char	*line;
 	char	*tmp;
 	int		*locate;
 	int		fd_tmp;
 	int		quotes;
-	int		j;
 
-	j = 1;
 	fd_tmp = open(cmd->names->join, O_WRONLY | O_CREAT, 0666);
 	if (fd_tmp == -1)
 		printf("Error open");
@@ -103,7 +101,7 @@ int	ft_here_doc(t_mini *mini, t_cmd *cmd, int last, int i)
 	int	fd;
 
 	cmd->names->join = ft_create_filename();
-	fd_tmp = ft_write_in_fd(mini, cmd, i);
+	fd_tmp = ft_write_in_fd(mini, cmd, i, 1);
 	close(fd_tmp);
 	fd = ft_handle_last_hd(cmd, last);
 	return (fd);

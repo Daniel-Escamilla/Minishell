@@ -6,7 +6,7 @@
 /*   By: descamil <descamil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/13 15:42:03 by descamil          #+#    #+#             */
-/*   Updated: 2024/10/13 15:55:38 by descamil         ###   ########.fr       */
+/*   Updated: 2024/10/13 20:01:18 by descamil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,8 @@ void	ft_perror_exit(char *error, int exit)
 	g_exit_status = exit;
 }
 
-void	ft_printf_exit(char *error, char *arguments, int	exit)
+void	ft_printf_exit(char *error, char *arguments, int exit)
 {
 	printf("%s%s", error, arguments);
-	g_exit_status = exit;	
+	g_exit_status = exit;
 }
