@@ -6,7 +6,7 @@
 /*   By: descamil <descamil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 16:27:49 by user              #+#    #+#             */
-/*   Updated: 2024/10/05 00:17:45 by descamil         ###   ########.fr       */
+/*   Updated: 2024/10/15 19:42:53 by descamil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,4 @@ void	free_t_mini(t_mini *mini)
 	if (mini->env)
 		free(mini->env);
 	free(mini);
-	close(2);
-	close(1);
-	close(0);
 }
