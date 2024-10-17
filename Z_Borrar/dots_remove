@@ -1,7 +1,0 @@
-PWD {Con argumentos o sin[IGNORAR]}
-UNSET {MULIT ARGS}
-EXPORT {MULIT ARGS}
-ECHO con o sin "-n" sin '\n'
-EXIT {Un argumento[NUMERICO positivo]} {0,...,256} si es [NEG] RULETA -256  = 0 && {-9223372036854775808,...,9223372036854775807}
-
-EXIT PRUEBAS
