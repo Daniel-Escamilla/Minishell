@@ -6,7 +6,7 @@
 /*   By: descamil <descamil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/15 21:11:38 by user              #+#    #+#             */
-/*   Updated: 2024/10/17 12:20:50 by descamil         ###   ########.fr       */
+/*   Updated: 2024/10/17 15:48:25 by descamil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ void	ft_comm_part2(t_cmd *cmd, t_mini *mini)
 		if (cmd->names->fd_outfile > 1
 			&& cmd->names->fd_outfile != mini->fd_pipe[1])
 			close (cmd->names->fd_outfile);
-		if (mini->fd_tmp > 0 && mini->num_comm != 2)
+		if (mini->fd_tmp > 0 && mini->fd_tmp != cmd->names->fd_infile)
 			close(mini->fd_tmp);
 		exit(status);
 	}

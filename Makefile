@@ -245,7 +245,7 @@ test: re
 	./$(NAME)$$args
 
 # Versión
-VERSION = 1.10.14
+VERSION = 1.10.17
 version:
 	@echo "Version: $(VERSION)"
 
