@@ -6,7 +6,7 @@
 /*   By: descamil <descamil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/16 13:03:56 by descamil          #+#    #+#             */
-/*   Updated: 2024/10/13 03:46:56 by descamil         ###   ########.fr       */
+/*   Updated: 2024/10/17 11:38:05 by descamil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,8 @@ static char	**ft_change_args(char **args, int pos, int i, int j)
 		args2 = ft_split_red(args[pos], 0);
 	if (args1 != NULL)
 		tmp = ft_strstr_join(args1, args2);
-	tmp = ft_strstr_join(args2, NULL);
+	else
+		tmp = ft_strstr_join(args2, NULL);
 	ft_free_fcheck_args(args1, args2);
 	args1 = NULL;
 	if ((int)ft_strstr_len(args) - pos != 1)
