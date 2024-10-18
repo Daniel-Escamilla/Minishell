@@ -6,21 +6,80 @@
 /*   By: descamil <descamil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/15 12:21:54 by smarin-a          #+#    #+#             */
-/*   Updated: 2024/10/13 19:45:17 by descamil         ###   ########.fr       */
+/*   Updated: 2024/10/18 14:24:33 by descamil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/main.h"
 
-char	**ft_strstr_dup_mod(char **str)
+char	**ft_create_default_env(void)
+{
+	char	**env;
+	char	*join;
+	char	*pwd;
+	int		i;
+
+	env = (char **)ft_calloc(sizeof(char *), 4);
+	if (env == NULL)
+		return (NULL);
+	pwd = getcwd(NULL, 0);
+	join = ft_strjoin("PWD=", pwd);
+	env[0] = ft_strdup(join);
+	env[1] = ft_strdup("SHLVL=1");
+	env[2] = ft_strdup("_=/usr/bin/env");
+	free(join);
+	i = -1;
+	while (++i < 3)
+	{
+		if (env[i] == NULL)
+		{
+			ft_strstr_free(env);
+			return (NULL);
+		}
+	}
+	return (env);
+}
+
+
+void	ft_update_shlvl(char ***dup, size_t i)
+{
+	char	*value;
+	long	tmp;
+
+	value = ft_get_var(*dup, "SHLVL");
+	tmp = ft_atoi(value) + 1;
+	free(value);
+	value = ft_itoa(tmp);
+	free((*dup)[i]);
+	(*dup)[i] = ft_strjoin("SHLVL=", value);
+	free(value);
+}
+
+void	ft_update_pwd(char ***dup, size_t i)
+{
+	char	*current_value;
+	char	*current_pwd;
+
+	current_value = ft_get_var(*dup, "PWD");
+	current_pwd = getcwd(NULL, 0);
+	if (current_value == NULL || ft_strncmp(current_value, current_pwd, ft_strlen(current_pwd)) != 0)
+	{
+		free((*dup)[i]);
+		(*dup)[i] = ft_strjoin("PWD=", current_pwd);
+	}
+	free(current_value);
+	free(current_pwd);
+}
+
+char	**ft_update_env(char **str)
 {
 	char	**dup;
 	size_t	i;
 
 	i = 0;
 	dup = NULL;
-	if (str == NULL)
-		return (NULL);
+	if (*str == NULL)
+		return (ft_create_default_env());
 	dup = (char **)ft_calloc(sizeof(char *), (size_t)ft_strstr_len(str) + 1);
 	if (dup == NULL)
 		return (NULL);
@@ -32,6 +91,10 @@ char	**ft_strstr_dup_mod(char **str)
 			ft_strstr_free(dup);
 			return (NULL);
 		}
+		if (ft_strncmp(dup[i], "SHLVL=", 6) == 0)
+			ft_update_shlvl(&dup, i);
+		if (ft_strncmp(dup[i], "PWD=", 4) == 0)
+			ft_update_pwd(&dup, i);
 		i++;
 	}
 	return (dup);
@@ -60,7 +123,7 @@ t_mini	*ft_initialize(char **env)
 	mini->env = ft_calloc(sizeof(t_env), 1);
 	if (mini->env == NULL)
 		return (ft_free_resources(mini, 2));
-	mini->env->env = ft_strstr_dup_mod(env);
+	mini->env->env = ft_update_env(env);
 	if (mini->env->env == NULL)
 		return (ft_free_resources(mini, 3));
 	mini->flags = ft_calloc(sizeof(t_flags), 1);

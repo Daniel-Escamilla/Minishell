@@ -6,7 +6,7 @@
 /*   By: descamil <descamil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/05 12:53:58 by descamil          #+#    #+#             */
-/*   Updated: 2024/10/13 03:51:34 by descamil         ###   ########.fr       */
+/*   Updated: 2024/10/18 13:13:44 by descamil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ int	ft_unset(t_mini *mini, t_cmd *cmd)
 	i = 1;
 	while (cmd->args[i])
 	{
-		var = ft_dup_var(mini, cmd->args[i]);
+		var = ft_find_var_value(mini->env->env, cmd->args[i]);
 		if (var != -1)
 			ft_remove_var(&mini->env->env, var);
 		i++;

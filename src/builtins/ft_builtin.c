@@ -6,7 +6,7 @@
 /*   By: descamil <descamil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/03 17:09:02 by user              #+#    #+#             */
-/*   Updated: 2024/10/14 15:09:29 by descamil         ###   ########.fr       */
+/*   Updated: 2024/10/17 16:17:43 by descamil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ char	*ft_builtins(t_cmd *cmd, char *comm)
 	size_t		i;
 	char		*str;
 	const char	*builtins[] = {"cd", "pwd", "env", "echo",
-		"exit", "unset", "export"};
+		"exit", "unset", "export", NULL};
 
 	i = 0;
 	str = NULL;

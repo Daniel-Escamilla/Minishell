@@ -6,7 +6,7 @@
 /*   By: descamil <descamil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/05 12:53:49 by descamil          #+#    #+#             */
-/*   Updated: 2024/10/13 14:58:46 by descamil         ###   ########.fr       */
+/*   Updated: 2024/10/18 14:09:55 by descamil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,19 +33,17 @@ static int	ft_export_printf(t_mini *mini)
 	return (0);
 }
 
-int	ft_dup_var(t_mini *mini, char *arg)
+int	ft_find_var_value(char **env, char *arg)
 {
 	char	*str;
-	int		size;
 	int		i;
 
 	i = -1;
 	str = ft_strchr(arg, '=');
-	size = (int)(str - arg);
-	if (size == 0 || !str || ft_isdigit(arg[0]) == 1)
+	if (!str || ft_strlen(str) == 1 || ft_isdigit(arg[0]) == 1)
 		return (-1);
-	while (mini->env->env[++i])
-		if (ft_strncmp(mini->env->env[i], arg, (size_t)size + 1) == 0)
+	while (env[++i])
+		if (ft_strncmp(env[i], arg, ft_strlen(arg)) == 0)
 			return (i);
 	return (-2);
 }
@@ -61,7 +59,7 @@ int	ft_export(t_mini *mini, t_cmd *cmd)
 		return (ft_export_printf(mini));
 	while (cmd->args[i])
 	{
-		var = ft_dup_var(mini, cmd->args[i]);
+		var = ft_find_var_value(mini->env->env, cmd->args[i]);
 		if (var != -1)
 		{
 			ft_remove_var(&mini->env->env, var);
