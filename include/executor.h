@@ -6,7 +6,7 @@
 /*   By: descamil <descamil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/05 12:44:47 by descamil          #+#    #+#             */
-/*   Updated: 2024/10/13 03:45:42 by descamil         ###   ########.fr       */
+/*   Updated: 2024/10/18 16:03:39 by descamil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,8 @@
 
 # include "../minishell.h"
 
+// 〖─◇──◇──◇──◇──◇──◇──◇──◇──◇──◇──◇──◇──◇│◇──◇──◇──◇──◇──◇──◇──◇──◇──◇──◇──◇─〗
+//                                   〘EXECUTOR〙
 // ft_commands.c
 int		is_red(char *argv);
 int		ft_count_args(char *input);

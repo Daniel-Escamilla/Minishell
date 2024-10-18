@@ -6,7 +6,7 @@
 /*   By: descamil <descamil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/05 12:45:25 by descamil          #+#    #+#             */
-/*   Updated: 2024/10/13 19:05:29 by descamil         ###   ########.fr       */
+/*   Updated: 2024/10/18 16:04:35 by descamil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,8 @@
 
 # include "../minishell.h"
 
+// 〖─◇──◇──◇──◇──◇──◇──◇──◇──◇──◇──◇──◇──◇│◇──◇──◇──◇──◇──◇──◇──◇──◇──◇──◇──◇─〗
+//                                    〘PARSER〙
 // ft_check_input.c
 int		ft_error_rqp(t_mini *mini, char *input);
 char	**ft_check_input(t_mini *mini, char *input);

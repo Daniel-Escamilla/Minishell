@@ -6,7 +6,7 @@
 /*   By: descamil <descamil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/05 12:45:17 by descamil          #+#    #+#             */
-/*   Updated: 2024/10/13 17:34:22 by descamil         ###   ########.fr       */
+/*   Updated: 2024/10/18 16:04:27 by descamil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,8 @@
 
 # include "../minishell.h"
 
+// 〖─◇──◇──◇──◇──◇──◇──◇──◇──◇──◇──◇──◇──◇│◇──◇──◇──◇──◇──◇──◇──◇──◇──◇──◇──◇─〗
+//                                     〘MAIN〙
 // ft_error_management.c
 void	ft_many_args_error(int argc, char **argv);
 

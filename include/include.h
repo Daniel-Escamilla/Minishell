@@ -6,13 +6,15 @@
 /*   By: descamil <descamil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/05 12:45:07 by descamil          #+#    #+#             */
-/*   Updated: 2024/10/13 03:46:16 by descamil         ###   ########.fr       */
+/*   Updated: 2024/10/18 16:04:06 by descamil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef INCLUDE_H
 # define INCLUDE_H
 
+// 〖─◇──◇──◇──◇──◇──◇──◇──◇──◇──◇──◇──◇──◇│◇──◇──◇──◇──◇──◇──◇──◇──◇──◇──◇──◇─〗
+//                                    〘INCLUDE〙
 # include <math.h>
 # include <fcntl.h>
 # include <stdio.h>

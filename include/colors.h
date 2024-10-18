@@ -6,17 +6,16 @@
 /*   By: descamil <descamil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/02 12:50:10 by descamil          #+#    #+#             */
-/*   Updated: 2024/10/05 12:37:50 by descamil         ###   ########.fr       */
+/*   Updated: 2024/10/18 16:03:24 by descamil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef COLORS_H
 # define COLORS_H
 
-// Colors
+// 〖─◇──◇──◇──◇──◇──◇──◇──◇──◇──◇──◇──◇──◇│◇──◇──◇──◇──◇──◇──◇──◇──◇──◇──◇──◇─〗
+//                                    〘COLORS〙
 # define RESET "\033[0m"
-
-// Normal colors
 # define RD_0 "\033[0;31m"    		// Rojo normal
 # define RD_1 "\033[38;5;9m"  		// Rojo claro
 # define RD_2 "\033[38;5;88m" 		// Rojo oscuro
@@ -42,8 +41,10 @@
 # define WH_1 "\033[38;5;15m" 		// Blanco claro
 # define WH_2 "\033[38;5;145m"		// Blanco oscuro
 
-// Bold colors
-# define B_RD_0 "\033[1;31m"    		// Rojo normal en negrita
+// ◇─◇──◇─◇──◇─◇──◇─◇──◇─◇──◇─◇──◇─◇||◇─◇──◇─◇──◇─◇──◇─◇──◇─◇──◇─◇──◇─◇──◇─◇──◇
+//                            〘BOLD COLORS〙
+//                            ¯¯¯¯¯¯¯¯¯¯¯¯
+# define B_RD_0 "\033[1;31m"    	// Rojo normal en negrita
 # define B_RD_1 "\033[1;38;5;9m"  	// Rojo claro en negrita
 # define B_RD_2 "\033[1;38;5;88m" 	// Rojo oscuro en negrita
 # define B_GR_0 "\033[1;32m"   		// Verde normal en negrita
