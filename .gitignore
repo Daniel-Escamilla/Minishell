@@ -1,7 +1,6 @@
-libft/libft_objects
 .vscode
 .minishell_history
 minishell
 minishell_objects
 libft/libft.a
-
+libft/libft_objects
