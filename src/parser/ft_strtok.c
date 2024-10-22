@@ -6,7 +6,7 @@
 /*   By: descamil <descamil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/01 17:52:46 by smarin-a          #+#    #+#             */
-/*   Updated: 2024/10/13 19:38:39 by descamil         ###   ########.fr       */
+/*   Updated: 2024/10/22 19:24:36 by descamil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,79 @@ static void	ft_do_remove_quotes(t_cmd *cmd)
 	}
 }
 
+static char **ft_update_args(char **tmp, char **str, int i, int size)
+{
+	char	**tmp2;
+	int		j;
+	int		k;
+	int		l;
+
+	j = 0;
+	k = 0;
+	l = 0;
+	tmp2 = ft_calloc(sizeof(char *), size + 1);
+	if (!tmp2)
+		return NULL;
+	while (j < i)
+		tmp2[j++] = ft_strdup(tmp[l++]);
+	while (str[k])
+		tmp2[j++] = ft_strdup(str[k++]);
+	while (tmp[l + 1])
+		tmp2[j++] = ft_strdup(tmp[++l]);
+	return (tmp2);
+}
+
+static char **ft_process_arg(char **tmp, int i, int *size)
+{
+	char	**str;
+	char	**tmp2;
+	int		new_size;
+	
+	str = ft_split(tmp[i], ' ');
+	if (!str)
+		return (NULL);
+	ft_strstr_printf(str);
+	new_size = *size + ft_strstr_len(str) - 1;
+	tmp2 = ft_update_args(tmp, str, i, new_size);
+	ft_strstr_free(str);
+	return (tmp2);
+}
+
+static void ft_quit_spaces(t_cmd **cmd)
+{
+	char	**tmp2;
+	char	**tmp;
+	int		size;
+	int		i;
+
+	i = 0;
+	tmp = ft_strstr_dup((*cmd)->args);
+	size = ft_strstr_len(tmp);
+	while (tmp[i])
+	{
+		if (ft_has_quotes(tmp[i], 0) == 0 && ft_strchr(tmp[i], ' '))
+		{
+			tmp2 = ft_process_arg(tmp, i, &size);
+			ft_strstr_free(tmp);
+			if (!tmp2)
+				return ;
+			tmp = ft_strstr_dup(tmp2);
+			i += ft_strstr_len(tmp2) - 1;
+			ft_strstr_free(tmp2);
+			tmp2 = NULL;
+			printf("I --> %d\n", i);
+		}
+		i++;
+	}
+	if (ft_strstr_len(tmp) > size)
+	{
+		ft_strstr_free((*cmd)->args);
+		(*cmd)->args = ft_strstr_dup(tmp2);
+		ft_strstr_free(tmp2);
+	}
+	ft_strstr_free(tmp);
+}
+
 static int	ft_order_all(t_mini *mini, t_cmd **cmd, char **lines, char *input)
 {
 	if (mini->flags->pipe == 0)
@@ -78,7 +151,10 @@ static int	ft_order_all(t_mini *mini, t_cmd **cmd, char **lines, char *input)
 	ft_strstr_free(lines);
 	if (mini->cmd->files->error == -1)
 		return (-1);
+	ft_quit_spaces(cmd);
+	print_cmd(*cmd);
 	ft_do_remove_quotes(*cmd);
+	
 	ft_remove_files(*cmd, mini);
 	if (mini->cmd->files->error == -1)
 		return (-1);

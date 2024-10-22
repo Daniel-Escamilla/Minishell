@@ -6,7 +6,7 @@
 /*   By: descamil <descamil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/21 18:07:18 by sergio            #+#    #+#             */
-/*   Updated: 2024/10/05 12:47:21 by descamil         ###   ########.fr       */
+/*   Updated: 2024/10/22 12:19:33 by descamil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,7 +93,7 @@ char	*ft_strtrim(char const *str, char const *set);
 // ft_split - Divide un string en multiples strings y los guarda en un array.
 char	**ft_split(const char *str, char value);
 // ft_itoa - Convierte un entero a un string de caracteres.
-char	*ft_itoa(int n);
+char	*ft_itoa(long n);
 // ft_strmapi - Aplica la funcion f a cada caracter de la cadena str.
 char	*ft_strmapi(const char *str, char (*f)(unsigned int, char));
 // ft_striteri - Aplica la funcion f a cada caracter de la cadena str.

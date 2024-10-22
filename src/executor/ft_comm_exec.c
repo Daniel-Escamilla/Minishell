@@ -6,13 +6,13 @@
 /*   By: descamil <descamil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/15 21:11:38 by user              #+#    #+#             */
-/*   Updated: 2024/10/17 15:48:25 by descamil         ###   ########.fr       */
+/*   Updated: 2024/10/22 15:45:57 by descamil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/executor.h"
 
-void	ft_protect_close_in_out(t_cmd *cmd)
+static void	ft_protect_close_in_out(t_cmd *cmd)
 {
 	if (cmd->names->fd_infile > 0)
 	{
@@ -34,6 +34,10 @@ void	ft_comm_part1(t_cmd *cmd, t_mini *mini)
 			ft_perror_exit("Pipe Error", 1);
 	}
 	ft_open_fd(cmd, mini);
+	if (cmd->cmd == NULL)
+		if (cmd->args && cmd->args[0] && ft_nothing(cmd->args[0], 0) == 0
+			&& ft_is_dir(cmd->args[0]) == 0)
+			g_exit_status = 127;
 	if (cmd->names->fd_infile < 0 || cmd->names->fd_outfile < 1)
 		mini->error = -4;
 	else
@@ -50,7 +54,7 @@ void	ft_comm_part2(t_cmd *cmd, t_mini *mini)
 	if (cmd->built == 1)
 	{
 		close(mini->fd_history);
-		status = ft_exec_built(mini, cmd);
+		status = (int)ft_exec_built(mini, cmd);
 		ft_putstr_fd("BUILT\n", 2);
 		if (cmd->names->fd_infile > 0
 			&& cmd->names->fd_infile != mini->fd_pipe[0])
@@ -73,7 +77,7 @@ void	ft_comm(t_cmd *cmd, t_mini *mini)
 {
 	ft_comm_part1(cmd, mini);
 	if (mini->single == 1 && cmd->built == 1)
-		g_exit_status = ft_exec_built(mini, cmd);
+		g_exit_status = (int)ft_exec_built(mini, cmd);
 	else if (cmd->names->fd_infile != -1 && cmd->names->fd_outfile != -1
 		&& mini->error != -4)
 	{
@@ -84,10 +88,6 @@ void	ft_comm(t_cmd *cmd, t_mini *mini)
 		{
 			if (cmd->cmd == NULL)
 			{
-				if (cmd->args && cmd->args[0] && ft_nothing(cmd->args[0], 0) == 0
-					&& ft_is_dir(cmd->args[0]) == 0)
-					dprintf(2, "%s: command not found\n", cmd->args[0]);
-					// ft_printf_exit(cmd->args[0], ": command not found\n", 127);
 				if (cmd->type)
 					ft_protect_close_in_out(cmd);
 				ft_close_and_update_fds(mini, cmd, 'H');
@@ -95,6 +95,9 @@ void	ft_comm(t_cmd *cmd, t_mini *mini)
 					close (mini->fd_tmp);
 				mini->fd_tmp = -1;
 				close (mini->fd_history);
+				if (cmd->args && cmd->args[0] && ft_nothing(cmd->args[0], 0) == 0
+					&& ft_is_dir(cmd->args[0]) == 0)
+					ft_printf_exit(cmd->args[0], ": command not found\n", 127);
 				exit(1);
 			}
 			ft_comm_part2(cmd, mini);

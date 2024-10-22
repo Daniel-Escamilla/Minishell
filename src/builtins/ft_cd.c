@@ -6,7 +6,7 @@
 /*   By: descamil <descamil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/30 12:00:46 by user              #+#    #+#             */
-/*   Updated: 2024/10/13 17:45:27 by descamil         ###   ########.fr       */
+/*   Updated: 2024/10/22 16:13:31 by descamil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,16 +62,17 @@ static void	ft_update_env(t_mini *mini)
 	char	*pwd;
 	char	*rute;
 	char	*tmp;
-
+	
 	pwd = ft_get_var(mini->env->env, "PWD");
+	if (pwd == NULL)
+		pwd = ft_strdup("");
 	rute = getcwd(NULL, 0);
 	if (rute != NULL)
 		ft_change_env(&mini->env->env, "PWD", rute);
-	else
-		ft_change_env(&mini->env->env, "PWD", "");
 	tmp = ft_get_var(mini->env->env, "OLDPWD");
 	if (tmp == NULL)
 		ft_add_var(&mini->env->env, "OLDPWD=", pwd);
+	// else if (ft_strlen(tmp) == 0)c
 	else
 		ft_change_env(&mini->env->env, "OLDPWD", pwd);
 	free(rute);

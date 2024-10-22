@@ -6,7 +6,7 @@
 /*   By: descamil <descamil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/05 12:44:39 by descamil          #+#    #+#             */
-/*   Updated: 2024/10/22 11:51:57 by descamil         ###   ########.fr       */
+/*   Updated: 2024/10/22 12:51:08 by descamil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ void	ft_change_env(char ***env, char *variable, char *content);
 int		ft_echo(t_cmd *cmd);
 
 // ft_env.c
-int		ft_env(t_mini *mini, t_cmd *cmd);
+int		ft_env(t_mini *mini);
 
 // ft_exit.c
 int		ft_exit(t_mini *mini, t_cmd *cmd);

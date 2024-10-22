@@ -6,13 +6,13 @@
 /*   By: descamil <descamil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/15 12:21:54 by smarin-a          #+#    #+#             */
-/*   Updated: 2024/10/18 14:24:33 by descamil         ###   ########.fr       */
+/*   Updated: 2024/10/22 12:19:18 by descamil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/main.h"
 
-char	**ft_create_default_env(void)
+static char	**ft_create_default_env(void)
 {
 	char	**env;
 	char	*join;
@@ -40,8 +40,7 @@ char	**ft_create_default_env(void)
 	return (env);
 }
 
-
-void	ft_update_shlvl(char ***dup, size_t i)
+static void	ft_update_shlvl(char ***dup, size_t i)
 {
 	char	*value;
 	long	tmp;
@@ -55,7 +54,7 @@ void	ft_update_shlvl(char ***dup, size_t i)
 	free(value);
 }
 
-void	ft_update_pwd(char ***dup, size_t i)
+static void	ft_update_pwd(char ***dup, size_t i)
 {
 	char	*current_value;
 	char	*current_pwd;
@@ -71,7 +70,7 @@ void	ft_update_pwd(char ***dup, size_t i)
 	free(current_pwd);
 }
 
-char	**ft_update_env(char **str)
+static char	**ft_update_env(char **str)
 {
 	char	**dup;
 	size_t	i;

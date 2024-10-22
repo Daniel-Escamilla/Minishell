@@ -6,7 +6,7 @@
 /*   By: descamil <descamil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/22 11:21:55 by descamil          #+#    #+#             */
-/*   Updated: 2024/10/22 12:07:30 by descamil         ###   ########.fr       */
+/*   Updated: 2024/10/22 16:14:57 by descamil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ static void	ft_print_list(t_list *list)
 		size = ft_strlen(env_var) - ft_strlen(join);
 		var = ft_calloc(size + 1, sizeof(char));
 		ft_strlcpy(var, env_var, size + 1);
-		printf("declare -x %s=\"%s\"\n", var, join);
+		printf("declare -x %s\"%s\"\n", var, join);
 		free(var);
 		list = list->next;
 	}

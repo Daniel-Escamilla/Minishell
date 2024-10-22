@@ -21,7 +21,7 @@ NAME = minishell
 # Compilador a utilizar (gcc, clang, etc)
 CC = gcc
 # Flags de compilacion (agregar los que se necesiten) -O2 para pruebas extra
-CFLAGS = -g3 -Wall -Wextra -Werror# -Wpedantic -Wshadow -Wformat -Wnull-dereference -Wconversion -Wstrict-overflow -Wsign-conversion -Wimplicit-fallthrough=5 -Wdouble-promotion -Wvla -Wformat-security -Wcast-align=strict -Wredundant-decls -Wlogical-op -Wstrict-prototypes -Wmissing-prototypes -Wmissing-declarations -Winit-self -Wuninitialized -Wbad-function-cast -Wmissing-field-initializers
+CFLAGS = -g3 -Wall -Wextra -Werror -Wstrict-prototypes -Wmissing-prototypes# -Wpedantic -Wshadow -Wformat -Wnull-dereference -Wconversion -Wstrict-overflow -Wsign-conversion -Wimplicit-fallthrough=5 -Wdouble-promotion -Wvla -Wformat-security -Wcast-align=strict -Wredundant-decls -Wlogical-op -Wstrict-prototypes -Wmissing-prototypes -Wmissing-declarations -Winit-self -Wuninitialized -Wbad-function-cast -Wmissing-field-initializers
 
 # Incluir archivos de dependencia
 -include $(OBJS:.o=.d)
@@ -246,7 +246,7 @@ test: re
 	./$(NAME)$$args
 
 # Versión
-VERSION = 1.10.17
+VERSION = 1.10.22
 version:
 	@echo "Version: $(VERSION)"
 

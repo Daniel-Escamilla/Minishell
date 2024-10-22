@@ -6,7 +6,7 @@
 /*   By: descamil <descamil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/04 11:05:18 by user              #+#    #+#             */
-/*   Updated: 2024/10/13 03:50:59 by descamil         ###   ########.fr       */
+/*   Updated: 2024/10/22 18:19:39 by descamil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,8 +93,11 @@ void	ft_remove_var(char ***env, int i)
 	else
 		*env = ft_calloc(sizeof(char *), (size_t)size);
 	while (++j < size)
+	{
+		// printf("%d\n", i);
 		if (j != i)
 			(*env)[k++] = ft_strdup(env_tmp[j]);
+	}
 	(*env)[k] = NULL;
 	ft_strstr_free(env_tmp);
 }

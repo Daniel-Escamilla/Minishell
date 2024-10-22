@@ -6,7 +6,7 @@
 /*   By: descamil <descamil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 18:00:29 by sergio            #+#    #+#             */
-/*   Updated: 2024/10/04 23:32:59 by descamil         ###   ########.fr       */
+/*   Updated: 2024/10/22 12:19:24 by descamil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ char	*ft_memory(int len, int sign, int n)
 	return (arr);
 }
 
-char	*ft_itoa(int n)
+char	*ft_itoa(long n)
 {
 	int	sign;
 	int	len;
