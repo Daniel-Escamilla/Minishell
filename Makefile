@@ -38,6 +38,7 @@ BUILTINS_SRCS =	src/builtins/ft_cd.c \
 				src/builtins/ft_export.c \
 				src/builtins/ft_builtin.c \
 				src/builtins/ft_change_env.c \
+				src/builtins/ft_export_print.c \
 
 EXECUTOR_SRCS = src/executor/ft_commands.c \
 				src/executor/ft_exec_cmd.c \

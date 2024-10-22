@@ -6,7 +6,7 @@
 /*   By: descamil <descamil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/05 12:44:39 by descamil          #+#    #+#             */
-/*   Updated: 2024/10/18 16:06:02 by descamil         ###   ########.fr       */
+/*   Updated: 2024/10/22 11:51:57 by descamil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,9 @@ int		ft_env(t_mini *mini, t_cmd *cmd);
 
 // ft_exit.c
 int		ft_exit(t_mini *mini, t_cmd *cmd);
+
+// ft_export_print
+int		ft_print_order(char **env);
 
 // ft_export.c
 int		ft_export(t_mini *mini, t_cmd *cmd);

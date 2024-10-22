@@ -6,7 +6,7 @@
 /*   By: descamil <descamil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/05 12:45:49 by descamil          #+#    #+#             */
-/*   Updated: 2024/10/18 16:03:19 by descamil         ###   ########.fr       */
+/*   Updated: 2024/10/22 12:03:49 by descamil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,45 @@
 
 // 〖─◇──◇──◇──◇──◇──◇──◇──◇──◇──◇──◇──◇──◇│◇──◇──◇──◇──◇──◇──◇──◇──◇──◇──◇──◇─〗
 //                                    〘STRUCT〙
+typedef struct s_token
+{
+	char		*input;
+	char		**tokens;
+}				t_token;
+
 typedef struct s_files
 {
 	char		**f_order;
 	char		**order;
 	int			error;
 }				t_files;
+
+typedef struct s_env
+{
+	int			env_amount;
+	char		*path;
+	char		**env;
+}				t_env;
+
+typedef struct s_names
+{
+	char	*join;
+	int		fd_outfile;
+	int		fd_infile;
+	int		fd_tmp;
+	int		fd;
+
+}			t_names;
+
+typedef struct s_type
+{
+	int			infile;
+	int			outfile;
+	int			here_doc;
+	int			append;
+	char		*in;
+	char		*out;
+}				t_type;
 
 typedef struct s_red
 {
@@ -35,12 +68,6 @@ typedef struct s_red
 	char		*error;
 }				t_red;
 
-typedef struct s_token
-{
-	char		*input;
-	char		**tokens;
-}				t_token;
-
 typedef struct s_flags
 {
 	int			pipe;
@@ -50,33 +77,6 @@ typedef struct s_flags
 	int			locate_red;
 	t_red		*redirect;
 }				t_flags;
-
-typedef struct s_env
-{
-	int			env_amount;
-	char		*path;
-	char		**env;
-}				t_env;
-
-typedef struct s_type
-{
-	int			infile;
-	int			outfile;
-	int			here_doc;
-	int			append;
-	char		*in;
-	char		*out;
-}				t_type;
-
-typedef struct s_names
-{
-	char	*join;
-	int		fd_outfile;
-	int		fd_infile;
-	int		fd_tmp;
-	int		fd;
-
-}			t_names;
 
 typedef struct s_cmd
 {

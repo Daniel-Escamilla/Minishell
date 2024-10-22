@@ -6,32 +6,11 @@
 /*   By: descamil <descamil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/05 12:53:49 by descamil          #+#    #+#             */
-/*   Updated: 2024/10/18 14:09:55 by descamil         ###   ########.fr       */
+/*   Updated: 2024/10/22 11:51:20 by descamil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/builtins.h"
-
-static int	ft_export_printf(t_mini *mini)
-{
-	char	*join;
-	char	*var;
-	size_t	size;
-	int		i;
-
-	i = -1;
-	while (mini->env->env[++i])
-	{
-		join = ft_strchr(mini->env->env[i], '=') + 1;
-		size = ft_strlen(mini->env->env[i]) - (ft_strlen(join));
-		var = ft_calloc(sizeof(char), size + 1);
-		ft_strlcpy(var, mini->env->env[i], size);
-		printf("declare -x %s=\"%s\"\n", var, join);
-		if (var)
-			free(var);
-	}
-	return (0);
-}
 
 int	ft_find_var_value(char **env, char *arg)
 {
@@ -56,7 +35,7 @@ int	ft_export(t_mini *mini, t_cmd *cmd)
 
 	i = 1;
 	if (ft_strstr_len(cmd->args) == 1)
-		return (ft_export_printf(mini));
+		return (ft_print_order(mini->env->env));
 	while (cmd->args[i])
 	{
 		var = ft_find_var_value(mini->env->env, cmd->args[i]);
