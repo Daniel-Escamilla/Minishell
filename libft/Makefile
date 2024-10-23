@@ -12,7 +12,7 @@ NAME = libft.a
 # Compilador a utilizar (gcc, clang, etc)
 CC = gcc
 # Flags de compilacion (agregar los que se necesiten)
-CFLAGS = -Wall -Wextra -Werror 
+CFLAGS = -Wall -Wextra -Werror -g3
 
 #------------------------------------------------------------------------------#
 

@@ -6,7 +6,7 @@
 /*   By: descamil <descamil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/15 21:11:38 by user              #+#    #+#             */
-/*   Updated: 2024/10/22 15:45:57 by descamil         ###   ########.fr       */
+/*   Updated: 2024/10/23 15:15:32 by descamil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ static void	ft_protect_close_in_out(t_cmd *cmd)
 	}
 }
 
-void	ft_comm_part1(t_cmd *cmd, t_mini *mini)
+static void	ft_comm_part1(t_cmd *cmd, t_mini *mini)
 {
 	if (mini->num_comm != 0)
 	{
@@ -44,16 +44,14 @@ void	ft_comm_part1(t_cmd *cmd, t_mini *mini)
 		mini->error = 0;
 }
 
-void	ft_comm_part2(t_cmd *cmd, t_mini *mini)
+static void	ft_comm_part2(t_cmd *cmd, t_mini *mini, int status)
 {
-	int	status;
-
 	dup2(cmd->names->fd_infile, STDIN_FILENO);
 	dup2(cmd->names->fd_outfile, STDOUT_FILENO);
 	ft_close_and_update_fds(mini, cmd, 'H');
+	close(mini->fd_history);
 	if (cmd->built == 1)
 	{
-		close(mini->fd_history);
 		status = (int)ft_exec_built(mini, cmd);
 		ft_putstr_fd("BUILT\n", 2);
 		if (cmd->names->fd_infile > 0
@@ -69,7 +67,9 @@ void	ft_comm_part2(t_cmd *cmd, t_mini *mini)
 	else
 	{
 		execve(cmd->cmd, cmd->args, mini->env->env);
-		ft_perror_exit("execve", 1);
+		if (ft_strnstr(cmd->args[0], "./", 2))
+			ft_printf_exit(cmd->args[0], ": Is a directory\n", 126);
+		exit(139);
 	}
 }
 
@@ -95,12 +95,11 @@ void	ft_comm(t_cmd *cmd, t_mini *mini)
 					close (mini->fd_tmp);
 				mini->fd_tmp = -1;
 				close (mini->fd_history);
-				if (cmd->args && cmd->args[0] && ft_nothing(cmd->args[0], 0) == 0
-					&& ft_is_dir(cmd->args[0]) == 0)
+				if (cmd->args && cmd->args[0] && ft_nothing(cmd->args[0], 0) == 0)
 					ft_printf_exit(cmd->args[0], ": command not found\n", 127);
 				exit(1);
 			}
-			ft_comm_part2(cmd, mini);
+			ft_comm_part2(cmd, mini, 0);
 		}
 	}
 	ft_close_and_update_fds(mini, cmd, 'P');

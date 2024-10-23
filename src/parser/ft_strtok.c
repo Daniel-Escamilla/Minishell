@@ -6,136 +6,171 @@
 /*   By: descamil <descamil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/01 17:52:46 by smarin-a          #+#    #+#             */
-/*   Updated: 2024/10/22 19:24:36 by descamil         ###   ########.fr       */
+/*   Updated: 2024/10/23 15:17:52 by descamil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/parser.h"
 
-static void	ft_do_remove_quotes(t_cmd *cmd)
+static void	ft_handle_quote_args(t_cmd *cmd, int i)
 {
-	t_cmd	*current;
-	int		*quotes;
 	char	*itoa;
 	char	**tmp;
-	int		i;
 
-	i = 0;
-	current = cmd;
+	itoa = ft_itoa(i);
+	if (cmd->quote_args == NULL)
+		cmd->quote_args = ft_sindub_join(NULL, itoa);
+	else
+	{
+		tmp = ft_strstr_dup(cmd->quote_args);
+		ft_strstr_free(cmd->quote_args);
+		cmd->quote_args = ft_sindub_join(tmp, itoa);
+		ft_strstr_free(tmp);
+	}
+	free(itoa);
+}
+
+static void	ft_do_remove_args_quotes(t_cmd *cmd)
+{
+	int		*quotes;
+	int		i = 0;
+
+	while (cmd->args && cmd->args[i])
+	{
+		quotes = ft_find_quotes(cmd->args[i], 0);
+		if (quotes[1] != -1)
+			ft_handle_quote_args(cmd, i);
+		if (quotes[0] != -1 && quotes[1] != -1)
+			ft_rm_quotes(&cmd->args[i], quotes);
+		else
+			free(quotes);
+		i++;
+	}
+}
+
+static void	ft_do_remove_files_quotes(t_cmd *cmd)
+{
+	int		*quotes;
+	int		i = 0;
+
+	while (cmd->files && cmd->files->f_order && cmd->files->f_order[i])
+	{
+		if (ft_atoi(cmd->files->order[i]) != 3)
+		{
+			quotes = ft_find_quotes(cmd->files->f_order[i], 0);
+			ft_rm_quotes(&cmd->files->f_order[i], quotes);
+			free(quotes);
+		}
+		i++;
+	}
+}
+
+static void	ft_do_remove_quotes(t_cmd *cmd)
+{
+	t_cmd	*current = cmd;
+
 	while (current != NULL)
 	{
-		while (current->args && current->args[i])
-		{
-			quotes = ft_find_quotes(current->args[i], 0);
-			if (quotes[1] != -1 && cmd->quote_args == NULL)
-			{
-				itoa = ft_itoa(i);
-				cmd->quote_args = ft_sindub_join(NULL, itoa);
-				free(itoa);
-			}
-			else if (quotes[1] != -1)
-			{
-				itoa = ft_itoa(i);
-				tmp = ft_strstr_dup(cmd->quote_args);
-				ft_strstr_free(cmd->quote_args);
-				cmd->quote_args = ft_sindub_join(tmp, itoa);
-				free(itoa);
-				ft_strstr_free(tmp);
-			}
-			if (quotes[0] != -1 && quotes[1] != -1)
-				ft_rm_quotes(&current->args[i], quotes);
-			else
-				free(quotes);
-			i++;
-		}
-		i = 0;
-		while (current->files && current->files->f_order
-			&& current->files->f_order[i])
-		{
-			if (ft_atoi(current->files->order[i]) == 3)
-				i++;
-			else if (current->files->f_order[i])
-			{
-				quotes = ft_find_quotes(current->files->f_order[i], 0);
-				ft_rm_quotes(&current->files->f_order[i++], quotes);
-				free(quotes);
-			}
-		}
+		ft_do_remove_args_quotes(current);
+		ft_do_remove_files_quotes(current);
 		current = current->next;
 	}
 }
 
-static char **ft_update_args(char **tmp, char **str, int i, int size)
-{
-	char	**tmp2;
-	int		j;
-	int		k;
-	int		l;
+// static void	ft_do_remove_quotes(t_cmd *cmd)
+// {
+// 	t_cmd	*current;
+// 	char	**tmp;
+// 	int		*quotes;
+// 	char	*itoa;
+// 	int		i;
 
-	j = 0;
-	k = 0;
-	l = 0;
-	tmp2 = ft_calloc(sizeof(char *), size + 1);
-	if (!tmp2)
-		return NULL;
-	while (j < i)
-		tmp2[j++] = ft_strdup(tmp[l++]);
-	while (str[k])
-		tmp2[j++] = ft_strdup(str[k++]);
-	while (tmp[l + 1])
-		tmp2[j++] = ft_strdup(tmp[++l]);
-	return (tmp2);
-}
+// 	i = 0;
+// 	current = cmd;
+// 	while (current != NULL)
+// 	{
+// 		while (current->args && current->args[i])
+// 		{
+// 			quotes = ft_find_quotes(current->args[i], 0);
+// 			if (quotes[1] != -1 && cmd->quote_args == NULL)
+// 			{
+// 				itoa = ft_itoa(i);
+// 				cmd->quote_args = ft_sindub_join(NULL, itoa);
+// 				free(itoa);
+// 			}
+// 			else if (quotes[1] != -1)
+// 			{
+// 				itoa = ft_itoa(i);
+// 				tmp = ft_strstr_dup(cmd->quote_args);
+// 				ft_strstr_free(cmd->quote_args);
+// 				cmd->quote_args = ft_sindub_join(tmp, itoa);
+// 				free(itoa);
+// 				ft_strstr_free(tmp);
+// 			}
+// 			if (quotes[0] != -1 && quotes[1] != -1)
+// 				ft_rm_quotes(&current->args[i], quotes);
+// 			else
+// 				free(quotes);
+// 			i++;
+// 		}
+// 		i = 0;
+// 		while (current->files && current->files->f_order
+// 			&& current->files->f_order[i])
+// 		{
+// 			if (ft_atoi(current->files->order[i]) == 3)
+// 				i++;
+// 			else if (current->files->f_order[i])
+// 			{
+// 				quotes = ft_find_quotes(current->files->f_order[i], 0);
+// 				ft_rm_quotes(&current->files->f_order[i++], quotes);
+// 				free(quotes);
+// 			}
+// 		}
+// 		current = current->next;
+// 	}
+// }
 
-static char **ft_process_arg(char **tmp, int i, int *size)
+static void	ft_split_space_join(char ***result, char *tmp)
 {
+	char	**copy;
 	char	**str;
-	char	**tmp2;
-	int		new_size;
-	
-	str = ft_split(tmp[i], ' ');
-	if (!str)
-		return (NULL);
-	ft_strstr_printf(str);
-	new_size = *size + ft_strstr_len(str) - 1;
-	tmp2 = ft_update_args(tmp, str, i, new_size);
+
+	str = ft_split(tmp, ' ');
+	if (*result == NULL)
+		*result = ft_strstr_join(str, NULL);
+	else
+	{
+		copy = ft_strstr_join(*result, str);
+		ft_strstr_free(*result);
+		*result = copy;
+	}
 	ft_strstr_free(str);
-	return (tmp2);
 }
 
 static void ft_quit_spaces(t_cmd **cmd)
 {
-	char	**tmp2;
+	char	**result;
+	char	**copy;
 	char	**tmp;
-	int		size;
 	int		i;
 
-	i = 0;
+	i = -1;
+	result = NULL;
 	tmp = ft_strstr_dup((*cmd)->args);
-	size = ft_strstr_len(tmp);
-	while (tmp[i])
+	while (tmp[++i])
 	{
 		if (ft_has_quotes(tmp[i], 0) == 0 && ft_strchr(tmp[i], ' '))
+			ft_split_space_join(&result, tmp[i]);
+		else
 		{
-			tmp2 = ft_process_arg(tmp, i, &size);
-			ft_strstr_free(tmp);
-			if (!tmp2)
-				return ;
-			tmp = ft_strstr_dup(tmp2);
-			i += ft_strstr_len(tmp2) - 1;
-			ft_strstr_free(tmp2);
-			tmp2 = NULL;
-			printf("I --> %d\n", i);
+			copy = ft_sindub_join(result, tmp[i]);
+			ft_strstr_free(result);
+			result = copy;
 		}
-		i++;
-	}
-	if (ft_strstr_len(tmp) > size)
-	{
-		ft_strstr_free((*cmd)->args);
-		(*cmd)->args = ft_strstr_dup(tmp2);
-		ft_strstr_free(tmp2);
 	}
 	ft_strstr_free(tmp);
+	ft_strstr_free((*cmd)->args);
+	(*cmd)->args = result;
 }
 
 static int	ft_order_all(t_mini *mini, t_cmd **cmd, char **lines, char *input)
@@ -152,13 +187,13 @@ static int	ft_order_all(t_mini *mini, t_cmd **cmd, char **lines, char *input)
 	if (mini->cmd->files->error == -1)
 		return (-1);
 	ft_quit_spaces(cmd);
-	print_cmd(*cmd);
 	ft_do_remove_quotes(*cmd);
 	
 	ft_remove_files(*cmd, mini);
 	if (mini->cmd->files->error == -1)
 		return (-1);
 	ft_select_files(*cmd, 0);
+	print_cmd(*cmd);
 	return (0);
 }
 

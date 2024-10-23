@@ -71,5 +71,7 @@ int	ft_wait_bonus(t_mini *mini)
 		state /= 256;
 		g_exit_status = state;
 	}
+	if (state == 139)
+		g_exit_status = state;
 	return (state);
 }

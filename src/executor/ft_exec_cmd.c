@@ -6,7 +6,7 @@
 /*   By: descamil <descamil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/03 09:29:06 by descamil          #+#    #+#             */
-/*   Updated: 2024/10/13 03:48:10 by descamil         ###   ########.fr       */
+/*   Updated: 2024/10/23 14:43:33 by descamil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ char	*ft_validate_comm_part1(char *cmd)
 		command = ft_strdup(cmd);
 		return (command);
 	}
-	if ((access(cmd, X_OK) != 0 && ft_strrchr(cmd, '/')) || ft_is_dir(cmd) == 1)
+	if (access(cmd, X_OK) != 0 && ft_strrchr(cmd, '/'))
 	{
 		if (ft_is_dir(cmd) == 1)
 			printf("mini: %s: Is a directory\n", cmd);
@@ -81,12 +81,6 @@ char	*ft_route_cmd(t_mini *mini, t_cmd *current, char *tmp)
 	char	*cmd;
 
 	path = ft_create_path(mini->env->env);
-	if (tmp[0] == '\0')
-	{
-		ft_strstr_free(path);
-		current->files->error = -2;
-		return (NULL);
-	}
 	if (path == NULL)
 		path = ft_save_path(mini->env->env);
 	cmd = ft_validate_comm(tmp, path, 1);

@@ -6,7 +6,7 @@
 /*   By: descamil <descamil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/05 12:45:49 by descamil          #+#    #+#             */
-/*   Updated: 2024/10/22 12:03:49 by descamil         ###   ########.fr       */
+/*   Updated: 2024/10/23 15:27:53 by descamil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,6 +97,7 @@ typedef struct s_cmd
 
 typedef struct s_mini
 {
+	int			pwd;
 	int			error;
 	int			index;
 	int			fd_tmp;

@@ -6,7 +6,7 @@
 /*   By: descamil <descamil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/11 19:00:37 by user              #+#    #+#             */
-/*   Updated: 2024/10/13 03:48:04 by descamil         ###   ########.fr       */
+/*   Updated: 2024/10/23 14:35:56 by descamil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,10 @@ static void	ft_initialize_selection(t_cmd *current)
 	current->size = 0;
 	current->error = 0;
 	while (current->args[++i])
+	{
 		if (ft_type(current->args[i]) != 0)
 			current->size++;
+	}
 }
 
 static char	**ft_allocate_tmp(t_cmd *current)
@@ -80,9 +82,5 @@ void	ft_select_cmd(t_cmd *current, t_mini *mini, int j)
 		}
 	}
 	ft_strstr_free(current->args);
-	current->args = NULL;
-	current->args = ft_strstr_dup(tmp);
-	if (current->args == NULL)
-		current->files->error = -1;
-	ft_strstr_free(tmp);
+	current->args = tmp;
 }

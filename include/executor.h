@@ -6,7 +6,7 @@
 /*   By: descamil <descamil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/05 12:44:47 by descamil          #+#    #+#             */
-/*   Updated: 2024/10/18 16:03:39 by descamil         ###   ########.fr       */
+/*   Updated: 2024/10/23 15:15:11 by descamil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,6 @@ int		ft_process_quotes(char *input, int *i, int *first);
 
 // ft_comm_exec.c
 void	ft_comm(t_cmd *cmd, t_mini *mini);
-void	ft_comm_part1(t_cmd *cmd, t_mini *mini);
-void	ft_comm_part2(t_cmd *cmd, t_mini *mini);
 
 // ft_here_doc.c
 int		ft_here_doc(t_mini *mini, t_cmd *cmd, int last, int i);
