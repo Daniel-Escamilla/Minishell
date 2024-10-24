@@ -6,7 +6,7 @@
 /*   By: descamil <descamil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/01 17:52:46 by smarin-a          #+#    #+#             */
-/*   Updated: 2024/10/23 15:17:52 by descamil         ###   ########.fr       */
+/*   Updated: 2024/10/24 10:54:21 by descamil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,59 +76,6 @@ static void	ft_do_remove_quotes(t_cmd *cmd)
 		current = current->next;
 	}
 }
-
-// static void	ft_do_remove_quotes(t_cmd *cmd)
-// {
-// 	t_cmd	*current;
-// 	char	**tmp;
-// 	int		*quotes;
-// 	char	*itoa;
-// 	int		i;
-
-// 	i = 0;
-// 	current = cmd;
-// 	while (current != NULL)
-// 	{
-// 		while (current->args && current->args[i])
-// 		{
-// 			quotes = ft_find_quotes(current->args[i], 0);
-// 			if (quotes[1] != -1 && cmd->quote_args == NULL)
-// 			{
-// 				itoa = ft_itoa(i);
-// 				cmd->quote_args = ft_sindub_join(NULL, itoa);
-// 				free(itoa);
-// 			}
-// 			else if (quotes[1] != -1)
-// 			{
-// 				itoa = ft_itoa(i);
-// 				tmp = ft_strstr_dup(cmd->quote_args);
-// 				ft_strstr_free(cmd->quote_args);
-// 				cmd->quote_args = ft_sindub_join(tmp, itoa);
-// 				free(itoa);
-// 				ft_strstr_free(tmp);
-// 			}
-// 			if (quotes[0] != -1 && quotes[1] != -1)
-// 				ft_rm_quotes(&current->args[i], quotes);
-// 			else
-// 				free(quotes);
-// 			i++;
-// 		}
-// 		i = 0;
-// 		while (current->files && current->files->f_order
-// 			&& current->files->f_order[i])
-// 		{
-// 			if (ft_atoi(current->files->order[i]) == 3)
-// 				i++;
-// 			else if (current->files->f_order[i])
-// 			{
-// 				quotes = ft_find_quotes(current->files->f_order[i], 0);
-// 				ft_rm_quotes(&current->files->f_order[i++], quotes);
-// 				free(quotes);
-// 			}
-// 		}
-// 		current = current->next;
-// 	}
-// }
 
 static void	ft_split_space_join(char ***result, char *tmp)
 {
