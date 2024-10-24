@@ -21,7 +21,7 @@ NAME = minishell
 # Compilador a utilizar (gcc, clang, etc)
 CC = gcc
 # Flags de compilacion (agregar los que se necesiten) -O2 para pruebas extra
-CFLAGS = -g3 -Wall -Wextra -Werror -Wstrict-prototypes -Wmissing-prototypes# -Wpedantic -Wshadow -Wformat -Wnull-dereference -Wconversion -Wstrict-overflow -Wsign-conversion -Wimplicit-fallthrough=5 -Wdouble-promotion -Wvla -Wformat-security -Wcast-align=strict -Wredundant-decls -Wlogical-op -Wstrict-prototypes -Wmissing-prototypes -Wmissing-declarations -Winit-self -Wuninitialized -Wbad-function-cast -Wmissing-field-initializers
+CFLAGS = -g3 -Wall -Wextra -Werror# -Wpedantic -Wshadow -Wformat -Wnull-dereference -Wconversion -Wstrict-overflow -Wsign-conversion -Wimplicit-fallthrough=5 -Wdouble-promotion -Wvla -Wformat-security -Wcast-align=strict -Wredundant-decls -Wlogical-op -Wstrict-prototypes -Wmissing-prototypes -Wmissing-declarations -Winit-self -Wuninitialized -Wbad-function-cast -Wmissing-field-initializers
 
 # Incluir archivos de dependencia
 -include $(OBJS:.o=.d)
@@ -156,7 +156,7 @@ LAST_MAKE_HAD_COMPILATION := 0
 # Reglas del make (no tocar)
 
 # La regla all compila el ejecutable
-all: libft $(NAME)
+all: $(LIBFT) $(NAME)
 	@if [ "$(LAST_MAKE_HAD_COMPILATION)" = "1" ]; then \
 		clear; \
 	else \
@@ -169,10 +169,10 @@ all: libft $(NAME)
 	@$(eval LAST_MAKE_HAD_COMPILATION := 1)
 
 # La regla $(NAME) compila el ejecutable con los archivos objeto creados
-$(NAME): $(LIBFT) $(addprefix $(OBJDIR)/, $(OBJS))
+$(NAME): $(addprefix $(OBJDIR)/, $(OBJS))
 	@echo "$(BOLD_GREEN)¡Objetos creados!\n$(RESET)"
 	@echo "$(CYAN)Compilando $(NAME)...\n$(RESET)"
-	$(CC) $(CFLAGS) -o $@ $(addprefix $(OBJDIR)/, $(OBJS)) -lreadline $(LIBFT)
+	@$(CC) $(CFLAGS) -o $@ $(addprefix $(OBJDIR)/, $(OBJS)) -lreadline $(LIBFT)
 
 # La regla %.o compila los archivos objeto
 $(OBJDIR)/%.o: %.c | $(OBJDIR)
@@ -190,8 +190,8 @@ $(OBJDIR):
 
 # La regla libft compila la libft. Si se usa, descomentar las siguientes
 # dos lineas
-libft:
-	@make -sC $(LIBFT_DIR) --no-print-directory
+$(LIBFT):
+	@make -sC $(LIBFT_DIR)
 
 # La regla libft_clean elimina los archivos objeto de la libft. Si se usa,
 # descomentar las siguientes dos lineas

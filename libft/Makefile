@@ -98,17 +98,19 @@ WHITE = \033[0;37m
 BOLD_WHITE = \033[1;37m
 #------------------------------------------------------------------------------#
 
+LAST_MAKE_HAD_COMPILATION := 0
+
 # Reglas del make (no tocar)
 
 all: $(NAME)
-	@if [ "$(MAKE_COMPILATION)" = "1" ]; then \
+	@if [ "$(LAST_MAKE_HAD_COMPILATION)" = "1" ]; then \
 		clear; \
 	else \
 		echo "╔══════════════════════════════════════════════════════════════╗"; \
 		echo "║ $(B_C)(┌ಠ_ಠ)\t ¡$(NAME) compilado con éxito!!\t\t(ಠ_ಠ┐)$(RESET) ║"; \
 		echo "╚══════════╗ ╔══════════╗ ╔══════════╗ ╔══════════╗ ╔══════════╝"; \
 	fi
-	@$(eval MAKE_COMPILATION := 0)
+	@$(eval LAST_MAKE_HAD_COMPILATION := 1)
 	
 # La regla $(NAME) compila el ejecutable con los archivos objeto creados 
 $(NAME): $(addprefix $(OBJDIR)/, $(OBJS))
@@ -116,10 +118,11 @@ $(NAME): $(addprefix $(OBJDIR)/, $(OBJS))
 	@echo "$(CYAN)Compilando $(NAME)...\n$(RESET)"
 	@ar -crs $@ $^
 
-# La regla %.o compila los archivos objeto
-$(OBJDIR)/%.o : %.c | $(OBJDIR)
-	$(CC) $(CFLAGS) -c $< -o $@
-	@$(eval MAKE_COMPILATION := 1)
+$(OBJDIR)/%.o: %.c | $(OBJDIR)
+	@mkdir -p $(@D)
+	@echo "$(CC) $(CFLAGS) -MMD -c $< -o $@"
+	$(CC) $(CFLAGS) -MMD -c $< -o $@
+	@$(eval LAST_MAKE_HAD_COMPILATION := 1)
 
 # La regla $(OBJDIR) crea el directorio de los archivos objeto
 $(OBJDIR):
