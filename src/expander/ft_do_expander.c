@@ -6,7 +6,7 @@
 /*   By: descamil <descamil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/03 11:25:51 by descamil          #+#    #+#             */
-/*   Updated: 2024/10/22 16:45:47 by descamil         ###   ########.fr       */
+/*   Updated: 2024/10/24 11:57:05 by descamil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,16 +36,37 @@ static char	**ft_str_expander(t_mini *mini, char **args)
 	return (result);
 }
 
-void	ft_do_expander(t_mini *mini, t_cmd *cmd)
+void	ft_expand_files(t_mini *mini, t_files **files)
 {
 	char	**tmp;
 	int		i;
+
+	i = 0;
+	tmp = NULL;
+	tmp = ft_strstr_dup((*files)->f_order);
+	ft_strstr_free((*files)->f_order);
+	(*files)->f_order = NULL;
+	(*files)->f_order = ft_calloc(sizeof(char *),
+			(size_t)ft_strstr_len(tmp) + 1);
+	while (tmp[i] != NULL)
+	{
+		if (atoi((*files)->order[i]) == 3)
+			(*files)->f_order[i] = ft_strdup(tmp[i]);
+		else
+			(*files)->f_order[i] = ft_expander(mini->env->env, tmp[i]);
+		i++;
+	}
+	ft_strstr_free(tmp);
+}
+
+void	ft_do_expander(t_mini *mini, t_cmd *cmd)
+{
+	char	**tmp;
 	t_cmd	*curr;
 
 	curr = cmd;
 	while (curr != NULL)
 	{
-		i = 0;
 		if (curr->args)
 		{
 			tmp = ft_strstr_dup(curr->args);
@@ -54,24 +75,7 @@ void	ft_do_expander(t_mini *mini, t_cmd *cmd)
 			curr->args = ft_str_expander(mini, tmp);
 		}
 		if (curr->files->f_order)
-		{
-			tmp = NULL;
-			tmp = ft_strstr_dup(curr->files->f_order);
-			ft_strstr_free(curr->files->f_order);
-			curr->files->f_order = NULL;
-			curr->files->f_order = ft_calloc(sizeof(char *),
-					(size_t)ft_strstr_len(tmp) + 1);
-			while (tmp[i] != NULL)
-			{
-				if (atoi(curr->files->order[i]) == 3)
-					curr->files->f_order[i] = ft_strdup(tmp[i]);
-				else
-					curr->files->f_order[i]
-						= ft_expander(mini->env->env, tmp[i]);
-				i++;
-			}
-			ft_strstr_free(tmp);
-		}
+			ft_expand_files(mini, &curr->files);
 		curr = curr->next;
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: descamil <descamil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/05 12:45:56 by descamil          #+#    #+#             */
-/*   Updated: 2024/10/22 15:45:41 by descamil         ###   ########.fr       */
+/*   Updated: 2024/10/24 11:33:20 by descamil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void	print_cmd(t_cmd *cmd);
 int		ft_strlen_dup(char *argv);
 char	**ft_sindub_join(char **str, char *str1);
 char	*ft_strchr_mod(char *str, int value, int stop);
-void	ft_error_in_child(char *prefix, char *arg, char *suffix);
+void	ft_three_arguments_printf(char *prefix, char *arg, char *suffix);
 
 // ft_str_utils.c
 int		ft_strstr_len(char **str);

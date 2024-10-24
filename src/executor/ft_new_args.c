@@ -6,17 +6,18 @@
 /*   By: descamil <descamil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/16 13:03:56 by descamil          #+#    #+#             */
-/*   Updated: 2024/10/17 11:38:05 by descamil         ###   ########.fr       */
+/*   Updated: 2024/10/24 12:05:08 by descamil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/executor.h"
 
-static void	ft_free_fcheck_args(char **args1, char **args2)
+static void	ft_free_fcheck_args(char ***args1, char **args2)
 {
-	if (args1)
-		ft_strstr_free(args1);
+	if (*args1)
+		ft_strstr_free(*args1);
 	ft_strstr_free(args2);
+	*args1 = NULL;
 }
 
 static char	**ft_change_args(char **args, int pos, int i, int j)
@@ -36,8 +37,7 @@ static char	**ft_change_args(char **args, int pos, int i, int j)
 		tmp = ft_strstr_join(args1, args2);
 	else
 		tmp = ft_strstr_join(args2, NULL);
-	ft_free_fcheck_args(args1, args2);
-	args1 = NULL;
+	ft_free_fcheck_args(&args1, args2);
 	if ((int)ft_strstr_len(args) - pos != 1)
 		args1 = (char **)ft_calloc(sizeof(char *),
 				(size_t)ft_strstr_len(args) - (size_t)pos);
@@ -45,7 +45,7 @@ static char	**ft_change_args(char **args, int pos, int i, int j)
 	while (ft_strstr_len(args) - pos > 1 && args[++i])
 		args1[j++] = ft_strdup(args[i]);
 	args2 = ft_strstr_join(tmp, args1);
-	ft_free_fcheck_args(args1, tmp);
+	ft_free_fcheck_args(&args1, tmp);
 	return (args2);
 }
 

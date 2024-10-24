@@ -67,6 +67,7 @@ FILES_SRCS =	src/files/ft_files.c \
 
 MAIN_SRCS = 	src/main/ft_main.c \
 				src/main/ft_initialize.c \
+				src/main/ft_upgrade_env.c \
 				src/main/ft_error_management.c \
 
 PARSER_SRCS =	src/parser/ft_lexer.c \
@@ -77,6 +78,8 @@ PARSER_SRCS =	src/parser/ft_lexer.c \
 				src/parser/ft_quit_quotes.c \
 				src/parser/ft_check_pipes.c \
 				src/parser/ft_check_quotes.c \
+				src/parser/ft_manage_quotes.c \
+				src/parser/ft_manage_spaces.c \
 				src/parser/ft_check_operators.c \
 
 REDIRECT_SRCS =	src/redirects/ft_split_red.c \

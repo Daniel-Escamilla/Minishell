@@ -6,7 +6,7 @@
 /*   By: descamil <descamil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/05 12:53:49 by descamil          #+#    #+#             */
-/*   Updated: 2024/10/22 16:38:07 by descamil         ###   ########.fr       */
+/*   Updated: 2024/10/24 12:07:05 by descamil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,11 @@ int	ft_find_var_value(char **env, char *arg)
 	str = ft_strchr(arg, '=');
 	if (!str || ft_isdigit(arg[0]) == 1)
 		return (-1);
-	name_len = str - arg; 
+	name_len = str - arg;
 	while (env[++i])
 	{
-		if (ft_strncmp(env[i], arg, (size_t)name_len) == 0 && env[i][name_len] == '=')
+		if (ft_strncmp(env[i], arg,
+				(size_t)name_len) == 0 && env[i][name_len] == '=')
 			return (i);
 	}
 	return (-2);

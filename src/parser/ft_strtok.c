@@ -6,119 +6,11 @@
 /*   By: descamil <descamil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/01 17:52:46 by smarin-a          #+#    #+#             */
-/*   Updated: 2024/10/24 10:54:21 by descamil         ###   ########.fr       */
+/*   Updated: 2024/10/24 11:41:12 by descamil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/parser.h"
-
-static void	ft_handle_quote_args(t_cmd *cmd, int i)
-{
-	char	*itoa;
-	char	**tmp;
-
-	itoa = ft_itoa(i);
-	if (cmd->quote_args == NULL)
-		cmd->quote_args = ft_sindub_join(NULL, itoa);
-	else
-	{
-		tmp = ft_strstr_dup(cmd->quote_args);
-		ft_strstr_free(cmd->quote_args);
-		cmd->quote_args = ft_sindub_join(tmp, itoa);
-		ft_strstr_free(tmp);
-	}
-	free(itoa);
-}
-
-static void	ft_do_remove_args_quotes(t_cmd *cmd)
-{
-	int		*quotes;
-	int		i = 0;
-
-	while (cmd->args && cmd->args[i])
-	{
-		quotes = ft_find_quotes(cmd->args[i], 0);
-		if (quotes[1] != -1)
-			ft_handle_quote_args(cmd, i);
-		if (quotes[0] != -1 && quotes[1] != -1)
-			ft_rm_quotes(&cmd->args[i], quotes);
-		else
-			free(quotes);
-		i++;
-	}
-}
-
-static void	ft_do_remove_files_quotes(t_cmd *cmd)
-{
-	int		*quotes;
-	int		i = 0;
-
-	while (cmd->files && cmd->files->f_order && cmd->files->f_order[i])
-	{
-		if (ft_atoi(cmd->files->order[i]) != 3)
-		{
-			quotes = ft_find_quotes(cmd->files->f_order[i], 0);
-			ft_rm_quotes(&cmd->files->f_order[i], quotes);
-			free(quotes);
-		}
-		i++;
-	}
-}
-
-static void	ft_do_remove_quotes(t_cmd *cmd)
-{
-	t_cmd	*current = cmd;
-
-	while (current != NULL)
-	{
-		ft_do_remove_args_quotes(current);
-		ft_do_remove_files_quotes(current);
-		current = current->next;
-	}
-}
-
-static void	ft_split_space_join(char ***result, char *tmp)
-{
-	char	**copy;
-	char	**str;
-
-	str = ft_split(tmp, ' ');
-	if (*result == NULL)
-		*result = ft_strstr_join(str, NULL);
-	else
-	{
-		copy = ft_strstr_join(*result, str);
-		ft_strstr_free(*result);
-		*result = copy;
-	}
-	ft_strstr_free(str);
-}
-
-static void ft_quit_spaces(t_cmd **cmd)
-{
-	char	**result;
-	char	**copy;
-	char	**tmp;
-	int		i;
-
-	i = -1;
-	result = NULL;
-	tmp = ft_strstr_dup((*cmd)->args);
-	while (tmp[++i])
-	{
-		if (ft_has_quotes(tmp[i], 0) == 0 && ft_strchr(tmp[i], ' '))
-			ft_split_space_join(&result, tmp[i]);
-		else
-		{
-			copy = ft_sindub_join(result, tmp[i]);
-			ft_strstr_free(result);
-			result = copy;
-		}
-	}
-	ft_strstr_free(tmp);
-	ft_strstr_free((*cmd)->args);
-	(*cmd)->args = result;
-}
 
 static int	ft_order_all(t_mini *mini, t_cmd **cmd, char **lines, char *input)
 {
@@ -135,12 +27,10 @@ static int	ft_order_all(t_mini *mini, t_cmd **cmd, char **lines, char *input)
 		return (-1);
 	ft_quit_spaces(cmd);
 	ft_do_remove_quotes(*cmd);
-	
 	ft_remove_files(*cmd, mini);
 	if (mini->cmd->files->error == -1)
 		return (-1);
 	ft_select_files(*cmd, 0);
-	print_cmd(*cmd);
 	return (0);
 }
 

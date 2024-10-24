@@ -6,7 +6,7 @@
 /*   By: descamil <descamil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/05 12:44:54 by descamil          #+#    #+#             */
-/*   Updated: 2024/10/18 16:03:13 by descamil         ###   ########.fr       */
+/*   Updated: 2024/10/24 12:01:29 by descamil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 // 〖─◇──◇──◇──◇──◇──◇──◇──◇──◇──◇──◇──◇──◇│◇──◇──◇──◇──◇──◇──◇──◇──◇──◇──◇──◇─〗
 //                            〘EXPANDER〙
 // ft_change_var.c
-char	*ft_change_var(char *div, char **env);
+char	*ft_change_var(char *div, char **env, int i);
 
 // ft_do_expander.c
 void	ft_do_expander(t_mini *mini, t_cmd *cmd);

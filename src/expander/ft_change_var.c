@@ -6,16 +6,15 @@
 /*   By: descamil <descamil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/09 18:14:04 by user              #+#    #+#             */
-/*   Updated: 2024/10/13 15:22:45 by descamil         ###   ########.fr       */
+/*   Updated: 2024/10/24 12:01:19 by descamil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/expander.h"
 
-char	*ft_change_var(char *div, char **env)
+char	*ft_change_var(char *div, char **env, int i)
 {
 	char	*str;
-	int		i;
 
 	i = -1;
 	str = NULL;

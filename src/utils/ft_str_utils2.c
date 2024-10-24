@@ -6,7 +6,7 @@
 /*   By: descamil <descamil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/03 09:30:16 by descamil          #+#    #+#             */
-/*   Updated: 2024/10/13 03:55:52 by descamil         ###   ########.fr       */
+/*   Updated: 2024/10/24 11:33:20 by descamil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ int	ft_strlen_dup(char *argv)
 	return (i - space);
 }
 
-void	ft_error_in_child(char *prefix, char *arg, char *suffix)
+void	ft_three_arguments_printf(char *prefix, char *arg, char *suffix)
 {
 	write(2, prefix, strlen(prefix));
 	write(2, arg, strlen(arg));

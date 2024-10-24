@@ -6,7 +6,7 @@
 /*   By: descamil <descamil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/15 21:11:38 by user              #+#    #+#             */
-/*   Updated: 2024/10/23 15:15:32 by descamil         ###   ########.fr       */
+/*   Updated: 2024/10/24 12:00:17 by descamil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,25 @@ static void	ft_comm_part2(t_cmd *cmd, t_mini *mini, int status)
 	}
 }
 
+static void	ft_child(t_mini *mini, t_cmd *cmd)
+{
+	if (cmd->cmd == NULL)
+	{
+		if (cmd->type)
+			ft_protect_close_in_out(cmd);
+		ft_close_and_update_fds(mini, cmd, 'H');
+		if (mini->fd_tmp != -1)
+			close (mini->fd_tmp);
+		mini->fd_tmp = -1;
+		close (mini->fd_history);
+		if (cmd->args && cmd->args[0]
+			&& ft_nothing(cmd->args[0], 0) == 0)
+			ft_printf_exit(cmd->args[0], ": command not found\n", 127);
+		exit(1);
+	}
+	ft_comm_part2(cmd, mini, 0);
+}
+
 void	ft_comm(t_cmd *cmd, t_mini *mini)
 {
 	ft_comm_part1(cmd, mini);
@@ -85,22 +104,7 @@ void	ft_comm(t_cmd *cmd, t_mini *mini)
 		if (mini->proc[mini->index] == -1)
 			ft_perror_exit("Failed in Fork()", 1);
 		if (mini->proc[mini->index] == 0)
-		{
-			if (cmd->cmd == NULL)
-			{
-				if (cmd->type)
-					ft_protect_close_in_out(cmd);
-				ft_close_and_update_fds(mini, cmd, 'H');
-				if (mini->fd_tmp != -1)
-					close (mini->fd_tmp);
-				mini->fd_tmp = -1;
-				close (mini->fd_history);
-				if (cmd->args && cmd->args[0] && ft_nothing(cmd->args[0], 0) == 0)
-					ft_printf_exit(cmd->args[0], ": command not found\n", 127);
-				exit(1);
-			}
-			ft_comm_part2(cmd, mini, 0);
-		}
+			ft_child(mini, cmd);
 	}
 	ft_close_and_update_fds(mini, cmd, 'P');
 	if (cmd->names->join)

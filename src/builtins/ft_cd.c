@@ -6,7 +6,7 @@
 /*   By: descamil <descamil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/30 12:00:46 by user              #+#    #+#             */
-/*   Updated: 2024/10/23 15:28:33 by descamil         ###   ########.fr       */
+/*   Updated: 2024/10/24 12:06:23 by descamil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ static void	ft_update_env(t_mini *mini)
 	char	*pwd;
 	char	*rute;
 	char	*tmp;
-	
+
 	pwd = ft_get_var(mini->env->env, "PWD");
 	if (mini->pwd-- == 1)
 		pwd = ft_strdup("");
@@ -96,7 +96,7 @@ int	ft_cd(t_mini *mini, t_cmd *cmd)
 	if (chdir(rute) == -1)
 	{
 		free(rute);
-		ft_error_in_child("mini: cd: ", cmd->args[1],
+		ft_three_arguments_printf("mini: cd: ", cmd->args[1],
 			": No such file or directory\n");
 		return (1);
 	}
