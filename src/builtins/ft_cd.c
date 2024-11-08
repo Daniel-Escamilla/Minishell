@@ -6,7 +6,7 @@
 /*   By: descamil <descamil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/30 12:00:46 by user              #+#    #+#             */
-/*   Updated: 2024/10/24 12:06:23 by descamil         ###   ########.fr       */
+/*   Updated: 2024/11/08 22:19:09 by descamil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,16 +37,24 @@ static char	*ft_prepare_path(t_mini *mini, t_cmd *cmd)
 	{
 		rute = ft_get_var(mini->env->env, "HOME");
 		if (rute == NULL)
-			ft_printf_exit("mini: cd: ", "HOME not set\n", 1);
+		{
+			ft_printf_exit("mini: cd: HOME ", "not set\n", 1);
+			free(rute);
+			rute = NULL;
+		}
 		return (rute);
 	}
 	else if (ft_strncmp(cmd->args[1], "-", 1) == 0
 		&& ft_strlen(cmd->args[1]) == 1)
 	{
 		rute = ft_get_var(mini->env->env, "OLDPWD");
-		if (rute == NULL)
-			ft_printf_exit("mini: cd: ", "OLDPWD not set\n", 1);
-		else
+		if (rute == NULL || ft_nothing(rute, 0) == 1)
+		{
+			ft_printf_exit("mini: cd: OLDPWD ", "not set\n", 1);
+			free(rute);
+			rute = NULL;
+		}
+		else if (rute != NULL && chdir(rute) != -1)
 			printf("%s\n", rute);
 		return (rute);
 	}
@@ -63,16 +71,17 @@ static void	ft_update_env(t_mini *mini)
 	char	*rute;
 	char	*tmp;
 
-	pwd = ft_get_var(mini->env->env, "PWD");
-	if (mini->pwd-- == 1)
+	if (mini->pwd == 1 && mini->oldpwd == 0 && --mini->pwd == 0)
 		pwd = ft_strdup("");
+	else
+		pwd = ft_get_var(mini->env->env, "PWD");
 	rute = getcwd(NULL, 0);
 	if (rute != NULL)
 		ft_change_env(&mini->env->env, "PWD", rute);
 	tmp = ft_get_var(mini->env->env, "OLDPWD");
 	if (tmp == NULL)
 		ft_add_var(&mini->env->env, "OLDPWD=", pwd);
-	else if (ft_strlen(tmp) == 0)
+	else if (ft_strlen(tmp) == 0 && mini->oldpwd == 0 )
 		ft_change_env(&mini->env->env, "OLDPWD", rute);
 	else
 		ft_change_env(&mini->env->env, "OLDPWD", pwd);
@@ -95,13 +104,21 @@ int	ft_cd(t_mini *mini, t_cmd *cmd)
 		return (1);
 	if (chdir(rute) == -1)
 	{
-		free(rute);
-		ft_three_arguments_printf("mini: cd: ", cmd->args[1],
+		if (cmd->args[1] == NULL)
+		{
+			
+			return (0);
+		}
+		else if (ft_strnstr(cmd->args[1], "-", 1) != NULL)
+			ft_three_arguments_printf("mini: cd: ", rute,
 			": No such file or directory\n");
+		else
+			ft_three_arguments_printf("mini: cd: ", cmd->args[1],
+				": No such file or directory\n");
+		free(rute);
 		return (1);
 	}
-	else
-		ft_update_env(mini);
+	ft_update_env(mini);
 	free(rute);
 	return (0);
 }

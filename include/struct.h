@@ -6,7 +6,7 @@
 /*   By: descamil <descamil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/05 12:45:49 by descamil          #+#    #+#             */
-/*   Updated: 2024/10/23 15:27:53 by descamil         ###   ########.fr       */
+/*   Updated: 2024/11/08 18:11:23 by descamil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,6 +100,7 @@ typedef struct s_mini
 	int			pwd;
 	int			error;
 	int			index;
+	int			oldpwd;
 	int			fd_tmp;
 	int			single;
 	int			here_doc;

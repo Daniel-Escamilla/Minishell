@@ -6,7 +6,7 @@
 /*   By: descamil <descamil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/05 12:53:49 by descamil          #+#    #+#             */
-/*   Updated: 2024/10/24 12:07:05 by descamil         ###   ########.fr       */
+/*   Updated: 2024/11/08 18:20:56 by descamil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,9 @@ int	ft_export(t_mini *mini, t_cmd *cmd)
 		return (ft_print_order(mini->env->env));
 	while (cmd->args[i])
 	{
+		
+		if (ft_strnstr(cmd->args[i], "OLDPWD", 6))
+			mini->oldpwd = 0;
 		var = ft_find_var_value(mini->env->env, cmd->args[i]);
 		if (var != -1)
 		{
