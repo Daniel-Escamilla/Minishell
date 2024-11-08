@@ -6,7 +6,7 @@
 /*   By: descamil <descamil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/15 21:11:38 by user              #+#    #+#             */
-/*   Updated: 2024/10/24 12:00:17 by descamil         ###   ########.fr       */
+/*   Updated: 2024/11/08 23:06:11 by descamil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,6 @@ static void	ft_comm_part2(t_cmd *cmd, t_mini *mini, int status)
 	if (cmd->built == 1)
 	{
 		status = (int)ft_exec_built(mini, cmd);
-		ft_putstr_fd("BUILT\n", 2);
 		if (cmd->names->fd_infile > 0
 			&& cmd->names->fd_infile != mini->fd_pipe[0])
 			close (cmd->names->fd_infile);

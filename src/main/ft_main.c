@@ -6,7 +6,7 @@
 /*   By: descamil <descamil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/13 12:09:37 by smarin-a          #+#    #+#             */
-/*   Updated: 2024/10/24 11:50:44 by descamil         ###   ########.fr       */
+/*   Updated: 2024/11/08 23:07:30 by descamil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@ int	main(int argc, char **argv, char **env)
 	ft_mini_header();
 	ft_signal_management(1);
 	ft_recive_input(mini);
-	printf("\nSALIDA 1\n\n");
 	free_t_cmd(&mini->cmd);
 	if (mini->fd_history != -1)
 		close(mini->fd_history);
