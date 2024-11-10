@@ -6,7 +6,7 @@
 /*   By: descamil <descamil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/05 12:45:03 by descamil          #+#    #+#             */
-/*   Updated: 2024/10/18 16:03:53 by descamil         ###   ########.fr       */
+/*   Updated: 2024/11/10 17:31:34 by descamil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 # include "../minishell.h"
 
 // 〖─◇──◇──◇──◇──◇──◇──◇──◇──◇──◇──◇──◇──◇│◇──◇──◇──◇──◇──◇──◇──◇──◇──◇──◇──◇─〗
-//                                    〘FILES〙
+//                                     〘FILES〙
 // ft_files.c
 void	ft_files(t_cmd *cmd, t_mini *mini, t_files *files);
 

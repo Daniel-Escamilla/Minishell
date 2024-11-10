@@ -6,7 +6,7 @@
 /*   By: descamil <descamil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/05 12:44:54 by descamil          #+#    #+#             */
-/*   Updated: 2024/10/24 12:01:29 by descamil         ###   ########.fr       */
+/*   Updated: 2024/11/10 17:31:23 by descamil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 # include "../minishell.h"
 
 // 〖─◇──◇──◇──◇──◇──◇──◇──◇──◇──◇──◇──◇──◇│◇──◇──◇──◇──◇──◇──◇──◇──◇──◇──◇──◇─〗
-//                            〘EXPANDER〙
+//                                   〘EXPANDER〙
 // ft_change_var.c
 char	*ft_change_var(char *div, char **env, int i);
 
