@@ -6,25 +6,11 @@
 /*   By: descamil <descamil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/15 21:11:38 by user              #+#    #+#             */
-/*   Updated: 2024/11/08 23:06:11 by descamil         ###   ########.fr       */
+/*   Updated: 2024/11/10 17:14:59 by descamil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/executor.h"
-
-static void	ft_protect_close_in_out(t_cmd *cmd)
-{
-	if (cmd->names->fd_infile > 0)
-	{
-		close(cmd->names->fd_infile);
-		cmd->names->fd_infile = -1;
-	}
-	if (cmd->names->fd_outfile > 1)
-	{
-		close(cmd->names->fd_outfile);
-		cmd->names->fd_outfile = -1;
-	}
-}
 
 static void	ft_comm_part1(t_cmd *cmd, t_mini *mini)
 {
@@ -74,15 +60,23 @@ static void	ft_comm_part2(t_cmd *cmd, t_mini *mini, int status)
 
 static void	ft_child(t_mini *mini, t_cmd *cmd)
 {
+	int	dup_fd;
+	int	fd;
 	if (cmd->cmd == NULL)
 	{
-		if (cmd->type)
-			ft_protect_close_in_out(cmd);
-		ft_close_and_update_fds(mini, cmd, 'H');
-		if (mini->fd_tmp != -1)
-			close (mini->fd_tmp);
+		fd = 2;
+		while (++fd < 1024)
+		{
+			dup_fd = dup(fd);
+			if (dup_fd != -1)
+			{
+				close(fd);
+				close(dup_fd);
+			}
+		}
+		cmd->names->fd_infile = -1;
+		cmd->names->fd_outfile = -1;
 		mini->fd_tmp = -1;
-		close (mini->fd_history);
 		if (cmd->args && cmd->args[0]
 			&& ft_nothing(cmd->args[0], 0) == 0)
 			ft_printf_exit(cmd->args[0], ": command not found\n", 127);
@@ -101,14 +95,9 @@ void	ft_comm(t_cmd *cmd, t_mini *mini)
 	{
 		mini->proc[mini->index] = fork();
 		if (mini->proc[mini->index] == -1)
-			ft_perror_exit("Failed in Fork()", 1);
+			ft_perror_exit("Error in Fork", 1);
 		if (mini->proc[mini->index] == 0)
 			ft_child(mini, cmd);
 	}
 	ft_close_and_update_fds(mini, cmd, 'P');
-	if (cmd->names->join)
-	{
-		unlink(cmd->names->join);
-		free(cmd->names->join);
-	}
 }

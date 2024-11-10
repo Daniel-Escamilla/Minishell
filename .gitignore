@@ -4,3 +4,4 @@ minishell
 minishell_objects
 libft.a
 libft_objects
+.here_doc*

@@ -6,7 +6,7 @@
 /*   By: descamil <descamil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/05 12:45:49 by descamil          #+#    #+#             */
-/*   Updated: 2024/11/08 18:11:23 by descamil         ###   ########.fr       */
+/*   Updated: 2024/11/10 17:15:40 by descamil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,17 +17,11 @@
 
 // 〖─◇──◇──◇──◇──◇──◇──◇──◇──◇──◇──◇──◇──◇│◇──◇──◇──◇──◇──◇──◇──◇──◇──◇──◇──◇─〗
 //                                    〘STRUCT〙
-typedef struct s_token
-{
-	char		*input;
-	char		**tokens;
-}				t_token;
-
 typedef struct s_files
 {
-	char		**f_order;
-	char		**order;
 	int			error;
+	char		**order;
+	char		**f_order;
 }				t_files;
 
 typedef struct s_env
@@ -39,20 +33,19 @@ typedef struct s_env
 
 typedef struct s_names
 {
-	char	*join;
-	int		fd_outfile;
-	int		fd_infile;
-	int		fd_tmp;
 	int		fd;
+	int		fd_tmp;
+	int		fd_infile;
+	int		fd_outfile;
 
 }			t_names;
 
 typedef struct s_type
 {
 	int			infile;
+	int			append;
 	int			outfile;
 	int			here_doc;
-	int			append;
 	char		*in;
 	char		*out;
 }				t_type;
@@ -80,19 +73,19 @@ typedef struct s_flags
 
 typedef struct s_cmd
 {
-	struct s_cmd	*next;
-	char			**tmp;
-	char			**args;
-	char			**quote_args;
-	char			*cmd;
-	t_type			*type;
-	t_files			*files;
-	t_names			*names;
 	int				exit;
 	int				size;
 	int				error;
 	int				built;
 	int				args_amount;
+	char			*cmd;
+	char			**tmp;
+	char			**args;
+	char			**quote_args;
+	t_type			*type;
+	t_files			*files;
+	t_names			*names;
+	struct s_cmd	*next;
 }					t_cmd;
 
 typedef struct s_mini
@@ -108,14 +101,15 @@ typedef struct s_mini
 	int			fd_pipe[2];
 	int			fd_history;
 	int			shell_level;
+	int			here_doc_index;
 	char		*input;
 	char		**join;
-	pid_t		*proc;
+	char		**files;
 	double		qpr_error;
+	pid_t		*proc;
 	t_env		*env;
 	t_cmd		*cmd;
 	t_flags		*flags;
-	t_token		*token;
 }				t_mini;
 
 #endif

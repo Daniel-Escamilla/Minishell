@@ -6,7 +6,7 @@
 /*   By: descamil <descamil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 16:27:49 by user              #+#    #+#             */
-/*   Updated: 2024/10/15 19:42:53 by descamil         ###   ########.fr       */
+/*   Updated: 2024/11/09 17:39:59 by descamil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,14 +69,7 @@ void	free_t_mini(t_mini *mini)
 	}
 	if (mini->flags)
 		free(mini->flags);
-	if (mini->token != NULL)
-	{
-		if (mini->token->input != NULL)
-			free(mini->token->input);
-		if (mini->token->tokens != NULL)
-			ft_strstr_free(mini->token->tokens);
-		free(mini->token);
-	}
+
 	if (mini->env)
 		free(mini->env);
 	free(mini);

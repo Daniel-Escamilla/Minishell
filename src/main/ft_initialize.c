@@ -6,7 +6,7 @@
 /*   By: descamil <descamil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/15 12:21:54 by smarin-a          #+#    #+#             */
-/*   Updated: 2024/10/24 11:49:36 by descamil         ###   ########.fr       */
+/*   Updated: 2024/11/09 17:42:52 by descamil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,6 @@
 
 static t_mini	*ft_free_resources(t_mini *mini, int stage)
 {
-	if (stage <= 5)
-		free(mini->flags);
 	if (stage <= 3)
 		ft_strstr_free(mini->env->env);
 	if (stage <= 4)
@@ -41,15 +39,11 @@ t_mini	*ft_initialize(char **env)
 	mini->flags = ft_calloc(sizeof(t_flags), 1);
 	if (mini->flags == NULL)
 		return (ft_free_resources(mini, 4));
-	mini->token = ft_calloc(sizeof(t_token), 1);
-	if (mini->token == NULL)
-		return (ft_free_resources(mini, 5));
 	mini->fd_history = -1;
 	mini->shell_level = 2;
-	mini->flags->locate_red = 0;
-	mini->flags->expander = 0;
 	mini->env->path = NULL;
-	mini->token->input = NULL;
-	mini->token->tokens = NULL;
+	mini->here_doc_index = 0;
+	mini->flags->expander = 0;
+	mini->flags->locate_red = 0;
 	return (mini);
 }

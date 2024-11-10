@@ -73,6 +73,7 @@ MAIN_SRCS = 	src/main/ft_main.c \
 PARSER_SRCS =	src/parser/ft_lexer.c \
 				src/parser/ft_parser.c \
 				src/parser/ft_strtok.c \
+				src/parser/ft_do_comm.c \
 				src/parser/ft_split_pipe.c \
 				src/parser/ft_check_input.c \
 				src/parser/ft_quit_quotes.c \

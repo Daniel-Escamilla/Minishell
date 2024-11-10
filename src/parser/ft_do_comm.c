@@ -6,7 +6,7 @@
 /*   By: descamil <descamil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/01 17:52:46 by smarin-a          #+#    #+#             */
-/*   Updated: 2024/10/31 16:08:49 by descamil         ###   ########.fr       */
+/*   Updated: 2024/11/09 21:22:01 by descamil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,6 @@ int	ft_order_all(t_mini *mini, t_cmd **cmd, char **lines, char *input)
 	if (mini->cmd->files->error == -1)
 		return (-1);
 	ft_select_files(*cmd, 0);
-	print_cmd(*cmd);
 	return (0);
 }
 
@@ -79,12 +78,16 @@ int	ft_do_comm(t_cmd *cmd, t_mini *mini)
 	
 	ft_start_comm_val(mini);
 	ft_fill_fd(mini, cmd);
+	ft_here_doc(mini, cmd, mini->env->env);
+	if (g_exit_status == 130)
+	{
+		ft_unlink_hd(mini);
+		return (0);
+	}
 	while (current != NULL)
 	{
 		ft_start_val(current);
 		ft_comm(current, mini);
-		if (g_exit_status == 142)
-			return (-1);
 		mini->index++;
 		mini->num_comm--;
 		current = current->next;

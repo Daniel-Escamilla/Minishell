@@ -6,7 +6,7 @@
 /*   By: descamil <descamil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/05 12:45:25 by descamil          #+#    #+#             */
-/*   Updated: 2024/10/24 11:42:36 by descamil         ###   ########.fr       */
+/*   Updated: 2024/11/09 20:59:13 by descamil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,12 @@ int		ft_count_pipes(char *input, int amount, int character, int i);
 int		ft_locate_next_quote(int i, char *input, char quote);
 int		ft_check_quote(char *input, int simp, int doub, t_mini *mini);
 
+// ft_do_comm.c
+int		ft_do_comm(t_cmd *cmd, t_mini *mini);
+int		ft_order_all(t_mini *mini, t_cmd **cmd, char **lines, char *input);
+
 // ft_lexer.c
+void	ft_unlink_hd(t_mini *mini);
 void	ft_recive_input(t_mini *mini);
 
 // ft_manage_quotes.c
