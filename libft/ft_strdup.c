@@ -6,7 +6,7 @@
 /*   By: descamil <descamil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 16:39:53 by sergio            #+#    #+#             */
-/*   Updated: 2024/06/10 11:51:59 by descamil         ###   ########.fr       */
+/*   Updated: 2024/11/10 17:37:36 by descamil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ char	*ft_strdup(const char *str)
 	char	*copy;
 
 	len = ft_strlen(str);
-	copy = (char *)malloc(len + 1);
+	copy = (char *)ft_calloc(sizeof(char), len + 1);
 	if (!copy)
 		return (NULL);
 	ft_strlcpy(copy, str, len + 1);

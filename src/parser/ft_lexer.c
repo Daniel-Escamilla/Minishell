@@ -6,7 +6,7 @@
 /*   By: descamil <descamil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/14 15:50:54 by smarin-a          #+#    #+#             */
-/*   Updated: 2024/11/10 17:13:50 by descamil         ###   ########.fr       */
+/*   Updated: 2024/11/10 17:45:14 by descamil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,9 +73,12 @@ void	ft_unlink_hd(t_mini *mini)
 
 	i = 0;
 	fd = 2;
+	
 	while (++fd < 1024)
 	{
-		dup_fd = dup(fd);
+		dup_fd = -1;
+		if (fd != mini->fd_history)
+			dup_fd = dup(fd);
 		if (dup_fd != -1)
 		{
 			close(fd);
