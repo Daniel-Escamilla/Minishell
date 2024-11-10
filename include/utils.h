@@ -6,7 +6,7 @@
 /*   By: descamil <descamil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/05 12:45:56 by descamil          #+#    #+#             */
-/*   Updated: 2024/10/24 11:33:20 by descamil         ###   ########.fr       */
+/*   Updated: 2024/11/10 20:48:47 by descamil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,21 +21,18 @@
 void	free_t_cmd(t_cmd **cmd);
 void	free_t_mini(t_mini *mini);
 
-// ft_printf_cmd.c
-void	print_cmd(t_cmd *cmd);
-
-// ft_str_utils2.c
-int		ft_strlen_dup(char *argv);
-char	**ft_sindub_join(char **str, char *str1);
-char	*ft_strchr_mod(char *str, int value, int stop);
-void	ft_three_arguments_printf(char *prefix, char *arg, char *suffix);
-
 // ft_str_utils.c
 int		ft_strstr_len(char **str);
 void	ft_strstr_free(char **str);
 char	**ft_strstr_dup(char **str);
 int		ft_strnstrstr(char **str, char *locate);
 char	**ft_strstr_join(char **str, char **str1);
+
+// ft_str_utils2.c
+int		ft_strlen_dup(char *argv);
+char	**ft_sindub_join(char **str, char *str1);
+char	*ft_strchr_mod(char *str, int value, int stop);
+void	ft_three_arguments_printf(char *prefix, char *arg, char *suffix);
 
 // ft_utils.c
 int		ft_history(void);

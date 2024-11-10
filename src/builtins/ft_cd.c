@@ -6,7 +6,7 @@
 /*   By: descamil <descamil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/30 12:00:46 by user              #+#    #+#             */
-/*   Updated: 2024/11/08 22:19:09 by descamil         ###   ########.fr       */
+/*   Updated: 2024/11/10 19:38:38 by descamil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,22 @@ static char	*ft_save_home(t_mini *mini)
 	return (trim);
 }
 
+static char	*ft_hyphen(t_mini *mini)
+{
+	char	*rute;
+
+	rute = ft_get_var(mini->env->env, "OLDPWD");
+	if (rute == NULL || ft_nothing(rute, 0) == 1)
+	{
+		ft_printf_exit("mini: cd: OLDPWD ", "not set\n", 1);
+		free(rute);
+		rute = NULL;
+	}
+	else if (rute != NULL && chdir(rute) != -1)
+		printf("%s\n", rute);
+	return (rute);
+}
+
 static char	*ft_prepare_path(t_mini *mini, t_cmd *cmd)
 {
 	char	*rute;
@@ -46,18 +62,7 @@ static char	*ft_prepare_path(t_mini *mini, t_cmd *cmd)
 	}
 	else if (ft_strncmp(cmd->args[1], "-", 1) == 0
 		&& ft_strlen(cmd->args[1]) == 1)
-	{
-		rute = ft_get_var(mini->env->env, "OLDPWD");
-		if (rute == NULL || ft_nothing(rute, 0) == 1)
-		{
-			ft_printf_exit("mini: cd: OLDPWD ", "not set\n", 1);
-			free(rute);
-			rute = NULL;
-		}
-		else if (rute != NULL && chdir(rute) != -1)
-			printf("%s\n", rute);
-		return (rute);
-	}
+		rute = ft_hyphen(mini);
 	else if (cmd->args[1][0] == '~' && ft_strlen(cmd->args[1]) == 1)
 		rute = ft_save_home(mini);
 	else
@@ -81,7 +86,7 @@ static void	ft_update_env(t_mini *mini)
 	tmp = ft_get_var(mini->env->env, "OLDPWD");
 	if (tmp == NULL)
 		ft_add_var(&mini->env->env, "OLDPWD=", pwd);
-	else if (ft_strlen(tmp) == 0 && mini->oldpwd == 0 )
+	else if (ft_strlen(tmp) == 0 && mini->oldpwd == 0)
 		ft_change_env(&mini->env->env, "OLDPWD", rute);
 	else
 		ft_change_env(&mini->env->env, "OLDPWD", pwd);
@@ -95,23 +100,17 @@ int	ft_cd(t_mini *mini, t_cmd *cmd)
 	char	*rute;
 
 	if (ft_strstr_len(cmd->args) >= 3)
-	{
-		write(2, "bash: cd: too many arguments\n", 30);
-		return (1);
-	}
+		return (write(2, "bash: cd: too many arguments\n", 30) - 29);
 	rute = ft_prepare_path(mini, cmd);
 	if (rute == NULL)
 		return (1);
 	if (chdir(rute) == -1)
 	{
 		if (cmd->args[1] == NULL)
-		{
-			
 			return (0);
-		}
 		else if (ft_strnstr(cmd->args[1], "-", 1) != NULL)
 			ft_three_arguments_printf("mini: cd: ", rute,
-			": No such file or directory\n");
+				": No such file or directory\n");
 		else
 			ft_three_arguments_printf("mini: cd: ", cmd->args[1],
 				": No such file or directory\n");

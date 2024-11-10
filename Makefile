@@ -50,6 +50,7 @@ EXECUTOR_SRCS = src/executor/ft_commands.c \
 				src/executor/ft_fds_infile.c \
 				src/executor/ft_select_cmd.c \
 				src/executor/ft_fds_outfile.c \
+				src/executor/ft_here_doc_utils.c \
 				src/executor/ft_commands_utils.c \
 				src/executor/ft_get_args_utils.c \
 
@@ -94,7 +95,6 @@ UTILS_SRCS =	src/utils/ft_free.c \
 				src/utils/ft_utils2.c \
 				src/utils/ft_str_utils.c \
 				src/utils/ft_str_utils2.c \
-				src/utils/ft_printf_cmd.c \
 
 GNL_SRCS = 		src/get_next_line/get_next_line.c \
 		   		src/get_next_line/get_next_line_utils.c \

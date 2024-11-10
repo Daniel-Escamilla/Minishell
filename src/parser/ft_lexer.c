@@ -6,7 +6,7 @@
 /*   By: descamil <descamil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/14 15:50:54 by smarin-a          #+#    #+#             */
-/*   Updated: 2024/11/10 17:45:14 by descamil         ###   ########.fr       */
+/*   Updated: 2024/11/10 19:36:30 by descamil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,8 +41,10 @@ static void	ft_free_per_comm(t_mini *mini, char *input)
 
 static int	ft_handle_input(t_mini *mini, char *input)
 {
-	char		*term;
-	char	*terms[] = {"wsvt25", "wsvt25m", "linux", "xterm-color",
+	char	*term;
+	char	**terms;
+
+	terms = (char *[]){"wsvt25", "wsvt25m", "linux", "xterm-color",
 		"xterm-vt220", "xterm-256color", "xterm-mono", "xterm-r5", "xterm-r6",
 		"xterm", "xterm-xfree86", "hurd", "vt102", "vt52", "vt100", "vt220",
 		"Eterm", "pcansi", "tmux-256color", "tmux", "mach-bold", "mach-gnu",
@@ -50,7 +52,6 @@ static int	ft_handle_input(t_mini *mini, char *input)
 		"screen.xterm-256color", "screen-w", "screen-s", "screen", "sun",
 		"screen-256color-bce", "screen-bce", "ansi", "cygwin", "cons25",
 		"rxvt-unicode", "rxvt-unicode-256color", "rxvt-basic", "rxvt", NULL};
-
 	if (!input)
 	{
 		printf("exit");
@@ -73,7 +74,6 @@ void	ft_unlink_hd(t_mini *mini)
 
 	i = 0;
 	fd = 2;
-	
 	while (++fd < 1024)
 	{
 		dup_fd = -1;

@@ -6,7 +6,7 @@
 /*   By: descamil <descamil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/14 11:34:11 by smarin-a          #+#    #+#             */
-/*   Updated: 2024/11/10 17:18:17 by descamil         ###   ########.fr       */
+/*   Updated: 2024/11/10 19:39:02 by descamil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ static void	ft_here_doc_handler(int signal)
 		rl_on_new_line();
 		rl_redisplay();
 	}
-	return;
+	return ;
 }
 
 void	ft_signal_management(int i)

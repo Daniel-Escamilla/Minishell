@@ -6,7 +6,7 @@
 /*   By: descamil <descamil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/15 21:11:38 by user              #+#    #+#             */
-/*   Updated: 2024/11/10 17:14:59 by descamil         ###   ########.fr       */
+/*   Updated: 2024/11/10 19:39:31 by descamil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,7 @@ static void	ft_child(t_mini *mini, t_cmd *cmd)
 {
 	int	dup_fd;
 	int	fd;
+
 	if (cmd->cmd == NULL)
 	{
 		fd = 2;
