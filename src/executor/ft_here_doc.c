@@ -6,7 +6,7 @@
 /*   By: descamil <descamil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/03 09:32:44 by descamil          #+#    #+#             */
-/*   Updated: 2024/11/10 20:42:01 by descamil         ###   ########.fr       */
+/*   Updated: 2024/11/13 16:46:47 by descamil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,7 +95,7 @@ static void	ft_create_files(t_mini *mini, t_cmd *cmd)
 	}
 }
 
-void	ft_here_doc(t_mini *mini, t_cmd *cmd, char **env)
+int	ft_here_doc(t_mini *mini, t_cmd *cmd, char **env)
 {
 	pid_t	pid;
 	int		status;
@@ -113,4 +113,10 @@ void	ft_here_doc(t_mini *mini, t_cmd *cmd, char **env)
 	}
 	else
 		waitpid(pid, &status, 0);
+	if (mini->files != NULL && g_exit_status == 130)
+	{
+		ft_unlink_hd(mini);
+		return (1);
+	}
+	return (0);
 }

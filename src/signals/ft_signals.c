@@ -6,7 +6,7 @@
 /*   By: descamil <descamil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/14 11:34:11 by smarin-a          #+#    #+#             */
-/*   Updated: 2024/11/10 19:39:02 by descamil         ###   ########.fr       */
+/*   Updated: 2024/11/13 16:25:54 by descamil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ static void	ft_here_doc_handler(int signal)
 	if (signal == SIGINT)
 	{
 		rl_replace_line("", 0);
+		printf("\n");
 		fd = 2;
 		while (++fd < 1024)
 		{

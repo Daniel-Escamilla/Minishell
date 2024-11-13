@@ -6,7 +6,7 @@
 /*   By: descamil <descamil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/05 12:44:47 by descamil          #+#    #+#             */
-/*   Updated: 2024/11/10 20:44:33 by descamil         ###   ########.fr       */
+/*   Updated: 2024/11/13 16:45:05 by descamil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ void	ft_write_here_doc(t_mini *mini, t_cmd *current, char **env, int i);
 
 // ft_here_doc.c
 char	*ft_create_filename(char **files, int status);
-void	ft_here_doc(t_mini *min, t_cmd *cmd, char **env);
+int		ft_here_doc(t_mini *min, t_cmd *cmd, char **env);
 
 // ft_manage_fd.c
 void	ft_open_fd(t_cmd *cmd, t_mini *mini);
