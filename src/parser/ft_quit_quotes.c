@@ -6,7 +6,7 @@
 /*   By: descamil <descamil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/25 11:00:03 by descamil          #+#    #+#             */
-/*   Updated: 2024/10/22 16:48:41 by descamil         ###   ########.fr       */
+/*   Updated: 2024/11/20 12:58:42 by descamil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,20 +80,25 @@ void	ft_rm_quotes(char **str, int *quotes)
 {
 	char	*result;
 	int		*quotes2;
+	int		*quotes3;
 
+	quotes3 = ft_intdup_mod(quotes);
 	if (ft_has_quotes(*str, 0) == 0)
+	{
+		free(quotes3);
 		return ;
+	}
 	result = ft_strdup(*str);
 	free(*str);
-	ft_remove_quotes(&result, quotes);
-	while (ft_has_quotes(result, quotes[1] - 1) == 1)
+	ft_remove_quotes(&result, quotes3);
+	while (ft_has_quotes(result, quotes3[1] - 1) == 1)
 	{
-		quotes2 = ft_find_quotes(result, quotes[1] - 1);
+		quotes2 = ft_find_quotes(result, quotes3[1] - 1);
 		ft_remove_quotes(&result, quotes2);
-		free(quotes);
-		quotes = ft_intdup_mod(quotes2);
+		free(quotes3);
+		quotes3 = ft_intdup_mod(quotes2);
 		free(quotes2);
 	}
-	free(quotes);
+	free(quotes3);
 	*str = result;
 }

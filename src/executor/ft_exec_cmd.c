@@ -6,7 +6,7 @@
 /*   By: descamil <descamil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/03 09:29:06 by descamil          #+#    #+#             */
-/*   Updated: 2024/10/23 14:43:33 by descamil         ###   ########.fr       */
+/*   Updated: 2024/11/23 11:21:39 by descamil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,7 @@ char	*ft_route_cmd(t_mini *mini, t_cmd *current, char *tmp)
 	char	*cmd;
 
 	path = ft_create_path(mini->env->env);
-	if (path == NULL)
+	if (path == NULL && mini->path == 0)
 		path = ft_save_path(mini->env->env);
 	cmd = ft_validate_comm(tmp, path, 1);
 	if (cmd == NULL)

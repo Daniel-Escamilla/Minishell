@@ -6,7 +6,7 @@
 /*   By: descamil <descamil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/14 11:24:41 by smarin-a          #+#    #+#             */
-/*   Updated: 2024/10/13 19:59:03 by descamil         ###   ########.fr       */
+/*   Updated: 2024/11/23 16:14:47 by descamil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,10 @@ int	ft_history(void)
 		unlink(".minishell_history");
 	fd = open(".minishell_history", O_RDWR | O_CREAT | O_APPEND, 0644);
 	if (fd == -1)
-		ft_printf_exit("mini: error create file: ", ".minihsell_history", 1);
+	{
+		write(2, "mini: error create file: .minihsell_history", 44);
+		g_exit_status = 1;
+	}
 	while (1)
 	{
 		tmp = get_next_line(fd);

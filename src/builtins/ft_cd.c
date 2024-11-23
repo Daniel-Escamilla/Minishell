@@ -6,7 +6,7 @@
 /*   By: descamil <descamil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/30 12:00:46 by user              #+#    #+#             */
-/*   Updated: 2024/11/10 19:38:38 by descamil         ###   ########.fr       */
+/*   Updated: 2024/11/23 11:44:22 by descamil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,19 +28,20 @@ static char	*ft_save_home(t_mini *mini)
 	return (trim);
 }
 
-static char	*ft_hyphen(t_mini *mini)
+static char	*ft_hyphen(t_mini *mini, t_cmd *cmd)
 {
 	char	*rute;
 
 	rute = ft_get_var(mini->env->env, "OLDPWD");
 	if (rute == NULL || ft_nothing(rute, 0) == 1)
 	{
-		ft_printf_exit("mini: cd: OLDPWD ", "not set\n", 1);
+		write(2, "mini: cd: OLDPWD not set\n", 26);
+		g_exit_status = 1;
 		free(rute);
 		rute = NULL;
 	}
 	else if (rute != NULL && chdir(rute) != -1)
-		printf("%s\n", rute);
+		write(cmd->names->fd, rute, ft_strlen(rute));
 	return (rute);
 }
 
@@ -54,7 +55,8 @@ static char	*ft_prepare_path(t_mini *mini, t_cmd *cmd)
 		rute = ft_get_var(mini->env->env, "HOME");
 		if (rute == NULL)
 		{
-			ft_printf_exit("mini: cd: HOME ", "not set\n", 1);
+			write(2, "mini: cd: HOME not set\n", 24);
+			g_exit_status = 1;
 			free(rute);
 			rute = NULL;
 		}
@@ -62,7 +64,7 @@ static char	*ft_prepare_path(t_mini *mini, t_cmd *cmd)
 	}
 	else if (ft_strncmp(cmd->args[1], "-", 1) == 0
 		&& ft_strlen(cmd->args[1]) == 1)
-		rute = ft_hyphen(mini);
+		rute = ft_hyphen(mini, cmd);
 	else if (cmd->args[1][0] == '~' && ft_strlen(cmd->args[1]) == 1)
 		rute = ft_save_home(mini);
 	else

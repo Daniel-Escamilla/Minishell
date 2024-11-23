@@ -6,7 +6,7 @@
 /*   By: descamil <descamil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/09 11:03:10 by descamil          #+#    #+#             */
-/*   Updated: 2024/10/13 03:53:56 by descamil         ###   ########.fr       */
+/*   Updated: 2024/11/20 17:29:25 by descamil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ static int	ft_pos_files(t_cmd *cmd, int i)
 			if (cmd->args[i] == NULL)
 			{
 				printf("mini: syntax error near unexpected token `newline'\n");
+				g_exit_status = 2;
 				return (-1);
 			}
 			else
@@ -63,6 +64,7 @@ void	ft_files(t_cmd *cmd, t_mini *mini, t_files *files)
 		}
 		if (ft_pos_files(cmd, 0) == -1)
 		{
+			mini->error = -2;
 			mini->cmd->files->error = -1;
 			return ;
 		}

@@ -6,7 +6,7 @@
 /*   By: descamil <descamil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/15 12:21:54 by smarin-a          #+#    #+#             */
-/*   Updated: 2024/11/09 17:42:52 by descamil         ###   ########.fr       */
+/*   Updated: 2024/11/23 17:27:27 by descamil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,5 +45,8 @@ t_mini	*ft_initialize(char **env)
 	mini->here_doc_index = 0;
 	mini->flags->expander = 0;
 	mini->flags->locate_red = 0;
+	mini->tty = !isatty(STDIN_FILENO);
+	if (mini->tty == 0)
+		mini->tty = !isatty(STDOUT_FILENO);
 	return (mini);
 }

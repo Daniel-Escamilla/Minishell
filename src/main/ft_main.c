@@ -6,7 +6,7 @@
 /*   By: descamil <descamil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/13 12:09:37 by smarin-a          #+#    #+#             */
-/*   Updated: 2024/11/10 17:10:37 by descamil         ###   ########.fr       */
+/*   Updated: 2024/11/23 16:21:58 by descamil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,8 @@ int	main(int argc, char **argv, char **env)
 
 	ft_many_args_error(argc, argv);
 	mini = ft_initialize(env);
-	ft_mini_header();
+	if (mini->tty == 0)
+		ft_mini_header();
 	ft_signal_management(1);
 	ft_recive_input(mini);
 	free_t_cmd(&mini->cmd);

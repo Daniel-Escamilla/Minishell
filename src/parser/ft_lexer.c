@@ -6,7 +6,7 @@
 /*   By: descamil <descamil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/14 15:50:54 by smarin-a          #+#    #+#             */
-/*   Updated: 2024/11/13 16:37:23 by descamil         ###   ########.fr       */
+/*   Updated: 2024/11/23 18:08:24 by descamil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,7 @@ static void	ft_free_per_comm(t_mini *mini, char *input)
 		free(mini->flags->redirect);
 		mini->flags->redirect = NULL;
 	}
-	if (mini->proc && mini->error != -2
-		&& ft_nothing(input, 0) == 0)
+	if (mini->proc && mini->error != -2)
 		free(mini->proc);
 	if (input)
 		free(input);
@@ -54,11 +53,13 @@ static int	ft_handle_input(t_mini *mini, char *input)
 		"rxvt-unicode", "rxvt-unicode-256color", "rxvt-basic", "rxvt", NULL};
 	if (!input)
 	{
-		printf("exit");
+		if (mini->tty == 0)
+			printf("exit");
 		term = ft_get_var(mini->env->env, "TERM");
-		if (ft_strnstrstr(terms, term) != 0)
+		if (term && ft_strnstrstr(terms, term) != 0 && mini->tty == 0)
 			printf("\n");
-		free(term);
+		if (term)
+			free(term);
 		return (0);
 	}
 	if (ft_nothing(input, 0) == 1)
@@ -92,6 +93,18 @@ void	ft_unlink_hd(t_mini *mini)
 	}
 }
 
+char	*ft_tty(void)
+{
+	char	*input;
+	char	*input2;
+
+	input2 = get_next_line(STDIN_FILENO);
+	input = ft_strtrim(input2, "\n");
+	if (input2)
+		free(input2);
+	return (input);
+}
+
 void	ft_recive_input(t_mini *mini)
 {
 	char	*input;
@@ -99,7 +112,10 @@ void	ft_recive_input(t_mini *mini)
 	mini->fd_history = ft_history();
 	while (1)
 	{
-		input = readline("🐚"B_GR_0" MINI(S)HELL"RESET" 🔥 -> ");
+		if (mini->tty == 0)
+			input = readline("🐚"B_GR_0" MINI(S)HELL"RESET" 🔥 -> ");
+		else if (mini->tty >= 1 && mini->tty++ >= 1)
+			input = ft_tty();
 		if (ft_handle_input(mini, input) == 0)
 			break ;
 		else if (ft_handle_input(mini, input) == 2)

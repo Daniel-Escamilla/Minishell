@@ -6,7 +6,7 @@
 /*   By: descamil <descamil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 11:36:54 by descamil          #+#    #+#             */
-/*   Updated: 2024/10/24 11:40:10 by descamil         ###   ########.fr       */
+/*   Updated: 2024/11/20 12:55:11 by descamil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,7 @@ static void	ft_do_remove_args_quotes(t_cmd *cmd)
 			ft_handle_quote_args(cmd, i);
 		if (quotes[0] != -1 && quotes[1] != -1)
 			ft_rm_quotes(&cmd->args[i], quotes);
-		else
-			free(quotes);
+		free(quotes);
 		i++;
 	}
 }
