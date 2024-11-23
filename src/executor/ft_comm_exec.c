@@ -6,7 +6,7 @@
 /*   By: descamil <descamil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/15 21:11:38 by user              #+#    #+#             */
-/*   Updated: 2024/11/23 16:25:31 by descamil         ###   ########.fr       */
+/*   Updated: 2024/11/23 18:39:48 by descamil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ static void	ft_comm_part2(t_cmd *cmd, t_mini *mini, int status)
 		close(mini->fd_tmp);
 	if (cmd->built == 1)
 		exit(status);
+	free(mini->proc);
 	execve(cmd->cmd, cmd->args, mini->env->env);
 	if (ft_strnstr(cmd->args[0], "./", 2))
 		ft_printf_exit(cmd->args[0], ": Is a directory\n", 126);
@@ -101,7 +102,7 @@ void	ft_comm(t_cmd *cmd, t_mini *mini)
 {
 	ft_comm_part1(cmd, mini);
 	if (mini->single == 1 && cmd->built == 1)
-		g_exit_status = (int)ft_exec_built(mini, cmd);
+		g_exit_status = ft_exec_built(mini, cmd);
 	else if (cmd->names->fd_infile != -1 && cmd->names->fd_outfile != -1
 		&& mini->error != -4)
 	{

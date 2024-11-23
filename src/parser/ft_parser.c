@@ -65,6 +65,8 @@ int	ft_wait_bonus(t_mini *mini)
 		while (mini->proc[i + 1])
 			waitpid(mini->proc[i++], NULL, 0);
 	waitpid(mini->proc[i], &state, 0);
+	printf(B_GR_0"%d\n"RESET, state);
+	g_exit_status = state;
 	if (state >= 256)
 	{
 		state /= 256;
