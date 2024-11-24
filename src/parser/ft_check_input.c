@@ -6,7 +6,7 @@
 /*   By: descamil <descamil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/01 17:52:46 by smarin-a          #+#    #+#             */
-/*   Updated: 2024/10/17 11:40:18 by descamil         ###   ########.fr       */
+/*   Updated: 2024/11/24 17:10:59 by descamil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,10 +34,10 @@ static int	ft_negative_error(t_mini *mini)
 
 int	ft_error_rqp(t_mini *mini, char *input)
 {
+	int	negative;
 	int	r;
 	int	q;
 	int	p;
-	int	negative;
 
 	r = mini->flags->locate_red;
 	q = mini->flags->quote;
@@ -50,7 +50,8 @@ int	ft_error_rqp(t_mini *mini, char *input)
 	if (negative == q)
 		printf("dquote>\n");
 	if (negative == p)
-		printf("mini: syntax errornear unexpected token `|'\n");
+		printf("mini: syntax error near unexpected token `|'\n");
+	mini->error = -2;
 	g_exit_status = 2;
 	return (1);
 }

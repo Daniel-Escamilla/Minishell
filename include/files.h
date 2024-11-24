@@ -6,7 +6,7 @@
 /*   By: descamil <descamil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/05 12:45:03 by descamil          #+#    #+#             */
-/*   Updated: 2024/11/10 20:45:38 by descamil         ###   ########.fr       */
+/*   Updated: 2024/11/24 16:35:54 by descamil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	ft_remove_files(t_cmd *cmd, t_mini *mini);
 void	process_lines(t_cmd **cmd, t_mini *mini, char **lines, int i);
 
 // ft_files.c
-void	ft_files(t_cmd *cmd, t_mini *mini, t_files *files);
+void	ft_files(t_cmd *cmd, t_mini *mini);
 
 // ft_final_values.c
 int		ft_type(char *argv);

@@ -1,0 +1,3744 @@
+<< EOF << EOF
+<< EOF << EOF | << EOF
+<< EOF << EOF | << EOF
+<< EOF << EOF | << EOF
+asddaddasdassadsdaads
+unset LD_PRELOAD
+env
+unset PWD
+env | grep PWD
+cd .
+env | grep PWD
+env | grep PWD
+unset PWD
+env | grep PWD
+cd .
+env | grep PWD
+unset PWD
+env | grep PWD
+cd .
+unset PWD
+cd .
+env | grep PWD
+clea
+cd .
+cd .
+unset PWD
+env | grep PWD
+cd .
+env | grep PWD
+cd .
+env | grep PWD
+env | grep PWD
+unset PWD
+env | grep PWD
+cd .
+env | grep PWD
+cd .
+env | grep PWD
+export
+export a
+export
+env | grep a
+export
+export a=
+export
+export
+export hola=ls
+$hola
+export hola="ls -a"
+$hola
+echo $hola
+env | grep hola
+export asd=asd
+export asd=asda
+export asd=asda
+export asd=asda
+export asd=asda
+export asd=asda
+export asd=asda
+export asd=asd
+export asd=asd
+export asd=asd
+env | grep asd
+export asd=asda
+env | grep asd
+env | grep asd
+export asd=asda
+export asd=asd
+env | grep asd
+export asd=asda
+env | grep asd
+env | grep asd
+export asd=asd
+export asd=asda
+export asd=asda
+export asd=asda
+export asd=asd
+env | grep asd
+export asd=asda
+env | grep asd
+export asd=asda
+export asd=asda
+export asd=asda
+export asd=asd
+env | grep asd
+export asd=asda
+env | grep asd
+env | grep asd
+export asd=asd
+export asd=asd
+export asd=asda
+env | grep asd
+clear
+env | grep asd
+clear
+export asd=asd
+export asd=asda
+export asd=asd
+export asd=asdw
+env | grep asd
+clear
+export hola="ls -a"
+$hola
+export hola="ls -a"
+$hola
+$hola
+export hola="ls -a"
+$hola
+export hola="ls -a"
+$hola
+export hola="ls -a"
+$hola
+export hola="ls -a"
+export hola="ls -a"
+export hola="ls -a"
+export hola="ls -a"
+$hola
+export hola="ls -a"
+$hola
+export hola="ls -a"
+$hola
+clear
+export asd=asd
+env | grep asd
+export asd=asdaa
+env | grep asd
+export asd=asdaa
+export hola="ls -a"
+$hola
+export hola="ls -a"
+d
+export hola="ls -a"
+$hola
+$hola
+export hola="ls -a"
+$hola
+$hola
+export hola="ls -a"
+$hola
+export hola="ls -a"
+export hola="ls -a"
+$hola
+$hola
+export hola="ls -a"
+$hola
+$hola
+clear
+export hola="ls -a"
+export hola="ls -a"
+export hola="ls -a"
+$hola
+export hola="ls -a"
+export hola="ls -a"
+export hola="ls -a"
+export hola="ls -a"
+$hoa
+$hola
+$hola
+$hola
+export hola="ls -a"
+$hola
+export hola="ls -a"
+$hola
+clear
+export hola="ls -a"
+clear
+export hola="ls -a"
+$hola
+"ls -a"
+$hola
+export hola="ls -a"
+export hola="ls -a"
+export hola="ls -a"
+$hola
+export hola="ls -a"
+$hola
+$hola
+$hola
+export hola="ls -a"
+$hola
+$hola
+export hola="ls -a"
+$hola
+$hola
+export hola="ls -a"
+export hola="ls -a"
+$hola
+$hola
+export hola="ls -a"
+$hola
+export hola="ls -a"
+$hola
+$hola
+export hola="ls -a"
+$hola
+export hola="ls -a"
+$hola
+ls""-a
+ls" "-a
+export hola=ls" "-a
+$hola
+clear
+export hola="ls -a"
+export que="-l -s"
+export tal="-l -d"
+$hola $que $tal
+$hola $que $tal
+export hola="ls -a"
+export que="-l -s"
+export tal="-l -d"
+$hola $que $tal
+$hola $que $tal
+export hola="ls -a" que="-l -a" tal="-l -s"
+$hola $que $tal
+$hola $que $tal
+export hola="ls -a" que="-l -a" tal="-l -s"
+export hola="ls -a" que="-l -a" tal="-l -s"
+export hola="ls -a" que="-l -a" tal="-l -s"
+$hola $que $tal
+export hola="ls -a" que="-l -a" tal="-l -s"
+$hola $que $tal
+export hola="ls -a" que="-l -a" tal="-l -d"
+$hola $que $tal
+export hola="ls -a" que="-l -a" tal="-l -d"
+$hola $que $tal
+$hola $que $tal
+export hola="ls -a" que="-l -a" tal="-l -d"
+$hola $que $tal
+export hola="ls -a" que="-l -a" tal="-l -d"
+export hola="ls -a" que="-l -a" tal="-l -d"
+clear
+export hola="ls -a" que="-l -a" tal="-l -d"
+ls
+export hola="ls -a"
+export hola="ls -a" que="-l -a" tal="-l -d"
+$hola $que $tal
+export hola="ls -a"
+export hola="ls -a" que="-l -a" tal="-l -d"
+$hola
+$que
+$tal
+$hola $que $tal
+$hola
+$hola $que
+$hola $que
+$hola
+export hola="ls -a" que="-l -a" tal="-l -d"
+$hola
+$hola $que
+$hola
+export hola="ls -a" que="-l -a" tal="-l -d"
+$hola
+$hola $que
+export hola="ls -a" que="-l -a" tal="-l -d"
+$hola
+$hola $que
+export hola="ls -a" que="-l -a" tal="-l -d"
+export hola="ls -a" que="-l -a" tal="-l -d"
+$hola
+$hola $que
+export hola="ls -a" que="-l -a" tal="-l -d"
+$hola $que
+export hola="ls -a" que="-l -a" tal="-l -d"
+export hola="ls -a" que="-l -a" tal="-l -d"
+$hola $que
+export hola="ls -a" que="-l -a" tal="-l -d"
+$hola $que
+export hola="ls -a" que="-l -a" tal="-l -d"
+$hola $que
+export hola="ls -a" que="-l -a" tal="-l -d"
+$hola
+export hola="ls -a" que="-l -a" tal="-l -d"
+$hola
+export hola="ls -a" que="-l -a" tal="-l -d"
+$hola
+ls
+ls -a
+export hola="ls -a"
+export estas="-l -d"
+$hola $estas
+clear
+./src
+clear
+clear
+ls > $TERM
+cat $TERM
+rm $TERM
+clear
+ls 
+ls | cat
+pwd | pwd
+echo $??
+clear
+pwd | pwd
+<< EOF << EOF
+<< EOF << EOF
+<< EOF << EOF
+<< EOF << EOF | << EOF
+<< EOF << EOF
+<< EOF << EOF | << EOF
+<< EOF << EOF | << EOF
+<< EOF << EOF | << EOF
+ls
+<< EOF
+<< EOF | << EOF
+<< EOF | << EOF << EOF
+<< EOF | << EOF << EOF
+<< EOF | << EOF << EOF
+<< EOF | << EOF << EOF
+<< EOF | << EOF << EOF
+<< EOF | << EOF << EOF
+<< EOF | << EOF << EOF
+<< EOF << EOF | << EOF <<$EOF < o
+<< EOF << EOF | << EOF << $EOF
+<< EOF << EOF | << EOF << $TERM
+<< EOF << EOF | << EOF << $TERM < $TERM
+<< EOF << $TERM | << EOF << $TERM < $TERM
+<< EOF
+<< EOF << FOE
+<< EOF << FOE
+<< EOF << FOE
+<< EOF << FOE
+<< EOF << FOE
+<< EOF << FOE
+<< EOF << FOE
+<< EOF << FOE
+<< EOF << FOE
+<< EOF << FOE
+<< EOF << FOE
+<< EOF << FOE
+<< EOF << FOE
+<< EOF << FOE
+<< EOF << FOE
+ls
+ls -a
+<< EOF
+echo $?
+ls
+env 
+s
+lls
+ls
+env
+cd .
+env
+export
+cd
+cd -
+unset PWD
+cd .
+cd -
+clear
+ls
+cd 
+s
+l
+ls
+clear
+ls
+echo
+echoa a
+echo a
+echo a a a a 
+echo a a a a -
+echo a a a a -n
+echo a a a a
+echo a a a a -n 
+echo -n a a a a -n 
+echo a a a a -n 
+echo a a a a  
+echo a a a a  -
+echo - as
+echo asd -
+echo asd -n
+echo -n asd
+asd
+echo asd -n
+ls
+clear
+env
+env | grep PWD
+env | grep PWD
+unset PWD
+cd .
+env | grep PWD
+cd -
+cd asd
+cd 
+pwd
+export HOME="asd"
+cd 
+cd ~
+pwd
+ls
+env
+export 
+export 
+export ZZZ=""
+export 
+clear
+ls
+./src
+echo $?
+asd | asd | asd | ls
+asd | asd | asd | env
+./src
+./src
+cd 
+export HOME=""
+cd 
+export HOME=" "
+cd 
+echo [$HOME]
+echo ["$HOME"]
+export HOME=""
+echo ["$HOME"]
+export HOME=" 
+export HOME=""
+cd
+pw
+pwd
+cd
+pwd
+exit
+ls
+export OLDPWD=""
+cd -
+export HOME=""
+clear
+ls -a
+ls -al
+clear
+exit 5454454544
+<< EOF | << EOF | << EOF
+ls
+<< EOF | << EOF | << EOF
+<< EOF | << EOF | << EOF
+echo $??
+<< EOF | << EOF | << EOF
+echo $?
+echo $?
+<< EOF | << EOF | << EOF
+echo $?
+echo $?
+<< EOF
+echo asd
+ls
+<< EOF
+ls
+<< EOF
+<< EOF
+ls
+<< EOF
+ls
+<< EOF
+ls
+ls
+ls
+ls
+ls
+ls
+ls
+ls
+ls
+ls
+/bin/ls
+ls
+<<EOF
+<<EOF cat
+env
+ls
+ls
+ls
+lsñs
+s
+s
+s
+s
+s
+s
+s
+sss
+<< EOF 
+<< EOF 
+ls
+ls
+< < <  << << << 
+make
+make
+ls
+ls
+ls
+ls
+<< EOF 
+ls
+<< EOF 
+echo $?
+ls
+ls
+./src
+echo $?
+ls
+ls
+ls
+mkdir 1
+cd 1
+mkdir 2
+cd 2
+pwd
+rm -rf ../../1
+pwd
+pwwd
+pwd
+pwd
+pwd
+cd ..
+pwd
+pwd
+cd ,,
+cd ..
+pwd
+4?
+$?
+echo $?
+echo $? + $'
+echo $? + $?
+$? + $?
+<< hola
+ls >> '1' -l >> "2" -a >> "'3'"
+la
+ls
+cat 1
+cat '3'
+cat "'3'"
+ls >> '1' -l >> "2" -a >> "'3'" | wc -l
+ls >> '1' -l >> "2" -a >> "'3'" | wc -l | sleep 4
+unset PATH
+env
+ls
+env | grep PATH
+/bin/ls
+echo $SHLVL
+./minishell
+echo $SHLVL
+env | grep PATH
+env
+exit
+exit
+exit 255
+echo  a1
+exit a1
+exit 1a
+export
+export _HOLA
+env
+env | grep _hola
+env | grep _HOLA
+export _HOLA0123
+export _HOLA=123
+env | grep _HOLA
+export 1HOLA=123
+export 1HOLA=12323
+export ?HOLA=12323
+env
+export 1HOLA=12323
+env
+export "1HOLA=12323"
+env
+kandaw
+awdjkb a
+d
+d
+d
+d
+d
+d
+a
+awdñ,a´d
+ad
+adawd
+awd
+ad
+hj
+j
+j
+j
+j
+j
+j
+h
+sleep 3 | sleep 3 | sleep 5
+sleep 3 | sleep 3 | sleep 5 | echo holaa
+echo -n hola
+echo -nnnnnnnnnnnnnnn hola
+echo -nnnnnnnnnnnnnnn -nnnnnnnnnnnnnn hola
+echo 2-nnnnnnnnnnnnnnn -nnnnnnnnnnnnnn" hola
+"
+"
+1
+echo "-nnnnnnnnnnnnnnn -nnnnnnnnnnnnnn" hola
+echo '"-nnnnnnnnnnnnnnn -nnnnnnnnnnnnnn"' hola
+env
+<< hola | << adios | << como | echo vale
+<< hola | << adios | << como | echo vale
+<< hola | << adios | << como | echo vale
+<<
+<
+<<
+<<<
+<<< holo
+<<<<< holo
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< holo
+<<<<< holo
+><<
+><< hola
+> << hola
+<<>hola
+<< >hola
+<<
+>>
+exit
+pwd
+uunset pwd
+uunset PWD
+nset PWD
+Unset PWD
+unset PWD
+pwd
+cd .
+pwd
+oldpwd
+echo OLDPWD
+echo $OLDPWD
+CD .
+echo $OLDPWD
+echo $OLDPWD | echo $PATH | echo $?
+echo $OLDPWD $PATH $?
+echo $USER $PATH $?
+echo $? $USER $PATH
+echo $? $USER $PATH $?
+<< HER | echo $? $USER $PATH $? 
+<< HER | echo $? $USER $PATH $? | ls >> '1' >> '''''2''''' -la >> 3 | wc -l | << HER
+ls
+cat 3
+exit
+ls
+<<
+<<
+<<
+ls
+ls -a
+<< EOF
+<< EOF | << EOF2
+<<
+echo $?
+<<
+make
+make
+<<
+<<
+echo $?
+<< HER | echo $? $USER $PATH $? | ls >> '1' >> '''''2''''' -la >> 3 | wc -l | << HER
+"ls"
+'"ls"'
+'''''''ls'''''''
+ls > 'o'
+mae
+ls > 'o'
+ls > 'o'
+ls > 'o'
+clear
+clear
+clear
+ls > 'o
+s
+ls
+clear
+ls > ''o''
+ls > ''o''
+ls > ''o''
+ls > ''o''
+ls > ''o''
+ls > ''o''
+ls > ''o''
+ls > ''o''
+ls > ''o''
+ls > ''o''
+ls > o
+ls > ''o''
+ls > ''o''
+ls > o
+ls > 'o'
+<<
+''
+ls >> 'o'
+cat < o
+cat < 'o'
+clear
+s
+clear
+<< EOF << EOF | << EOF << EOF | << EOF
+<< EOF << EOF | << EOF << EOF | << EOF cat
+<< EOF << EOF | << EOF << EOF | << EOF cat
+<< EOF << EOF | << EOF << EOF | << EOF cat
+<< EOF << EOF | << EOF << EOF | << EOF cat
+ls >> "1" -a >> '2' -l >> 3
+echo hola | << HERE | sleep 4
+ls >> '1' -la | >> "2"
+ls
+ls >> "1" -a >> '2' -l > 3
+ls >> "1" -a >> '2' -l >> 3
+>>
+<<
+>>
+>><<
+<<
+>>
+ls >> "1" -a >> '2' -l > 3
+>>
+>>
+ls >> "1" -a >> '2' -l > 3
+ls >> "1" -a >> '2' -l > 3
+ls >> "1" -a >> '2' -l > 3
+ls >> "1" -a >> '2' -l > 3
+ls >> "1" -a >> '2' -l > 3
+ls >> "1" -a >> '2' -l > 3
+ls >> "1" -a >> '2' -l > 3
+ls >> "1" -a >> '2' -l > 3
+ls >> "1" -a >> '2' -l > 3
+ls >> "1" -a >> '2' -l > 3
+ls >> "1" -a >> '2' -l > 3
+ls >> "1" -a >> '2' -l > 3
+ls >> "1" -a >> '2' -l > 3
+ls >> "1" -a >> '2' -l > 3
+ls >> "1" -a >> '2' -l > 3
+ls >> "1" -a >> '2' -l > 3
+ls >> "1" -a >> '2' -l > 3
+ls >> "1" -a >> '2' -l > 3
+ls >> "1" -a >> '2' -l > a
+ls >> "1" -a >> '2' -l >> a
+ls >> "1" -a >> '2' -l >> a
+ls >> "1" -a >> '2' -l >> a
+ping google.es | cat
+ping google.es | cat
+ping google.es | cat
+ping
+ls | cat
+ping 
+ping google.es
+ping google.es
+ping google.es
+ping google.es
+ping google.es
+ping google.es
+ping google.es
+ls
+tail -f a
+tail -f a
+tail -f a.txt
+clear
+ping google.es
+ping google.es
+ls
+top
+ls
+ping google.es
+ping google.es
+clear
+ping google.es
+pwd >> a
+ls >> a
+ls >> a
+ls >> a
+ls >> a
+ls >> a
+ls >> a
+ls > a
+ls > a
+ls > a
+ls > a
+ls > a
+ls | cat
+ping google.es
+ping google.es
+<< HER | echo $? $USER $PATH $? | ls >> '1' >> '''''2''''' -la >> 3 | wc -l | << HER
+<< HER | echo $? $USER $PATH $? | ls >> '1' >> '''''2''''' -la >> 3 | wc -l | << HER
+ls > o | wc -l
+<< HER | echo $? $USER $PATH $? | ls >> '1' >> '''''2''''' -la >> 3 | wc -l | << HER
+<< HER | echo $? $USER $PATH $? | ls >> '1' >> '''''2''''' -la >> 3 | wc -l | << HER
+<< HER | echo $? $USER $PATH $? | ls >> '1' >> '''''2''''' -la >> 3 | wc -l | << HER
+<< HER | ls >> '1' >> '''''2''''' -la >> 3 | wc -l | << HER
+<< HER | wc -l | << HER
+<< HER | << HER
+<< HER
+<< HER
+< i
+<< HER
+<<
+<<
+<<
+ls
+<<
+<<
+ls
+<<
+ls
+<<
+ls
+<<
+<
+ls
+<
+clear
+<
+clear
+<
+<
+clear
+<
+<
+clear
+<
+clear
+<
+clear
+<<
+ls
+<<
+<< HER | ls >> '1' >> '''''2''''' -la >> 3 | wc -l | << HER
+env
+env
+env
+env > /dev/stdout
+env > /dev/stderr
+env > /dev/stdin
+env > a
+env > a
+env > a
+RM A
+rm a
+env > 
+env > a
+cat a
+env
+export
+export > a
+cat a
+clear
+export TERM="xterm-256color"
+cler
+clear
+pwd
+pwd
+pwd > a
+cat a
+rm a
+cear
+cear
+make
+cear
+clear
+pwd > a
+cat a
+rm 
+rm a
+clear
+env a
+env 
+env a
+env a
+env a
+make
+make
+env a
+env a
+env ls
+ls | .minihsell
+ls | ./minihsell
+ls | ./minishell
+a
+include
+libft
+Makefile
+minishell
+minishell.h
+minishell_objects
+src
+a
+include
+libft
+Makefile
+minishell
+minishell.h
+minishell_objects
+src
+include
+libft
+Makefile
+minishell
+minishell.h
+minishell_objects
+src
+               m╭──────╮╭╮ ╭╮ ╭─╮╭╮ ╭╮ ╭╮ ╭─╮ ╭─╮ ╭───╮ ╭─╮   ╭─╮  
+m               ;5;208m│ ╭╮╭╮ │ │ │  │ ╰╯│  │ │  │ ╰─╯ │ │ ─╮╯ │ │   │ │  
+m               ;5;214m│ │╰╯│ │ │ │  │╭╮ │  │ │  │ ╭─╮ │ │ ─╯╮ │ ╰─╮ │ ╰─╮
+m               ;5;226m╰─╯  ╰─╯╰╯ ╰╯ ╰╯╰─╯ ╰╯ ╰╯ ╰─╯ ╰─╯ ╰───╯ ╰───╯ ╰───╯
+m
+include
+
+libft
+
+Makefile
+
+minishell
+
+minishell.h
+
+minishell_objects
+
+src
+
+include
+libft
+Makefile
+minishell
+minishell.h
+minishell_objects
+src
+ls
+include
+libft
+Makefile
+minishell
+minishell.h
+minishell_objects
+src
+include
+libft
+Makefile
+minishell
+minishell.h
+minishell_objects
+src
+include
+libft
+Makefile
+minishell
+minishell.h
+minishell_objects
+src
+include
+libft
+Makefile
+minishell
+minishell.h
+minishell_objects
+src
+include
+libft
+Makefile
+minishell
+minishell.h
+minishell_objects
+o
+src
+include
+libft
+Makefile
+minishell
+minishell.h
+minishell_objects
+o
+src
+include
+libft
+Makefile
+minishell
+minishell.h
+minishell_objects
+o
+src
+include
+libft
+Makefile
+minishell
+minishell.h
+minishell_objects
+o
+src
+include
+libft
+Makefile
+minishell
+minishell.h
+minishell_objects
+o
+src
+include
+libft
+Makefile
+minishell
+minishell.h
+minishell_objects
+o
+src
+include
+libft
+Makefile
+minishell
+minishell.h
+minishell_objects
+o
+src
+ls
+a
+include
+libft
+Makefile
+minishell
+minishell.h
+minishell_objects
+o
+src
+                         [1;31m╭──────╮╭╮ ╭╮ ╭─╮╭╮ ╭╮ ╭╮ ╭─╮ ╭─╮ ╭───╮ ╭─╮   ╭─╮  
+[0m               [1;38;5;208m│ ╭╮╭╮ │ │ │  │ ╰╯│  │ │  │ ╰─╯ │ │ ─╮╯ │ │   │ │  
+[0m               [1;38;5;214m│ │╰╯│ │ │ │  │╭╮ │  │ │  │ ╭─╮ │ │ ─╯╮ │ ╰─╮ │ ╰─╮
+[0m               [1;38;5;226m╰─╯  ╰─╯╰╯ ╰╯ ╰╯╰─╯ ╰╯ ╰╯ ╰─╯ ╰─╯ ╰───╯ ╰───╯ ╰───╯
+[0m
+                [1;38;5;145m         ╭─────────────────────────────╮            [0m[1;38;5;145m
+                         [1;31m╭──────╮╭╮ ╭╮ ╭─╮╭╮ ╭╮ ╭╮ ╭─╮ ╭─╮ ╭───╮ ╭─╮   ╭─╮  
+[0m               [1;38;5;208m│ ╭╮╭╮ │ │ │  │ ╰╯│  │ │  │ ╰─╯ │ │ ─╮╯ │ │   │ │  
+[0m               [1;38;5;214m│ │╰╯│ │ │ │  │╭╮ │  │ │  │ ╭─╮ │ │ ─╯╮ │ ╰─╮ │ ╰─╮
+[0m               [1;38;5;226m╰─╯  ╰─╯╰╯ ╰╯ ╰╯╰─╯ ╰╯ ╰╯ ╰─╯ ╰─╯ ╰───╯ ╰───╯ ╰───╯
+[0m
+                [1;38;5;145m         ╭─────────────────────────────╮            [0m[1;38;5;145m
+                         [1;31m╭──────╮╭╮ ╭╮ ╭─╮╭╮ ╭╮ ╭╮ ╭─╮ ╭─╮ ╭───╮ ╭─╮   ╭─╮  
+[0m               [1;38;5;208m│ ╭╮╭╮ │ │ │  │ ╰╯│  │ │  │ ╰─╯ │ │ ─╮╯ │ │   │ │  
+[0m               [1;38;5;214m│ │╰╯│ │ │ │  │╭╮ │  │ │  │ ╭─╮ │ │ ─╯╮ │ ╰─╮ │ ╰─╮
+[0m               [1;38;5;226m╰─╯  ╰─╯╰╯ ╰╯ ╰╯╰─╯ ╰╯ ╰╯ ╰─╯ ╰─╯ ╰───╯ ╰───╯ ╰───╯
+[0m
+                [1;38;5;145m         ╭─────────────────────────────╮            [0m[1;38;5;145m
+                         [1;31m╭──────╮╭╮ ╭╮ ╭─╮╭╮ ╭╮ ╭╮ ╭─╮ ╭─╮ ╭───╮ ╭─╮   ╭─╮  
+[0m               [1;38;5;208m│ ╭╮╭╮ │ │ │  │ ╰╯│  │ │  │ ╰─╯ │ │ ─╮╯ │ │   │ │  
+[0m               [1;38;5;214m│ │╰╯│ │ │ │  │╭╮ │  │ │  │ ╭─╮ │ │ ─╯╮ │ ╰─╮ │ ╰─╮
+[0m               [1;38;5;226m╰─╯  ╰─╯╰╯ ╰╯ ╰╯╰─╯ ╰╯ ╰╯ ╰─╯ ╰─╯ ╰───╯ ╰───╯ ╰───╯
+[0m
+                [1;38;5;145m         ╭─────────────────────────────╮            [0m[1;38;5;145m
+                         [1;31m╭──────╮╭╮ ╭╮ ╭─╮╭╮ ╭╮ ╭╮ ╭─╮ ╭─╮ ╭───╮ ╭─╮   ╭─╮  
+[0m               [1;38;5;208m│ ╭╮╭╮ │ │ │  │ ╰╯│  │ │  │ ╰─╯ │ │ ─╮╯ │ │   │ │  
+[0m               [1;38;5;214m│ │╰╯│ │ │ │  │╭╮ │  │ │  │ ╭─╮ │ │ ─╯╮ │ ╰─╮ │ ╰─╮
+[0m               [1;38;5;226m╰─╯  ╰─╯╰╯ ╰╯ ╰╯╰─╯ ╰╯ ╰╯ ╰─╯ ╰─╯ ╰───╯ ╰───╯ ╰───╯
+[0m
+                [1;38;5;145m         ╭─────────────────────────────╮            [0m[1;38;5;145m
+a
+include
+libft
+Makefile
+minishell
+minishell.h
+minishell_objects
+o
+src
+a
+include
+libft
+Makefile
+minishell
+minishell.h
+minishell_objects
+o
+src
+a
+include
+libft
+Makefile
+minishell
+minishell.h
+minishell_objects
+o
+src
+a
+include
+libft
+Makefile
+minishell
+minishell.h
+minishell_objects
+o
+src
+a
+include
+libft
+Makefile
+minishell
+minishell.h
+minishell_objects
+o
+src
+a
+include
+libft
+Makefile
+minishell
+minishell.h
+minishell_objects
+o
+src
+a
+include
+libft
+Makefile
+minishell
+minishell.h
+minishell_objects
+o
+src
+a
+include
+libft
+Makefile
+minishell
+minishell.h
+minishell_objects
+o
+src
+a
+include
+libft
+Makefile
+minishell
+minishell.h
+minishell_objects
+o
+src
+Please ask your administrator.
+Please ask your administrator.
+a
+include
+libft
+Makefile
+minishell
+minishell.h
+minishell_objects
+o
+src
+a
+include
+libft
+Makefile
+minishell
+minishell.h
+minishell_objects
+o
+src
+a
+include
+libft
+Makefile
+minishell
+minishell.h
+minishell_objects
+o
+src
+a
+include
+libft
+Makefile
+minishell
+minishell.h
+minishell_objects
+o
+src
+a
+include
+libft
+Makefile
+minishell
+minishell.h
+minishell_objects
+o
+src
+a
+include
+libft
+Makefile
+minishell
+minishell.h
+minishell_objects
+o
+src
+asdf
+asdf
+asdf
+asdfas
+asdfasdf
+echo hola
+echo << eof
+ls
+<< EOF
+ls
+asd
+sda
+ads
+ds
+sda
+dsasd
+sda
+echo << eof << EOF
+a
+include
+libft
+Makefile
+minishell
+minishell.h
+minishell_objects
+o
+src
+a
+include
+libft
+Makefile
+minishell
+minishell.h
+minishell_objects
+o
+src
+a
+include
+libft
+Makefile
+minishell
+minishell.h
+minishell_objects
+o
+src
+a
+include
+libft
+Makefile
+minishell
+minishell.h
+minishell_objects
+o
+src
+a
+include
+libft
+Makefile
+minishell
+minishell.h
+minishell_objects
+o
+src
+a
+include
+libft
+Makefile
+minishell
+minishell.h
+minishell_objects
+o
+src
+a
+include
+libft
+Makefile
+minishell
+minishell.h
+minishell_objects
+o
+src
+a
+include
+libft
+Makefile
+minishell
+minishell.h
+minishell_objects
+o
+src
+a
+include
+libft
+Makefile
+minishell
+minishell.h
+minishell_objects
+o
+src
+a
+include
+libft
+Makefile
+minishell
+minishell.h
+minishell_objects
+o
+src
+a
+include
+libft
+Makefile
+minishell
+minishell.h
+minishell_objects
+o
+src
+                         [1;31m╭──────╮╭╮ ╭╮ ╭─╮╭╮ ╭╮ ╭╮ ╭─╮ ╭─╮ ╭───╮ ╭─╮   ╭─╮  
+[0m               [1;38;5;208m│ ╭╮╭╮ │ │ │  │ ╰╯│  │ │  │ ╰─╯ │ │ ─╮╯ │ │   │ │  
+[0m               [1;38;5;214m│ │╰╯│ │ │ │  │╭╮ │  │ │  │ ╭─╮ │ │ ─╯╮ │ ╰─╮ │ ╰─╮
+[0m               [1;38;5;226m╰─╯  ╰─╯╰╯ ╰╯ ╰╯╰─╯ ╰╯ ╰╯ ╰─╯ ╰─╯ ╰───╯ ╰───╯ ╰───╯
+[0m
+                [1;38;5;145m         ╭─────────────────────────────╮            [0m[1;38;5;145m
+                         [1;31m╭──────╮╭╮ ╭╮ ╭─╮╭╮ ╭╮ ╭╮ ╭─╮ ╭─╮ ╭───╮ ╭─╮   ╭─╮  
+[0m               [1;38;5;208m│ ╭╮╭╮ │ │ │  │ ╰╯│  │ │  │ ╰─╯ │ │ ─╮╯ │ │   │ │  
+[0m               [1;38;5;214m│ │╰╯│ │ │ │  │╭╮ │  │ │  │ ╭─╮ │ │ ─╯╮ │ ╰─╮ │ ╰─╮
+[0m               [1;38;5;226m╰─╯  ╰─╯╰╯ ╰╯ ╰╯╰─╯ ╰╯ ╰╯ ╰─╯ ╰─╯ ╰───╯ ╰───╯ ╰───╯
+[0m
+                [1;38;5;145m         ╭─────────────────────────────╮            [0m[1;38;5;145m
+                         [1;31m╭──────╮╭╮ ╭╮ ╭─╮╭╮ ╭╮ ╭╮ ╭─╮ ╭─╮ ╭───╮ ╭─╮   ╭─╮  
+[0m               [1;38;5;208m│ ╭╮╭╮ │ │ │  │ ╰╯│  │ │  │ ╰─╯ │ │ ─╮╯ │ │   │ │  
+[0m               [1;38;5;214m│ │╰╯│ │ │ │  │╭╮ │  │ │  │ ╭─╮ │ │ ─╯╮ │ ╰─╮ │ ╰─╮
+[0m               [1;38;5;226m╰─╯  ╰─╯╰╯ ╰╯ ╰╯╰─╯ ╰╯ ╰╯ ╰─╯ ╰─╯ ╰───╯ ╰───╯ ╰───╯
+[0m
+                [1;38;5;145m         ╭─────────────────────────────╮            [0m[1;38;5;145m
+                         [1;31m╭──────╮╭╮ ╭╮ ╭─╮╭╮ ╭╮ ╭╮ ╭─╮ ╭─╮ ╭───╮ ╭─╮   ╭─╮  
+[0m               [1;38;5;208m│ ╭╮╭╮ │ │ │  │ ╰╯│  │ │  │ ╰─╯ │ │ ─╮╯ │ │   │ │  
+[0m               [1;38;5;214m│ │╰╯│ │ │ │  │╭╮ │  │ │  │ ╭─╮ │ │ ─╯╮ │ ╰─╮ │ ╰─╮
+[0m               [1;38;5;226m╰─╯  ╰─╯╰╯ ╰╯ ╰╯╰─╯ ╰╯ ╰╯ ╰─╯ ╰─╯ ╰───╯ ╰───╯ ╰───╯
+[0m
+                [1;38;5;145m         ╭─────────────────────────────╮            [0m[1;38;5;145m
+                [1;38;5;145m         ╭─────────────────────────────╮            [0m[1;38;5;145m
+                         [1;31m╭──────╮╭╮ ╭╮ ╭─╮╭╮ ╭╮ ╭╮ ╭─╮ ╭─╮ ╭───╮ ╭─╮   ╭─╮  
+[0m               [1;38;5;208m│ ╭╮╭╮ │ │ │  │ ╰╯│  │ │  │ ╰─╯ │ │ ─╮╯ │ │   │ │  
+[0m               [1;38;5;214m│ │╰╯│ │ │ │  │╭╮ │  │ │  │ ╭─╮ │ │ ─╯╮ │ ╰─╮ │ ╰─╮
+[0m               [1;38;5;226m╰─╯  ╰─╯╰╯ ╰╯ ╰╯╰─╯ ╰╯ ╰╯ ╰─╯ ╰─╯ ╰───╯ ╰───╯ ╰───╯
+[0m
+                [1;38;5;145m         ╭─────────────────────────────╮            [0m[1;38;5;145m
+a
+include
+libft
+Makefile
+minishell
+minishell.h
+minishell_objects
+o
+src
+a
+include
+libft
+Makefile
+minishell
+minishell.h
+minishell_objects
+o
+src
+
+
+
+
+
+
+ls
+
+ls
+a
+include
+ls
+libft
+Makefile
+minishell
+minishell.h
+minishell_objects
+o
+src
+ls
+a
+include
+libft
+Makefile
+minishell
+minishell.h
+minishell_objects
+o
+src
+ls
+a
+include
+libft
+Makefile
+minishell
+minishell.h
+minishell_objects
+o
+src
+ls
+a
+include
+ls
+libft
+Makefile
+ls
+minishell
+minishell.h
+ls
+minishell_objects
+o
+ls
+src
+a
+ls
+include
+libft
+ls
+Makefile
+minishell
+ls
+minishell.h
+minishell_objects
+ls
+o
+src
+a
+include
+libft
+Makefile
+minishell
+minishell.h
+minishell_objects
+o
+src
+a
+include
+libft
+Makefile
+minishell
+minishell.h
+minishell_objects
+o
+src
+a
+include
+libft
+Makefile
+minishell
+minishell.h
+minishell_objects
+o
+src
+a
+include
+libft
+Makefile
+minishell
+minishell.h
+minishell_objects
+o
+src
+a
+include
+libft
+Makefile
+minishell
+minishell.h
+minishell_objects
+o
+src
+a
+include
+libft
+Makefile
+minishell
+minishell.h
+minishell_objects
+o
+src
+a
+include
+libft
+Makefile
+minishell
+minishell.h
+minishell_objects
+o
+src
+ls
+a
+include
+libft
+Makefile
+minishell
+minishell.h
+minishell_objects
+o
+src
+ls
+ls
+a
+include
+ad
+asd
+asda
+asdd
+asd
+libft
+Makefile
+minishell
+minishell.h
+minishell_objects
+o
+src
+asd
+sda
+sad
+ds
+d
+d
+ls
+a
+include
+das
+d
+s
+s
+s
+s
+asd
+dsa
+ads
+das
+libft
+Makefile
+minishell
+minishell.h
+minishell_objects
+o
+src
+./src
+ls
+a
+include
+echo $?
+libft
+Makefile
+minishell
+minishell.h
+minishell_objects
+o
+src
+a
+include
+libft
+Makefile
+minishell
+minishell.h
+minishell_objects
+o
+src
+a
+include
+libft
+Makefile
+minishell
+minishell.h
+minishell_objects
+o
+src
+                         [1;31m╭──────╮╭╮ ╭╮ ╭─╮╭╮ ╭╮ ╭╮ ╭─╮ ╭─╮ ╭───╮ ╭─╮   ╭─╮  
+[0m               [1;38;5;208m│ ╭╮╭╮ │ │ │  │ ╰╯│  │ │  │ ╰─╯ │ │ ─╮╯ │ │   │ │  
+[0m               [1;38;5;214m│ │╰╯│ │ │ │  │╭╮ │  │ │  │ ╭─╮ │ │ ─╯╮ │ ╰─╮ │ ╰─╮
+[0m               [1;38;5;226m╰─╯  ╰─╯╰╯ ╰╯ ╰╯╰─╯ ╰╯ ╰╯ ╰─╯ ╰─╯ ╰───╯ ╰───╯ ╰───╯
+[0m
+                [1;38;5;145m         ╭─────────────────────────────╮            [0m[1;38;5;145m
+ls
+
+ls
+a
+include
+./minishell | ./minishell
+
+./minihsell
+ls
+ls
+libft
+Makefile
+minishell
+minishell.h
+minishell_objects
+o
+src
+a
+include
+libft
+Makefile
+minishell
+minishell.h
+minishell_objects
+o
+src
+a
+include
+libft
+Makefile
+minishell
+minishell.h
+minishell_objects
+o
+src
+a
+include
+libft
+Makefile
+minishell
+minishell.h
+minishell_objects
+o
+src
+ls
+ls
+ls
+d
+ls
+ls
+a
+include
+libft
+Makefile
+minishell
+minishell.h
+minishell_objects
+o
+src
+exit asdd adsa sd > o
+exit  1 1 > 0
+cat 0
+rm 0
+ls
+rm o
+rm a
+clear
+ls
+exit 9223372036854775807
+exit 9223372036854775806
+exit -9223372036854775808
+exit -9223372036854775809
+ls
+include
+libft
+ls
+Makefile
+minishell
+ls
+minishell.h
+minishell_objects
+src
+include
+libft
+Makefile
+minishell
+minishell.h
+minishell_objects
+src
+include
+libft
+Makefile
+minishell
+minishell.h
+minishell_objects
+src
+ls
+include
+libft
+ls
+Makefile
+minishell
+minishell.h
+minishell_objects
+src
+include
+libft
+Makefile
+minishell
+minishell.h
+minishell_objects
+src
+bash | bash
+clear
+./minishell
+ls
+ls
+./minishell
+./minishell
+./minishell
+./minishell
+./minishell
+./minishell
+./minishell
+./minishell
+./minishell
+./minishell
+./minishell
+./minishell
+ls
+[H[2J[3J
+ls
+include
+libft
+Makefile
+minishell
+minishell.h
+minishell_objects
+src
+[H[2J[3J
+ls
+include
+libft
+Makefile
+minishell
+minishell.h
+minishell_objects
+src
+[H[2J[3J
+ls
+include
+libft
+ls
+Makefile
+minishell
+m
+m
+m
+m
+m
+m
+m
+m
+m
+m
+m
+m
+m
+m
+m
+m
+minishell.h
+minishell_objects
+[H[2J[3J
+ls
+include
+libft
+[H[2J[3J
+ls
+include
+libft
+Makefile
+minishell
+minishell.h
+minishell_objects
+src
+[H[2J[3J
+ls
+include
+libft
+Makefile
+minishell
+minishell.h
+minishell_objects
+src
+[H[2J[3J
+ls
+include
+libft
+ls
+Makefile
+minishell
+minishell.h
+minishell_objects
+src
+include
+libft
+Makefile
+minishell
+minishell.h
+minishell_objects
+src
+[H[2J[3J
+sl
+ls
+include
+libft
+Makefile
+minishell
+minishell.h
+minishell_objects
+src
+ls
+include
+libft
+asd
+Makefile
+minishell
+minishell.h
+minishell_objects
+src
+ls
+include
+libft
+asd
+Makefile
+minishell
+minishell.h
+minishell_objects
+src
+asd
+dsa
+ls
+include
+libft
+Makefile
+minishell
+minishell.h
+minishell_objects
+src
+sl
+ls
+include
+libft
+ls
+Makefile
+minishell
+minishell.h
+minishell_objects
+src
+[H[2J[3J
+ls
+include
+libft
+Makefile
+minishell
+minishell.h
+minishell_objects
+src
+<< EOF << EOF | << EOF 
+<< EOF << EOF | << EOF 
+ls
+echo 
+echo $?
+echo $?
+<< EOF << EOF | << EOF 
+echo $?
+<< EOF << EOF | << EOF 
+ls
+<< EOF << EOF | << EOF 
+ls
+ls
+<< EOF << EOF | << EOF 
+<< EOF << EOF | << EOF 
+ls
+ls
+ls
+<< EOF << EOF | << EOF 
+ls
+<< EOF << EOF | << EOF 
+ñs
+ls
+asd
+sd
+ad
+sda
+ds
+dd
+<< EOF << EOF | << EOF 
+<< EOF << EOF | << EOF 
+<< EOF << EOF | << EOFsdasdasdasd 
+q
+<< EOF << EOF | << EOFsdasdasdasd 
+s
+<< EOF << EOF | << EOF
+<< EOF << EOF | << EOF
+<< EOF << EOF | << EOF
+ls
+s
+s
+s
+s
+<< EOF << EOF | << EOF
+ls
+ls
+<< EOF << EOF | << EOF
+ls
+ls
+ls
+ls
+ls
+ls
+ls
+echo $?
+<< EOF << EOF | << EOF
+ls
+ls
+echo $?
+ls
+echo $?
+ls
+ls
+ls
+s
+echo $?
+rm .here_doc
+rm parser/.here_doc
+rm src/parser/.here_doc
+rm src/parser/.here_doc0
+rm src/parser/.here_doc1
+rm src/parser/.here_doc2
+rm src/parser/.minishell_history
+clear
+ls
+echo $?
+ls
+echo $?
+<< EOF
+echo $?
+ls
+echo $?
+<< EOF
+ls
+echo $?
+mek
+<< EOF
+echo $?
+ls
+<< EOF
+ls
+echo $?
+<< EOF
+ls
+echo $?
+ls
+sda
+<< EOF
+ls
+echo $?
+<< EOF
+ls
+<< EOF
+<< EOF
+ls
+<< EOF
+ls
+ls
+asda
+sddas
+asd
+ls
+<< EOF
+<< EOF
+ls
+ls
+<< EOF << EOF | << EOF
+ls
+<< EOF << EOF | << EOF
+<< EOF << EOF | << EOF
+  ls
+cclear
+clar
+clear
+ls
+pwd
+ls
+asd
+<
+ls
+ls
+>>>
+ls
+clear
+cd 
+ls
+clear
+echo asd > o
+echo
+,aek
+mae
+echo
+clear
+echo a > o
+cat o
+maek
+make
+make
+make
+echo
+ls
+echo 
+echo a
+clear
+<< a
+<< a
+<< a cat 
+<< a cat 
+<< EOF | << EOF | << EOF | << EOF
+clear
+<< EOF | << EOF | << EOF | << EOF
+<< EOF | << EOF | << EOF | << EOF
+ls
+<< EOF | << EOF | << EOF | << EOF
+ls
+ls
+<< EOF | << EOF | << EOF | << EOF
+<< EOF | << EOF | << EOF | << EOF
+<< EOF | << EOF | << EOF | << EOF
+<< EOF | << EOF | << EOF | << EOF
+<< EOF | << EOF | << EOF | << EOF
+<< EOF<< EOF | << EOF | << EOF | << EOF
+<< EOF<< EOF | << EOF | << EOF | << EOF > o
+<< EOF<< EOF | << EOF | << EOF | << EOF > o
+d
+<< EOF<< EOF | << EOF | << EOF | << EOF
+<< EOF<< EOF | << EOF | << EOF | << EOF
+clear
+               [1;31m╭──────╮╭╮ ╭╮ ╭─╮╭╮ ╭╮ ╭╮ ╭─╮ ╭─╮ ╭───╮ ╭─╮   ╭─╮  
+[0m               [1;38;5;208m│ ╭╮╭╮ │ │ │  │ ╰╯│  │ │  │ ╰─╯ │ │ ─╮╯ │ │   │ │  
+[0m               [1;38;5;214m│ │╰╯│ │ │ │  │╭╮ │  │ │  │ ╭─╮ │ │ ─╯╮ │ ╰─╮ │ ╰─╮
+[0m               [1;38;5;226m╰─╯  ╰─╯╰╯ ╰╯ ╰╯╰─╯ ╰╯ ╰╯ ╰─╯ ╰─╯ ╰───╯ ╰───╯ ╰───╯
+[0m
+                [1;38;5;145m         ╭─────────────────────────────╮            [0m[1;38;5;145m
+                         │[0m[1;37m   By Descamil && Smarin-a   [0m[1;38;5;145m│            
+                [0m[1;38;5;145m         ╰─────────────────────────────╯            [0m
+[?2004h🐚[1;32m MINI(S)HELL[0m 🔥 -> ls
+ls
+[?2004linclude
+libft
+ls
+Makefile
+minishell
+minishell.h
+minishell_objects
+src
+[?2004h🐚[1;32m MINI(S)HELL[0m 🔥 -> cleacc
+d
+d
+d
+d
+d
+d
+d
+c
+l
+e
+a
+r
+cleaccdddddddclear
+[?2004l
+[?2004h
+🐚[1;32m MINI(S)HELL[0m 🔥 -> 
+[?2004l[?2004h
+🐚[1;32m MINI(S)HELL[0m 🔥 -> 
+c
+l
+e
+a
+r
+[?2004lclear
+
+[H[2J[3J
+[?2004h🐚[1;32m MINI(S)HELL[0m 🔥 -> 
+[?2004l[?2004h
+🐚[1;32m MINI(S)HELL[0m 🔥 -> 
+[?2004l[?2004h🐚[1;32m MINI(S)HELL[0m 🔥 -> 
+[?2004l
+[?2004h🐚[1;32m MINI(S)HELL[0m 🔥 -> 
+[?2004l[?2004h
+🐚[1;32m MINI(S)HELL[0m 🔥 -> 
+l
+s
+[?2004lls
+
+cleacc
+include
+libft
+ls
+Makefile
+ls
+minishell
+minishell.h
+minishell_objects
+src
+[?2004h🐚[1;32m MINI(S)HELL[0m 🔥 -> ls
+[?2004lcleacc
+include
+libft
+ls
+Makefile
+minishell
+clearccminishell.h
+
+minishell_objects
+src
+[?2004h🐚[1;32m MINI(S)HELL[0m 🔥 -> clearcc
+[?2004l[?2004h🐚[1;32m MINI(S)HELL[0m 🔥 -> [?2004l
+exit
+               [1;31m╭──────╮╭╮ ╭╮ ╭─╮╭╮ ╭╮ ╭╮ ╭─╮ ╭─╮ ╭───╮ ╭─╮   ╭─╮  
+[0m               [1;38;5;208m│ ╭╮╭╮ │ │ │  │ ╰╯│  │ │  │ ╰─╯ │ │ ─╮╯ │ │   │ │  
+[0m               [1;38;5;214m│ │╰╯│ │ │ │  │╭╮ │  │ │  │ ╭─╮ │ │ ─╯╮ │ ╰─╮ │ ╰─╮
+[0m               [1;38;5;226m╰─╯  ╰─╯╰╯ ╰╯ ╰╯╰─╯ ╰╯ ╰╯ ╰─╯ ╰─╯ ╰───╯ ╰───╯ ╰───╯
+[0m
+                [1;38;5;145m         ╭─────────────────────────────╮            [0m[1;38;5;145m
+                         │[0m[1;37m   By Descamil && Smarin-a   [0m[1;38;5;145m│            
+                [0m[1;38;5;145m         ╰─────────────────────────────╯            [0m
+[?2004h🐚[1;32m MINI(S)HELL[0m 🔥 -> ls
+ls
+[?2004l[?2004l
+cleacc
+clearcc
+include
+libft
+ls
+ls
+Makefile
+minishell
+minishell.h
+minishell_objects
+src
+[?2004h🐚[1;32m MINI(S)HELL[0m 🔥 -> ls
+[?2004l[?2004l
+cleacc>o
+
+clearcc
+include
+libft
+ls
+Makefile
+minishell
+minishell.h
+minishell_objects
+src
+[?2004h🐚[1;32m MINI(S)HELL[0m 🔥 -> >o
+[?2004l[?2004h🐚[1;32m MINI(S)HELL[0m 🔥 -> rrssssss
+               [1;31m╭──────╮╭╮ ╭╮ ╭─╮╭╮ ╭╮ ╭╮ ╭─╮ ╭─╮ ╭───╮ ╭─╮   ╭─╮  
+[0m               [1;38;5;208m│ ╭╮╭╮ │ │ │  │ ╰╯│  │ │  │ ╰─╯ │ │ ─╮╯ │ │   │ │  
+[0m               [1;38;5;214m│ │╰╯│ │ │ │  │╭╮ │  │ │  │ ╭─╮ │ │ ─╯╮ │ ╰─╮ │ ╰─╮
+[0m               [1;38;5;226m╰─╯  ╰─╯╰╯ ╰╯ ╰╯╰─╯ ╰╯ ╰╯ ╰─╯ ╰─╯ ╰───╯ ╰───╯ ╰───╯
+[0m
+                [1;38;5;145m         ╭─────────────────────────────╮            [0m[1;38;5;145m
+                         │[0m[1;37m   By Descamil && Smarin-a   [0m[1;38;5;145m│            
+                [0m[1;38;5;145m         ╰─────────────────────────────╯            [0m
+[?2004h🐚[1;32m MINI(S)HELL[0m 🔥 -> 
+[?2004l[?2004h🐚[1;32m MINI(S)HELL[0m 🔥 -> 
+l
+mini: syntax error near unexpected token `newline'
+mini: syntax error near unexpected token `newline'
+mini: syntax error near unexpected token `newline'
+mini: syntax error near unexpected token `newline'
+s
+mini: syntax error near unexpected token `newline'
+mini: syntax error near unexpected token `newline'
+mini: syntax error near unexpected token `newline'
+mini: syntax error near unexpected token `newline'
+ls
+[?2004linclude
+mini: syntax error near unexpected token `newline'
+mini: syntax error near unexpected token `newline'
+libft
+mini: syntax error near unexpected token `newline'
+mini: syntax error near unexpected token `newline'
+Makefile
+mini: syntax error near unexpected token `newline'
+mini: syntax error near unexpected token `newline'
+mini: syntax error near unexpected token `newline'
+mini: syntax error near unexpected token `newline'
+mini: syntax error near unexpected token `newline'
+mini: syntax error near unexpected token `newline'
+mini: syntax error near unexpected token `newline'
+mini: syntax error near unexpected token `newline'
+minishell
+mini: syntax error near unexpected token `newline'
+mini: syntax error near unexpected token `newline'
+mini: syntax error near unexpected token `newline'
+mini: syntax error near unexpected token `newline'
+minishell.h
+mini: syntax error near unexpected token `newline'
+mini: syntax error near unexpected token `newline'
+mini: syntax error near unexpected token `newline'
+mini: syntax error near unexpected token `newline'
+minishell_objectsls
+
+mini: syntax error near unexpected token `newline'
+mini: syntax error near unexpected token `newline'
+src
+mini: syntax error near unexpected token `newline'
+mini: syntax error near unexpected token `newline'
+[?2004h🐚[1;32m MINI(S)HELL[0m 🔥 -> ls
+mini: syntax error near unexpected token `newline'
+mini: syntax error near unexpected token `newline'
+[?2004linclude
+mini: syntax error near unexpected token `newline'
+mini: syntax error near unexpected token `newline'
+mini: syntax error near unexpected token `newline'
+mini: syntax error near unexpected token `newline'
+mini: syntax error near unexpected token `newline'
+mini: syntax error near unexpected token `newline'
+mini: syntax error near unexpected token `newline'
+mini: syntax error near unexpected token `newline'
+mini: syntax error near unexpected token `newline'
+mini: syntax error near unexpected token `newline'
+libft
+mini: syntax error near unexpected token `newline'
+mini: syntax error near unexpected token `newline'
+mini: syntax error near unexpected token `newline'
+mini: syntax error near unexpected token `newline'
+sMakefile
+
+mini: syntax error near unexpected token `newline'
+mini: syntax error near unexpected token `newline'
+minishell
+mini: syntax error near unexpected token `newline'
+mini: syntax error near unexpected token `newline'
+minishell.h
+mini: syntax error near unexpected token `newline'
+mini: syntax error near unexpected token `newline'
+mini: syntax error near unexpected token `newline'
+mini: syntax error near unexpected token `newline'
+mini: syntax error near unexpected token `newline'
+mini: syntax error near unexpected token `newline'
+mini: syntax error near unexpected token `newline'
+mini: syntax error near unexpected token `newline'
+minishell_objects
+mini: syntax error near unexpected token `newline'
+mini: syntax error near unexpected token `newline'
+mini: syntax error near unexpected token `newline'
+mini: syntax error near unexpected token `newline'
+ssrc
+
+mini: syntax error near unexpected token `newline'
+mini: syntax error near unexpected token `newline'
+[?2004h🐚[1;32m MINI(S)HELL[0m 🔥 -> s
+mini: syntax error near unexpected token `newline'
+mini: syntax error near unexpected token `newline'
+[?2004l[?2004h🐚[1;32m MINI(S)HELL[0m 🔥 -> s
+mini: syntax error near unexpected token `newline'
+mini: syntax error near unexpected token `newline'
+mini: syntax error near unexpected token `newline'
+mini: syntax error near unexpected token `newline'
+mini: syntax error near unexpected token `newline'
+mini: syntax error near unexpected token `newline'
+mini: syntax error near unexpected token `newline'
+mini: syntax error near unexpected token `newline'
+[?2004l[?2004h🐚[1;32m MINI(S)HELL[0m 🔥 -> s
+mini: syntax error near unexpected token `newline'
+mini: syntax error near unexpected token `newline'
+mini: syntax error near unexpected token `newline'
+mini: syntax error near unexpected token `newline'
+[?2004ls
+
+mini: syntax error near unexpected token `newline'
+mini: syntax error near unexpected token `newline'
+[?2004h🐚[1;32m MINI(S)HELL[0m 🔥 -> 
+mini: syntax error near unexpected token `newline'
+mini: syntax error near unexpected token `newline'
+s
+mini: syntax error near unexpected token `newline'
+mini: syntax error near unexpected token `newline'
+mini: syntax error near unexpected token `newline'
+mini: syntax error near unexpected token `newline'
+mini: syntax error near unexpected token `newline'
+mini: syntax error near unexpected token `newline'
+[?2004ls
+
+mini: syntax error near unexpected token `newline'
+mini: syntax error near unexpected token `newline'
+mini: syntax error near unexpected token `newline'
+mini: syntax error near unexpected token `newline'
+mini: syntax error near unexpected token `newline'
+mini: syntax error near unexpected token `newline'
+[?2004h🐚[1;32m MINI(S)HELL[0m 🔥 -> 
+s
+mini: syntax error near unexpected token `newline'
+mini: syntax error near unexpected token `newline'
+mini: syntax error near unexpected token `newline'
+mini: syntax error near unexpected token `newline'
+mini: syntax error near unexpected token `newline'
+mini: syntax error near unexpected token `newline'
+mini: syntax error near unexpected token `newline'
+mini: syntax error near unexpected token `newline'
+[?2004ls
+
+mini: syntax error near unexpected token `newline'
+mini: syntax error near unexpected token `newline'
+[?2004h🐚[1;32m MINI(S)HELL[0m 🔥 -> 
+mini: syntax error near unexpected token `newline'
+mini: syntax error near unexpected token `newline'
+mini: syntax error near unexpected token `newline'
+mini: syntax error near unexpected token `newline'
+mini: syntax error near unexpected token `newline'
+mini: syntax error near unexpected token `newline'
+s
+mini: syntax error near unexpected token `newline'
+mini: syntax error near unexpected token `newline'
+mini: syntax error near unexpected token `newline'
+mini: syntax error near unexpected token `newline'
+mini: syntax error near unexpected token `newline'
+mini: syntax error near unexpected token `newline'
+mini: syntax error near unexpected token `newline'
+mini: syntax error near unexpected token `newline'
+mini: syntax error near unexpected token `newline'
+mini: syntax error near unexpected token `newline'
+s
+[?2004l[?2004h
+mini: syntax error near unexpected token `newline'
+mini: syntax error near unexpected token `newline'
+🐚[1;32m MINI(S)HELL[0m 🔥 -> 
+mini: syntax error near unexpected token `newline'
+mini: syntax error near unexpected token `newline'
+mini: syntax error near unexpected token `newline'
+mini: syntax error near unexpected token `newline'
+mini: syntax error near unexpected token `newline'
+mini: syntax error near unexpected token `newline'
+mini: syntax error near unexpected token `newline'
+mini: syntax error near unexpected token `newline'
+[?2004l
+mini: syntax error near unexpected token `newline'
+mini: syntax error near unexpected token `newline'
+exit
+mini: syntax error near unexpected token `newline'
+mini: syntax error near unexpected token `newline'
+mini: syntax error near unexpected token `newline'
+mini: syntax error near unexpected token `newline'
+mini: syntax error near unexpected token `newline'
+mini: syntax error near unexpected token `newline'
+mini: syntax error near unexpected token `newline'
+mini: syntax error near unexpected token `newline'
+mini: syntax error near unexpected token `newline'
+mini: syntax error near unexpected token `newline'
+mini: syntax error near unexpected token `newline'
+mini: syntax error near unexpected token `newline'
+mini: syntax error near unexpected token `newline'
+mini: syntax error near unexpected token `newline'
+mini: syntax error near unexpected token `newline'
+mini: syntax error near unexpected token `newline'
+mini: syntax error near unexpected token `newline'
+mini: syntax error near unexpected token `newline'
+mini: syntax error near unexpected token `newline'
+mini: syntax error near unexpected token `newline'
+mini: syntax error near unexpected token `newline'
+mini: syntax error near unexpected token `newline'
+exit
+               [1;31m╭──────╮╭╮ ╭╮ ╭─╮╭╮ ╭╮ ╭╮ ╭─╮ ╭─╮ ╭───╮ ╭─╮   ╭─╮  
+[0m               [1;38;5;208m│ ╭╮╭╮ │ │ │  │ ╰╯│  │ │  │ ╰─╯ │ │ ─╮╯ │ │   │ │  
+[0m               [1;38;5;214m│ │╰╯│ │ │ │  │╭╮ │  │ │  │ ╭─╮ │ │ ─╯╮ │ ╰─╮ │ ╰─╮
+[0m               [1;38;5;226m╰─╯  ╰─╯╰╯ ╰╯ ╰╯╰─╯ ╰╯ ╰╯ ╰─╯ ╰─╯ ╰───╯ ╰───╯ ╰───╯
+[0m
+                [1;38;5;145m         ╭─────────────────────────────╮            [0m[1;38;5;145m
+                         │[0m[1;37m   By Descamil && Smarin-a   [0m[1;38;5;145m│            
+                [0m[1;38;5;145m         ╰─────────────────────────────╯            [0m
+[?2004h🐚[1;32m MINI(S)HELL[0m 🔥 -> 
+[?2004l[?2004h🐚[1;32m MINI(S)HELL[0m 🔥 -> 
+[?2004l[?2004h
+🐚[1;32m MINI(S)HELL[0m 🔥 -> 
+[?2004l[?2004h
+🐚[1;32m MINI(S)HELL[0m 🔥 -> 
+[?2004l[?2004h
+🐚[1;32m MINI(S)HELL[0m 🔥 -> 
+[?2004l[?2004h🐚[1;32m MINI(S)HELL[0m 🔥 -> 
+[?2004l[?2004h🐚[1;32m MINI(S)HELL[0m 🔥 -> 
+[?2004l[?2004h🐚[1;32m MINI(S)HELL[0m 🔥 -> 
+[?2004l
+[?2004h🐚[1;32m MINI(S)HELL[0m 🔥 -> 
+[?2004l
+[?2004h🐚[1;32m MINI(S)HELL[0m 🔥 -> 
+[?2004l[?2004h
+🐚[1;32m MINI(S)HELL[0m 🔥 -> 
+[?2004l[?2004h
+🐚[1;32m MINI(S)HELL[0m 🔥 -> 
+[?2004l[?2004h🐚[1;32m MINI(S)HELL[0m 🔥 -> 
+l
+s
+[?2004lls
+
+include
+libft
+ls
+Makefile
+minishell
+minishell.h
+minishell_objectscat
+
+s
+src
+[?2004h🐚[1;32m MINI(S)HELL[0m 🔥 -> cat
+[?2004lclearlsc
+
+[?2004h
+🐚[1;32m MINI(S)HELL[0m 🔥 -> 
+[?2004l
+exit
+ls | cat
+               [1;31m╭──────╮╭╮ ╭╮ ╭─╮╭╮ ╭╮ ╭╮ ╭─╮ ╭─╮ ╭───╮ ╭─╮   ╭─╮  
+[0m               [1;38;5;208m│ ╭╮╭╮ │ │ │  │ ╰╯│  │ │  │ ╰─╯ │ │ ─╮╯ │ │   │ │  
+[0m               [1;38;5;214m│ │╰╯│ │ │ │  │╭╮ │  │ │  │ ╭─╮ │ │ ─╯╮ │ ╰─╮ │ ╰─╮
+[0m               [1;38;5;226m╰─╯  ╰─╯╰╯ ╰╯ ╰╯╰─╯ ╰╯ ╰╯ ╰─╯ ╰─╯ ╰───╯ ╰───╯ ╰───╯
+[0m
+                [1;38;5;145m         ╭─────────────────────────────╮            [0m[1;38;5;145m
+                         │[0m[1;37m   By Descamil && Smarin-a   [0m[1;38;5;145m│            
+                [0m[1;38;5;145m         ╰─────────────────────────────╯            [0m
+[?2004h🐚[1;32m MINI(S)HELL[0m 🔥 -> ls
+ls[?2004l
+
+cat
+clear
+ls
+clear
+ls
+clear
+include
+libft
+ls
+Makefile
+ls
+minishell
+mi^C[?2004l
+🐚[1;32m MINI(S)HELL[0m 🔥 -> [?2004hls
+[?2004lcat
+include
+libft
+ls
+asd
+Makefile
+minishell
+minishell.h
+minishell_objects
+s
+src
+[?2004h🐚[1;32m MINI(S)HELL[0m 🔥 -> asd
+[?2004l[?2004h🐚[1;32m MINI(S)HELL[0m 🔥 -> 
+[?2004l[?2004h🐚[1;32m MINI(S)HELL[0m 🔥 -> 
+[?2004l[?2004h🐚[1;32m MINI(S)HELL[0m 🔥 -> 
+[?2004l[?2004h🐚[1;32m MINI(S)HELL[0m 🔥 -> 
+l
+s
+ls
+[?2004l[?2004hls
+asd
+cat
+ls
+ls > a
+include
+libft
+ls
+Makefile
+minishell
+minishell.h
+minishell_objects
+s
+src
+[?2004h🐚[1;32m MINI(S)HELL[0m
+[?2004h> 
+l
+s
+[?2004lls
+
+include
+libft
+Makefile
+minishell
+minishell.h
+minishell_objects
+src
+[?2004h> ^C[?2004l
+> [?2004h[?2004l
+exit
+[?2004h
+> 
+l
+s
+[?2004lls
+
+[?2004h[?2004l
+^C[?2004l
+include
+libft
+Makefile
+minishell
+minishell.h
+minishell_objects
+src
+[?2004h> 
+[?2004l[?2004h> 
+l
+[?2004l[?2004h> 
+[?2004l[?2004h> l
+[?2004l[?2004h> 
+[?2004l[?2004h> 
+[?2004l[?2004h> 
+[?2004l[?2004h
+> 
+[?2004l[?2004h> 
+[?2004l
+[?2004h> 
+[?2004l
+[?2004h> 
+[?2004l
+[?2004h> 
+[?2004l[?2004h> l
+s
+ls
+[?2004l[?2004h[?2004l
+^C[?2004l
+include
+l
+libft
+Makefile
+minishell
+minishell.h
+minishell_objects
+src
+[?2004h> 
+[?2004l[?2004h> 
+[?2004l[?2004h> 
+[?2004l[?2004h> 
+[?2004l[?2004h> c^C[?2004l
+> [?2004h^C[?2004l
+> [?2004h^C[?2004l
+> [?2004h[?2004l
+exit
+[?2004h> 
+l
+s
+ls
+[?2004l[?2004h[?2004l
+[?2004h^C[?2004l
+^C[?2004l
+c^C[?2004l
+include
+l
+libft
+Makefile
+minishell
+minishell.h
+minishell_objects
+src
+[?2004h> 
+[?2004l[?2004h> 
+[?2004l[?2004h> 
+[?2004l[?2004h> 
+[?2004l[?2004h> 
+[?2004l[?2004h> 
+[?2004l[?2004h> 
+[?2004l[?2004h> 
+[?2004l[?2004h> ll
+l
+l
+l
+l
+l
+l
+l
+s
+llllllllls
+[?2004l[?2004h> 
+l
+s
+[?2004lls
+
+[?2004h[?2004l
+[?2004h^C[?2004l
+^C[?2004l
+c^C[?2004l
+include
+l
+libft
+ll
+Makefile
+minishell
+minishell.h
+minishell_objects
+src
+[?2004h> 
+[?2004l[?2004h> 
+[?2004l[?2004h> 
+[?2004l[?2004h> 
+[?2004l[?2004h> 
+[?2004l[?2004h> 
+[?2004l[?2004h> lsll
+s
+l
+lsllsl
+[?2004l[?2004h> 
+l
+s
+[?2004lls
+
+[?2004h[?2004l
+[?2004h^C[?2004l
+^C[?2004l
+c^C[?2004l
+include
+l
+libftls
+
+ll
+lsll
+Makefile
+minishell
+minishell.h
+minishell_objects
+src
+[?2004h> ls
+[?2004l[?2004h[?2004l
+[?2004h^C[?2004l
+^C[?2004l
+c^C[?2004l
+include
+l
+libft
+ll
+lsll
+Makefile
+minishell
+minishell.h
+minishell_objects
+src
+[?2004h> 
+[?2004l[?2004h> 
+[?2004l[?2004h> 
+[?2004l[?2004h> 
+[?2004l[?2004h> 
+[?2004l[?2004h> 
+[?2004l[?2004h> 
+ls
+[?2004l[?2004h> 
+[?2004l[?2004h> 
+[?2004l[?2004h> 
+[?2004l[?2004h> 
+[?2004l[?2004h> 
+[?2004l[?2004h> ls
+[?2004l[?2004h[?2004l
+[?2004h^C[?2004l
+^C[?2004l
+c^C[?2004l
+include
+l
+libft
+ll
+ls
+lsll
+Makefile
+minishell
+minishell.h
+minishell_objects
+src
+[?2004h> 
+[?2004l[?2004h> 
+[?2004l[?2004h> 
+[?2004l[?2004h> 
+[?2004l[?2004h> 
+[?2004l[?2004h> 
+[?2004l[?2004h> 
+[?2004l[?2004h> 
+[?2004l[?2004h> ^C[?2004l
+> [?2004h^C[?2004l
+> [?2004h^C[?2004l
+> [?2004h^C[?2004l
+> [?2004h[?2004l
+exit
+               [1;31m╭──────╮╭╮ ╭╮ ╭─╮╭╮ ╭╮ ╭╮ ╭─╮ ╭─╮ ╭───╮ ╭─╮   ╭─╮  
+[0m               [1;38;5;208m│ ╭╮╭╮ │ │ │  │ ╰╯│  │ │  │ ╰─╯ │ │ ─╮╯ │ │   │ │  
+[0m               [1;38;5;214m│ │╰╯│ │ │ │  │╭╮ │  │ │  │ ╭─╮ │ │ ─╯╮ │ ╰─╮ │ ╰─╮
+[0m               [1;38;5;226m╰─╯  ╰─╯╰╯ ╰╯ ╰╯╰─╯ ╰╯ ╰╯ ╰─╯ ╰─╯ ╰───╯ ╰───╯ ╰───╯
+[0m
+                [1;38;5;145m         ╭─────────────────────────────╮            [0m[1;38;5;145m
+                         │[0m[1;37m   By Descamil && Smarin-a   [0m[1;38;5;145m│            
+                [0m[1;38;5;145m         ╰─────────────────────────────╯            [0m
+[?2004h🐚[1;32m MINI(S)HELL[0m 🔥 -> ls
+ls
+[?2004linclude
+libft
+ls
+Makefile
+minishell
+minishell.h
+minishell_objects
+src
+[?2004h🐚[1;32m MINI(S)HELL[0m 🔥 -> 
+[?2004l[?2004h🐚[1;32m MINI(S)HELL[0m 🔥 -> 
+[?2004l[?2004h🐚[1;32m MINI(S)HELL[0m 🔥 -> ^C[?2004l
+🐚[1;32m MINI(S)HELL[0m 🔥 -> [?2004h
+[?2004l[?2004h🐚[1;32m MINI(S)HELL[0m 🔥 -> 
+[?2004l[?2004h🐚[1;32m MINI(S)HELL[0m 🔥 -> 
+[?2004l[?2004h🐚[1;32m MINI(S)HELL[0m 🔥 -> 
+l
+s
+ls
+[?2004l[?2004h
+^C[?2004l
+include
+libft
+ls
+Makefile
+minishell
+minishell.h
+minishell_objects
+src
+[?2004h🐚[1;32m MINI(S)HELL[0m 🔥 -> ^C[?2004l
+🐚[1;32m MINI(S)HELL[0m 🔥 -> [?2004h^C[?2004l
+🐚[1;32m MINI(S)HELL[0m 🔥 -> [?2004h^C[?2004l
+🐚[1;32m MINI(S)HELL[0m 🔥 -> [?2004h^C[?2004l
+🐚[1;32m MINI(S)HELL[0m 🔥 -> [?2004h
+^C
+[?2004l
+🐚[1;32m MINI(S)HELL[0m 🔥 -> [?2004h
+^C
+[?2004l
+🐚[1;32m MINI(S)HELL[0m 🔥 -> [?2004h
+^C[?2004l
+🐚[1;32m MINI(S)HELL[0m 🔥 -> [?2004h
+^C[?2004l
+🐚[1;32m MINI(S)HELL[0m 🔥 -> [?2004h
+^C[?2004l
+🐚[1;32m MINI(S)HELL[0m 🔥 -> [?2004h
+^C[?2004l
+🐚[1;32m MINI(S)HELL[0m 🔥 -> [?2004h
+[H[2J🐚[1;32m MINI(S)HELL[0m 🔥 -> 
+s
+s
+[?2004l[?2004h
+🐚[1;32m MINI(S)HELL[0m 🔥 -> 
+s
+a
+d
+[?2004lsad
+
+[?2004h
+🐚[1;32m MINI(S)HELL[0m 🔥 -> 
+d
+s
+a
+dsa
+[?2004l[?2004h
+🐚[1;32m MINI(S)HELL[0m 🔥 -> 
+[?2004l[?2004h
+🐚[1;32m MINI(S)HELL[0m 🔥 -> 
+^C[?2004l
+🐚[1;32m MINI(S)HELL[0m 🔥 -> [?2004h
+^C[?2004l
+🐚[1;32m MINI(S)HELL[0m 🔥 -> [?2004h
+[?2004l
+exit
+               [1;31m╭──────╮╭╮ ╭╮ ╭─╮╭╮ ╭╮ ╭╮ ╭─╮ ╭─╮ ╭───╮ ╭─╮   ╭─╮  
+[0m               [1;38;5;208m│ ╭╮╭╮ │ │ │  │ ╰╯│  │ │  │ ╰─╯ │ │ ─╮╯ │ │   │ │  
+[0m               [1;38;5;214m│ │╰╯│ │ │ │  │╭╮ │  │ │  │ ╭─╮ │ │ ─╯╮ │ ╰─╮ │ ╰─╮
+[0m               [1;38;5;226m╰─╯  ╰─╯╰╯ ╰╯ ╰╯╰─╯ ╰╯ ╰╯ ╰─╯ ╰─╯ ╰───╯ ╰───╯ ╰───╯
+[0m
+                [1;38;5;145m         ╭─────────────────────────────╮            [0m[1;38;5;145m
+                         │[0m[1;37m   By Descamil && Smarin-a   [0m[1;38;5;145m│            
+                [0m[1;38;5;145m         ╰─────────────────────────────╯            [0m
+[?2004h🐚[1;32m MINI(S)HELL[0m 🔥 -> 
+[?2004l[?2004h🐚[1;32m MINI(S)HELL[0m 🔥 -> 
+[?2004l[?2004h
+🐚[1;32m MINI(S)HELL[0m 🔥 -> 
+[?2004l[?2004h
+🐚[1;32m MINI(S)HELL[0m 🔥 -> 
+[?2004l
+[?2004h🐚[1;32m MINI(S)HELL[0m 🔥 -> 
+[?2004l[?2004h🐚[1;32m MINI(S)HELL[0m 🔥 -> 
+l
+s
+ls
+[?2004l[?2004h
+[?2004h^C[?2004l
+^C[?2004l
+include
+libft
+ls
+Makefile
+minishell
+minishell.h
+minishell_objects
+srcs
+
+[?2004h🐚[1;32m MINI(S)HELL[0m 🔥 -> 
+[?2004l[?2004h🐚[1;32m MINI(S)HELL[0m 🔥 -> 
+[?2004l[?2004h🐚[1;32m MINI(S)HELL[0m 🔥 -> s
+[?2004l[?2004h🐚[1;32m MINI(S)HELL[0m 🔥 -> s
+s
+[?2004l[?2004h
+🐚[1;32m MINI(S)HELL[0m 🔥 -> 
+s
+s
+[?2004l[?2004h🐚[1;32m MINI(S)HELL[0m 🔥 -> 
+[?2004l[?2004h
+🐚[1;32m MINI(S)HELL[0m 🔥 -> 
+[?2004l[?2004h
+🐚[1;32m MINI(S)HELL[0m 🔥 -> 
+[?2004l[?2004h
+🐚[1;32m MINI(S)HELL[0m 🔥 -> 
+[?2004l[?2004h🐚[1;32m MINI(S)HELL[0m 🔥 -> 
+l
+s
+ls[?2004l
+
+[?2004h
+[?2004h^C[?2004l
+^C[?2004l
+include
+libft
+ls
+Makefile
+minishell
+minishell.h
+minishell_objectsclear
+
+s
+src
+[?2004h🐚[1;32m MINI(S)HELL[0m 🔥 -> clear
+[?2004l[H[2J[3J[?2004h🐚[1;32m MINI(S)HELL[0m 🔥 -> ^C[?2004l
+🐚[1;32m MINI(S)HELL[0m 🔥 -> [?2004h
+l
+s
+ls
+[?2004l
+[?2004h
+[?2004h^C[?2004l
+^C[?2004l
+clear
+include
+libft
+ls
+ls
+Makefile
+minishell
+minishell.h
+minishell_objects
+s
+src
+[?2004h🐚[1;32m MINI(S)HELL[0m 🔥 -> ls
+[?2004l[?2004h
+[?2004h^C[?2004l
+clear^C[?2004l
+
+clear
+include
+libft
+ls
+Makefile
+ls
+minishell
+minishell.h
+minishell_objects
+s
+src
+[?2004h🐚[1;32m MINI(S)HELL[0m 🔥 -> clear
+[?2004l[H[2J[3J[?2004h🐚[1;32m MINI(S)HELL[0m 🔥 -> ls
+[?2004l[?2004h
+[?2004h^C[?2004l
+^C[?2004l
+clearclear
+
+include
+libft
+ls
+Makefile
+minishell
+minishell.h
+minishell_objects
+s
+src
+[?2004h🐚[1;32m MINI(S)HELL[0m 🔥 -> clear
+[?2004l[H[2J[3J[?2004h🐚[1;32m MINI(S)HELL[0m 🔥 -> rm 
+^[[?2004h               .git/                   .minishell_history      Makefile                clear                   libft/                  minishell               minishell_objects/      src/                    
+^[[?2004h^C^[[?2004l^M  .gitignore              .vscode/                ^C^[[?2004l^M           include/                ls                      minishell.h             s                       
+🐚[1;32m MINI(S)HELL[0m 🔥 -> rm 
+^[[?2004h               .git/                   .minishell_history      Makefile                clear                   libft/                  minishell               minishell_objects/      s                       
+^[[?2004h^C^[[?2004l^M  .gitignore              .vscode/                ^C^[[?2004l^M           include/                ls                      minishell.h             rm                      src/                    
+🐚[1;32m MINI(S)HELL[0m 🔥 -> rm 
+^[[?2004h               .git/                   .minishell_history      Makefile                clear                   libft/                  minishell               minishell_objects/      s                       
+^[[?2004h^C^[[?2004l^M  .gitignore              .vscode/                ^C^[[?2004l^M           include/                ls                      minishell.h             rm                      src/                    
+🐚[1;32m MINI(S)HELL[0m 🔥 -> rm 
+^[[?2004h               .git/                   .minishell_history      Makefile                clear                   libft/                  minishell               minishell_objects/      s                       
+^[[?2004h^C^[[?2004l^M  .gitignore              .vscode/                ^C^[[?2004l^M           include/                ls                      minishell.h             rm                      src/                    
+🐚[1;32m MINI(S)HELL[0m 🔥 -> rm 
+^[[?2004h               .git/                   .minishell_history      Makefile                clear                   libft/                  minishell               minishell_objects/      s                       
+^[[?2004h^C^[[?2004l^M  .gitignore              .vscode/                ^C^[[?2004l^M           include/                ls                      minishell.h             rm                      src/                    
+🐚[1;32m MINI(S)HELL[0m 🔥 -> rm 
+^[[?2004h               .git/                   .minishell_history      Makefile                clear                   libft/                  minishell               minishell_objects/      s                       
+^[[?2004h^C^[[?2004l^M  .gitignore              .vscode/                ^C^[[?2004l^M           include/                ls                      minishell.h             rm                      src/                    
+🐚[1;32m MINI(S)HELL[0m 🔥 -> rm 
+^C
+[?2004l
+🐚[1;32m MINI(S)HELL[0m 🔥 -> [?2004h
+l
+s
+[?2004lls
+
+[?2004h
+include
+libft
+Makefile
+minishell
+minishell.h
+minishell_objects
+src
+[?2004h🐚[1;32m MINI(S)HELL[0m 🔥 -> ^C[?2004l
+🐚[1;32m MINI(S)HELL[0m 🔥 -> [?2004h[?2004l
+exit
+               [1;31m╭──────╮╭╮ ╭╮ ╭─╮╭╮ ╭╮ ╭╮ ╭─╮ ╭─╮ ╭───╮ ╭─╮   ╭─╮  
+[0m               [1;38;5;208m│ ╭╮╭╮ │ │ │  │ ╰╯│  │ │  │ ╰─╯ │ │ ─╮╯ │ │   │ │  
+[0m               [1;38;5;214m│ │╰╯│ │ │ │  │╭╮ │  │ │  │ ╭─╮ │ │ ─╯╮ │ ╰─╮ │ ╰─╮
+[0m               [1;38;5;226m╰─╯  ╰─╯╰╯ ╰╯ ╰╯╰─╯ ╰╯ ╰╯ ╰─╯ ╰─╯ ╰───╯ ╰───╯ ╰───╯
+[0m
+                [1;38;5;145m         ╭─────────────────────────────╮            [0m[1;38;5;145m
+                         │[0m[1;37m   By Descamil && Smarin-a   [0m[1;38;5;145m│            
+                [0m[1;38;5;145m         ╰─────────────────────────────╯            [0m
+[?2004h🐚[1;32m MINI(S)HELL[0m 🔥 -* ls
+[?2004lls
+
+[?2004h
+[?2004h[?2004l
+^C[?2004l
+include
+libft
+Makefile
+minishell
+minishell.h
+minishell_objects
+src
+[?2004h🐚[1;32m MINI(S)HELL[0m 🔥 -* 
+[?2004l[?2004h🐚[1;32m MINI(S)HELL[0m 🔥 -* 
+[?2004l[?2004h🐚[1;32m MINI(S)HELL[0m 🔥 -* 
+[?2004l[?2004h🐚[1;32m MINI(S)HELL[0m 🔥 -* 
+[?2004l[?2004h🐚[1;32m MINI(S)HELL[0m 🔥 -* 
+[?2004l[?2004h🐚[1;32m MINI(S)HELL[0m 🔥 -* 
+[?2004l[?2004h🐚[1;32m MINI(S)HELL[0m 🔥 -* 
+[?2004l[?2004h
+🐚[1;32m MINI(S)HELL[0m 🔥 -* 
+l
+s
+[?2004lls
+
+[?2004h
+[?2004h[?2004l
+^C[?2004l
+include
+libft
+Makefile
+minishell
+minishell.h
+minishell_objects
+clear
+src
+[?2004h🐚[1;32m MINI(S)HELL[0m 🔥 -* clear
+[?2004l[H[2J[3J[?2004h🐚[1;32m MINI(S)HELL[0m 🔥 -* 
+l
+s
+[?2004lls
+
+[?2004h
+[?2004h[?2004l
+^C[?2004l
+include
+libft
+Makefile
+minishell
+minishell.h
+minishell_objects
+src
+[?2004h🐚[1;32m MINI(S)HELL[0m 🔥 -* 
+[?2004l[?2004h🐚[1;32m MINI(S)HELL[0m 🔥 -* 
+[?2004l[?2004h🐚[1;32m MINI(S)HELL[0m 🔥 -* 
+[?2004l[?2004h🐚[1;32m MINI(S)HELL[0m 🔥 -* 
+[?2004l[?2004h🐚[1;32m MINI(S)HELL[0m 🔥 -* ^C[?2004l
+🐚[1;32m MINI(S)HELL[0m 🔥 -* [?2004h
+^C[?2004l
+🐚[1;32m MINI(S)HELL[0m 🔥 -* [?2004h
+[?2004l
+exit
+               [1;31m╭──────╮╭╮ ╭╮ ╭─╮╭╮ ╭╮ ╭╮ ╭─╮ ╭─╮ ╭───╮ ╭─╮   ╭─╮  
+[0m               [1;38;5;208m│ ╭╮╭╮ │ │ │  │ ╰╯│  │ │  │ ╰─╯ │ │ ─╮╯ │ │   │ │  
+[0m               [1;38;5;214m│ │╰╯│ │ │ │  │╭╮ │  │ │  │ ╭─╮ │ │ ─╯╮ │ ╰─╮ │ ╰─╮
+[0m               [1;38;5;226m╰─╯  ╰─╯╰╯ ╰╯ ╰╯╰─╯ ╰╯ ╰╯ ╰─╯ ╰─╯ ╰───╯ ╰───╯ ╰───╯
+[0m
+                [1;38;5;145m         ╭─────────────────────────────╮            [0m[1;38;5;145m
+                         │[0m[1;37m   By Descamil && Smarin-a   [0m[1;38;5;145m│            
+                [0m[1;38;5;145m         ╰─────────────────────────────╯            [0m
+[?2004hlsls
+
+[?2004l[?2004h
+[?2004h[?2004l
+^C[?2004l
+include
+libft
+Makefile
+minishell
+minishell.h
+clearminishell_objects
+
+src
+[?2004hclear
+[?2004l[H[2J[3J[?2004h[?2004l[?2004h
+l
+s
+[?2004lls
+
+[?2004h
+[?2004h[?2004l
+^C[?2004l
+include
+libft
+Makefile
+minishell
+minishell.h
+minishell_objects
+Csrc
+
+[?2004h[?2004l[?2004h[?2004l[?2004h[?2004l[?2004hC
+[?2004l[?2004h[?2004l
+[?2004h
+[?2004l[?2004h
+[?2004l[?2004h
+l
+s
+[?2004lls
+
+[?2004h
+[?2004h[?2004l
+^C[?2004l
+include
+libft
+Makefile
+minishell
+minishell.h
+clearminishell_objects
+
+src
+[?2004hclear
+[?2004l[H[2J[3J[?2004hc
+c
+l
+e
+a
+r
+[?2004lcclear
+
+[?2004h
+c
+l
+e
+a
+r
+[?2004lclear
+
+[H[2J[3J
+[?2004h
+l
+s
+^C[?2004l
+[?2004h^C
+[?2004l
+[?2004h[?2004l
+exit
+               m╭──────╮╭╮ ╭╮ ╭─╮╭╮ ╭╮ ╭╮ ╭─╮ ╭─╮ ╭───╮ ╭─╮   ╭─╮  
+m               ;5;208m│ ╭╮╭╮ │ │ │  │ ╰╯│  │ │  │ ╰─╯ │ │ ─╮╯ │ │   │ │  
+m               ;5;214m│ │╰╯│ │ │ │  │╭╮ │  │ │  │ ╭─╮ │ │ ─╯╮ │ ╰─╮ │ ╰─╮
+m               ;5;226m╰─╯  ╰─╯╰╯ ╰╯ ╰╯╰─╯ ╰╯ ╰╯ ╰─╯ ╰─╯ ╰───╯ ╰───╯ ╰───╯
+m
+                ;5;145m         ╭─────────────────────────────╮            m;5;145m
+                         │mm   By Descamil && Smarin-a   m;5;145m│            
+                m;5;145m         ╰─────────────────────────────╯            m
+ls2004h🐚m MINI(S)HELLm 🔥 -> ls
+
+2004l
+include
+libft
+ls
+Makefile
+minishell
+minishell.h
+minishell_objects
+src
+clear
+2004h🐚m MINI(S)HELLm 🔥 -> clear
+2004l
+2004h🐚m MINI(S)HELLm 🔥 -> 
+2004l
+2004h🐚m MINI(S)HELLm 🔥 -> 
+2004l
+2004h🐚m MINI(S)HELLm 🔥 -> 
+2004l
+ls
+2004h🐚m MINI(S)HELLm 🔥 -> ls
+2004l
+clear
+include
+libft
+ls
+Makefile
+minishell
+minishell.h
+minishell_objects
+src
+clear2004h🐚m MINI(S)HELLm 🔥 -> clear
+
+2004l
+2004h🐚m MINI(S)HELLm 🔥 -> 
+2004l
+< clearclear2004h🐚m MINI(S)HELLm 🔥 -> < lear
+
+               m╭──────╮╭╮ ╭╮ ╭─╮╭╮ ╭╮ ╭╮ ╭─╮ ╭─╮ ╭───╮ ╭─╮   ╭─╮  
+m               ;5;208m│ ╭╮╭╮ │ │ │  │ ╰╯│  │ │  │ ╰─╯ │ │ ─╮╯ │ │   │ │  
+m               ;5;214m│ │╰╯│ │ │ │  │╭╮ │  │ │  │ ╭─╮ │ │ ─╯╮ │ ╰─╮ │ ╰─╮
+m               ;5;226m╰─╯  ╰─╯╰╯ ╰╯ ╰╯╰─╯ ╰╯ ╰╯ ╰─╯ ╰─╯ ╰───╯ ╰───╯ ╰───╯
+m
+                ;5;145m         ╭─────────────────────────────╮            m;5;145m
+                         │mm   By Descamil && Smarin-a   m;5;145m│            
+                m;5;145m         ╰─────────────────────────────╯            m
+ls2004h🐚m MINI(S)HELLm 🔥 -- ls
+
+2004l
+clear
+include
+libft
+ls
+Makefile
+minishell
+minishell.h
+minishell_objects
+src
+2004h🐚m MINI(S)HELLm 🔥 -- 2004l
+exit
+               m╭──────╮╭╮ ╭╮ ╭─╮╭╮ ╭╮ ╭╮ ╭─╮ ╭─╮ ╭───╮ ╭─╮   ╭─╮  
+m               ;5;208m│ ╭╮╭╮ │ │ │  │ ╰╯│  │ │  │ ╰─╯ │ │ ─╮╯ │ │   │ │  
+m               ;5;214m│ │╰╯│ │ │ │  │╭╮ │  │ │  │ ╭─╮ │ │ ─╯╮ │ ╰─╮ │ ╰─╮
+m               ;5;226m╰─╯  ╰─╯╰╯ ╰╯ ╰╯╰─╯ ╰╯ ╰╯ ╰─╯ ╰─╯ ╰───╯ ╰───╯ ╰───╯
+m
+                ;5;145m         ╭─────────────────────────────╮            m;5;145m
+                         │mm   By Descamil && Smarin-a   m;5;145m│            
+                m;5;145m         ╰─────────────────────────────╯            m
+ls2004hls
+
+2004l
+clear
+include
+libft
+ls
+Makefile
+minishell
+minishell.h
+minishell_objects
+src
+clear2004hclear
+
+2004l
+rm clear2004hrm clear
+
+2004l
+2004hr
+2004l
+rm ls
+2004hrm ls
+2004l
+^C2004l
+2004ha
+2004l
+exit
+               m╭──────╮╭╮ ╭╮ ╭─╮╭╮ ╭╮ ╭╮ ╭─╮ ╭─╮ ╭───╮ ╭─╮   ╭─╮  
+m               ;5;208m│ ╭╮╭╮ │ │ │  │ ╰╯│  │ │  │ ╰─╯ │ │ ─╮╯ │ │   │ │  
+m               ;5;214m│ │╰╯│ │ │ │  │╭╮ │  │ │  │ ╭─╮ │ │ ─╯╮ │ ╰─╮ │ ╰─╮
+m               ;5;226m╰─╯  ╰─╯╰╯ ╰╯ ╰╯╰─╯ ╰╯ ╰╯ ╰─╯ ╰─╯ ╰───╯ ╰───╯ ╰───╯
+m
+                ;5;145m         ╭─────────────────────────────╮            m;5;145m
+                         │mm   By Descamil && Smarin-a   m;5;145m│            
+                m;5;145m         ╰─────────────────────────────╯            m
+^C2004l
+2004h2004l
+exit
+               m╭──────╮╭╮ ╭╮ ╭─╮╭╮ ╭╮ ╭╮ ╭─╮ ╭─╮ ╭───╮ ╭─╮   ╭─╮  
+m               ;5;208m│ ╭╮╭╮ │ │ │  │ ╰╯│  │ │  │ ╰─╯ │ │ ─╮╯ │ │   │ │  
+m               ;5;214m│ │╰╯│ │ │ │  │╭╮ │  │ │  │ ╭─╮ │ │ ─╯╮ │ ╰─╮ │ ╰─╮
+m               ;5;226m╰─╯  ╰─╯╰╯ ╰╯ ╰╯╰─╯ ╰╯ ╰╯ ╰─╯ ╰─╯ ╰───╯ ╰───╯ ╰───╯
+m
+                ;5;145m         ╭─────────────────────────────╮            m;5;145m
+                         │mm   By Descamil && Smarin-a   m;5;145m│            
+                m;5;145m         ╰─────────────────────────────╯            m
+2004h2004l
+exit
+ls2004hls
+
+2004l
+include
+libft
+Makefile
+minishell
+minishell.h
+minishell_objects
+src
+clear
+2004hclear
+2004l
+ls2004hls
+
+2004l
+include
+libft
+Makefile
+minishell
+minishell.h
+minishell_objects
+src
+^C2004l
+<<2004h<<
+
+2004l
+mini: syntax error near unexpected token `newline'
+ls2004hls
+
+2004l
+include
+libft
+Makefile
+minishell
+minishell.h
+minishell_objects
+src
+<2004h<
+
+2004l
+mini: syntax error near unexpected token `newline'
+clear2004hclear
+
+2004l
+clear2004hclear
+
+2004l
+^C2004l
+^C2004l
+2004h2004l
+exit
+ls
+2004hls
+2004l
+include
+libft
+Makefile
+minishell
+minishell.h
+minishell_objects
+src
+^C2004l
+2004h2004l
+exit
+^C2004l
+2004h2004l
+exit
+ls
+2004hls
+2004l
+include
+libft
+Makefile
+minishell
+minishell.h
+minishell_objects
+src
+ls2004hls
+
+2004l
+include
+libft
+Makefile
+minishell
+minishell.h
+minishell_objects
+src
+^C2004l
+2004h2004l
+exit
+2004h2004l
+exit
+MINI(S)HELL --> 2004h2004l
+exit
+lsMINI(S)HELL --> 2004hls
+
+2004l
+2004h2004l
+2004hls
+include
+libft
+Makefile
+minishell
+minishell.h
+minishell_objects
+src
+^C2004l
+2004h2004l
+exit
+ls
+MINI(S)HELL --> 2004hls
+2004l
+2004h2004l
+2004hls
+include
+libft
+Makefile
+minishell
+minishell.h
+minishell_objects
+src
+^C2004l
+2004h2004l
+exit
+MINI(S)HELL --> 2004h2004l
+exit
+^C2004l
+2004h2004l
+exit
+^C2004l
+2004h2004l
+exit
+MINI(S)HELL --> 2004h2004l
+exit
+lsMINI(S)HELL --> 2004hls
+
+2004l
+2004h2004l
+2004hls
+include
+libft
+Makefile
+minishell
+minishell.h
+minishell_objects
+src
+MINI(S)HELL --> 2004h2004l
+exit
+^C2004l
+2004h2004l
+exit
+ls2004hls
+
+2004l
+include
+libft
+Makefile
+minishell
+minishell.h
+minishell_objects
+src
+2004h2004l
+2004h2004l
+2004h2004l
+2004h2004l
+2004h2004l
+ls2004hls
+
+2004l
+include
+libft
+Makefile
+minishell
+minishell.h
+minishell_objects
+src
+^C2004l
+2004h2004l
+exit
+include
+libft
+Makefile
+minishell
+minishell.h
+minishell_objects
+src
+ls
+2004hls
+2004l
+include
+libft
+Makefile
+minishell
+minishell.h
+minishell_objects
+src
+2004h2004l
+exit
+ls2004hls
+
+2004l
+include
+libft
+Makefile
+minishell
+minishell.h
+minishell_objects
+src
+^C2004l
+^C2004l
+2004h2004l
+exit
+ls
+2004hls
+2004l
+include
+libft
+Makefile
+minishell
+minishell.h
+minishell_objects
+src
+^C2004l
+2004h2004l
+exit
+ls
+2004hls
+2004l
+include
+libft
+Makefile
+minishell
+minishell.h
+minishell_objects
+src
+clear2004hclear
+
+2004l
+ clear2004h clear
+
+2004l
+2004h 
+clearclear
+
+2004l
+2004h 
+ls
+ls
+2004l
+include
+libft
+Makefile
+minishell
+minishell.h
+minishell_objects
+src
+2004hc
+2004l
+2004h2004l
+2004hd
+d
+clearclear
+
+2004l
+2004hd
+ls
+ls
+2004l
+include
+libft
+Makefile
+minishell
+minishell.h
+minishell_objects
+src
+ | ls
+2004h | ls
+2004l
+include
+libft
+Makefile
+minishell
+minishell.h
+minishell_objects
+src
+include
+libft
+Makefile
+minishell
+minishell.h
+minishell_objects
+src
+include
+libft
+Makefile
+minishell
+minishell.h
+minishell_objects
+src
+include
+libft
+Makefile
+minishell
+minishell.h
+minishell_objects
+src
+include
+libft
+Makefile
+minishell
+minishell.h
+minishell_objects
+src
+include
+libft
+Makefile
+minishell
+minishell.h
+minishell_objects
+src
+include
+libft
+Makefile
+minishell
+minishell.h
+minishell_objects
+src
+ls
+include
+libft
+l
+ls
+Makefile
+minishell
+clear
+minishell.h
+ls
+minishell_objects
+src
+ls
+include
+libft
+ls
+Makefile
+minishell
+ls
+minishell.h
+minishell_objects
+src
+[H[2J[3Jinclude
+libft
+Makefile
+minishell
+minishell.h
+minishell_objects
+src
+include
+libft
+Makefile
+minishell
+minishell.h
+minishell_objects
+src
+include
+libft
+Makefile
+minishell
+minishell.h
+minishell_objects
+src
+include
+libft
+Makefile
+minishell
+minishell.h
+minishell_objects
+src
+ls
+include
+libft
+ls
+Makefile
+minishell
+minishell.h
+minishell_objects
+src
+include
+libft
+Makefile
+minishell
+minishell.h
+minishell_objects
+src
+ls
+include
+libft
+Makefile
+minishell
+minishell.h
+minishell_objects
+src
+c
+ls
+include
+libft
+Makefile
+minishell
+minishell.h
+minishell_objects
+src
+<<
+<
+ls
+mini: syntax error near unexpected token `newline'
+mini: syntax error near unexpected token `newline'
+include
+libft
+ls
+Makefile
+minishell
+minishell.h
+minishell_objects
+src
+> 
+[
+mini: syntax error near unexpected token `newline'
+mini: syntax error near unexpected token `newline'
+include
+libft
+Makefile
+minishell
+minishell.h
+minishell_objects
+[A[A
+src
+mini: syntax error near unexpected token `newline'
+mini: syntax error near unexpected token `newline'
+mini: syntax error near unexpected token `newline'
+mini: syntax error near unexpected token `newline'
+mini: syntax error near unexpected token `newline'
+mini: syntax error near unexpected token `newline'
+mini: syntax error near unexpected token `newline'
+[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A
+mini: syntax error near unexpected token `newline'
+mini: syntax error near unexpected token `newline'
+mini: syntax error near unexpected token `newline'
+mini: syntax error near unexpected token `newline'
+mini: syntax error near unexpected token `newline'
+mini: syntax error near unexpected token `newline'
+mini: syntax error near unexpected token `newline'
+mini: syntax error near unexpected token `newline'
+ls
+mini: syntax error near unexpected token `newline'
+mini: syntax error near unexpected token `newline'
+mini: syntax error near unexpected token `newline'
+mini: syntax error near unexpected token `newline'
+mini: syntax error near unexpected token `newline'
+mini: syntax error near unexpected token `newline'
+clear
+include
+libft
+Makefile
+minishell
+ls
+minishell.h
+minishell_objects
+src
+mini: syntax error near unexpected token `newline'
+mini: syntax error near unexpected token `newline'
+mini: syntax error near unexpected token `newline'
+cleara
+[H[2J[3Jmini: syntax error near unexpected token `newline'
+mini: syntax error near unexpected token `newline'
+mini: syntax error near unexpected token `newline'
+include
+libft
+Makefile
+minishell
+minishell.h
+llsl
+minishell_objects
+src
+mini: syntax error near unexpected token `newline'
+mini: syntax error near unexpected token `newline'
+mini: syntax error near unexpected token `newline'
+mini: syntax error near unexpected token `newline'
+mini: syntax error near unexpected token `newline'
+mini: syntax error near unexpected token `newline'
+sllslsl
+mini: syntax error near unexpected token `newline'
+mini: syntax error near unexpected token `newline'
+mini: syntax error near unexpected token `newline'
+mini: syntax error near unexpected token `newline'
+mini: syntax error near unexpected token `newline'
+mini: syntax error near unexpected token `newline'
+mini: syntax error near unexpected token `newline'
+mini: syntax error near unexpected token `newline'
+ls Z 
+mini: syntax error near unexpected token `newline'
+mini: syntax error near unexpected token `newline'
+mini: syntax error near unexpected token `newline'
+mini: syntax error near unexpected token `newline'
+ls
+mini: syntax error near unexpected token `newline'
+mini: syntax error near unexpected token `newline'
+mini: syntax error near unexpected token `newline'
+mini: syntax error near unexpected token `newline'
+mini: syntax error near unexpected token `newline'
+mini: syntax error near unexpected token `newline'
+clear
+include
+libft
+Makefile
+minishell
+cler
+minishell.h
+minishell_objects
+src
+mini: syntax error near unexpected token `newline'
+mini: syntax error near unexpected token `newline'
+mini: syntax error near unexpected token `newline'
+[H[2J[3Jmini: syntax error near unexpected token `newline'
+mini: syntax error near unexpected token `newline'
+ls
+mini: syntax error near unexpected token `newline'
+mini: syntax error near unexpected token `newline'
+mini: syntax error near unexpected token `newline'
+mini: syntax error near unexpected token `newline'
+mini: syntax error near unexpected token `newline'
+mini: syntax error near unexpected token `newline'
+mini: syntax error near unexpected token `newline'
+include
+libft
+Makefile
+minishell
+minishell.h
+minishell_objects
+src
+mini: syntax error near unexpected token `newline'
+mini: syntax error near unexpected token `newline'
+mini: syntax error near unexpected token `newline'
+include
+libft
+Makefile
+minishell
+minishell.h
+minishell_objects
+src
+ls
+clear
+ls
+make
+make re
+<<a
+<<a <<a
+<<a <<a <<a
+<<a <<a <<a
+<<a <<a <<a| << a
+<<a <<a <<a| << a

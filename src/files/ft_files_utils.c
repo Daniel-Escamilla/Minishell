@@ -6,7 +6,7 @@
 /*   By: descamil <descamil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/03 08:59:47 by descamil          #+#    #+#             */
-/*   Updated: 2024/09/21 12:27:27 by descamil         ###   ########.fr       */
+/*   Updated: 2024/11/24 16:40:49 by descamil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ void	ft_move_files(t_cmd *cmd, t_mini *mini)
 	cmd->files = ft_calloc(sizeof(t_files), 1);
 	cmd->files->error = 0;
 	if (mini->flags->redirect && mini->flags->redirect->number != 0)
-		ft_files(cmd, mini, cmd->files);
+		ft_files(cmd, mini);
 }
 
 void	ft_remove_files(t_cmd *cmd, t_mini *mini)

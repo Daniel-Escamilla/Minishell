@@ -6,7 +6,7 @@
 /*   By: descamil <descamil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/03 09:30:16 by descamil          #+#    #+#             */
-/*   Updated: 2024/10/24 11:33:20 by descamil         ###   ########.fr       */
+/*   Updated: 2024/11/24 12:59:26 by descamil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ char	**ft_sindub_join(char **str, char *str1)
 	int		len;
 	int		i;
 
-	i = (int)-1;
+	i = -1;
 	if (str == NULL)
 		len = 0;
 	len = ft_strstr_len(str);

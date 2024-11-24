@@ -6,7 +6,7 @@
 /*   By: descamil <descamil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/05 17:24:29 by descamil          #+#    #+#             */
-/*   Updated: 2024/10/04 23:29:42 by descamil         ###   ########.fr       */
+/*   Updated: 2024/11/24 16:45:51 by descamil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,7 @@ char	**ft_order(t_cmd *cmd, t_mini *mini)
 		return (NULL);
 	if (ft_check_dups(cmd) == -1)
 	{
-		mini->cmd->files->error = -1;
+		ft_strstr_free(order);
 		return (NULL);
 	}
 	if (cmd->args)

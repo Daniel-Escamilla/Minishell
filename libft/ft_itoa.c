@@ -6,7 +6,7 @@
 /*   By: descamil <descamil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 18:00:29 by sergio            #+#    #+#             */
-/*   Updated: 2024/10/22 12:19:24 by descamil         ###   ########.fr       */
+/*   Updated: 2024/11/24 16:49:16 by descamil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ char	*ft_min(void)
 {
 	char	*arr;
 
-	arr = (char *)malloc(12);
+	arr = (char *)ft_calloc(12, 1);
 	if (arr == NULL)
 		return (NULL);
 	ft_strlcpy(arr, "-2147483648", 12);
@@ -27,7 +27,7 @@ char	*ft_ifzero(void)
 {
 	char	*arr;
 
-	arr = (char *)malloc(2);
+	arr = (char *)ft_calloc(2, 1);
 	if (arr == NULL)
 		return (NULL);
 	ft_strlcpy(arr, "0", 2);

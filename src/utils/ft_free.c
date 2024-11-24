@@ -6,7 +6,7 @@
 /*   By: descamil <descamil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 16:27:49 by user              #+#    #+#             */
-/*   Updated: 2024/11/23 18:43:26 by descamil         ###   ########.fr       */
+/*   Updated: 2024/11/24 17:12:36 by descamil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,8 +45,7 @@ void	free_t_cmd(t_cmd **cmd)
 			ft_free_dou(current->files,
 				current->files->f_order, current->files->order);
 		if (current->type)
-			ft_free_sim(current->type,
-				current->type->in, current->type->out);
+			ft_free_sim(current->type, current->type->in, current->type->out);
 		if (current->names)
 			free(current->names);
 		free(current->cmd);

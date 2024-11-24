@@ -6,7 +6,7 @@
 /*   By: descamil <descamil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/10 20:39:20 by descamil          #+#    #+#             */
-/*   Updated: 2024/11/10 20:40:46 by descamil         ###   ########.fr       */
+/*   Updated: 2024/11/24 16:12:05 by descamil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,7 @@ void	ft_write_here_doc(t_mini *mini, t_cmd *current, char **env, int i)
 	fd = fd_open(mini, current, file, i);
 	ft_write_fd(env, current->files->f_order[i], fd, quotes);
 	close(fd);
-	if (current->files->order[i + 1] != NULL)
+	if (ft_more(current, i, 3) != 1 || ft_more(current, i, 1) != 0)
 		unlink(file);
 	free(file);
 }

@@ -6,7 +6,7 @@
 /*   By: descamil <descamil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/09 11:03:10 by descamil          #+#    #+#             */
-/*   Updated: 2024/11/20 17:29:25 by descamil         ###   ########.fr       */
+/*   Updated: 2024/11/24 16:43:43 by descamil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,12 +49,17 @@ static int	ft_pos_files(t_cmd *cmd, int i)
 	return (0);
 }
 
-void	ft_files(t_cmd *cmd, t_mini *mini, t_files *files)
+void	ft_files(t_cmd *cmd, t_mini *mini)
 {
 	if (mini->flags->redirect && mini->flags->redirect->number > 0)
-		files->order = ft_order(cmd, mini);
+		cmd->files->order = ft_order(cmd, mini);
+	if (cmd->files->order == NULL)
+		mini->cmd->files->error = -1;
 	if (mini->cmd->files->error == -1)
+	{
+		mini->error = -2;
 		return ;
+	}
 	if (cmd->args)
 	{
 		if (ft_mem_files(mini, cmd) == -1)
@@ -66,7 +71,6 @@ void	ft_files(t_cmd *cmd, t_mini *mini, t_files *files)
 		{
 			mini->error = -2;
 			mini->cmd->files->error = -1;
-			return ;
 		}
 	}
 }

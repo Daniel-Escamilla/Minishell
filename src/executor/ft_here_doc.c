@@ -6,7 +6,7 @@
 /*   By: descamil <descamil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/03 09:32:44 by descamil          #+#    #+#             */
-/*   Updated: 2024/11/24 10:30:38 by descamil         ###   ########.fr       */
+/*   Updated: 2024/11/24 16:19:28 by descamil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,8 +80,7 @@ static void	ft_create_files(t_mini *mini, t_cmd *cmd)
 		i = -1;
 		while (current->files->order && current->files->order[++i])
 		{
-			if (ft_atoi(current->files->order[i]) == 3
-				&& (current->files->order[i + 1] == NULL))
+			if (ft_atoi(current->files->order[i]) == 3)
 			{
 				file = ft_create_filename(mini->files, 1);
 				if (mini->files != NULL)
@@ -101,6 +100,7 @@ int	ft_here_doc(t_mini *mini, t_cmd *cmd, char **env)
 	int		status;
 
 	ft_create_files(mini, cmd);
+	ft_strstr_printf(mini->files);
 	pid = fork();
 	if (pid == -1)
 		ft_perror_exit("Error in Fork", 1);
@@ -111,12 +111,9 @@ int	ft_here_doc(t_mini *mini, t_cmd *cmd, char **env)
 		ft_do_here_doc(mini, cmd, env);
 		exit(0);
 	}
-	else
-		waitpid(pid, &status, 0);
-	if (mini->files != NULL && g_exit_status == 130)
-	{
-		ft_unlink_hd(mini);
-		return (1);
-	}
-	return (0);
+	waitpid(pid, &status, 0);
+	if (mini->files == NULL || g_exit_status != 130)
+		return (0);
+	ft_unlink_hd(mini);
+	return (1);
 }

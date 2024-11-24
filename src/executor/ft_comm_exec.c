@@ -6,7 +6,7 @@
 /*   By: descamil <descamil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/15 21:11:38 by user              #+#    #+#             */
-/*   Updated: 2024/11/24 11:26:32 by descamil         ###   ########.fr       */
+/*   Updated: 2024/11/24 12:39:45 by descamil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,12 +59,12 @@ static void	ft_protect_close_in_out(t_cmd *cmd)
 {
 	if (cmd->names->fd_infile > 2)
 	{
-		close(cmd->names->fd_infile);
+		safe_close(&cmd->names->fd_infile);
 		cmd->names->fd_infile = -1;
 	}
 	if (cmd->names->fd_outfile > 2)
 	{
-		close(cmd->names->fd_outfile);
+		safe_close(&cmd->names->fd_outfile);
 		cmd->names->fd_outfile = -1;
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: descamil <descamil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/14 11:24:41 by smarin-a          #+#    #+#             */
-/*   Updated: 2024/11/23 16:14:47 by descamil         ###   ########.fr       */
+/*   Updated: 2024/11/24 12:00:03 by descamil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,15 @@ void	ft_strstr_printf(char **str)
 
 void	safe_close(int *fd)
 {
+	int	fd_dup;
+
 	if (*fd > 2)
-		close(*fd);
+	{
+		fd_dup = dup(*fd);
+		if (fd_dup != -1)
+		{
+			close(*fd);
+			close(fd_dup);
+		}
+	}
 }

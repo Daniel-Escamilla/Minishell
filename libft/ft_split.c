@@ -6,7 +6,7 @@
 /*   By: descamil <descamil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 17:27:11 by sergio            #+#    #+#             */
-/*   Updated: 2024/06/27 18:42:35 by descamil         ###   ########.fr       */
+/*   Updated: 2024/11/24 16:59:24 by descamil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ char	*ft_strlcpy_mod(char *s, char c, int *new_start, int size)
 
 	j = 0;
 	start = *new_start;
-	ptr = (char *)malloc(size + 1);
+	ptr = (char *)ft_calloc(size + 1, 1);
 	if (ptr == NULL)
 		return (NULL);
 	while (s[start] == c && s[start] != '\0')
@@ -88,7 +88,7 @@ char	**ft_split(const char *s, char c)
 	i = 0;
 	a = 0;
 	len_mod = 0;
-	arr = (char **)malloc((ft_words(s, c) + 1) * sizeof(char *));
+	arr = (char **)ft_calloc((ft_words(s, c) + 1), sizeof(char *));
 	if (arr == NULL)
 		return (NULL);
 	while (a < ft_words(s, c))
