@@ -6,7 +6,7 @@
 /*   By: descamil <descamil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/05 12:53:31 by descamil          #+#    #+#             */
-/*   Updated: 2024/11/07 14:54:54 by descamil         ###   ########.fr       */
+/*   Updated: 2024/11/24 10:29:53 by descamil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ static int	ft_is_a_flag(char *flag)
 	return (2);
 }
 
-static void	ft_write_args(char **args)
+static void	ft_write_args(t_cmd *cmd, char **args)
 {
 	int	flag;
 	int	i;
@@ -38,10 +38,10 @@ static void	ft_write_args(char **args)
 		if (flag != 2)
 			flag = ft_is_a_flag(args[i]);
 		if (flag != 1)
-			printf("%s", args[i]);
+			write(cmd->names->fd_outfile, args[i], ft_strlen(args[i]));
 		i++;
 		if (args[i] != NULL && flag != 1)
-			printf(" ");
+			write(cmd->names->fd_outfile, " ", 1);
 	}
 }
 
@@ -50,10 +50,13 @@ int	ft_echo(t_cmd *cmd)
 	int	flag;
 
 	if (ft_strstr_len(cmd->args) == 1)
+	{
+		write(cmd->names->fd_outfile, "\n", 1);
 		return (0);
+	}
 	flag = ft_is_a_flag(cmd->args[1]);
-	ft_write_args(cmd->args);
+	ft_write_args(cmd, cmd->args);
 	if (flag != 1)
-		printf("\n");
+		write(cmd->names->fd_outfile, "\n", 1);
 	return (0);
 }

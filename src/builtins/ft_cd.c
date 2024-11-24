@@ -6,7 +6,7 @@
 /*   By: descamil <descamil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/30 12:00:46 by user              #+#    #+#             */
-/*   Updated: 2024/11/23 11:44:22 by descamil         ###   ########.fr       */
+/*   Updated: 2024/11/24 10:25:47 by descamil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,7 +102,7 @@ int	ft_cd(t_mini *mini, t_cmd *cmd)
 	char	*rute;
 
 	if (ft_strstr_len(cmd->args) >= 3)
-		return (write(2, "bash: cd: too many arguments\n", 30) - 29);
+		return ((int)write(2, "bash: cd: too many arguments\n", 30) - 29);
 	rute = ft_prepare_path(mini, cmd);
 	if (rute == NULL)
 		return (1);

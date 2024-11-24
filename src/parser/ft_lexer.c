@@ -6,7 +6,7 @@
 /*   By: descamil <descamil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/14 15:50:54 by smarin-a          #+#    #+#             */
-/*   Updated: 2024/11/23 18:55:46 by descamil         ###   ########.fr       */
+/*   Updated: 2024/11/24 11:29:42 by descamil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,7 +93,7 @@ void	ft_unlink_hd(t_mini *mini)
 	}
 }
 
-char	*ft_tty(void)
+static char	*ft_tty(void)
 {
 	char	*input;
 	char	*input2;

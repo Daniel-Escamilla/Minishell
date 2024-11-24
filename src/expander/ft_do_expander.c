@@ -6,7 +6,7 @@
 /*   By: descamil <descamil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/03 11:25:51 by descamil          #+#    #+#             */
-/*   Updated: 2024/10/24 11:57:05 by descamil         ###   ########.fr       */
+/*   Updated: 2024/11/24 10:25:55 by descamil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ static char	**ft_str_expander(t_mini *mini, char **args)
 	return (result);
 }
 
-void	ft_expand_files(t_mini *mini, t_files **files)
+static void	ft_expand_files(t_mini *mini, t_files **files)
 {
 	char	**tmp;
 	int		i;
