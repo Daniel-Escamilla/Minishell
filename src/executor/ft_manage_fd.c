@@ -6,7 +6,7 @@
 /*   By: descamil <descamil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/21 11:25:25 by user              #+#    #+#             */
-/*   Updated: 2024/11/24 16:07:30 by descamil         ###   ########.fr       */
+/*   Updated: 2024/11/27 16:44:30 by descamil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,8 +52,7 @@ void	ft_close_and_update_fds(t_mini *mini, t_cmd *cmd, char who)
 			safe_close(&mini->fd_tmp);
 			mini->fd_tmp = mini->fd_pipe[0];
 		}
-		if (cmd->names->fd_infile != mini->fd_tmp
-			&& mini->fd_tmp != mini->fd_pipe[0])
+		if (cmd->names->fd_infile != mini->fd_tmp)
 			safe_close(&cmd->names->fd_infile);
 		safe_close(&cmd->names->fd_outfile);
 	}

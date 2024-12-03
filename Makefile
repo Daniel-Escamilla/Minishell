@@ -21,7 +21,9 @@ NAME = minishell
 # Compilador a utilizar (gcc, clang, etc)
 CC = gcc
 # Flags de compilacion (agregar los que se necesiten) -O2 para pruebas extra
-CFLAGS = -g3 -Wall -Wextra -Werror# -Wpedantic -Wshadow -Wformat -Wnull-dereference -Wconversion -Wstrict-overflow -Wsign-conversion -Wimplicit-fallthrough=5 -Wdouble-promotion -Wvla -Wformat-security -Wcast-align=strict -Wredundant-decls -Wlogical-op -Wstrict-prototypes -Wmissing-prototypes -Wmissing-declarations -Winit-self -Wuninitialized -Wbad-function-cast -Wmissing-field-initializers
+CFLAGS = -g -Wall -Wextra -Werror -pedantic# -Wpedantic -Wshadow -Wformat -Wnull-dereference -Wconversion -Wstrict-overflow -Wsign-conversion -Wimplicit-fallthrough=5 -Wdouble-promotion -Wvla -Wformat-security -Wcast-align=strict -Wredundant-decls -Wlogical-op -Wstrict-prototypes -Wmissing-prototypes -Wmissing-declarations -Winit-self -Wuninitialized -Wbad-function-cast -Wmissing-field-initializers
+
+LDFLAGS += -Xlinker -Map=output.map
 
 # Incluir archivos de dependencia
 -include $(OBJS:.o=.d)
@@ -181,7 +183,7 @@ $(NAME): $(addprefix $(OBJDIR)/, $(OBJS))
 # La regla %.o compila los archivos objeto
 $(OBJDIR)/%.o: %.c | $(OBJDIR)
 	@mkdir -p $(@D)
-	$(CC) $(CFLAGS) -MMD -c $< -o $@
+	$(CC) $(CFLAGS) -c $< -o $@
 	@$(eval LAST_MAKE_HAD_COMPILATION := 1)
 
 # La regla $(OBJDIR) crea el directorio de los archivos objeto

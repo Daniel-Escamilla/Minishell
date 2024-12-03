@@ -6,7 +6,7 @@
 /*   By: descamil <descamil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/03 09:29:06 by descamil          #+#    #+#             */
-/*   Updated: 2024/11/23 11:21:39 by descamil         ###   ########.fr       */
+/*   Updated: 2024/11/27 16:52:16 by descamil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ char	*ft_validate_comm_part1(char *cmd)
 		command = ft_strdup(cmd);
 		return (command);
 	}
-	if (access(cmd, X_OK) != 0 && ft_strrchr(cmd, '/'))
+	if (ft_strrchr(cmd, '/'))
 	{
 		if (ft_is_dir(cmd) == 1)
 			printf("mini: %s: Is a directory\n", cmd);

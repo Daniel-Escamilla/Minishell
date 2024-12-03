@@ -6,13 +6,13 @@
 /*   By: descamil <descamil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 18:00:29 by sergio            #+#    #+#             */
-/*   Updated: 2024/11/24 16:49:16 by descamil         ###   ########.fr       */
+/*   Updated: 2024/11/27 17:00:54 by descamil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_min(void)
+static char	*ft_min(void)
 {
 	char	*arr;
 
@@ -23,7 +23,7 @@ char	*ft_min(void)
 	return (arr);
 }
 
-char	*ft_ifzero(void)
+static char	*ft_ifzero(void)
 {
 	char	*arr;
 
@@ -34,7 +34,7 @@ char	*ft_ifzero(void)
 	return (arr);
 }
 
-char	*ft_memory(int len, int sign, int n)
+static char	*ft_memory(int len, int sign, long n)
 {
 	char	*arr;
 	char	*ptr;
@@ -46,7 +46,7 @@ char	*ft_memory(int len, int sign, int n)
 	*ptr-- = '\0';
 	while (n > 0)
 	{
-		*ptr-- = (n % 10) + '0';
+		*ptr-- = (char)(n % 10) + '0';
 		n /= 10;
 	}
 	if (sign == -1)
@@ -57,9 +57,9 @@ char	*ft_memory(int len, int sign, int n)
 
 char	*ft_itoa(long n)
 {
-	int	sign;
-	int	len;
-	int	temp;
+	int		sign;
+	int		len;
+	long	temp;
 
 	sign = 1;
 	len = 0;

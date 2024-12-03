@@ -6,7 +6,7 @@
 /*   By: descamil <descamil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/22 11:21:55 by descamil          #+#    #+#             */
-/*   Updated: 2024/11/24 16:52:29 by descamil         ###   ########.fr       */
+/*   Updated: 2024/12/03 14:51:30 by descamil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ static void	ft_print_list(t_list *list, t_cmd *cmd)
 	while (list)
 	{
 		env_var = (char *)list->content;
-		join = strchr(env_var, '=') + 1;
+		join = ft_strchr(env_var, '=') + 1;
 		size = ft_strlen(env_var) - ft_strlen(join);
 		var = ft_calloc(size + 1, sizeof(char));
 		ft_strlcpy(var, env_var, size + 1);

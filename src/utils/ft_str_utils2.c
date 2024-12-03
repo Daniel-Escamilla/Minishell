@@ -6,7 +6,7 @@
 /*   By: descamil <descamil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/03 09:30:16 by descamil          #+#    #+#             */
-/*   Updated: 2024/11/24 12:59:26 by descamil         ###   ########.fr       */
+/*   Updated: 2024/12/03 15:11:27 by descamil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ int	ft_strlen_dup(char *argv)
 
 void	ft_three_arguments_printf(char *prefix, char *arg, char *suffix)
 {
-	write(2, prefix, strlen(prefix));
-	write(2, arg, strlen(arg));
-	write(2, suffix, strlen(suffix));
+	write(2, prefix, ft_strlen(prefix));
+	write(2, arg, ft_strlen(arg));
+	write(2, suffix, ft_strlen(suffix));
 }

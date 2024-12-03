@@ -6,7 +6,7 @@
 /*   By: descamil <descamil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 17:01:27 by sergio            #+#    #+#             */
-/*   Updated: 2024/10/23 15:18:37 by descamil         ###   ########.fr       */
+/*   Updated: 2024/11/27 17:05:21 by descamil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,13 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	size_t	i;
 	size_t	j;
 
-	i = -1;
+	i = 0;
 	j = 0;
 	n = ft_strlen((char *)s1) + ft_strlen((char *)s2);
 	ptr = ft_calloc(n + 1, 1);
 	if (ptr == NULL)
 		return (NULL);
+	i++;
 	while ((char)s1[++i] != '\0')
 		ptr[i] = (char)s1[i];
 	while ((char)s2[j] != '\0')

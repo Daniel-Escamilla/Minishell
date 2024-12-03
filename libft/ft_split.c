@@ -6,13 +6,13 @@
 /*   By: descamil <descamil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 17:27:11 by sergio            #+#    #+#             */
-/*   Updated: 2024/11/24 16:59:24 by descamil         ###   ########.fr       */
+/*   Updated: 2024/11/27 17:03:42 by descamil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_strlen_mod(const char *s, int i, char c)
+static int	ft_strlen_mod(const char *s, int i, char c)
 {
 	int	len;
 
@@ -27,7 +27,7 @@ int	ft_strlen_mod(const char *s, int i, char c)
 	return (len);
 }
 
-char	*ft_strlcpy_mod(char *s, char c, int *new_start, int size)
+static char	*ft_strlcpy_mod(char *s, char c, int *new_start, int size)
 {
 	char	*ptr;
 	int		j;
@@ -35,7 +35,7 @@ char	*ft_strlcpy_mod(char *s, char c, int *new_start, int size)
 
 	j = 0;
 	start = *new_start;
-	ptr = (char *)ft_calloc(size + 1, 1);
+	ptr = (char *)ft_calloc((size_t)size + 1, 1);
 	if (ptr == NULL)
 		return (NULL);
 	while (s[start] == c && s[start] != '\0')
@@ -47,9 +47,9 @@ char	*ft_strlcpy_mod(char *s, char c, int *new_start, int size)
 	return (ptr);
 }
 
-void	*free_memory(int a, char **arr)
+static void	*free_memory(size_t a, char **arr)
 {
-	int	f;
+	size_t	f;
 
 	f = 0;
 	while (f < a)
@@ -58,10 +58,10 @@ void	*free_memory(int a, char **arr)
 	return (NULL);
 }
 
-int	ft_words(const char *s, char c)
+static size_t	ft_words(const char *s, char c)
 {
-	int	word;
-	int	i;
+	size_t	word;
+	int		i;
 
 	word = 0;
 	i = 0;
@@ -80,7 +80,7 @@ int	ft_words(const char *s, char c)
 char	**ft_split(const char *s, char c)
 {
 	int		i;
-	int		a;
+	size_t	a;
 	int		len_mod;
 	char	**arr;
 	char	*cpy_mod;
