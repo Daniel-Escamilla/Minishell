@@ -6,7 +6,7 @@
 /*   By: descamil <descamil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/03 09:32:44 by descamil          #+#    #+#             */
-/*   Updated: 2024/11/27 16:55:46 by descamil         ###   ########.fr       */
+/*   Updated: 2025/01/16 18:27:18 by descamil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,7 +100,6 @@ int	ft_here_doc(t_mini *mini, t_cmd *cmd, char **env)
 	int		status;
 
 	ft_create_files(mini, cmd);
-	ft_strstr_printf(mini->files);
 	pid = fork();
 	if (pid == -1)
 		ft_perror_exit("Error in Fork", 1);

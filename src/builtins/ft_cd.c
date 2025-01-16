@@ -6,7 +6,7 @@
 /*   By: descamil <descamil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/30 12:00:46 by user              #+#    #+#             */
-/*   Updated: 2024/11/24 10:25:47 by descamil         ###   ########.fr       */
+/*   Updated: 2025/01/16 18:25:36 by descamil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,10 @@ static char	*ft_hyphen(t_mini *mini, t_cmd *cmd)
 		rute = NULL;
 	}
 	else if (rute != NULL && chdir(rute) != -1)
+	{
 		write(cmd->names->fd, rute, ft_strlen(rute));
+		write(cmd->names->fd, "\n", 1);
+	}
 	return (rute);
 }
 
