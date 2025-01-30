@@ -6,7 +6,7 @@
 /*   By: descamil <descamil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/03 09:32:44 by descamil          #+#    #+#             */
-/*   Updated: 2025/01/16 18:27:18 by descamil         ###   ########.fr       */
+/*   Updated: 2025/01/16 18:35:27 by descamil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,8 @@ static void	ft_create_files(t_mini *mini, t_cmd *cmd)
 		i = -1;
 		while (current->files->order && current->files->order[++i])
 		{
-			if (ft_atoi(current->files->order[i]) == 3 && ft_more(current, i, 1) == 0 && ft_more(current, i, 3) == 1)
+			if (ft_atoi(current->files->order[i]) == 3
+				&& ft_more(current, i, 1) == 0 && ft_more(current, i, 3) == 1)
 			{
 				file = ft_create_filename(mini->files, 1);
 				if (mini->files != NULL)

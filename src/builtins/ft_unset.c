@@ -6,7 +6,7 @@
 /*   By: descamil <descamil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/05 12:53:58 by descamil          #+#    #+#             */
-/*   Updated: 2024/11/23 11:23:21 by descamil         ###   ########.fr       */
+/*   Updated: 2025/01/30 12:12:18 by descamil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,10 @@ int	ft_unset(t_mini *mini, t_cmd *cmd)
 	i = 1;
 	while (cmd->args[i])
 	{
+		if (ft_strnstr(cmd->args[i], "_", 1))
+			i++;
+		if (cmd->args[i] == NULL)
+			return (0);
 		if (ft_strnstr(cmd->args[i], "PWD", 3))
 			mini->pwd = 1;
 		if (ft_strnstr(cmd->args[i], "OLDPWD", 6))
