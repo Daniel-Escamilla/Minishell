@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_exec_cmd.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: descamil <descamil@student.42.fr>          +#+  +:+       +#+        */
+/*   By: smarin-a <smarin-a@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/03 09:29:06 by descamil          #+#    #+#             */
-/*   Updated: 2024/11/27 16:52:16 by descamil         ###   ########.fr       */
+/*   Updated: 2025/02/19 13:21:15 by smarin-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,10 +32,9 @@ char	*ft_validate_comm_part1(char *cmd)
 		command = ft_strdup(cmd);
 		return (command);
 	}
-	if (ft_strrchr(cmd, '/'))
+	if (ft_strrchr(cmd, '/') && ft_is_dir(cmd) == 1)
 	{
-		if (ft_is_dir(cmd) == 1)
-			printf("mini: %s: Is a directory\n", cmd);
+		printf("mini: %s: Is a directory\n", cmd);
 		return (NULL);
 	}
 	command = ft_strjoin("/", cmd);

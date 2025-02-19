@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_export.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: descamil <descamil@student.42.fr>          +#+  +:+       +#+        */
+/*   By: smarin-a <smarin-a@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/05 12:53:49 by descamil          #+#    #+#             */
-/*   Updated: 2024/11/23 11:46:44 by descamil         ###   ########.fr       */
+/*   Updated: 2025/02/19 14:49:11 by smarin-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int	ft_find_var_value(char **env, char *arg)
 
 	i = -1;
 	str = ft_strchr(arg, '=');
-	if (!str || ft_isdigit(arg[0]) == 1)
+	if (!str || ft_isdigit(arg[0]) == 1 || str[1] == '\0')
 		return (-1);
 	name_len = str - arg;
 	while (env[++i])

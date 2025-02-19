@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_comm_exec.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: descamil <descamil@student.42.fr>          +#+  +:+       +#+        */
+/*   By: smarin-a <smarin-a@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/15 21:11:38 by user              #+#    #+#             */
-/*   Updated: 2024/11/24 12:39:45 by descamil         ###   ########.fr       */
+/*   Updated: 2025/02/19 13:15:50 by smarin-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,8 @@ static void	ft_comm_part2(t_cmd *cmd, t_mini *mini, int status)
 	execve(cmd->cmd, cmd->args, mini->env->env);
 	if (ft_strnstr(cmd->args[0], "./", 2))
 		ft_printf_exit(cmd->args[0], ": Is a directory\n", 126);
+	if (strchr(cmd->cmd, '/'))
+		ft_printf_exit(cmd->args[0], ": No such file or directory\n", 127);
 	ft_printf_exit("mini: execve: ", "Error\n", 139);
 }
 
@@ -80,11 +82,11 @@ static void	ft_child(t_mini *mini, t_cmd *cmd)
 			close (mini->fd_tmp);
 		mini->fd_tmp = -1;
 		close(mini->fd_history);
-		if (cmd->args && cmd->args[0]
+		if (cmd->cmd != NULL && cmd->args && cmd->args[0]
 			&& ft_nothing(cmd->args[0], 0) == 0)
 		{
 			if (mini->tty == 0)
-				ft_printf_exit(cmd->args[0], ": command not found\n", 127);
+				ft_printf_exit(cmd->args[0], ": Command not found\n", 127);
 			else
 			{
 				ft_putstr_fd("mini: line ", 2);

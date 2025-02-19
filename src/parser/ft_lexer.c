@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lexer.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: descamil <descamil@student.42.fr>          +#+  +:+       +#+        */
+/*   By: smarin-a <smarin-a@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/14 15:50:54 by smarin-a          #+#    #+#             */
-/*   Updated: 2025/01/30 12:19:39 by descamil         ###   ########.fr       */
+/*   Updated: 2025/02/19 11:54:42 by smarin-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,10 +53,10 @@ static int	ft_handle_input(t_mini *mini, char *input)
 		"rxvt-unicode", "rxvt-unicode-256color", "rxvt-basic", "rxvt", NULL};
 	if (!input)
 	{
+		printf("exit");
 		term = ft_get_var(mini->env->env, "TERM");
 		if (term && ft_strnstrstr(terms, term) != 0)
 			printf("\n");
-		printf("exit\n");
 		if (term)
 			free(term);
 		return (0);

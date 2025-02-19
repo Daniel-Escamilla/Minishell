@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_utils.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: descamil <descamil@student.42.fr>          +#+  +:+       +#+        */
+/*   By: smarin-a <smarin-a@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/14 11:24:41 by smarin-a          #+#    #+#             */
-/*   Updated: 2024/11/24 12:00:03 by descamil         ###   ########.fr       */
+/*   Updated: 2025/02/19 11:51:14 by smarin-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,13 @@ void	ft_mini_header(void)
 {
 	printf("\n");
 	printf("               ");
-	printf(B_RD_0"╭──────╮╭╮ ╭╮ ╭─╮╭╮ ╭╮ ╭╮ ╭─╮ ╭─╮ ╭───╮ ╭─╮   ╭─╮  \n"RESET);
+	printf(B_RD_0"╭──────╮ ╭╮ ╭╮ ╭─╮╭╮ ╭╮ ╭╮ ╭─╮ ╭─╮ ╭───╮ ╭─╮   ╭─╮  \n"RESET);
 	printf("               ");
-	printf(B_OR_1"│ ╭╮╭╮ │ │ │  │ ╰╯│  │ │  │ ╰─╯ │ │ ─╮╯ │ │   │ │  \n"RESET);
+	printf(B_OR_1"│ ╭╮╭╮ │  │ │  │ ╰╯│  │ │  │ ╰─╯ │ │ ─╮╯ │ │   │ │  \n"RESET);
 	printf("               ");
-	printf(B_OR_0"│ │╰╯│ │ │ │  │╭╮ │  │ │  │ ╭─╮ │ │ ─╯╮ │ ╰─╮ │ ╰─╮\n"RESET);
+	printf(B_OR_0"│ │╰╯│ │  │ │  │╭╮ │  │ │  │ ╭─╮ │ │ ─╯╮ │ ╰─╮ │ ╰─╮\n"RESET);
 	printf("               ");
-	printf(B_YE_0"╰─╯  ╰─╯╰╯ ╰╯ ╰╯╰─╯ ╰╯ ╰╯ ╰─╯ ╰─╯ ╰───╯ ╰───╯ ╰───╯\n"RESET);
+	printf(B_YE_0"╰─╯  ╰─╯ ╰╯ ╰╯ ╰╯╰─╯ ╰╯ ╰╯ ╰─╯ ╰─╯ ╰───╯ ╰───╯ ╰───╯\n"RESET);
 	printf("\n\n                ");
 	printf(B_WH_2"         ╭─────────────────────────────╮            "RESET);
 	printf(B_WH_2"\n                         │"RESET);
