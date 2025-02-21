@@ -6,7 +6,7 @@
 /*   By: descamil <descamil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 15:31:41 by descamil          #+#    #+#             */
-/*   Updated: 2024/10/13 19:59:41 by descamil         ###   ########.fr       */
+/*   Updated: 2025/02/21 13:26:09 by descamil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	ft_red_error(t_mini *mini, char *input)
 			if (mini->flags->redirect->red_error == 1)
 				mini->flags->redirect->error
 					= ft_substr(input, (unsigned)mini->flags->locate_red, 1);
-			else if ((mini->flags->redirect->red_error == 2))
+			else if (mini->flags->redirect->red_error == 2)
 				mini->flags->redirect->error = ft_substr(input,
 						1 + (unsigned)mini->flags->locate_red, 1);
 		}
@@ -31,7 +31,7 @@ void	ft_red_error(t_mini *mini, char *input)
 			if (mini->flags->redirect->red_error == 3)
 				mini->flags->redirect->error
 					= ft_substr(input, (unsigned)mini->flags->locate_red, 2);
-			else if ((mini->flags->redirect->red_error == 4))
+			else if (mini->flags->redirect->red_error == 4)
 				mini->flags->redirect->error = ft_substr(input,
 						1 + (unsigned)mini->flags->locate_red, 2);
 		}
