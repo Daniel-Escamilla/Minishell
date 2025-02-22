@@ -6,25 +6,28 @@
 /*   By: descamil <descamil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/05 12:49:28 by descamil          #+#    #+#             */
-/*   Updated: 2025/01/16 18:21:18 by descamil         ###   ########.fr       */
+/*   Updated: 2025/02/22 11:44:30 by descamil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/builtins.h"
 
-int	ft_env(t_mini *mini, t_cmd *cmd)
+int	ft_env(char **env, t_cmd *cmd)
 {
 	int	i;
 
 	i = -1;
 	if (ft_strstr_len(cmd->args) > 1)
 	{
-		write(1, "env: ", 6);
-		write(1, cmd->args[1], ft_strlen(cmd->args[1]));
-		write(1, " : No such file or directory\n", 29);
+		write(2, "env: ‘", 9);
+		write(2, cmd->args[1], ft_strlen(cmd->args[1]));
+		write(2, "’: No such file or directory\n", 32);
 		return (127);
 	}
-	while (mini->env->env && mini->env->env[++i])
-		printf("%s\n", mini->env->env[i]);
+	while (env && env[++i])
+	{
+		write(STDOUT_FILENO, env[i], ft_strlen(env[i]));
+		write(STDOUT_FILENO, "\n", 1);
+	}
 	return (0);
 }
