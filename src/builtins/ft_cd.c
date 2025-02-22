@@ -6,7 +6,7 @@
 /*   By: descamil <descamil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/30 12:00:46 by user              #+#    #+#             */
-/*   Updated: 2025/01/16 18:25:36 by descamil         ###   ########.fr       */
+/*   Updated: 2025/02/22 11:32:47 by descamil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ static char	*ft_save_home(t_mini *mini)
 	return (trim);
 }
 
-static char	*ft_hyphen(t_mini *mini, t_cmd *cmd)
+static char	*ft_hyphen(t_mini *mini)
 {
 	char	*rute;
 
@@ -42,8 +42,8 @@ static char	*ft_hyphen(t_mini *mini, t_cmd *cmd)
 	}
 	else if (rute != NULL && chdir(rute) != -1)
 	{
-		write(cmd->names->fd, rute, ft_strlen(rute));
-		write(cmd->names->fd, "\n", 1);
+		write(STDOUT_FILENO, rute, ft_strlen(rute));
+		write(STDOUT_FILENO, "\n", 1);
 	}
 	return (rute);
 }
@@ -67,7 +67,7 @@ static char	*ft_prepare_path(t_mini *mini, t_cmd *cmd)
 	}
 	else if (ft_strncmp(cmd->args[1], "-", 1) == 0
 		&& ft_strlen(cmd->args[1]) == 1)
-		rute = ft_hyphen(mini, cmd);
+		rute = ft_hyphen(mini);
 	else if (cmd->args[1][0] == '~' && ft_strlen(cmd->args[1]) == 1)
 		rute = ft_save_home(mini);
 	else
