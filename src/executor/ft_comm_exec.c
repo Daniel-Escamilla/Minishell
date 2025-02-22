@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_comm_exec.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: smarin-a <smarin-a@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: descamil <descamil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/15 21:11:38 by user              #+#    #+#             */
-/*   Updated: 2025/02/20 11:13:58 by smarin-a         ###   ########.fr       */
+/*   Updated: 2025/02/22 11:56:04 by descamil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,13 +89,10 @@ static void	ft_child(t_mini *mini, t_cmd *cmd)
 				exit(g_exit_status);
 			if (mini->tty == 0)
 				ft_printf_exit(cmd->args[0], ": command not found\n", 127);
-			else
-			{
-				ft_putstr_fd("mini: line ", 2);
-				ft_putnbr_fd(mini->tty - 1, 2);
-				write(2, ": ", 2);
-				ft_printf_exit(cmd->args[0], ": command not found\n", 127);
-			}
+			ft_putstr_fd("mini: line ", 2);
+			ft_putnbr_fd(mini->tty - 1, 2);
+			write(2, ": ", 2);
+			ft_printf_exit(cmd->args[0], ": command not found\n", 127);
 		}
 		exit(1);
 	}
