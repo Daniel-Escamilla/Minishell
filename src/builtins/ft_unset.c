@@ -6,7 +6,7 @@
 /*   By: descamil <descamil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/05 12:53:58 by descamil          #+#    #+#             */
-/*   Updated: 2025/01/30 12:12:18 by descamil         ###   ########.fr       */
+/*   Updated: 2025/02/22 12:06:39 by descamil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int	ft_unset(t_mini *mini, t_cmd *cmd)
 		if (ft_strnstr(cmd->args[i], "PATH", 4))
 			mini->path = 1;
 		tmp = ft_strjoin(cmd->args[i], "=");
-		var = ft_find_var_value(mini->env->env, tmp);
+		var = ft_find_var_value(mini->env->env, tmp, 'U');
 		if (var != -1)
 			ft_remove_var(&mini->env->env, var);
 		free(tmp);
