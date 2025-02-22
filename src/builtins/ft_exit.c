@@ -6,7 +6,7 @@
 /*   By: descamil <descamil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/05 12:53:43 by descamil          #+#    #+#             */
-/*   Updated: 2024/10/13 03:43:53 by descamil         ###   ########.fr       */
+/*   Updated: 2025/02/22 11:52:15 by descamil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,10 +86,11 @@ int	ft_exit(t_mini *mini, t_cmd *cmd)
 
 	if (cmd->args[1])
 		atoll = ft_atoll_mod(cmd->args[1], &error);
-	printf("exit\n");
+	if (mini->single)
+		write(1, "exit\n", 6);
 	if (cmd->args[1] && cmd->args[2] != NULL && error != 2 && error != 3)
 	{
-		printf("mini: exit: too many arguments\n");
+		write(2, "mini: exit: too many arguments\n", 32);
 		return (1);
 	}
 	close(mini->fd_pipe[0]);
@@ -99,7 +100,9 @@ int	ft_exit(t_mini *mini, t_cmd *cmd)
 		exit(0);
 	if (error == 2 || error == 3)
 	{
-		printf("mini: exit: %s: numeric argument required\n", cmd->args[1]);
+		write(2, "mini: exit: ", 13);
+		write(2, cmd->args[1], ft_strlen(cmd->args[1]));
+		write(2, ": numeric argument required\n", 29);
 		exit(2);
 	}
 	exit((int)(atoll % 256));
