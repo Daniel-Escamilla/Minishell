@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_export.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: smarin-a <smarin-a@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: descamil <descamil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/05 12:53:49 by descamil          #+#    #+#             */
-/*   Updated: 2025/02/19 14:49:11 by smarin-a         ###   ########.fr       */
+/*   Updated: 2025/02/22 12:07:40 by descamil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/builtins.h"
 
-int	ft_find_var_value(char **env, char *arg)
+int	ft_find_var_value(char **env, char *arg, int type)
 {
 	char	*str;
 	long	name_len;
@@ -20,7 +20,7 @@ int	ft_find_var_value(char **env, char *arg)
 
 	i = -1;
 	str = ft_strchr(arg, '=');
-	if (!str || ft_isdigit(arg[0]) == 1 || str[1] == '\0')
+	if (!str || ft_isdigit(arg[0]) == 1 || (type == 'E' && str[1] == '\0'))
 		return (-1);
 	name_len = str - arg;
 	while (env[++i])
@@ -40,14 +40,14 @@ int	ft_export(t_mini *mini, t_cmd *cmd)
 
 	i = 1;
 	if (ft_strstr_len(cmd->args) == 1)
-		return (ft_print_order(mini->env->env, cmd));
+		return (ft_print_order(mini->env->env));
 	while (cmd->args[i])
 	{
 		if (ft_strnstr(cmd->args[i], "OLDPWD", 6))
 			mini->oldpwd = 0;
 		if (ft_strnstr(cmd->args[i], "PATH", 4))
 			mini->path = 0;
-		var = ft_find_var_value(mini->env->env, cmd->args[i]);
+		var = ft_find_var_value(mini->env->env, cmd->args[i], 'E');
 		if (var != -1)
 		{
 			ft_remove_var(&mini->env->env, var);
