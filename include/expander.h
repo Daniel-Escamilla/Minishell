@@ -6,7 +6,7 @@
 /*   By: descamil <descamil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/05 12:44:54 by descamil          #+#    #+#             */
-/*   Updated: 2024/11/10 20:45:18 by descamil         ###   ########.fr       */
+/*   Updated: 2025/02/27 16:03:22 by descamil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ char	*expand_div(int *iter, char *str, char **env, int *stop);
 
 // ft_expander_utils1.c
 int		ft_size_var(char *str);
+int		ft_is_special_char(char c);
 char	*ft_dolar_to_iqual(char *div);
 char	*ft_join(char **div, char *tmp);
 
