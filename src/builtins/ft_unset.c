@@ -6,7 +6,7 @@
 /*   By: descamil <descamil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/05 12:53:58 by descamil          #+#    #+#             */
-/*   Updated: 2025/02/27 12:34:21 by descamil         ###   ########.fr       */
+/*   Updated: 2025/02/27 16:05:31 by descamil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,22 +14,22 @@
 
 int ft_find_var_value_unset(char **env, char *arg, size_t len)
 {
-    char    *str;
-    long    name_len;
-    int     i;
+	char    *str;
+	long    name_len;
+	int     i;
 
-    i = -1;
-    str = ft_strchr(arg, '=');
-    if (!str || ft_isdigit(arg[0]) == 1)
-        return (-1);
-    name_len = str - arg;
-    while (env[++i])
-    {
-        if (ft_strncmp(env[i], arg, (size_t)name_len) == 0
+	i = -1;
+	str = ft_strrchr(arg, '=');
+	if (!str || ft_isdigit(arg[0]) == 1)
+		return (-1);
+	name_len = str - arg;
+	while (env[++i])
+	{
+		if (ft_strncmp(env[i], arg, (size_t)name_len) == 0
 			&& env[i][name_len] == '=' && len == (size_t)name_len)
-            return (i);
-    }
-    return (-2);
+			return (i);
+	}
+	return (-2);
 }
 
 int	ft_unset(t_mini *mini, t_cmd *cmd)
