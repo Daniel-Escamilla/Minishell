@@ -5,12 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: descamil <descamil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/05 12:53:49 by descamil          #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2025/02/22 12:07:40 by descamil         ###   ########.fr       */
-=======
-/*   Updated: 2025/02/10 18:25:16 by descamil         ###   ########.fr       */
->>>>>>> c3921be (Unset "_"  doesn't remove from env)
+/*   Created: 2025/02/27 11:00:37 by descamil          #+#    #+#             */
+/*   Updated: 2025/02/27 11:00:53 by descamil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,13 +47,9 @@ int	ft_export(t_mini *mini, t_cmd *cmd)
 			mini->oldpwd = 0;
 		if (ft_strnstr(cmd->args[i], "PATH", 4))
 			mini->path = 0;
-<<<<<<< HEAD
 		var = ft_find_var_value(mini->env->env, cmd->args[i], 'E');
-=======
-		var = ft_find_var_value(mini->env->env, cmd->args[i]);
 		if (ft_strnstr(cmd->args[i], "_", 1) && ft_strlen(cmd->args[i]) == 1)
 			var = -1;
->>>>>>> c3921be (Unset "_"  doesn't remove from env)
 		if (var != -1)
 		{
 			ft_remove_var(&mini->env->env, var);
