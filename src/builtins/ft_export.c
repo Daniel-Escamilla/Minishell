@@ -6,30 +6,30 @@
 /*   By: descamil <descamil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/27 11:00:37 by descamil          #+#    #+#             */
-/*   Updated: 2025/02/27 11:00:53 by descamil         ###   ########.fr       */
+/*   Updated: 2025/02/27 12:50:10 by descamil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/builtins.h"
 
-int	ft_find_var_value(char **env, char *arg, int type)
+int ft_find_var_value_export(char **env, char *arg, int quotes)
 {
-	char	*str;
-	long	name_len;
-	int		i;
+    char    *str;
+    long    name_len;
+    int     i;
 
-	i = -1;
-	str = ft_strchr(arg, '=');
-	if (!str || ft_isdigit(arg[0]) == 1 || (type == 'E' && str[1] == '\0'))
-		return (-1);
-	name_len = str - arg;
-	while (env[++i])
-	{
-		if (ft_strncmp(env[i], arg,
-				(size_t)name_len) == 0 && env[i][name_len] == '=')
-			return (i);
-	}
-	return (-2);
+    i = -1;
+	printf("%s\n", arg);
+    str = ft_strchr(arg, '=');
+    if (!str || ft_isdigit(arg[0]) == 1 || (str[0] != '\0' && quotes == 0))
+        return (-1);
+    name_len = str - arg;
+    while (env[++i])
+    {
+        if (ft_strncmp(env[i], arg, (size_t)name_len) == 0 && env[i][name_len] == '=')
+            return (i);
+    }
+    return (-2);
 }
 
 int	ft_export(t_mini *mini, t_cmd *cmd)
@@ -47,7 +47,7 @@ int	ft_export(t_mini *mini, t_cmd *cmd)
 			mini->oldpwd = 0;
 		if (ft_strnstr(cmd->args[i], "PATH", 4))
 			mini->path = 0;
-		var = ft_find_var_value(mini->env->env, cmd->args[i], 'E');
+		var = ft_find_var_value_export(mini->env->env, cmd->args[i], ft_atoi(cmd->export_quotes[i]));
 		if (ft_strnstr(cmd->args[i], "_", 1) && ft_strlen(cmd->args[i]) == 1)
 			var = -1;
 		if (var != -1)
