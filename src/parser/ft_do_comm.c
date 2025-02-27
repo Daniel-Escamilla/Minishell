@@ -6,7 +6,7 @@
 /*   By: descamil <descamil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/01 17:52:46 by smarin-a          #+#    #+#             */
-/*   Updated: 2025/02/27 12:56:06 by descamil         ###   ########.fr       */
+/*   Updated: 2025/02/27 13:42:17 by descamil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,6 @@ static void	ft_quotes_var_expander(t_mini *mini, t_cmd *cmd)
 				ft_handle_export_quotes(cmd, 0);
 			i++;
 		}
-		printf("EXPORT\n");
 	}
 }
 

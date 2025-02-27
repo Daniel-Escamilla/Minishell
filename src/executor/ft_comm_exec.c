@@ -6,7 +6,7 @@
 /*   By: descamil <descamil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/15 21:11:38 by user              #+#    #+#             */
-/*   Updated: 2025/02/22 11:56:04 by descamil         ###   ########.fr       */
+/*   Updated: 2025/02/27 14:04:28 by descamil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,9 +101,21 @@ static void	ft_child(t_mini *mini, t_cmd *cmd)
 
 void	ft_comm(t_cmd *cmd, t_mini *mini)
 {
+	pid_t	procc;
 	ft_comm_part1(cmd, mini);
 	if (mini->single == 1 && cmd->built == 1)
+	{
 		g_exit_status = ft_exec_built(mini, cmd);
+		procc = fork();
+		if (procc == -1)
+			ft_perror_exit("Error in Fork", 1);
+		if (procc == 0)
+		{
+			close(mini->fd_history);
+			ft_close_and_update_fds(mini, cmd, 'H');
+			exit(g_exit_status);
+		}
+	}
 	else if (cmd->names->fd_infile != -1 && cmd->names->fd_outfile != -1
 		&& mini->error != -4)
 	{
