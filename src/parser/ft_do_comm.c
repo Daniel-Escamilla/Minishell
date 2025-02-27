@@ -6,11 +6,65 @@
 /*   By: descamil <descamil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/01 17:52:46 by smarin-a          #+#    #+#             */
-/*   Updated: 2024/11/23 18:27:02 by descamil         ###   ########.fr       */
+/*   Updated: 2025/02/27 12:56:06 by descamil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/parser.h"
+
+static void	ft_handle_export_quotes(t_cmd *cmd, int i)
+{
+	char	*itoa;
+	char	**tmp;
+
+	itoa = ft_itoa(i);
+	if (cmd->export_quotes == NULL)
+		cmd->export_quotes = ft_sindub_join(NULL, itoa);
+	else
+	{
+		tmp = ft_strstr_dup(cmd->export_quotes);
+		ft_strstr_free(cmd->export_quotes);
+		cmd->export_quotes = ft_sindub_join(tmp, itoa);
+		ft_strstr_free(tmp);
+	}
+	free(itoa);
+}
+
+int ft_is_quote(char *str, int i)
+{
+	if (str && str[i])
+	{
+		if (str[i] == '\'' || str[i] == '\"')
+			return (1);
+	}
+	return (0);
+}
+
+static void	ft_quotes_var_expander(t_mini *mini, t_cmd *cmd)
+{
+	char	*str;
+	int		i;
+
+	i = 0;
+	if (mini->flags->pipe != 0)
+		return ;
+	if (ft_strncmp(cmd->args[0], "export", 6) == 0 && ft_strlen(cmd->args[0]) == 6)
+	{
+		cmd->export_quotes = NULL;
+		while (cmd->args[i])
+		{
+			str = ft_strchr(cmd->args[i], '=');
+			if (str && str[0] && str[0] == '\0')
+				return ;
+			if (ft_is_quote(str, 1) == 1 && ft_is_quote(str, 2) == 1)
+				ft_handle_export_quotes(cmd, i);
+			else
+				ft_handle_export_quotes(cmd, 0);
+			i++;
+		}
+		printf("EXPORT\n");
+	}
+}
 
 int	ft_order_all(t_mini *mini, t_cmd **cmd, char **lines, char *input)
 {
@@ -23,6 +77,7 @@ int	ft_order_all(t_mini *mini, t_cmd **cmd, char **lines, char *input)
 		process_lines(cmd, mini, lines, 0);
 	if (mini->error == -2)
 		return (-1);
+	ft_quotes_var_expander(mini, *cmd);
 	ft_do_expander(mini, *cmd);
 	ft_strstr_free(lines);
 	if (mini->cmd->files->error == -1)

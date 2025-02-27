@@ -6,7 +6,7 @@
 /*   By: descamil <descamil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 16:27:49 by user              #+#    #+#             */
-/*   Updated: 2024/11/24 17:12:36 by descamil         ###   ########.fr       */
+/*   Updated: 2025/02/27 11:43:56 by descamil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ void	free_t_cmd(t_cmd **cmd)
 		next = current->next;
 		ft_strstr_free(current->args);
 		ft_strstr_free(current->quote_args);
+		ft_strstr_free(current->export_quotes);
 		if (current->files)
 			ft_free_dou(current->files,
 				current->files->f_order, current->files->order);
