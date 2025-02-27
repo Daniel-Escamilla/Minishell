@@ -6,7 +6,7 @@
 /*   By: descamil <descamil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/27 11:00:37 by descamil          #+#    #+#             */
-/*   Updated: 2025/02/27 13:58:02 by descamil         ###   ########.fr       */
+/*   Updated: 2025/02/27 15:42:36 by descamil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,20 @@ int ft_find_var_value_export(char **env, char *arg, int quotes)
     return (-2);
 }
 
+int ft_has_special_char(char *str)
+{
+	int	i;
+
+	i = 0;
+	while(str && str[i] && str[i] != '=')
+	{
+		if (ft_is_special_char(str[i]) == 1)
+			return (1);
+		i++;
+	}
+	return (0);
+}
+
 int	ft_export(t_mini *mini, t_cmd *cmd)
 {
 	char	**tmp;
@@ -44,7 +58,7 @@ int	ft_export(t_mini *mini, t_cmd *cmd)
 		return (ft_print_order(mini->env->env));
 	while (cmd->args[i])
 	{
-		if (cmd->args[i][0] == '=')
+		if (cmd->args[i][0] == '=' || ft_has_special_char(cmd->args[i]) == 1)
 		{
 			write(2, "mini: export: `", 16);
 			write(2, cmd->args[i], ft_strlen(cmd->args[i]));
