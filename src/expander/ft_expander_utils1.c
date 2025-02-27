@@ -6,7 +6,7 @@
 /*   By: descamil <descamil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/09 18:14:41 by user              #+#    #+#             */
-/*   Updated: 2025/02/27 12:29:15 by descamil         ###   ########.fr       */
+/*   Updated: 2025/02/27 16:04:23 by descamil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,21 @@ char	*ft_join(char **div, char *tmp)
 	return (tmp);
 }
 
+int	ft_is_special_char(char c)
+{
+	unsigned char uc = (unsigned char)c;
+	if ((uc >= 33 && uc <= 126 &&
+		(uc == '$' || uc == '*' || uc == '?' || uc == '"' || uc == '\'' ||
+		uc == '`' || uc == '\\' || uc == '|' || uc == '&' || uc == ';' ||
+		uc == '>' || uc == '<' || uc == '(' || uc == ')' || uc == '{' ||
+		uc == '}' || uc == '[' || uc == ']' || uc == '!' || uc == '#' ||
+		uc == ':' || uc == ',' || uc == '%' || uc == '@' || uc == '/' ||
+		uc == '^' || uc == '~' || uc == '+' || uc == '-')) ||
+		uc == 0xBF || uc == 0xA1)
+		return (1);
+	return (0);
+}
+
 int	ft_size_var(char *str)
 {
 	int	i;
@@ -66,8 +81,8 @@ int	ft_size_var(char *str)
 		return (++i);
 	if (str[i] == '\0' || str[i] == ' ')
 		return (-1);
-	while (str[i] != '\0' && str[i] != ' ' && str[i] != '$'
-		&& str[i] != '\"' && str[i] != '\'' && str[i] != '=')
+	while (str[i] != '\0' && str[i] != ' ' &&
+		ft_is_special_char(str[i]) == 0 && str[i] != '=')
 		i++;
 	return (i);
 }
