@@ -6,7 +6,7 @@
 /*   By: descamil <descamil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/05 12:45:49 by descamil          #+#    #+#             */
-/*   Updated: 2024/11/23 16:01:20 by descamil         ###   ########.fr       */
+/*   Updated: 2025/02/27 11:28:56 by descamil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,6 +82,7 @@ typedef struct s_cmd
 	char			**tmp;
 	char			**args;
 	char			**quote_args;
+	char			**export_quotes;
 	t_type			*type;
 	t_files			*files;
 	t_names			*names;

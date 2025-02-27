@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_expander_utils1.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: descamil <descamil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/09 18:14:41 by user              #+#    #+#             */
-/*   Updated: 2024/09/30 21:19:38 by user             ###   ########.fr       */
+/*   Updated: 2025/02/27 12:29:15 by descamil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ int	ft_size_var(char *str)
 	if (str[i] == '\0' || str[i] == ' ')
 		return (-1);
 	while (str[i] != '\0' && str[i] != ' ' && str[i] != '$'
-		&& str[i] != '\"' && str[i] != '\'')
+		&& str[i] != '\"' && str[i] != '\'' && str[i] != '=')
 		i++;
 	return (i);
 }
