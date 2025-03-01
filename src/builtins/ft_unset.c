@@ -6,17 +6,17 @@
 /*   By: descamil <descamil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/05 12:53:58 by descamil          #+#    #+#             */
-/*   Updated: 2025/02/27 16:05:31 by descamil         ###   ########.fr       */
+/*   Updated: 2025/03/01 14:16:46 by descamil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/builtins.h"
 
-int ft_find_var_value_unset(char **env, char *arg, size_t len)
+int	ft_find_var_value_unset(char **env, char *arg, size_t len)
 {
-	char    *str;
-	long    name_len;
-	int     i;
+	char	*str;
+	long	name_len;
+	int		i;
 
 	i = -1;
 	str = ft_strrchr(arg, '=');
@@ -54,7 +54,8 @@ int	ft_unset(t_mini *mini, t_cmd *cmd)
 		if (ft_strnstr(cmd->args[i], "PATH", 4) && size == 4)
 			mini->path = 1;
 		tmp = ft_strjoin(cmd->args[i], "=");
-		var = ft_find_var_value_unset(mini->env->env, tmp, ft_strlen(cmd->args[i]));
+		var = ft_find_var_value_unset(mini->env->env, tmp,
+				ft_strlen(cmd->args[i]));
 		if (var != -1)
 			ft_remove_var(&mini->env->env, var);
 		free(tmp);

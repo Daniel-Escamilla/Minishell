@@ -6,7 +6,7 @@
 /*   By: descamil <descamil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/01 17:52:46 by smarin-a          #+#    #+#             */
-/*   Updated: 2025/02/27 13:42:17 by descamil         ###   ########.fr       */
+/*   Updated: 2025/03/01 14:14:48 by descamil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ static void	ft_handle_export_quotes(t_cmd *cmd, int i)
 	free(itoa);
 }
 
-int ft_is_quote(char *str, int i)
+int	ft_is_quote(char *str, int i)
 {
 	if (str && str[i])
 	{
@@ -48,7 +48,8 @@ static void	ft_quotes_var_expander(t_mini *mini, t_cmd *cmd)
 	i = 0;
 	if (mini->flags->pipe != 0)
 		return ;
-	if (ft_strncmp(cmd->args[0], "export", 6) == 0 && ft_strlen(cmd->args[0]) == 6)
+	if (ft_strncmp(cmd->args[0], "export", 6) == 0
+		&& ft_strlen(cmd->args[0]) == 6)
 	{
 		cmd->export_quotes = NULL;
 		while (cmd->args[i])

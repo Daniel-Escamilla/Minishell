@@ -6,7 +6,7 @@
 /*   By: descamil <descamil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/05 12:44:39 by descamil          #+#    #+#             */
-/*   Updated: 2025/02/27 12:57:27 by descamil         ###   ########.fr       */
+/*   Updated: 2025/03/01 14:54:13 by descamil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ int		ft_print_order(char **env);
 
 // ft_export.c
 int		ft_export(t_mini *mini, t_cmd *cmd);
-int 	ft_find_var_value_export(char **env, char *arg, int quotes);
+int		ft_find_var_value_export(char **env, char *arg, int quotes);
 // ft_pwd.c
 int		ft_pwd(void);
 
