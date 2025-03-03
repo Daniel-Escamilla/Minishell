@@ -6,7 +6,7 @@
 /*   By: descamil <descamil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/09 13:20:46 by descamil          #+#    #+#             */
-/*   Updated: 2025/02/27 13:47:55 by descamil         ###   ########.fr       */
+/*   Updated: 2025/03/03 19:40:24 by descamil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,11 +30,11 @@ static int	ft_minus_dolar(char *div)
 	return (0);
 }
 
-static int	expand_loop(char **tmp, int *iter, char **env, int *stop)
+static int	expand_loop(char **tmp, int *iter, t_mini *mini, int *stop)
 {
 	char	*new_tmp;
 
-	new_tmp = expand_div(iter, *tmp, env, stop);
+	new_tmp = expand_div(iter, *tmp, mini->env->env, stop);
 	free(*tmp);
 	*tmp = ft_strdup(new_tmp);
 	free(new_tmp);
@@ -48,7 +48,7 @@ static int	expand_loop(char **tmp, int *iter, char **env, int *stop)
 	return (0);
 }
 
-char	*ft_expander(char **env, char *str)
+char	*ft_expander(t_mini *mini, char *str)
 {
 	char	*cpy;
 	char	*tmp;
@@ -62,7 +62,7 @@ char	*ft_expander(char **env, char *str)
 	cpy = ft_strdup(str);
 	tmp = ft_strdup(str);
 	while (1)
-		if (expand_loop(&tmp, &iter, env, &stop))
+		if (expand_loop(&tmp, &iter, mini, &stop))
 			break ;
 	if (str && iter != 1 && (int)ft_strlen(str) != 0
 		&& ft_strncmp(str, cpy, ft_strlen(cpy)) != 0)

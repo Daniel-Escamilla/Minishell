@@ -6,7 +6,7 @@
 /*   By: descamil <descamil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/05 12:44:54 by descamil          #+#    #+#             */
-/*   Updated: 2025/02/27 16:03:22 by descamil         ###   ########.fr       */
+/*   Updated: 2025/03/03 17:31:39 by descamil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ void	ft_ex_free(char **div, char *tmp);
 char	*ft_no_more_dolar(char *div, char *str);
 
 // ft_expander.c
-char	*ft_expander(char **env, char *str);
+char	*ft_expander(t_mini *mini, char *str);
 
 // ft_tript.c
 char	**ft_tript(char *str, int size, int start);
