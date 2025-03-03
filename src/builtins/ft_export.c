@@ -6,7 +6,7 @@
 /*   By: descamil <descamil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/27 11:00:37 by descamil          #+#    #+#             */
-/*   Updated: 2025/03/01 14:53:32 by descamil         ###   ########.fr       */
+/*   Updated: 2025/03/03 19:37:20 by descamil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int	ft_find_var_value_export(char **env, char *arg, int quotes)
 
 	i = -1;
 	str = ft_strchr(arg, '=');
-	if (!str || ft_isdigit(arg[0]) == 1 || (str[0] == '\0' && quotes == 0))
+	if (!str || ft_isdigit(arg[0]) == 1 || (str[1] == '\0' && quotes == 0))
 		return (-1);
 	name_len = str - arg;
 	while (env[++i])
@@ -46,10 +46,27 @@ int	ft_has_special_char(char *str)
 	return (0);
 }
 
-int	ft_export(t_mini *mini, t_cmd *cmd)
+static void	ft_do_remove_var(t_mini *mini, t_cmd *cmd, int i)
 {
 	char	**tmp;
 	int		var;
+
+	var = ft_find_var_value_export(mini->env->env, cmd->args[i],
+			ft_atoi(cmd->export_quotes[i]));
+	if (cmd->args[i][0] == '_' && cmd->args[i][1] == '=')
+		var = -1;
+	if (var != -1)
+	{
+		ft_remove_var(&mini->env->env, var);
+		tmp = ft_strstr_dup(mini->env->env);
+		ft_strstr_free(mini->env->env);
+		mini->env->env = ft_sindub_join(tmp, cmd->args[i]);
+		ft_strstr_free(tmp);
+	}
+}
+
+int	ft_export(t_mini *mini, t_cmd *cmd)
+{
 	int		i;
 
 	i = 0;
@@ -71,18 +88,7 @@ int	ft_export(t_mini *mini, t_cmd *cmd)
 			mini->oldpwd = 0;
 		if (ft_strnstr(cmd->args[i], "PATH", 4))
 			mini->path = 0;
-		var = ft_find_var_value_export(mini->env->env, cmd->args[i],
-				ft_atoi(cmd->export_quotes[i]));
-		if (ft_strnstr(cmd->args[i], "_", 1) && ft_strlen(cmd->args[i]) == 1)
-			var = -1;
-		if (var != -1)
-		{
-			ft_remove_var(&mini->env->env, var);
-			tmp = ft_strstr_dup(mini->env->env);
-			ft_strstr_free(mini->env->env);
-			mini->env->env = ft_sindub_join(tmp, cmd->args[i]);
-			ft_strstr_free(tmp);
-		}
+		ft_do_remove_var(mini, cmd, i);
 	}
 	return (g_exit_status);
 }
