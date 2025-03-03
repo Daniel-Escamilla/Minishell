@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_check_input.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: descamil <descamil@student.42.fr>          +#+  +:+       +#+        */
+/*   By: smarin-a <smarin-a@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/01 17:52:46 by smarin-a          #+#    #+#             */
-/*   Updated: 2024/11/24 17:10:59 by descamil         ###   ########.fr       */
+/*   Updated: 2025/03/03 13:12:35 by smarin-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ static int	ft_negative_error(t_mini *mini)
 	r = mini->flags->locate_red;
 	q = mini->flags->quote;
 	p = mini->flags->pipe;
+	printf("Negative pipe %d\n", mini->flags->pipe);
 	if (r < 0)
 		negative = r;
 	if (q < 0 && (negative == 0 || q > negative))

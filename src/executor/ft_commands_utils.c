@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_commands_utils.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: descamil <descamil@student.42.fr>          +#+  +:+       +#+        */
+/*   By: smarin-a <smarin-a@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/23 16:07:14 by user              #+#    #+#             */
-/*   Updated: 2024/09/21 12:27:27 by descamil         ###   ########.fr       */
+/*   Updated: 2025/03/03 13:19:16 by smarin-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,11 @@ void	ft_plus_one(int value1, int value2)
 
 int	ft_nothing_r(char *input, int i)
 {
+	if (i == -1)
+		return (0);
 	while (i >= 0 && input[i] && input[i] == ' ')
 		i--;
-	if (i == 0)
+	if (i == -1)
 		return (1);
 	return (0);
 }
