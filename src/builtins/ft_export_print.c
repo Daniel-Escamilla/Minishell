@@ -6,7 +6,7 @@
 /*   By: descamil <descamil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/22 11:21:55 by descamil          #+#    #+#             */
-/*   Updated: 2025/02/22 11:29:03 by descamil         ###   ########.fr       */
+/*   Updated: 2025/03/03 19:27:20 by descamil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,16 @@ int	ft_print_order(char **env)
 	list = NULL;
 	enviroment = ft_strstr_dup(env);
 	while (enviroment[i])
+	{
+		if (ft_strncmp(enviroment[i], "_=", 2) == 0)
+		{
+			free(enviroment[i]);
+			i++;
+		}
+		if (enviroment[i] == NULL)
+			break ;
 		ft_insert_sorted(&list, enviroment[i++]);
+	}
 	ft_print_list(list);
 	ft_lstclear(&list, free);
 	free(enviroment);
