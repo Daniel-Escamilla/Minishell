@@ -6,7 +6,7 @@
 /*   By: descamil <descamil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 11:44:59 by descamil          #+#    #+#             */
-/*   Updated: 2024/10/24 11:50:20 by descamil         ###   ########.fr       */
+/*   Updated: 2025/03/03 19:40:59 by descamil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,12 +71,16 @@ static void	ft_update_pwd(char ***dup, size_t i)
 	free(current_pwd);
 }
 
-char	**ft_upgrade_env(char **str)
+static void	ft_update_underline(char ***dup, size_t i)
+{
+	free((*dup)[i]);
+	(*dup)[i] = ft_strdup("_=]");
+}
+
+char	**ft_upgrade_env(char **str, size_t i)
 {
 	char	**dup;
-	size_t	i;
 
-	i = 0;
 	dup = NULL;
 	if (*str == NULL)
 		return (ft_create_default_env());
@@ -95,6 +99,8 @@ char	**ft_upgrade_env(char **str)
 			ft_update_shlvl(&dup, i);
 		if (ft_strncmp(dup[i], "PWD=", 4) == 0)
 			ft_update_pwd(&dup, i);
+		if (ft_strncmp(dup[i], "_=", 2) == 0)
+			ft_update_underline(&dup, i);
 		i++;
 	}
 	return (dup);
