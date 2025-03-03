@@ -6,7 +6,7 @@
 /*   By: descamil <descamil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/05 12:53:58 by descamil          #+#    #+#             */
-/*   Updated: 2025/03/01 14:16:46 by descamil         ###   ########.fr       */
+/*   Updated: 2025/03/03 19:39:50 by descamil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,16 @@ int	ft_find_var_value_unset(char **env, char *arg, size_t len)
 	return (-2);
 }
 
+static void	ft_unset_cases(t_mini *mini, t_cmd *cmd, int size, int i)
+{
+	if (ft_strnstr(cmd->args[i], "PWD", 3) && size == 3)
+		mini->pwd = 1;
+	if (ft_strnstr(cmd->args[i], "OLDPWD", 6) && size == 6)
+		mini->oldpwd = 1;
+	if (ft_strnstr(cmd->args[i], "PATH", 4) && size == 4)
+		mini->path = 1;
+}
+
 int	ft_unset(t_mini *mini, t_cmd *cmd)
 {
 	char	*tmp;
@@ -47,12 +57,7 @@ int	ft_unset(t_mini *mini, t_cmd *cmd)
 			i++;
 		if (cmd->args[i] == NULL)
 			return (0);
-		if (ft_strnstr(cmd->args[i], "PWD", 3) && size == 3)
-			mini->pwd = 1;
-		if (ft_strnstr(cmd->args[i], "OLDPWD", 6) && size == 6)
-			mini->oldpwd = 1;
-		if (ft_strnstr(cmd->args[i], "PATH", 4) && size == 4)
-			mini->path = 1;
+		ft_unset_cases(mini, cmd, size, i);
 		tmp = ft_strjoin(cmd->args[i], "=");
 		var = ft_find_var_value_unset(mini->env->env, tmp,
 				ft_strlen(cmd->args[i]));
