@@ -6,7 +6,7 @@
 /*   By: descamil <descamil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/10 20:39:20 by descamil          #+#    #+#             */
-/*   Updated: 2024/11/24 16:12:05 by descamil         ###   ########.fr       */
+/*   Updated: 2025/03/03 17:35:08 by descamil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ static void	ft_break_hd(char *line, char *eof, int j)
 		free(line);
 }
 
-static void	ft_write_fd(char **env, char *eof, int fd, int quotes)
+static void	ft_write_fd(t_mini *mini, char *eof, int fd, int quotes)
 {
 	char	*line;
 	char	*tmp;
@@ -39,7 +39,7 @@ static void	ft_write_fd(char **env, char *eof, int fd, int quotes)
 		}
 		if (quotes == 0)
 		{
-			tmp = ft_expander(env, line);
+			tmp = ft_expander(mini, line);
 			free(line);
 			line = tmp;
 		}
@@ -74,7 +74,7 @@ static int	fd_open(t_mini *mini, t_cmd *current, char *file, int i)
 	return (fd);
 }
 
-void	ft_write_here_doc(t_mini *mini, t_cmd *current, char **env, int i)
+void	ft_write_here_doc(t_mini *mini, t_cmd *current, int i)
 {
 	char	*file;
 	int		quotes;
@@ -84,7 +84,7 @@ void	ft_write_here_doc(t_mini *mini, t_cmd *current, char **env, int i)
 	ft_clean_name(current, quotes, i);
 	file = ft_create_filename(NULL, 0);
 	fd = fd_open(mini, current, file, i);
-	ft_write_fd(env, current->files->f_order[i], fd, quotes);
+	ft_write_fd(mini, current->files->f_order[i], fd, quotes);
 	close(fd);
 	if (ft_more(current, i, 3) != 1 || ft_more(current, i, 1) != 0)
 		unlink(file);

@@ -6,7 +6,7 @@
 /*   By: descamil <descamil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/03 09:32:44 by descamil          #+#    #+#             */
-/*   Updated: 2025/01/16 18:35:27 by descamil         ###   ########.fr       */
+/*   Updated: 2025/03/03 17:35:50 by descamil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ char	*ft_create_filename(char **files, int status)
 	return (filename);
 }
 
-static void	ft_do_here_doc(t_mini *mini, t_cmd *cmd, char **env)
+static void	ft_do_here_doc(t_mini *mini, t_cmd *cmd)
 {
 	t_cmd	*current;
 	int		i;
@@ -51,7 +51,7 @@ static void	ft_do_here_doc(t_mini *mini, t_cmd *cmd, char **env)
 		while (current->files->order && current->files->order[i])
 		{
 			if (ft_atoi(current->files->order[i]) == 3)
-				ft_write_here_doc(mini, current, env, i);
+				ft_write_here_doc(mini, current, i);
 			i++;
 		}
 		current = current->next;
@@ -95,7 +95,7 @@ static void	ft_create_files(t_mini *mini, t_cmd *cmd)
 	}
 }
 
-int	ft_here_doc(t_mini *mini, t_cmd *cmd, char **env)
+int	ft_here_doc(t_mini *mini, t_cmd *cmd)
 {
 	pid_t	pid;
 	int		status;
@@ -108,7 +108,7 @@ int	ft_here_doc(t_mini *mini, t_cmd *cmd, char **env)
 	{
 		close(mini->fd_history);
 		ft_signal_management(0);
-		ft_do_here_doc(mini, cmd, env);
+		ft_do_here_doc(mini, cmd);
 		exit(0);
 	}
 	waitpid(pid, &status, 0);
