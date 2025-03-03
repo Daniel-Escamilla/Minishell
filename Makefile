@@ -83,6 +83,7 @@ PARSER_SRCS =	src/parser/ft_lexer.c \
 				src/parser/ft_check_pipes.c \
 				src/parser/ft_check_quotes.c \
 				src/parser/ft_manage_quotes.c \
+				src/parser/ft_do_comm_utils.c \
 				src/parser/ft_manage_spaces.c \
 				src/parser/ft_check_operators.c \
 
