@@ -6,7 +6,7 @@
 /*   By: descamil <descamil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/05 12:45:17 by descamil          #+#    #+#             */
-/*   Updated: 2024/10/24 11:49:01 by descamil         ###   ########.fr       */
+/*   Updated: 2025/03/03 19:41:11 by descamil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,6 @@ t_mini	*ft_initialize(char **env);
 int		main(int argc, char **argv, char **env);
 
 // ft_update_env.c
-char	**ft_upgrade_env(char **str);
+char	**ft_upgrade_env(char **str, size_t i);
 
 #endif
