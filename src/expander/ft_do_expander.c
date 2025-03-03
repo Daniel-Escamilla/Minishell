@@ -6,7 +6,7 @@
 /*   By: descamil <descamil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/03 11:25:51 by descamil          #+#    #+#             */
-/*   Updated: 2025/02/27 13:39:54 by descamil         ###   ########.fr       */
+/*   Updated: 2025/03/03 17:34:04 by descamil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ static char	**ft_str_expander(t_mini *mini, char **args)
 		return (NULL);
 	}
 	while (tmp[++i])
-		result[i] = ft_expander(mini->env->env, tmp[i]);
+		result[i] = ft_expander(mini, tmp[i]);
 	ft_strstr_free(tmp);
 	return (result);
 }
@@ -53,7 +53,7 @@ static void	ft_expand_files(t_mini *mini, t_files **files)
 		if (atoi((*files)->order[i]) == 3)
 			(*files)->f_order[i] = ft_strdup(tmp[i]);
 		else
-			(*files)->f_order[i] = ft_expander(mini->env->env, tmp[i]);
+			(*files)->f_order[i] = ft_expander(mini, tmp[i]);
 		i++;
 	}
 	ft_strstr_free(tmp);
