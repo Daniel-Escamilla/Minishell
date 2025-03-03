@@ -6,7 +6,7 @@
 /*   By: descamil <descamil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/15 12:21:54 by smarin-a          #+#    #+#             */
-/*   Updated: 2024/11/24 11:30:07 by descamil         ###   ########.fr       */
+/*   Updated: 2025/03/03 19:41:24 by descamil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ t_mini	*ft_initialize(char **env)
 	mini->env = ft_calloc(sizeof(t_env), 1);
 	if (mini->env == NULL)
 		return (ft_free_resources(mini, 2));
-	mini->env->env = ft_upgrade_env(env);
+	mini->env->env = ft_upgrade_env(env, 0);
 	if (mini->env->env == NULL)
 		return (ft_free_resources(mini, 3));
 	mini->flags = ft_calloc(sizeof(t_flags), 1);
