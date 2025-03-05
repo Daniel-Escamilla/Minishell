@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_env.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: descamil <descamil@student.42.fr>          +#+  +:+       +#+        */
+/*   By: smarin-a <smarin-a@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/05 12:49:28 by descamil          #+#    #+#             */
-/*   Updated: 2025/03/05 10:07:32 by descamil         ###   ########.fr       */
+/*   Updated: 2025/03/05 11:24:50 by smarin-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int	ft_env(char **env, t_cmd *cmd)
 		if (ft_strncmp(env[i], "_=", 2) == 0)
 		{
 			write(STDOUT_FILENO, "_=/usr/bin/env\n", 15);
-			continue;
+			continue ;
 		}
 		write(STDOUT_FILENO, env[i], ft_strlen(env[i]));
 		write(STDOUT_FILENO, "\n", 1);

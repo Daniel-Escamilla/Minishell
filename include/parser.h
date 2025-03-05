@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: descamil <descamil@student.42.fr>          +#+  +:+       +#+        */
+/*   By: smarin-a <smarin-a@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/05 12:45:25 by descamil          #+#    #+#             */
-/*   Updated: 2025/03/05 11:00:36 by descamil         ###   ########.fr       */
+/*   Updated: 2025/03/05 11:24:34 by smarin-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,9 +66,5 @@ char	**ft_split_pipe(const char *s, char c);
 
 // ft_strtok.c
 int		ft_strtok(t_mini *mini, t_cmd **cmd, char *input);
-
-
-void	print_cmd(t_cmd *cmd);
-
 
 #endif
