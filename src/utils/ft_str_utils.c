@@ -6,7 +6,7 @@
 /*   By: descamil <descamil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/03 08:56:10 by descamil          #+#    #+#             */
-/*   Updated: 2024/10/23 14:53:03 by descamil         ###   ########.fr       */
+/*   Updated: 2025/03/05 10:53:07 by descamil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,8 @@ int	ft_strnstrstr(char **str, char *locate)
 	total = 0;
 	while (str && str[i])
 	{
-		if (ft_strncmp(str[i], locate, ft_strlen(locate)) == 0)
+		if (ft_strncmp(str[i], locate, ft_strlen(locate)) == 0
+			&& ft_strlen(str[i]) == ft_strlen(locate))
 			total++;
 		i++;
 	}

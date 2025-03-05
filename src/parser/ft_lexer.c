@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lexer.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: smarin-a <smarin-a@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: descamil <descamil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/14 15:50:54 by smarin-a          #+#    #+#             */
-/*   Updated: 2025/02/19 11:54:42 by smarin-a         ###   ########.fr       */
+/*   Updated: 2025/03/05 10:16:02 by descamil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,25 +40,11 @@ static void	ft_free_per_comm(t_mini *mini, char *input)
 
 static int	ft_handle_input(t_mini *mini, char *input)
 {
-	char	*term;
-	char	**terms;
-
-	terms = (char *[]){"wsvt25", "wsvt25m", "linux", "xterm-color",
-		"xterm-vt220", "xterm-256color", "xterm-mono", "xterm-r5", "xterm-r6",
-		"xterm", "xterm-xfree86", "hurd", "vt102", "vt52", "vt100", "vt220",
-		"Eterm", "pcansi", "tmux-256color", "tmux", "mach-bold", "mach-gnu",
-		"mach-gnu-color", "mach-color", "mach", "screen-256color",
-		"screen.xterm-256color", "screen-w", "screen-s", "screen", "sun",
-		"screen-256color-bce", "screen-bce", "ansi", "cygwin", "cons25",
-		"rxvt-unicode", "rxvt-unicode-256color", "rxvt-basic", "rxvt", NULL};
 	if (!input)
 	{
-		printf("exit");
-		term = ft_get_var(mini->env->env, "TERM");
-		if (term && ft_strnstrstr(terms, term) != 0)
-			printf("\n");
-		if (term)
-			free(term);
+		if (mini->flags->pipe != 0)
+			return (0);
+		printf("exit\n");
 		return (0);
 	}
 	if (ft_nothing(input, 0) == 1)
