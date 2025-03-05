@@ -6,7 +6,7 @@
 /*   By: descamil <descamil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/05 12:49:28 by descamil          #+#    #+#             */
-/*   Updated: 2025/02/22 11:44:30 by descamil         ###   ########.fr       */
+/*   Updated: 2025/03/05 10:07:32 by descamil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,11 @@ int	ft_env(char **env, t_cmd *cmd)
 	}
 	while (env && env[++i])
 	{
+		if (ft_strncmp(env[i], "_=", 2) == 0)
+		{
+			write(STDOUT_FILENO, "_=/usr/bin/env\n", 15);
+			continue;
+		}
 		write(STDOUT_FILENO, env[i], ft_strlen(env[i]));
 		write(STDOUT_FILENO, "\n", 1);
 	}
