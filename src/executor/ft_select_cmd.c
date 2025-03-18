@@ -6,7 +6,7 @@
 /*   By: descamil <descamil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/11 19:00:37 by user              #+#    #+#             */
-/*   Updated: 2024/10/23 14:35:56 by descamil         ###   ########.fr       */
+/*   Updated: 2025/03/18 10:33:47 by descamil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ static void	ft_initialize_selection(t_cmd *current)
 	current->error = 0;
 	while (current->args[++i])
 	{
-		if (ft_type(current->args[i]) != 0)
+		if (ft_type(current->args[i]) != 0 && current->quote_args[i] == 0)
 			current->size++;
 	}
 }

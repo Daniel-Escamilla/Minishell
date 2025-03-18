@@ -6,7 +6,7 @@
 /*   By: descamil <descamil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 11:36:54 by descamil          #+#    #+#             */
-/*   Updated: 2024/11/20 12:55:11 by descamil         ###   ########.fr       */
+/*   Updated: 2025/03/18 10:35:25 by descamil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,8 +39,10 @@ static void	ft_do_remove_args_quotes(t_cmd *cmd)
 	while (cmd->args && cmd->args[i])
 	{
 		quotes = ft_find_quotes(cmd->args[i], 0);
+		if (quotes[0] == -1 || quotes[1] == -1)
+			ft_handle_quote_args(cmd, 0);
 		if (quotes[1] != -1)
-			ft_handle_quote_args(cmd, i);
+			ft_handle_quote_args(cmd, 1);
 		if (quotes[0] != -1 && quotes[1] != -1)
 			ft_rm_quotes(&cmd->args[i], quotes);
 		free(quotes);
